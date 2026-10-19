@@ -2,15 +2,15 @@
   "id": "yarn-meo-tra-da-quan-moi-mien-1",
   "region": "xom-mai-am",
   "chapter": 2,
-  "title": "Chuyện của Mèo Trà Đá, chương 1: Đơn hàng mười lít",
+  "title": "Chuyện của Mèo Trà Đá, chương 1: Đơn hàng ba mươi lít",
   "status": "active",
   "category": "story",
-  "summary": "Mèo Trà Đá nhận đơn mười lít trà cho buổi họp mặt trong hang đá ấm. {name} tìm can, bình và ca, tính số lít còn thiếu, chọn cách đong cho đủ rồi giúp Mèo chọn hương trà.",
+  "summary": "Mèo Trà Đá nhận đơn ba mươi lít trà cho buổi họp mặt trong hang đá ấm. {name} tìm can, bình và ca, tính số lít còn thiếu, chọn cách đong cho đủ rồi giúp Mèo chọn hương trà.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Mèo Trà Đá",
     "where": "Xóm: giếng xóm, gốc khế đầu ngõ, hiên nhà, chõng tre, mỏm đá cửa hang",
-    "goal": "Đong đủ mười lít trà đá cho buổi họp mặt của xóm",
+    "goal": "Đong đủ ba mươi lít trà đá cho buổi họp mặt của xóm",
     "play": "Tìm đồ đong theo lời tả; tính số lít còn thiếu; chọn các cách đong đủ; chọn hương trà; rót trà đúng vạch",
     "learn": "Lít (dung tích), phép trừ",
     "reward": "57 XP, 14 Xu, Skill XP Phép trừ, Dung tích",
@@ -50,12 +50,12 @@
         },
         {
           "speaker": "Mèo Trà Đá",
-          "text": "Mười lít trà đá liền một lúc. Mà đồ đong của Mèo, hôm qua cho hàng xóm mượn, giờ nằm rải rác ở gốc khế đầu ngõ."
+          "text": "Ba mươi lít trà đá liền một lúc. Mà đồ đong của Mèo, hôm qua cho hàng xóm mượn, giờ nằm rải rác ở gốc khế đầu ngõ."
         }
       ],
       "choices": [
         {
-          "text": "Mười lít cơ à? Nhiều quá!",
+          "text": "Ba mươi lít cơ à? Nhiều quá!",
           "reply": "Nhiều mới vui, quý khách ơi! Quán lớn phải bắt đầu từ đơn to. Meo!"
         },
         {
@@ -68,11 +68,11 @@
         "goTo": "Go to the lane well, where Mèo Trà Đá is wiping the counter by the well wall",
         "lines": [
           "Honoured guest {name}! The hottest news this morning: the whole lane is meeting in the warm cave, and they've ordered Mèo's tea! Meow meow!",
-          "Ten litres of iced tea all at once. But I lent my measuring things to the neighbours yesterday, and now they're scattered by the starfruit tree at the head of the lane."
+          "Thirty litres of iced tea all at once. But I lent my measuring things to the neighbours yesterday, and now they're scattered by the starfruit tree at the head of the lane."
         ],
         "choices": [
           {
-            "text": "Ten whole litres? That’s a lot!",
+            "text": "Thirty whole litres? That’s a lot!",
             "reply": "The more the merrier, honoured guest! A big stall starts with a big order. Meow!"
           },
           {
@@ -136,60 +136,60 @@
       "kind": "riddle",
       "target": "st-meo-tra-da-quan-moi-mien-bang-ghi-don-tra",
       "skill": "phep-tru",
-      "question": "Đơn ghi: 10 lít trà đá. Mèo đã rót đầy can 5 lít và bình 2 lít. Hỏi còn phải pha thêm mấy lít nữa mới đủ đơn?",
+      "question": "Đơn ghi: 30 lít trà đá. Chum sành của Mèo đang có sẵn 15 lít, Mèo vừa rót thêm 8 lít nữa. Hỏi còn phải pha thêm mấy lít mới đủ đơn?",
       "answer": {
-        "value": 3
+        "value": 7
       },
       "support": {
         "guide": [
-          "Tính xem Mèo đã có bao nhiêu lít: 5 l và 2 l.",
-          "Lấy 10 l trừ đi số lít đã có."
+          "Tính xem chum đang có bao nhiêu lít: 15 l và 8 l, nhớ 1 sang hàng chục.",
+          "Lấy 30 l trừ đi số lít đã có, mượn một chục khi hàng đơn vị không đủ trừ."
         ],
-        "hint": "5 l + 2 l = 7 l, rồi 10 l − 7 l = ?",
+        "hint": "15 l + 8 l = 23 l, rồi 30 l − 23 l = ?",
         "answer": {
-          "text": "3 lít",
-          "explanation": "Mèo đã có 5 + 2 = 7 lít. Đơn cần 10 lít nên còn thiếu 10 − 7 = 3 lít."
+          "text": "7 lít",
+          "explanation": "Chum đã có 15 + 8 = 23 lít. Đơn cần 30 lít nên còn thiếu 30 − 23 = 7 lít."
         },
         "en": {
           "guide": [
-            "Work out how many litres Mèo already has: 5 l and 2 l.",
-            "Take that away from 10 l."
+            "Work out how many litres the jar holds: 15 l and 8 l, carrying 1 to the tens.",
+            "Take that away from 30 l, borrowing a ten when the ones are too small."
           ],
-          "hint": "5 l + 2 l = 7 l, then 10 l − 7 l = ?",
+          "hint": "15 l + 8 l = 23 l, then 30 l − 23 l = ?",
           "answer": {
-            "text": "3 litres",
-            "explanation": "Mèo already has 5 + 2 = 7 litres. The order is 10 litres, so 10 − 7 = 3 litres are still missing."
+            "text": "7 litres",
+            "explanation": "The jar holds 15 + 8 = 23 litres. The order is 30 litres, so 30 − 23 = 7 litres are still missing."
           }
         }
       },
       "feedback": {
         "right": [
-          "Ba lít! Meo meo, quý khách tính nhanh hơn Mèo rót trà.",
-          "{name} trừ gọn gàng, Mèo ghi ngay số ba vào góc bảng.",
-          "Còn đúng ba ca một lít nữa thôi, Mèo đi pha liền đây."
+          "Bảy lít! Meo meo, quý khách tính nhanh hơn Mèo rót trà.",
+          "{name} trừ gọn gàng, Mèo ghi ngay số bảy vào góc bảng.",
+          "Còn đúng bảy lít nữa thôi: một can năm lít với một bình hai lít là vừa, Mèo đi pha liền đây."
         ],
         "wrong": [
-          "Quý khách nhớ tính cả can lẫn bình rồi mới trừ nhé.",
-          "Số ấy là phần đã có rồi, Mèo hỏi phần còn thiếu cơ.",
-          "Thử đếm thêm từ bảy lên mười xem được mấy bước."
+          "Quý khách nhớ cộng phần có sẵn với phần vừa rót rồi mới trừ nhé.",
+          "Số ấy là phần chum đã có rồi, Mèo hỏi phần còn thiếu cơ.",
+          "Thử đếm thêm từ hai mươi ba lên ba mươi xem được mấy bước."
         ],
         "en": {
           "right": [
-            "Three litres! Meow meow, you count faster than I pour, honoured guest.",
-            "A tidy subtraction, {name}; Mèo writes a 3 in the corner of the board.",
-            "Just three one-litre mugs to go; Mèo is off to brew them."
+            "Seven litres! Meow meow, you count faster than I pour, honoured guest.",
+            "A tidy subtraction, {name}; Mèo writes a 7 in the corner of the board.",
+            "Just seven litres to go: one five-litre can and one two-litre jug will do it; Mèo is off to brew them."
           ],
           "wrong": [
-            "Remember to count both the can and the jug before you subtract.",
-            "That is what Mèo already has; the question is what is missing.",
-            "Try counting on from seven to ten and see how many steps."
+            "Remember to add what was in the jar to what was just poured before you subtract.",
+            "That is what the jar already holds; the question is what is missing.",
+            "Try counting on from twenty-three to thirty and see how many steps."
           ]
         }
       },
       "en": {
         "title": "How many litres short?",
         "goTo": "Go to the porch, where Mèo pinned the tea order on a post",
-        "question": "The order says 10 litres of iced tea. Mèo has filled the 5-litre can and the 2-litre jug. How many more litres must be made to complete the order?"
+        "question": "The order says 30 litres of iced tea. Mèo’s clay jar already holds 15 litres, and she has just poured in 8 more. How many more litres must be made to complete the order?"
       }
     },
     {
@@ -296,7 +296,7 @@
       "kind": "decision",
       "target": "st-meo-tra-da-quan-moi-mien-ba-lo-huong-tra",
       "speaker": "Mèo Trà Đá",
-      "prompt": "Mèo mở nắp từng lọ cho {name} ngửi: «Mười lít trà cho buổi họp mặt, quý khách chọn hương nào? Meo, khó chọn quá!»",
+      "prompt": "Mèo mở nắp từng lọ cho {name} ngửi: «Ba mươi lít trà cho buổi họp mặt, quý khách chọn hương nào? Meo, khó chọn quá!»",
       "choices": [
         {
           "id": "la-dua",
@@ -317,7 +317,7 @@
       "en": {
         "title": "Which flavour?",
         "goTo": "Go out to the rock at the cave mouth, where Mèo left three jars of tea flavours in the breeze",
-        "prompt": "Mèo opens each jar for {name} to sniff: \"Ten litres for the gathering. Which flavour, honoured guest? Meow, it’s so hard to choose!\"",
+        "prompt": "Mèo opens each jar for {name} to sniff: \"Thirty litres for the gathering. Which flavour, honoured guest? Meow, it’s so hard to choose!\"",
         "choices": [
           {
             "text": "Pandan, green and gently fragrant",
@@ -350,13 +350,13 @@
     },
     {
       "id": "muoi-lit-du",
-      "title": "Đủ mười lít",
+      "title": "Đủ ba mươi lít",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mười lít trà đá xếp hàng trong hang đá ấm, cốc nào cũng mát rượi. Mèo cười meo meo, dúi cho {name} một nắm xu lẻ trong túi tạp dề.",
+      "text": "Ba mươi lít trà đá xếp hàng trong hang đá ấm, cốc nào cũng mát rượi. Mèo cười meo meo, dúi cho {name} một nắm xu lẻ trong túi tạp dề.",
       "en": {
-        "title": "Ten litres, done",
-        "text": "Ten litres of iced tea stand in a row in the warm cave, every glass ice-cold. Mèo laughs meow meow and presses a handful of coins from her apron into {name}’s hand."
+        "title": "Thirty litres, done",
+        "text": "Thirty litres of iced tea stand in a row in the warm cave, every glass ice-cold. Mèo laughs meow meow and presses a handful of coins from her apron into {name}’s hand."
       }
     },
     {
@@ -380,7 +380,7 @@
     }
   },
   "en": {
-    "title": "Mèo Trà Đá's story, chapter 1: The ten-litre order",
-    "summary": "Mèo Trà Đá has an order for ten litres of tea for a gathering in the warm cave. {name} finds the can, jug and mug, works out how many litres are missing, picks the ways to measure the rest and helps Mèo choose a flavour."
+    "title": "Mèo Trà Đá's story, chapter 1: The thirty-litre order",
+    "summary": "Mèo Trà Đá has an order for thirty litres of tea for a gathering in the warm cave. {name} finds the can, jug and mug, works out how many litres are missing, picks the ways to measure the rest and helps Mèo choose a flavour."
   }
 }

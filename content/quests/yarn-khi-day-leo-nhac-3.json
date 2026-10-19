@@ -130,41 +130,41 @@
       "logicType": "pattern",
       "target": "st-khi-day-leo-nhac-tang-da-phang",
       "skill": "logic",
-      "prompt": "Trải cuộn giấy trên tảng đá, {name} thấy các nhóm lỗ tròn: nhóm đầu 1 lỗ, nhóm hai 2 lỗ, nhóm ba 3 lỗ, nhóm bốn bị rách mất, nhóm năm 5 lỗ. Nhóm bốn có mấy lỗ?",
+      "prompt": "Trải cuộn giấy trên tảng đá, {name} thấy dưới mỗi nhóm lỗ tròn có ghi số lỗ: 12, 22, 32, rồi một chỗ bị rách, rồi 52. Chỗ bị rách là nhóm có bao nhiêu lỗ?",
       "elements": [
         {
           "id": "n1",
-          "label": "1 lỗ"
+          "label": "12 lỗ"
         },
         {
           "id": "n2",
-          "label": "2 lỗ"
+          "label": "22 lỗ"
         },
         {
           "id": "n3",
-          "label": "3 lỗ"
+          "label": "32 lỗ"
         },
         {
           "id": "n4",
-          "label": "nhóm bị rách"
+          "label": "? lỗ"
         },
         {
           "id": "n5",
-          "label": "5 lỗ"
+          "label": "52 lỗ"
         }
       ],
       "choices": [
         {
           "id": "a",
-          "text": "3 lỗ"
+          "text": "33 lỗ"
         },
         {
           "id": "b",
-          "text": "4 lỗ"
+          "text": "42 lỗ"
         },
         {
           "id": "c",
-          "text": "6 lỗ"
+          "text": "62 lỗ"
         }
       ],
       "answer": {
@@ -172,65 +172,65 @@
       },
       "support": {
         "guide": [
-          "Mỗi nhóm hơn nhóm trước mấy lỗ?",
-          "Nhóm bốn nằm giữa nhóm ba và nhóm năm."
+          "Mỗi nhóm hơn nhóm trước bao nhiêu lỗ? Thử lấy 22 trừ 12.",
+          "Chữ số hàng đơn vị đứng yên, chỉ hàng chục thay đổi."
         ],
-        "hint": "3 rồi …, rồi 5.",
+        "hint": "32 thêm một chục là bao nhiêu?",
         "answer": {
-          "text": "4 lỗ",
-          "explanation": "Mỗi nhóm thêm 1 lỗ: 1, 2, 3, 4, 5. Vậy nhóm bốn có 4 lỗ."
+          "text": "42 lỗ",
+          "explanation": "Mỗi nhóm thêm 10 lỗ: 12, 22, 32, 42, 52. Vậy chỗ bị rách là nhóm 42 lỗ."
         },
         "en": {
           "guide": [
-            "How many more holes does each group have than the one before?",
-            "The fourth group sits between the third and the fifth."
+            "How many more holes does each group have? Try 22 minus 12.",
+            "The ones digit stays put; only the tens change."
           ],
-          "hint": "3, then …, then 5.",
+          "hint": "What is 32 plus one ten?",
           "answer": {
-            "text": "4 holes",
-            "explanation": "Each group adds one hole: 1, 2, 3, 4, 5. So the fourth group had 4 holes."
+            "text": "42 holes",
+            "explanation": "Each group adds 10 holes: 12, 22, 32, 42, 52. So the torn group had 42 holes."
           }
         }
       },
       "feedback": {
         "right": [
-          "Bốn lỗ! Khỉ dùng gai cây đục lại bốn lỗ thật tròn.",
-          "{name} nhìn ra nhịp của bản nhạc chỉ bằng mấy cái lỗ.",
-          "Một, hai, ba, bốn, năm. Nghe như đếm bước đu dây! Hấp!"
+          "Bốn mươi hai lỗ! Khỉ dùng gai cây đục lại từng lỗ thật tròn.",
+          "{name} nhìn ra nhịp của bản nhạc chỉ bằng mấy con số dưới lỗ.",
+          "Mười hai, hai mươi hai, ba mươi hai, bốn mươi hai… Nghe như đếm cú đu dây! Hấp!"
         ],
         "wrong": [
-          "Ba lỗ là nhóm trước rồi, nhóm bốn phải thêm một lỗ.",
-          "Sáu lỗ thì còn nhiều hơn cả nhóm năm đấy.",
-          "Đếm lần lượt từ nhóm đầu, mỗi nhóm thêm bao nhiêu nhỉ?"
+          "Ba mươi ba là mới thêm một lỗ thôi, mỗi nhóm thêm hẳn một chục cơ.",
+          "Sáu mươi hai lỗ thì còn nhiều hơn cả nhóm cuối đấy.",
+          "So hàng chục của từng nhóm: 1, 2, 3, … rồi 5. Thiếu chục nào nhỉ?"
         ],
         "en": {
           "right": [
-            "Four holes! Khỉ pokes four neat round holes with a thorn.",
-            "You found the tune's rhythm just from the holes, {name}.",
-            "One, two, three, four, five. Like counting swings! Hup!"
+            "Forty-two holes! Khỉ pokes each hole back neat and round with a thorn.",
+            "You found the tune's rhythm just from the numbers under the holes, {name}.",
+            "Twelve, twenty-two, thirty-two, forty-two… Like counting swings! Hup!"
           ],
           "wrong": [
-            "Three holes was the group before; the fourth adds one.",
-            "Six holes would be more than even the fifth group.",
-            "Count from the first group: how many does each add?"
+            "Thirty-three only adds one hole; each group adds a whole ten.",
+            "Sixty-two holes would be more than even the last group.",
+            "Compare the tens of each group: 1, 2, 3, … then 5. Which ten is missing?"
           ]
         }
       },
       "en": {
         "title": "The pattern of holes",
         "goTo": "Spread the music roll on the flat rock",
-        "prompt": "Spreading the roll on the flat rock, you see groups of round holes: the first group has 1 hole, the second 2, the third 3, the fourth is torn, and the fifth has 5. How many holes were in the fourth group?",
+        "prompt": "Spreading the roll on the flat rock, you see the number of holes written under each group: 12, 22, 32, then a torn patch, then 52. How many holes were in the torn group?",
         "elements": [
-          "1 hole",
-          "2 holes",
-          "3 holes",
-          "torn group",
-          "5 holes"
+          "12 holes",
+          "22 holes",
+          "32 holes",
+          "? holes",
+          "52 holes"
         ],
         "choices": [
-          "3 holes",
-          "4 holes",
-          "6 holes"
+          "33 holes",
+          "42 holes",
+          "62 holes"
         ]
       }
     },

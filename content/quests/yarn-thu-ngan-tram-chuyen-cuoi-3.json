@@ -46,7 +46,7 @@
       "lines": [
         {
           "speaker": "Bác Thu Ngân Vui Vẻ",
-          "text": "{name} ơi, mưa đêm qua tạt vào quầy. Cuốn sổ bán hàng ướt mèm, ba trang bị gió cuốn ra phía kênh."
+          "text": "{name} ơi, mưa đêm qua tạt vào quầy. Cuốn sổ bán hàng ướt mèm, gáy sổ bung chỉ, ba trang theo nước mưa trôi ra phía kênh."
         },
         {
           "speaker": "Bác Thu Ngân Vui Vẻ",
@@ -71,7 +71,7 @@
         "title": "The soggy ledger",
         "goTo": "Go to the cashier's counter, where he is drying the ledger beside the charcoal stove",
         "lines": [
-          "{name}, last night the rain blew into the stall. The sales ledger is soaked, and three pages blew out towards the canal.",
+          "{name}, last night the rain blew into the stall. The sales ledger is soaked, its stitching came loose, and three pages floated off with the rainwater towards the canal.",
           "The page that is left has all its numbers smudged. They look like they are swimming. Ho ho… not much fun, though.",
           "One missing number and by evening the till and the book start arguing. I need {name} as a number detective."
         ],
@@ -90,9 +90,9 @@
     {
       "id": "nhat-trang-so",
       "title": "Ba trang sổ dạt bờ kênh",
-      "goTo": "Ra mép kênh nhặt ba trang sổ gió cuốn đi",
+      "goTo": "Ra mép kênh nhặt ba trang sổ nước mưa cuốn trôi",
       "kind": "find-object",
-      "prompt": "Bác tả từng trang sổ bị bay mất. Đọc lời tả rồi nhặt cho đúng:",
+      "prompt": "Bác tả từng trang sổ bị trôi mất. Đọc lời tả rồi nhặt cho đúng:",
       "skill": "doc-hieu",
       "items": [
         {
@@ -116,7 +116,7 @@
       ],
       "en": {
         "title": "Three pages on the canal bank",
-        "goTo": "Go to the edge of the canal and pick up the three pages the wind took",
+        "goTo": "Go to the edge of the canal and pick up the three pages the rainwater carried off",
         "prompt": "He describes each lost page. Read the descriptions and pick up the right ones:",
         "items": [
           {
@@ -204,7 +204,7 @@
       "kind": "read",
       "target": "st-thu-ngan-tram-chuyen-cuoi-to-chuyen-cuoi-so-ba",
       "skill": "doc-hieu",
-      "text": "Chuyện cười số chín mươi chín (bản nháp)\nSố 9 đi dạo bờ kênh, cúi xuống soi mặt nước. Dưới nước hiện ra số 6.\nSố 9 hốt hoảng: «Ôi thôi, ai trừ mất của mình ba rồi!»\nCon cá rô ngoi lên cười: «Có ai trừ đâu. Bóng cậu chỉ đứng lộn đầu thôi.»",
+      "text": "Chuyện cười số chín mươi tám (bản nháp)\nSố 9 đi dạo bờ kênh, cúi xuống soi mặt nước. Dưới nước hiện ra số 6.\nSố 9 hốt hoảng: «Ôi thôi, ai trừ mất của mình ba rồi!»\nCon cá rô ngoi lên cười: «Có ai trừ đâu. Bóng cậu chỉ đứng lộn đầu thôi.»",
       "question": "Vì sao số 9 tưởng mình bị trừ mất ba?",
       "choices": [
         {
@@ -272,7 +272,7 @@
       "en": {
         "title": "Nine looks in the water",
         "goTo": "Go to the foot of the lighthouse and read the joke he pinned there",
-        "text": "Joke number ninety-nine (draft)\nNumber 9 goes for a stroll along the canal and leans over to look in the water. A 6 looks back.\nNumber 9 panics: «Oh no, someone has taken three away from me!»\nA perch pops up laughing: «Nobody took anything. Your reflection is just standing on its head.»",
+        "text": "Joke number ninety-eight (draft)\nNumber 9 goes for a stroll along the canal and leans over to look in the water. A 6 looks back.\nNumber 9 panics: «Oh no, someone has taken three away from me!»\nA perch pops up laughing: «Nobody took anything. Your reflection is just standing on its head.»",
         "question": "Why does number 9 think it has lost three?",
         "choices": [
           "Because its reflection in the water looks like a 6",
@@ -298,7 +298,7 @@
         {
           "id": "hoi-khach",
           "text": "Hỏi lại chủ thuyền rau đã giao bao nhiêu",
-          "consequence": "Chủ thuyền nhớ rõ từng bó, còn kể thêm một chuyện cười về con cá bơi ngửa. Bác chép luôn vào sổ."
+          "consequence": "Chủ thuyền nhớ rõ từng bó, còn kể thêm một chuyện cười về con cá bơi ngửa. Bác ghi số vào sổ, chuyện cười thì để dành kể cho khách."
         },
         {
           "id": "dem-hang",
@@ -317,7 +317,7 @@
           },
           {
             "text": "Ask the boat owner how much he delivered",
-            "consequence": "The boat owner remembers every bunch and even tells a joke about a fish swimming on its back. He writes that down too."
+            "consequence": "The boat owner remembers every bunch and even tells a joke about a fish swimming on its back. He writes the numbers in and saves the joke to tell customers."
           },
           {
             "text": "Count the greens still on the boat and work it out",

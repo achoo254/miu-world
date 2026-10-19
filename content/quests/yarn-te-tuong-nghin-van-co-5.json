@@ -91,7 +91,7 @@
       "kind": "read",
       "target": "st-te-tuong-nghin-van-co-so-ghi-van-giau-kin",
       "skill": "doc-hieu",
-      "text": "Sổ ghi ván cờ thứ Bảy\n– Mùa xuân: Bác Thợ Khóa Thành thắng 28 ván. Tể Tướng thắng: (để trống).\n– Mùa hè: Bác Thợ Khóa Thành thắng 19 ván. Tể Tướng thắng: (để trống).\n– Dòng cuối trang, nét chữ nhỏ xíu: «Kể với mọi người là ngang tài.»",
+      "text": "Sổ ghi ván cờ thứ Bảy\n– Mùa xuân: Bác Thợ Khóa Thành thắng 36 ván. Tể Tướng thắng: (để trống).\n– Mùa hè: Bác Thợ Khóa Thành thắng 17 ván. Tể Tướng thắng: (để trống).\n– Dòng cuối trang, nét chữ nhỏ xíu: «Kể với mọi người là ngang tài.»",
       "question": "Theo cuốn sổ, suốt mùa xuân và mùa hè, Tể Tướng thắng Bác Thợ Khóa Thành được mấy ván?",
       "choices": [
         {
@@ -100,11 +100,11 @@
         },
         {
           "id": "hai-tam",
-          "text": "28 ván"
+          "text": "36 ván"
         },
         {
           "id": "muoi-chin",
-          "text": "19 ván"
+          "text": "17 ván"
         }
       ],
       "answer": {
@@ -113,22 +113,22 @@
       "support": {
         "guide": [
           "Đọc dòng ghi số ván Tể Tướng thắng ở cả hai mùa.",
-          "Các con số 28 và 19 là của ai? Hãy đọc kỹ tên đứng trước chúng."
+          "Các con số 36 và 17 là của ai? Hãy đọc kỹ tên đứng trước chúng."
         ],
         "hint": "Chỗ ghi ván thắng của Tể Tướng được «để trống».",
         "answer": {
           "text": "Tể Tướng chưa thắng ván nào",
-          "explanation": "Cả hai mùa, dòng «Tể Tướng thắng» đều để trống, nghĩa là ngài chưa thắng ván nào. 28 và 19 là số ván Bác Thợ Khóa Thành thắng."
+          "explanation": "Cả hai mùa, dòng «Tể Tướng thắng» đều để trống, nghĩa là ngài chưa thắng ván nào. 36 và 17 là số ván Bác Thợ Khóa Thành thắng."
         },
         "en": {
           "guide": [
             "Read the lines showing how many games the chancellor won in both seasons.",
-            "Whose numbers are 28 and 19? Read the name in front of them carefully."
+            "Whose numbers are 36 and 17? Read the name in front of them carefully."
           ],
           "hint": "The space for the chancellor's wins is «left blank».",
           "answer": {
             "text": "The chancellor won none at all",
-            "explanation": "In both seasons the «chancellor won» line is blank, meaning he won no games. 28 and 19 are the games Bác Thợ Khóa Thành won."
+            "explanation": "In both seasons the «chancellor won» line is blank, meaning he won no games. 36 and 17 are the games Bác Thợ Khóa Thành won."
           }
         }
       },
@@ -159,12 +159,12 @@
       "en": {
         "title": "The real chess record",
         "goTo": "Go into the soft-toy store, where the chess record is hidden under a big teddy bear",
-        "text": "Saturday chess record\n– Spring: Bác Thợ Khóa Thành won 28 games. The chancellor won: (left blank).\n– Summer: Bác Thợ Khóa Thành won 19 games. The chancellor won: (left blank).\n– Last line of the page, in tiny writing: «Tell everyone we are evenly matched.»",
+        "text": "Saturday chess record\n– Spring: Bác Thợ Khóa Thành won 36 games. The chancellor won: (left blank).\n– Summer: Bác Thợ Khóa Thành won 17 games. The chancellor won: (left blank).\n– Last line of the page, in tiny writing: «Tell everyone we are evenly matched.»",
         "question": "According to the notebook, across spring and summer, how many games did the chancellor win against Bác Thợ Khóa Thành?",
         "choices": [
           "Not a single game",
-          "28 games",
-          "19 games"
+          "36 games",
+          "17 games"
         ]
       }
     },
@@ -175,51 +175,51 @@
       "kind": "riddle",
       "target": "st-te-tuong-nghin-van-co-bang-diem-hai-mua",
       "skill": "bai-toan-loi-van",
-      "question": "Mùa xuân Bác Thợ Khóa Thành thắng 28 ván, mùa hè bác thắng 19 ván. Hỏi cả hai mùa, Bác Thợ Khóa Thành thắng tất cả bao nhiêu ván?",
+      "question": "Mùa xuân Bác Thợ Khóa Thành thắng 36 ván, mùa hè bác thắng 17 ván. Hỏi cả hai mùa, Bác Thợ Khóa Thành thắng tất cả bao nhiêu ván?",
       "answer": {
-        "value": 47
+        "value": 53
       },
       "support": {
         "guide": [
           "Bài hỏi «tất cả», nên ta gộp số ván hai mùa bằng phép cộng.",
-          "Đặt tính 28 + 19, cộng hàng đơn vị trước."
+          "Đặt tính 36 + 17, cộng hàng đơn vị trước."
         ],
-        "hint": "8 cộng 9 bằng 17, viết 7 nhớ 1.",
+        "hint": "Hàng đơn vị: 6 cộng 7 được 13, ta viết 3 và nhớ 1 sang hàng chục.",
         "answer": {
-          "text": "47 ván",
-          "explanation": "28 + 19 = 47: 8 + 9 = 17, viết 7 nhớ 1; 2 + 1 = 3, thêm 1 là 4. Bác Thợ Khóa Thành thắng tất cả 47 ván."
+          "text": "53 ván",
+          "explanation": "36 + 17 = 53: 6 + 7 = 13, viết 3 nhớ 1; 3 + 1 = 4, thêm 1 là 5. Bác Thợ Khóa Thành thắng tất cả 53 ván."
         },
         "en": {
           "guide": [
             "The question asks «altogether», so we combine both seasons by adding.",
-            "Set out 28 + 19 and add the ones first."
+            "Set out 36 + 17 and add the ones first."
           ],
-          "hint": "8 plus 9 is 17: write 7, carry 1.",
+          "hint": "Ones: 6 plus 7 makes 13, so write 3 and carry 1 to the tens.",
           "answer": {
-            "text": "47 games",
-            "explanation": "28 + 19 = 47: 8 + 9 = 17, write 7 and carry 1; 2 + 1 = 3, plus 1 makes 4. Bác Thợ Khóa Thành won 47 games altogether."
+            "text": "53 games",
+            "explanation": "36 + 17 = 53: 6 + 7 = 13, write 3 and carry 1; 3 + 1 = 4, plus 1 makes 5. Bác Thợ Khóa Thành won 53 games altogether."
           }
         }
       },
       "feedback": {
         "right": [
-          "Bốn mươi bảy ván. Con số thật, và ta chẳng còn muốn giấu nó nữa.",
+          "Năm mươi ba ván. Con số thật, và ta chẳng còn muốn giấu nó nữa.",
           "Ngươi giải bài toán có lời văn gọn gàng như xếp quân trước ván.",
           "Ta sẽ viết số này to và rõ lên trang đầu cuốn sổ mới."
         ],
         "wrong": [
-          "Chú ý số nhớ: tám cộng chín đã vượt quá mười rồi.",
+          "Chú ý số nhớ: sáu cộng bảy đã vượt quá mười rồi.",
           "Bài hỏi tất cả cả hai mùa, nên phải cộng chứ không trừ.",
           "Thử đặt tính dọc cho thẳng hàng rồi cộng lại từ hàng đơn vị."
         ],
         "en": {
           "right": [
-            "Forty-seven games. The true number, and I no longer wish to hide it.",
+            "Fifty-three games. The true number, and I no longer wish to hide it.",
             "You solved the word problem as neatly as setting out pieces before a game.",
             "I shall write this number large and clear on the first page of a new record."
           ],
           "wrong": [
-            "Mind the carry: eight plus nine already goes past ten.",
+            "Mind the carry: six plus seven already goes past ten.",
             "It asks for both seasons altogether, so add, do not subtract.",
             "Try writing it in neat columns and adding again from the ones."
           ]
@@ -228,7 +228,7 @@
       "en": {
         "title": "Adding up two seasons' losses",
         "goTo": "Go to the corner where the wooden stage is being built; the chancellor has put up the two-season scoreboard there",
-        "question": "In spring Bác Thợ Khóa Thành won 28 games, and in summer he won 19. How many games did Bác Thợ Khóa Thành win altogether across both seasons?"
+        "question": "In spring Bác Thợ Khóa Thành won 36 games, and in summer he won 17. How many games did Bác Thợ Khóa Thành win altogether across both seasons?"
       }
     },
     {

@@ -5,7 +5,7 @@
   "title": "Chuyện của Mèo Hộp Nhạc, chương 2: Phiếu bài hát của bạn đọc",
   "status": "active",
   "category": "story",
-  "summary": "Mèo phát phiếu cho bạn đọc ghi tên bài hát yêu thích, nhưng gió cuốn mấy tờ phiếu đi. {name} nhặt phiếu, xếp tên bài theo thứ tự bảng chữ cái, tìm từ chỉ hoạt động trong một lời bài hát, chọn bài khắc trước rồi cắm chốt cho cuộn nhạc mới.",
+  "summary": "Mèo phát phiếu cho bạn đọc ghi tên bài hát yêu thích, nhưng lũ chim sẻ tha mất mấy tờ phiếu. {name} nhặt phiếu, xếp tên bài theo thứ tự bảng chữ cái, tìm từ chỉ hoạt động trong một lời bài hát, chọn bài khắc trước rồi cắm chốt cho cuộn nhạc mới.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Mèo Hộp Nhạc",
@@ -54,7 +54,7 @@
         },
         {
           "speaker": "Mèo Hộp Nhạc",
-          "text": "Có điều… tinh tang… vừa thu được mấy tờ thì gió thổi phăng ra phía đường lá vàng mất rồi."
+          "text": "Có điều… tinh tang… tớ để chồng phiếu trên ghế đá đi rót nước, quay lại thì lũ chim sẻ đã tha mấy tờ ra phía đường lá vàng làm tổ mất rồi."
         }
       ],
       "choices": [
@@ -73,7 +73,7 @@
         "lines": [
           "Ting-a-ling, {name}, perfect timing! I'm handing out slips so each reader can write the one song they love best.",
           "I'll carve every song into a music roll, so anyone who visits the festival yard can hear a song of their very own.",
-          "Only… ting-a-ling… I'd collected just a few when the wind whisked them off towards the golden-leaf path."
+          "Only… ting-a-ling… I left the pile of slips on a stone bench to pour some water, and when I came back the sparrows had carried a few off towards the golden-leaf path for their nests."
         ],
         "choices": [
           {
@@ -90,7 +90,7 @@
     {
       "id": "nhat-phieu-bay",
       "title": "Phiếu bay trên đường lá",
-      "goTo": "Chạy dọc đường lá vàng nhặt ba tờ phiếu bị gió cuốn",
+      "goTo": "Chạy dọc đường lá vàng nhặt lại ba tờ phiếu lũ chim sẻ tha đi",
       "kind": "search",
       "targets": [
         "st-meo-hop-nhac-tang-ban-phieu-hong",
@@ -99,7 +99,7 @@
       ],
       "en": {
         "title": "Slips on the leafy path",
-        "goTo": "Run along the golden-leaf path and pick up the three slips the wind carried off"
+        "goTo": "Run along the golden-leaf path and pick up the three slips the sparrows carried off"
       }
     },
     {
@@ -389,6 +389,6 @@
   },
   "en": {
     "title": "Mèo Hộp Nhạc's story, chapter 2: The readers' song slips",
-    "summary": "Mèo hands out slips for readers to write their favourite songs, but the wind blows some away. {name} collects them, files the titles in alphabetical order, finds the action words in a song, picks which song to carve first and pins the new music roll."
+    "summary": "Mèo hands out slips for readers to write their favourite songs, but the sparrows carry some away. {name} collects them, files the titles in alphabetical order, finds the action words in a song, picks which song to carve first and pins the new music roll."
   }
 }

@@ -5,13 +5,13 @@
   "title": "Chuyện của Ông Bảy Cờ Gánh, chương 2: Phiếu đăng ký bay khắp ngõ",
   "status": "active",
   "category": "story",
-  "summary": "Phiếu đăng ký giải cờ gánh bị gió thổi tung khắp xóm. {name} gom phiếu, xếp tên người chơi theo bảng chữ cái, cộng số người của ba màu phiếu rồi chọn chỗ thi cho mát.",
+  "summary": "Phiếu đăng ký giải cờ gánh bị gà mái bới tung khắp xóm. {name} gom phiếu, xếp tên người chơi theo bảng chữ cái, cộng số người của ba màu phiếu rồi chọn chỗ thi cho mát.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Ông Bảy Cờ Gánh",
     "where": "Xóm: cổng vườn hoa, vách tổ ong, nhà Mẩy, ghế mây bên ngõ, gốc sung",
     "goal": "Gom phiếu và lập danh sách người dự giải cờ gánh",
-    "play": "Gom phiếu bị gió thổi; xếp tên theo thứ tự chữ cái; giải bài toán đếm người; chọn chỗ thi; giành ghế",
+    "play": "Gom phiếu bị gà bới; xếp tên theo thứ tự chữ cái; giải bài toán đếm người; chọn chỗ thi; giành ghế",
     "learn": "Bảng chữ cái, bài toán có lời văn (cộng ba số)",
     "reward": "65 XP, 16 Xu, Skill XP Bảng chữ cái, Bài toán lời văn",
     "next": "Viết giấy mời gửi từng nhà"
@@ -39,14 +39,14 @@
   "steps": [
     {
       "id": "gio-thoi-phieu",
-      "title": "Gió thổi bay phiếu",
+      "title": "Gà mái làm đổ hũ phiếu",
       "goTo": "Về cổng vườn hoa, Ông Bảy Cờ Gánh đang cầm cái hũ rỗng",
       "kind": "dialogue",
       "target": "ong-bay-co-ganh",
       "lines": [
         {
           "speaker": "Ông Bảy Cờ Gánh",
-          "text": "Cháu… tới rồi. Phiếu đăng ký ông bỏ vào hũ… gió lùa một cái… bay hết ra ngõ."
+          "text": "Cháu… tới rồi. Phiếu đăng ký ông bỏ vào hũ… gà mái nhà bên nhảy lên… hũ đổ… phiếu vương hết ra ngõ."
         },
         {
           "speaker": "Ông Bảy Cờ Gánh",
@@ -64,10 +64,10 @@
         }
       ],
       "en": {
-        "title": "The wind took the slips",
+        "title": "The hen tipped the jar",
         "goTo": "Go back to the garden gate, where Ông Bảy Cờ Gánh is holding an empty jar",
         "lines": [
-          "You… came. The entry slips I put in the jar… one gust of wind… and they all flew into the lane.",
+          "You… came. The entry slips I put in the jar… the neighbour's hen jumped up… over went the jar… slips all down the lane.",
           "There are blue slips, red slips and yellow slips. Each colour is one group of the lane. Pick them up for me."
         ],
         "choices": [
@@ -84,8 +84,8 @@
     },
     {
       "id": "gom-phieu-bay",
-      "title": "Gom phiếu bị gió thổi",
-      "goTo": "Ra vách tổ ong, gió dồn phiếu vào chân vách",
+      "title": "Gom phiếu gà bới",
+      "goTo": "Ra vách tổ ong, gà mái bới phiếu dồn vào chân vách",
       "kind": "search",
       "targets": [
         "st-ong-bay-giai-co-phieu-xanh",
@@ -93,8 +93,8 @@
         "st-ong-bay-giai-co-phieu-vang"
       ],
       "en": {
-        "title": "Gathering the blown slips",
-        "goTo": "Go to the beehive wall, where the wind has piled the slips at its foot"
+        "title": "Gathering the scratched-up slips",
+        "goTo": "Go to the beehive wall, where the hen has scratched the slips into a pile at its foot"
       }
     },
     {
@@ -345,6 +345,6 @@
   },
   "en": {
     "title": "Ông Bảy Cờ Gánh's story, chapter 2: Slips all over the lane",
-    "summary": "The wind has scattered the tournament entry slips all over the lane. {name} gathers them, sorts the players' names alphabetically, adds up the three colours of slips and chooses a cool place to play."
+    "summary": "A hen has scattered the tournament entry slips all over the lane. {name} gathers them, sorts the players' names alphabetically, adds up the three colours of slips and chooses a cool place to play."
   }
 }

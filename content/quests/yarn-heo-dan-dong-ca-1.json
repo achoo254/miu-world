@@ -5,13 +5,13 @@
   "title": "Chuyện của Heo Kho Hàng, chương 1: Mục số một, tuyển ca sĩ",
   "status": "active",
   "category": "story",
-  "summary": "Heo Kho Hàng muốn lập một dàn đồng ca của nông trại. {name} gom lại các tờ tuyển ca sĩ bị gió thổi bay, xếp chỗ đứng theo chiều cao, chọn những từ chỉ hoạt động cho bài hát rồi đặt tên cho dàn hát.",
+  "summary": "Heo Kho Hàng muốn lập một dàn đồng ca của nông trại. {name} gom lại các tờ tuyển ca sĩ bị các bạn trong trại tha đi, xếp chỗ đứng theo chiều cao, chọn những từ chỉ hoạt động cho bài hát rồi chọn ai hát câu mở màn.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Heo Kho Hàng",
     "where": "Nông trại: cửa nhà kho, sân nông trại, chuồng bò đỏ, chuồng gà, ao cá, bảng nhiệm vụ, nhà kính, khu chăn nuôi",
     "goal": "Tuyển đủ ca sĩ và xếp chỗ đứng cho dàn đồng ca nông trại",
-    "play": "Gom tờ tuyển ca sĩ; xếp ca sĩ theo chiều cao; chọn từ chỉ hoạt động; đặt tên dàn hát; hát theo thứ tự",
+    "play": "Gom tờ tuyển ca sĩ; xếp ca sĩ theo chiều cao; chọn từ chỉ hoạt động; chọn người hát mở màn; hát theo thứ tự",
     "learn": "So sánh các số trong phạm vi 100, từ chỉ hoạt động",
     "reward": "58 XP, 15 Xu, Skill XP So sánh số, Từ ngữ",
     "next": "Dàn hát cần một sân khấu"
@@ -54,7 +54,7 @@
         },
         {
           "speaker": "Heo Kho Hàng",
-          "text": "Tớ đã dán tờ tuyển ca sĩ khắp nơi. Có điều gió sáng nay thổi tung hết, chẳng còn tờ nào đúng chỗ."
+          "text": "Tớ đã dán tờ tuyển ca sĩ khắp nơi. Có điều sáng nay bò, gà, vịt tưởng tờ tuyển là bữa sáng, mỗi bạn tha một tờ về chỗ mình."
         }
       ],
       "choices": [
@@ -73,7 +73,7 @@
         "lines": [
           "Oink oink! Item one: hello, {name}. Item two: big news. Item three: ask {name} for help!",
           "Here’s the big news: the farm is getting a choir! Cows sing low, hens sing high, ducks sing… they sing too.",
-          "I stuck audition notices everywhere. Only this morning’s wind blew them all away; not one is where I put it."
+          "I stuck audition notices everywhere. Only this morning the cows, hens and ducks thought the notices were breakfast, and each of them carried one off home."
         ],
         "choices": [
           {
@@ -90,7 +90,7 @@
     {
       "id": "gom-to-tuyen",
       "title": "Gom tờ tuyển ca sĩ",
-      "goTo": "Đi một vòng sân nông trại, gió đã thổi các tờ tuyển ca sĩ tới chuồng bò, chuồng gà và ao cá",
+      "goTo": "Đi một vòng sân nông trại, các tờ tuyển ca sĩ đang nằm ở chuồng bò, chuồng gà và ao cá",
       "kind": "search",
       "targets": [
         "st-heo-dan-dong-ca-to-tuyen-chuong-bo",
@@ -99,7 +99,7 @@
       ],
       "en": {
         "title": "Gathering the notices",
-        "goTo": "Walk round the farmyard; the wind has blown the audition notices to the cowshed, the henhouse and the fishpond"
+        "goTo": "Walk round the farmyard; the audition notices are lying in the cowshed, the henhouse and the fishpond"
       }
     },
     {
@@ -294,45 +294,45 @@
     },
     {
       "id": "ten-dan-hat",
-      "title": "Dàn hát tên là gì?",
-      "goTo": "Sang khu chăn nuôi, tấm biển tên dàn hát đang chờ chữ",
+      "title": "Ai hát câu mở màn?",
+      "goTo": "Sang khu chăn nuôi, tấm biển tên dàn hát còn chừa một dòng trống",
       "kind": "decision",
       "target": "st-heo-dan-dong-ca-bien-ten-dan-hat",
       "speaker": "Heo Kho Hàng",
-      "prompt": "Heo đã sơn xong tấm biển, chỉ còn thiếu tên. «Mục số sáu: đặt tên. Tớ nghĩ mãi không ra. {name} chọn giúp tớ?»",
+      "prompt": "Heo đã sơn xong «Dàn đồng ca Nông trại» lên tấm biển, bên dưới chừa một dòng: «Người hát mở màn: …». «Mục số sáu: chọn người mở màn. Tớ nghĩ mãi không ra. {name} chọn giúp tớ?»",
       "choices": [
         {
           "id": "ca-trai",
-          "text": "Dàn đồng ca «Cả Trại Cùng Hát»",
-          "consequence": "Bò gật gù, gà vỗ cánh, vịt kêu «cạp» một tiếng thật to như đồng ý."
+          "text": "Cả dàn cùng cất tiếng một lúc",
+          "consequence": "Bò, gà, vịt hít một hơi thật sâu rồi cùng «a» lên. Tiếng hát to tới mức đàn chim sẻ trên mái kho bay vòng một lượt."
         },
         {
           "id": "nhan-xanh",
-          "text": "Dàn đồng ca «Nhãn Xanh»",
-          "consequence": "Heo sướng run, dán cho mỗi ca sĩ một cái nhãn xanh lên ngực."
+          "text": "Bốc thăm, ai trúng cái nhãn xanh thì mở màn",
+          "consequence": "Heo thả nhãn vào chiếc mũ rơm. Vịt Bầu trúng, run run cạp một tiếng, cả dàn vỗ tay như vừa nghe danh ca."
         },
         {
           "id": "sang-som",
-          "text": "Dàn đồng ca «Sáng Sớm»",
-          "consequence": "Gà trống ưỡn ngực vì tên này hợp với mình nhất, và hứa sẽ gáy mở màn."
+          "text": "Gà trống Mào Đỏ gáy một tiếng mở màn",
+          "consequence": "Gà trống ưỡn ngực, gáy một tiếng vang tận nhà kính. Heo ghi ngay: «Mục số bảy: gà gáy là bắt đầu.»"
         }
       ],
       "en": {
-        "title": "What is the choir called?",
-        "goTo": "Go over to the livestock pens, where the choir’s name sign is waiting for letters",
-        "prompt": "Heo has painted the sign; only the name is missing. “Item six: a name. I can’t think of one. Will you choose, {name}?”",
+        "title": "Who sings the opening line?",
+        "goTo": "Go over to the livestock pens, where the choir’s name sign still has one blank line",
+        "prompt": "Heo has painted “The Farm Choir” on the sign, with one line left below: “Opening singer: …”. “Item six: choose who opens. I can’t decide. Will you choose, {name}?”",
         "choices": [
           {
-            "text": "The “Whole Farm Sings” choir",
-            "consequence": "The cow nods, the hens flap and the duck quacks one big quack, as if to agree."
+            "text": "The whole choir starts together",
+            "consequence": "Cow, hens and duck take a deep breath and all go “aah” at once. It is so loud the sparrows on the barn roof fly a whole lap."
           },
           {
-            "text": "The “Green Label” choir",
-            "consequence": "Heo shivers with joy and sticks a green label on every singer’s chest."
+            "text": "Draw lots: whoever gets the green label opens",
+            "consequence": "Heo drops the labels into a straw hat. Vịt Bầu wins, quacks a shaky quack, and the choir claps as if for a star."
           },
           {
-            "text": "The “Early Morning” choir",
-            "consequence": "The rooster puffs out his chest because the name suits him best, and promises to crow the opening note."
+            "text": "Gà trống Mào Đỏ opens with a crow",
+            "consequence": "The rooster puffs out his chest and crows all the way to the greenhouse. Heo writes at once: “Item seven: the crow means go.”"
           }
         ]
       }
@@ -384,6 +384,6 @@
   },
   "en": {
     "title": "Heo Kho Hàng's story, chapter 1: Item one, auditions",
-    "summary": "Heo Kho Hàng wants to start a farm choir. {name} gathers the audition notices the wind blew away, lines the singers up by height, picks action words for the song and names the choir."
+    "summary": "Heo Kho Hàng wants to start a farm choir. {name} gathers the audition notices the farm animals carried off, lines the singers up by height, picks action words for the song and chooses who sings the opening line."
   }
 }

@@ -60,11 +60,11 @@
       "choices": [
         {
           "text": "Cháu ngồi đếm cùng bác, hai người chắc hơn một.",
-          "reply": "Ừ… có người ngồi cạnh, bác thấy bớt run rồi. Mình bắt đầu từ sổ nhé."
+          "reply": "Hô… hô. Hai cái đầu cộng lại hơn một cái bàn tính. Bác nhặt được bàn tính lên rồi đây, mình bắt đầu từ sổ nhé."
         },
         {
-          "text": "Ai đếm tiền cũng có lúc sai mà bác.",
-          "reply": "Cháu nói thế bác nhẹ lòng hẳn. Nhưng sai thì phải tìm cho ra chỗ sai."
+          "text": "Lệch thì mình tìm chỗ lệch, bác đừng tự trách.",
+          "reply": "Cháu nói cứ như thầy dạy tính. Phải rồi, tìm ra chỗ lệch trước, trách sau, mà chắc chẳng cần trách."
         }
       ],
       "en": {
@@ -78,11 +78,11 @@
         "choices": [
           {
             "text": "I'll count with you; two are surer than one.",
-            "reply": "Yes… with someone beside me I'm already shaking less. Let's start with the book."
+            "reply": "Ho… ho. Two heads add up to more than one abacus. Look, I've picked the abacus back up; let's start with the book."
           },
           {
-            "text": "Everyone who counts money gets it wrong sometimes.",
-            "reply": "Hearing that eases my heart. But if it is wrong, we must find where."
+            "text": "If it is off, we find where it is off. Please do not blame yourself.",
+            "reply": "You sound like an arithmetic teacher. Right: find the gap first and blame later, and maybe there will be nothing to blame."
           }
         ]
       }
@@ -222,7 +222,7 @@
         "wrong": [
           "Hai số chỉ đổi chỗ chữ số thôi, đâu có bằng nhau, {name} trừ lại nhé.",
           "Đừng quên mượn một chục ở hàng đơn vị đấy.",
-          "Ba mươi ba là quên trả số nhớ rồi, thử lại hàng chục xem."
+          "Ba mươi ba là lấy 8 trừ 5 ở hàng đơn vị rồi; 5 không trừ được 8, phải mượn một chục."
         ],
         "en": {
           "right": [
@@ -233,7 +233,7 @@
           "wrong": [
             "The two numbers just swap their digits; they aren't equal, {name}; subtract again.",
             "Don't forget to borrow a ten in the ones.",
-            "Thirty-three means the carried one was forgotten; try the tens again."
+            "Thirty-three comes from taking 5 from 8 in the ones; 5 can't take away 8, so borrow a ten."
           ]
         }
       },

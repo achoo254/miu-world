@@ -141,52 +141,52 @@
       "kind": "riddle",
       "target": "st-meo-bep-mam-com-o-trung",
       "skill": "phep-cong",
-      "question": "Mèo còn muốn làm món trứng đúc. Ổ thứ nhất có 8 quả trứng, ổ thứ hai có 7 quả. Có tất cả bao nhiêu quả trứng?",
+      "question": "Mèo còn muốn làm món trứng đúc. Ổ thứ nhất có 9 quả trứng, ổ thứ hai có 5 quả. Có tất cả bao nhiêu quả trứng?",
       "answer": {
-        "value": 15
+        "value": 14
       },
       "support": {
         "guide": [
-          "Cộng số trứng của hai ổ: 8 + 7.",
-          "Tách 7 thành 2 và 5 để 8 thêm 2 cho tròn 10."
+          "Cộng số trứng của hai ổ: 9 + 5.",
+          "Tách 5 thành 1 và 4 để 9 thêm 1 cho tròn 10."
         ],
-        "hint": "8 + 2 = 10, rồi 10 + 5 = ?",
+        "hint": "9 + 1 = 10, rồi 10 + 4 = ?",
         "answer": {
-          "text": "15 quả trứng",
-          "explanation": "8 + 7 = 15: lấy 2 từ 7 bù cho 8 thành 10, còn 5, vậy 10 + 5 = 15."
+          "text": "14 quả trứng",
+          "explanation": "9 + 5 = 14: lấy 1 từ 5 bù cho 9 thành 10, còn 4, vậy 10 + 4 = 14."
         },
         "en": {
           "guide": [
-            "Add the eggs of both nests: 8 + 7.",
-            "Split 7 into 2 and 5 so that 8 plus 2 makes 10."
+            "Add the eggs of both nests: 9 + 5.",
+            "Split 5 into 1 and 4 so that 9 plus 1 makes 10."
           ],
-          "hint": "8 + 2 = 10, then 10 + 5 = ?",
+          "hint": "9 + 1 = 10, then 10 + 4 = ?",
           "answer": {
-            "text": "15 eggs",
-            "explanation": "8 + 7 = 15: take 2 from the 7 to make 8 up to 10, leaving 5, so 10 + 5 = 15."
+            "text": "14 eggs",
+            "explanation": "9 + 5 = 14: take 1 from the 5 to make 9 up to 10, leaving 4, so 10 + 4 = 14."
           }
         }
       },
       "feedback": {
         "right": [
-          "Mười lăm quả! Mèo gật đầu một cái, đúng kiểu tướng duyệt binh.",
+          "Mười bốn quả! Mèo gật đầu một cái, đúng kiểu tướng duyệt binh.",
           "Gom cho tròn chục rồi cộng tiếp, {name} tính nhanh như dao thái hành.",
           "Đủ trứng cho cả mâm, gà mái kêu cục tác khen {name} kìa."
         ],
         "wrong": [
           "Chưa đúng. Mèo bày lại hai ổ, {name} đếm từng quả nhé.",
-          "Thử bù cho 8 thành 10 trước, rồi cộng phần còn lại xem.",
+          "Thử bù cho 9 thành 10 trước, rồi cộng phần còn lại xem.",
           "Gà mái nghiêng đầu nhìn {name}: số ấy chưa khớp với ổ của nó đâu."
         ],
         "en": {
           "right": [
-            "Fifteen! Mèo gives one nod, like a general inspecting troops.",
+            "Fourteen! Mèo gives one nod, like a general inspecting troops.",
             "Make ten, then keep adding: you count as fast as a knife through spring onions, {name}.",
             "Eggs enough for the whole table, and the hens are clucking their praise."
           ],
           "wrong": [
             "Not yet. Mèo lays out both nests again; count every egg.",
-            "Try making 8 up to 10 first, then add what is left.",
+            "Try making 9 up to 10 first, then add what is left.",
             "The hen tilts her head at you, {name}: that number does not match her nest."
           ]
         }
@@ -194,7 +194,7 @@
       "en": {
         "title": "Counting eggs for the omelette",
         "goTo": "Go out to the chicken coop behind the house to check this morning's two nests",
-        "question": "Mèo also wants to make an omelette. The first nest has 8 eggs and the second has 7. How many eggs are there in all?"
+        "question": "Mèo also wants to make an omelette. The first nest has 9 eggs and the second has 5. How many eggs are there in all?"
       }
     },
     {
@@ -205,7 +205,7 @@
       "mechanic": "sort",
       "target": "st-meo-bep-mam-com-to-cong-thuc",
       "skill": "ke-chuyen",
-      "prompt": "Tờ công thức dán trên tủ trong nhà kho bị gió thổi lộn xộn. Xếp lại các bước nấu canh chua cho đúng thứ tự:",
+      "prompt": "Tờ công thức dán trên tủ trong nhà kho bị Mèo con nghịch cắt rời từng dòng. Xếp lại các bước nấu canh chua cho đúng thứ tự:",
       "items": [
         {
           "id": "nem",
@@ -281,7 +281,7 @@
       "en": {
         "title": "The steps of sour soup",
         "goTo": "Go into the storeroom, where Mèo keeps the recipe stuck on the cupboard door",
-        "prompt": "The recipe sheet on the cupboard in the storeroom got jumbled by the wind. Put the steps of making sour soup back in order:",
+        "prompt": "A kitten snipped the recipe sheet on the storeroom cupboard into separate lines. Put the steps of making sour soup back in order:",
         "items": [
           "Season, sprinkle the herbs and turn off the stove",
           "Bring a pot of water to the boil",

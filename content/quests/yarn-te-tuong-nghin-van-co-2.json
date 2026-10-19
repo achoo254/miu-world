@@ -5,13 +5,13 @@
   "title": "Chuyện của Tể Tướng Cờ Vua, chương 2: Sơ đồ tiệc viết bằng mật mã",
   "status": "active",
   "category": "story",
-  "summary": "Tể Tướng Cờ Vua viết sơ đồ chỗ ngồi của bữa tiệc bằng mật mã rồi tự quên cách giải. {name} gom ba thẻ tên, giải phép cộng để tìm số ghế, suy luận chỗ cho ba vị khách và chọn chỗ ngồi cho chính tể tướng.",
+  "summary": "Tể Tướng Cờ Vua viết sơ đồ chỗ ngồi của bữa tiệc bằng mật mã rồi tự quên cách giải. {name} gom ba thẻ tên, giải phép cộng để tìm số khóa mở cuộn sơ đồ, suy luận chỗ cho ba vị khách và chọn chỗ ngồi cho chính tể tướng.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Tể Tướng Cờ Vua",
     "where": "Lâu đài: bàn cờ đại sảnh, phòng ăn, gian bài toán, giá ghim tranh, lối đi kết hoa",
     "goal": "Giải mật mã sơ đồ chỗ ngồi trước giờ tiệc",
-    "play": "Gom ba thẻ tên; tính phép cộng có nhớ ra số ghế; suy luận chỗ ngồi theo hai dòng mật mã; chọn ghế cho tể tướng; xếp chỗ cả bàn tiệc",
+    "play": "Gom ba thẻ tên; tính phép cộng có nhớ ra số khóa mở cuộn sơ đồ; suy luận chỗ ngồi theo hai dòng mật mã; chọn ghế cho tể tướng; xếp chỗ cả bàn tiệc",
     "learn": "Phép cộng có nhớ trong phạm vi 100, suy luận lô-gic",
     "reward": "62 XP, 16 Xu, Skill XP Phép cộng, Tư duy lô-gic",
     "next": "Bài học đếm tới ba cho Cáo Cung Thủ"
@@ -50,7 +50,7 @@
         },
         {
           "speaker": "Tể Tướng Cờ Vua",
-          "text": "Mật mã tài tình đến mức… sáng nay chính ta cũng không giải nổi. Ba tấm thẻ tên lại bị gió đưa vào phòng ăn từ hôm qua."
+          "text": "Mật mã tài tình đến mức… sáng nay chính ta cũng không giải nổi. Ba tấm thẻ tên, ta còn giấu mỗi tấm một chỗ trong phòng ăn cho thêm bí mật, giờ quên luôn chỗ giấu."
         },
         {
           "speaker": "Tể Tướng Cờ Vua",
@@ -72,7 +72,7 @@
         "goTo": "Go back to the chessboard in the great hall, where Tể Tướng Cờ Vua keeps turning a sheet full of numbers this way and that",
         "lines": [
           "{name}, I confess a foolish move. So that nobody could peek at the seating plan for tonight's banquet, I wrote it in code.",
-          "A code so ingenious that… this morning even I could not crack it. And yesterday's wind carried three name cards into the dining room.",
+          "A code so ingenious that… this morning even I could not crack it. And for extra secrecy I hid the three name cards around the dining room, and now I have forgotten where.",
           "On the board, when things tangle, I always step back to see the whole position. Today I step back… and call on you."
         ],
         "choices": [
@@ -110,19 +110,19 @@
       "mechanic": "quiz",
       "target": "st-te-tuong-nghin-van-co-cuon-mat-ma-tiec",
       "skill": "phep-cong",
-      "prompt": "Cuộn giấy ghi luật mật mã: «Số ghế của mỗi khách là kết quả phép cộng trên thẻ.» Thẻ của Hươu Cao ghi 46 + 27. Hươu Cao ngồi ghế số mấy?",
+      "prompt": "Cuộn giấy giải mật mã bị khóa bằng ba vòng số. Luật ghi: «Số khóa là kết quả phép cộng trên thẻ của Hươu Cao.» Thẻ ghi 46 + 27. Số khóa là bao nhiêu?",
       "choices": [
         {
           "id": "ghe-63",
-          "text": "Ghế số 63"
+          "text": "Số khóa 63"
         },
         {
           "id": "ghe-73",
-          "text": "Ghế số 73"
+          "text": "Số khóa 73"
         },
         {
           "id": "ghe-71",
-          "text": "Ghế số 71"
+          "text": "Số khóa 71"
         }
       ],
       "answer": {
@@ -135,8 +135,8 @@
         ],
         "hint": "6 cộng 7 bằng 13, viết 3 nhớ 1.",
         "answer": {
-          "text": "Ghế số 73",
-          "explanation": "46 + 27: 6 + 7 = 13, viết 3 nhớ 1; 4 + 2 = 6, thêm 1 là 7. Vậy 46 + 27 = 73."
+          "text": "Số khóa 73",
+          "explanation": "46 + 27: 6 + 7 = 13, viết 3 nhớ 1; 4 + 2 = 6, thêm 1 là 7. Vậy 46 + 27 = 73, cuộn giấy mở ra."
         },
         "en": {
           "guide": [
@@ -145,16 +145,16 @@
           ],
           "hint": "6 plus 7 is 13: write 3, carry 1.",
           "answer": {
-            "text": "Seat 73",
-            "explanation": "46 + 27: 6 + 7 = 13, write 3 and carry 1; 4 + 2 = 6, plus 1 makes 7. So 46 + 27 = 73."
+            "text": "Lock number 73",
+            "explanation": "46 + 27: 6 + 7 = 13, write 3 and carry 1; 4 + 2 = 6, plus 1 makes 7. So 46 + 27 = 73, and the scroll opens."
           }
         }
       },
       "feedback": {
         "right": [
-          "Ghế bảy mươi ba! Mật mã đầu tiên đã đầu hàng ngươi.",
+          "Bảy mươi ba! Ba vòng số kêu tách một tiếng, cuộn mật mã đã đầu hàng ngươi.",
           "Ngươi nhớ một sang hàng chục, đúng như một kỳ thủ nhớ nước đi cũ.",
-          "Hươu Cao sẽ ngồi đó mà không phải cúi cổ hỏi ai. Hay lắm."
+          "Cuộn giấy mở ra, bên trong là hai dòng mật mã về ba ghế đầu bàn. Hay lắm."
         ],
         "wrong": [
           "Chưa đúng. Hãy xem lại hàng đơn vị: 6 cộng 7 có vượt quá 10 không?",
@@ -163,9 +163,9 @@
         ],
         "en": {
           "right": [
-            "Seat seventy-three! The first code has surrendered to you.",
+            "Seventy-three! The three number rings click, and the code scroll surrenders to you.",
             "You carried the one to the tens, just as a player remembers an earlier move.",
-            "Hươu Cao can sit there without bending down to ask anyone. Splendid."
+            "The scroll opens; inside are two lines of code about the three top seats. Splendid."
           ],
           "wrong": [
             "Not quite. Look again at the ones: does 6 plus 7 go past 10?",
@@ -177,11 +177,11 @@
       "en": {
         "title": "Cracking Hươu Cao's card",
         "goTo": "Take the name cards over to the word-problem gallery, where the chancellor keeps his code-breaking scroll",
-        "prompt": "The scroll gives the code rule: «Each guest's seat number is the answer to the sum on their card.» Hươu Cao's card says 46 + 27. Which seat does Hươu Cao sit in?",
+        "prompt": "The code-breaking scroll is locked with three number rings. The rule says: «The lock number is the answer to the sum on Hươu Cao's card.» The card says 46 + 27. What is the lock number?",
         "choices": [
-          "Seat 63",
-          "Seat 73",
-          "Seat 71"
+          "Lock number 63",
+          "Lock number 73",
+          "Lock number 71"
         ]
       }
     },
@@ -194,7 +194,7 @@
       "logicType": "puzzle",
       "target": "st-te-tuong-nghin-van-co-so-do-ban-tiec",
       "skill": "logic",
-      "prompt": "Hai dòng mật mã cuối cùng nói về ba ghế đầu bàn. Cách xếp nào đúng với cả hai dòng?",
+      "prompt": "Sơ đồ ghi chỗ của ba ghế đầu bàn và hai dòng mật mã cuối cùng. Đọc kỹ từng dòng: cách xếp nào đúng với cả hai dòng mật mã?",
       "elements": [
         {
           "id": "ghe-mot",
@@ -285,7 +285,7 @@
       "en": {
         "title": "The three top seats",
         "goTo": "Go to the picture pin-board, where the plan of the three top seats is pinned",
-        "prompt": "The last two lines of code are about the three seats at the head of the table. Which arrangement fits both lines?",
+        "prompt": "The plan shows where the three seats at the head of the table stand, and the last two lines of code. Read each line carefully: which arrangement fits both code lines?",
         "elements": [
           "Seat 1 stands right by the big candle",
           "Seat 2 is in the middle",
@@ -392,6 +392,6 @@
   },
   "en": {
     "title": "Tể Tướng Cờ Vua's story, chapter 2: A seating plan in code",
-    "summary": "Tể Tướng Cờ Vua wrote the banquet seating plan in code and then forgot how to read it. {name} gathers three name cards, solves an addition to find a seat number, reasons out three guests' places and chooses where the chancellor himself should sit."
+    "summary": "Tể Tướng Cờ Vua wrote the banquet seating plan in code and then forgot how to read it. {name} gathers three name cards, solves an addition to find the lock number of the plan scroll, reasons out three guests' places and chooses where the chancellor himself should sit."
   }
 }

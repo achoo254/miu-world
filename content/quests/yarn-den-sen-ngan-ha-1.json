@@ -5,13 +5,13 @@
   "title": "Chuyện của Cô Đèn Lồng Sen, chương 1: Những chiếc đèn có tên",
   "status": "active",
   "category": "story",
-  "summary": "Gió đêm làm đổ giàn phơi đèn, ba chiếc đèn có tên lăn đi mất. {name} tìm đèn theo lời tả, tính số đèn còn phải làm, đoán màu đèn theo mẫu và đặt tên cho chiếc đèn mới.",
+  "summary": "Gió đêm làm đổ giàn phơi đèn, ba chiếc đèn có tên lăn đi mất. {name} tìm đèn theo lời tả, tính số đèn còn phải làm, đoán màu đèn theo mẫu và chọn chỗ cho chiếc đèn mới.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Cô Đèn Lồng Sen",
     "where": "Đầu làng: gốc cây đa, giếng làng, bảng tin, lớp học nhỏ",
     "goal": "Tìm lại ba chiếc đèn lạc và chuẩn bị đủ đèn cho đêm hội",
-    "play": "Tìm đèn theo lời tả; tính số đèn còn thiếu; đoán màu đèn theo mẫu; đặt tên đèn mới; cắt hoa giấy",
+    "play": "Tìm đèn theo lời tả; tính số đèn còn thiếu; đoán màu đèn theo mẫu; chọn chỗ cho đèn mới; cắt hoa giấy",
     "learn": "Phép trừ có nhớ từ số tròn trăm, tìm quy luật",
     "reward": "55 XP, 14 Xu, Skill XP Phép trừ, Logic",
     "next": "Làm chiếc hoa đăng đầu tay"
@@ -278,45 +278,45 @@
     },
     {
       "id": "dat-ten-den-moi",
-      "title": "Tên cho chiếc đèn mới",
-      "goTo": "Mang chiếc đèn mới làm sang lớp học nhỏ, các bạn đang chờ đặt tên",
+      "title": "Chỗ cho chiếc đèn mới",
+      "goTo": "Mang chiếc đèn mới làm sang lớp học nhỏ, các bạn đang ngắm nó",
       "kind": "decision",
       "target": "st-den-sen-ngan-ha-den-chua-ten",
       "speaker": "Cô Đèn Lồng Sen",
-      "prompt": "Chiếc đèn mới nhất còn chưa có tên. Cô hỏi: «Cháu thấy sao, mình gọi bạn ấy là gì?»",
+      "prompt": "Chiếc đèn mới nhất chưa có tên, cũng chưa có chỗ. Cô bảo tên thì đêm hội sẽ tự đặt, còn chỗ thì phải chọn ngay: «Cháu thấy bạn ấy nên đứng ở đâu?»",
       "choices": [
         {
           "id": "sao-mai",
-          "text": "Gọi là Sao Mai, vì bạn ấy sáng nhất",
-          "consequence": "Cô viết «Sao Mai» lên đáy đèn bằng mực tím. Chiếc đèn như sáng thêm một chút."
+          "text": "Treo ở cổng làng, dẫn đường cho khách tới hội",
+          "consequence": "Cô treo đèn lên đầu cổng. Khách ở xa nhìn thấy đốm sáng ấy là biết đã tới làng."
         },
         {
           "id": "ten-minh",
-          "text": "Đặt theo tên {name}, để nhớ hôm nay",
-          "consequence": "Cô nắn nót viết tên {name}: «Từ nay đêm hội nào, đèn này cũng soi đường cho cháu.»"
+          "text": "Để {name} cầm đi đầu đoàn rước",
+          "consequence": "Cô buộc đèn vào cán tre vừa tay {name}: «Đêm hội, cháu đi trước, cả đoàn đi theo ánh đèn này.»"
         },
         {
           "id": "bo-phieu",
-          "text": "Để các bạn trong lớp bỏ phiếu chọn tên",
-          "consequence": "Cả lớp viết tên vào mẩu giấy. Tên «Bánh Trôi» thắng, ai cũng cười vì đèn tròn xoe thật."
+          "text": "Tặng lớp học nhỏ, các bạn thay nhau cầm",
+          "consequence": "Cả lớp reo lên, chia nhau mỗi bạn cầm một vòng sân. Đèn đi qua tay nào cũng được thổi bụi thật sạch."
         }
       ],
       "en": {
-        "title": "A name for the new lantern",
-        "goTo": "Take the newest lantern to the little classroom, where the children are waiting to name it",
-        "prompt": "The newest lantern has no name yet. Cô asks: \"What do you think, what shall we call it?\"",
+        "title": "A place for the new lantern",
+        "goTo": "Take the newest lantern to the little classroom, where the children are admiring it",
+        "prompt": "The newest lantern has no name and no place yet. Cô says the festival will give it a name, but the place must be chosen now: \"Where do you think it should go?\"",
         "choices": [
           {
-            "text": "Call it Morning Star, because it shines the brightest",
-            "consequence": "Cô writes \"Morning Star\" on its base in purple ink. The lantern seems to glow a little more."
+            "text": "Hang it at the village gate to guide guests to the festival",
+            "consequence": "Cô hangs it over the gate. Guests far off see that little glow and know they have reached the village."
           },
           {
-            "text": "Name it after {name}, to remember today",
-            "consequence": "Cô writes {name} carefully: \"From now on, every festival night, this lantern lights your way.\""
+            "text": "Let {name} carry it at the front of the parade",
+            "consequence": "Cô ties it to a bamboo pole just the right size for {name}: \"On festival night you go first, and everyone follows this light.\""
           },
           {
-            "text": "Let the class vote for a name",
-            "consequence": "Everyone writes a name on a slip. \"Sweet Dumpling\" wins, and they all laugh because it really is round."
+            "text": "Give it to the little class to take turns carrying",
+            "consequence": "The class cheers and shares it out, one lap of the yard each. Every pair of hands blows the dust off it."
           }
         ]
       }
@@ -368,6 +368,6 @@
   },
   "en": {
     "title": "Cô Đèn Lồng Sen's story, chapter 1: Lanterns with names",
-    "summary": "A night wind toppled the lantern rack and three named lanterns rolled away. {name} finds them from Cô's descriptions, works out how many lanterns are still to make, spots the colour pattern and names the newest lantern."
+    "summary": "A night wind toppled the lantern rack and three named lanterns rolled away. {name} finds them from Cô's descriptions, works out how many lanterns are still to make, spots the colour pattern and chooses a place for the newest lantern."
   }
 }

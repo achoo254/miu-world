@@ -222,27 +222,38 @@
       "logicType": "maze",
       "target": "st-den-sen-ngan-ha-dam-beo-tay",
       "skill": "logic",
-      "prompt": "Ô gạch là chỗ bèo tây kết dày, đèn đi vào là mắc. Đưa đèn từ ô xuất phát tới ô đích mà không chạm ô bèo nào. Dãy bước nào đúng? (→ sang phải, ↓ đi xuống)",
+      "prompt": "Ô có chú mèo là chỗ đèn đang đậu, ô ngôi sao là cửa ra bến. Ô gạch là chỗ bèo tây kết dày, đèn đi vào là mắc. Dãy bước nào đưa đèn ra bến mà không chạm ô bèo nào? (→ sang phải, ↓ đi xuống)",
       "grid": [
         [
           "S",
           ".",
+          ".",
           "#",
           "."
         ],
         [
           "#",
+          "#",
           ".",
-          ".",
-          "#"
+          "#",
+          "."
         ],
         [
           ".",
-          "#",
+          ".",
+          ".",
           ".",
           "."
         ],
         [
+          ".",
+          "#",
+          "#",
+          "#",
+          "."
+        ],
+        [
+          ".",
           ".",
           ".",
           "#",
@@ -252,15 +263,15 @@
       "choices": [
         {
           "id": "a",
-          "text": "→ ↓ ↓ → → ↓"
+          "text": "→ → ↓ → ↓ ↓ → ↓"
         },
         {
           "id": "b",
-          "text": "→ ↓ → ↓ → ↓"
+          "text": "→ → ↓ ↓ → → ↓ ↓"
         },
         {
           "id": "c",
-          "text": "→ → ↓ ↓ → ↓"
+          "text": "→ ↓ ↓ → → → ↓ ↓"
         }
       ],
       "answer": {
@@ -268,58 +279,58 @@
       },
       "support": {
         "guide": [
-          "Đặt ngón tay ở ô xuất phát rồi đi thử từng dãy.",
+          "Đặt ngón tay ở ô có chú mèo rồi đi thử từng dãy.",
           "Gặp ô gạch là dãy đó hỏng, thử dãy khác."
         ],
-        "hint": "Lối đúng cứ sang một ô lại xuống một ô, như bậc thang.",
+        "hint": "Lối đúng đi sang hai ô, xuống hai ô, rồi lặp lại đúng như thế một lần nữa.",
         "answer": {
-          "text": "→ ↓ → ↓ → ↓",
-          "explanation": "Sang phải, xuống, sang phải, xuống, sang phải, xuống: đèn đi chéo như bậc thang, len giữa các đám bèo tới ô đích."
+          "text": "→ → ↓ ↓ → → ↓ ↓",
+          "explanation": "Sang phải hai ô, xuống hai ô tới hàng giữa trống trơn, sang phải hai ô nữa tới mép ao, rồi xuống hai ô là tới ô ngôi sao."
         },
         "en": {
           "guide": [
-            "Put your finger on the start square and try each set of moves.",
+            "Put your finger on the cat square and try each set of moves.",
             "Touch a brick square and that set fails; try another."
           ],
-          "hint": "The right way goes one across, one down, like a staircase.",
+          "hint": "The right way goes two across, two down, then exactly the same once more.",
           "answer": {
-            "text": "→ ↓ → ↓ → ↓",
-            "explanation": "Right, down, right, down, right, down: the lantern zigzags like a staircase between the weeds to the goal."
+            "text": "→ → ↓ ↓ → → ↓ ↓",
+            "explanation": "Two right, two down to the clear middle row, two more right to the edge of the pond, then two down to the star square."
           }
         }
       },
       "feedback": {
         "right": [
           "Đèn lách qua giữa bèo như cá lội, không mắc cánh nào!",
-          "Một ngang một dọc, {name} tìm ra lối bậc thang rồi.",
+          "Hai ngang hai dọc, rồi lại hai ngang hai dọc: {name} tìm ra nhịp của lối đi rồi.",
           "Cô cắm cọc tre đánh dấu lối này cho đêm hội."
         ],
         "wrong": [
-          "Đi sang hai ô liền là đụng bèo ngay đấy.",
-          "Xuống hai lần liền thì đèn mắc vào đám bèo giữa ao rồi.",
-          "Dò lại bằng ngón tay, mỗi ô gạch là một đám bèo."
+          "Sang phải ba ô liền là đèn đâm vào đám bèo ở hàng trên cùng.",
+          "Mới sang một ô đã đi xuống thì đèn mắc ngay vào đám bèo sát mép.",
+          "Dò lại bằng ngón tay, mỗi ô gạch là một đám bèo, ô ngôi sao mới là bến."
         ],
         "en": {
           "right": [
             "The lantern slips through the weeds like a fish, not a petal caught!",
-            "One across, one down: {name} found the staircase path.",
+            "Two across, two down, and again: {name} found the rhythm of the path.",
             "Cô marks this path with bamboo stakes for the festival."
           ],
           "wrong": [
-            "Two squares right in a row runs straight into the weeds.",
-            "Two steps down in a row catches the lantern in the middle clump.",
-            "Trace it again with your finger; every brick square is a clump of weed."
+            "Three squares right in a row runs into the weeds on the top row.",
+            "Going down after only one step right catches the lantern in the weeds by the edge.",
+            "Trace it again with your finger; every brick square is a clump of weed, and the star square is the landing."
           ]
         }
       },
       "en": {
         "title": "A path through the weeds",
         "goTo": "Go to the little landing, where water hyacinth almost blocks the lanterns' way",
-        "prompt": "Brick squares are thick clumps of water hyacinth; a lantern that goes in gets stuck. Take the lantern from the start square to the goal without touching a weed square. Which moves work? (→ right, ↓ down)",
+        "prompt": "The square with the cat is where the lantern floats now; the star square is the way out to the landing. Brick squares are thick clumps of water hyacinth, and a lantern that goes in gets stuck. Which moves bring the lantern out without touching a weed square? (→ right, ↓ down)",
         "choices": [
-          "→ ↓ ↓ → → ↓",
-          "→ ↓ → ↓ → ↓",
-          "→ → ↓ ↓ → ↓"
+          "→ → ↓ → ↓ ↓ → ↓",
+          "→ → ↓ ↓ → → ↓ ↓",
+          "→ ↓ ↓ → → → ↓ ↓"
         ]
       }
     },

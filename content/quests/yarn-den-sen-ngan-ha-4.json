@@ -39,14 +39,14 @@
   "steps": [
     {
       "id": "noi-so-cua-co",
-      "title": "Điều cô chưa kể",
+      "title": "Điều cô cất dưới ngăn giấy màu",
       "goTo": "Ra đầu làng, cô ngồi một mình bên giàn đèn đã treo kín",
       "kind": "dialogue",
       "target": "co-den-long-sen",
       "lines": [
         {
           "speaker": "Cô Đèn Lồng Sen",
-          "text": "{name}, ngồi xuống đây với cô một lát. Cô có chuyện chưa kể với ai."
+          "text": "{name}, ngồi xuống đây với cô một lát. Chuyện này cô cất dưới ngăn giấy màu bao năm, hôm nay mới lấy ra."
         },
         {
           "speaker": "Cô Đèn Lồng Sen",
@@ -60,7 +60,7 @@
       "choices": [
         {
           "text": "Mình cùng che gió cho đèn, cô không một mình đâu!",
-          "reply": "Ừ. Có cháu đứng cạnh, tay cô bớt run rồi đây."
+          "reply": "Ừ. Hai người che thì gió phải chia đôi sức. Cô dán thử lại nhé… dính rồi này."
         },
         {
           "text": "Gió lớn thì mình nghĩ cách khác mà cô.",
@@ -68,17 +68,17 @@
         }
       ],
       "en": {
-        "title": "What Cô hadn't told",
+        "title": "What Cô kept under the coloured paper",
         "goTo": "Go to the village gate, where Cô sits alone by the full lantern rack",
         "lines": [
-          "{name}, sit with me a moment. There is something I have told no one.",
+          "{name}, sit with me a moment. I have kept this under the drawer of coloured paper for years; today I am taking it out.",
           "I am afraid of strong wind. I am afraid that on festival night it will blow out every lantern and leave the road dark just when it is busiest.",
           "This afternoon the wind got up. My hands are shaking; the glue just won't stick."
         ],
         "choices": [
           {
             "text": "We'll shield the lanterns together; you're not alone!",
-            "reply": "Yes. With you beside me my hands are already steadier."
+            "reply": "Yes. With two of us shielding, the wind has to split its strength. Let me try the glue again… there, it sticks."
           },
           {
             "text": "If the wind is strong, we'll find another way.",
@@ -169,7 +169,7 @@
       },
       "feedback": {
         "right": [
-          "Tám mươi ba chiếc! Cô khẽ cười, tay đã bớt run.",
+          "Tám mươi ba chiếc! Cô khẽ cười, ngón tay dán hồ đã vững.",
           "{name} nhớ sang hàng chục chẳng sót chút nào.",
           "Đủ để hai khúc sông cùng sáng, cô gạch một dòng thật đậm."
         ],
@@ -180,7 +180,7 @@
         ],
         "en": {
           "right": [
-            "Eighty-three! Cô smiles a little; her hands are steadier.",
+            "Eighty-three! Cô smiles a little; her gluing fingers are sure again.",
             "{name} carried to the tens without missing a thing.",
             "Enough for both stretches to shine; Cô underlines it boldly."
           ],

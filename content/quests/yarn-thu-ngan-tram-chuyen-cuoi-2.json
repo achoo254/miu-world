@@ -12,7 +12,7 @@
     "where": "Chợ phiên: quầy thu ngân, bến hàng, bàn cân lớn, kho hàng nhỏ, chậu rửa rau",
     "goal": "Tìm đủ quả cân và làm cho cân chỉ đúng",
     "play": "Tìm ba quả cân; tính khối lượng bao gạo trên cân đĩa; xếp kiện hàng; chọn cách chữa cân; đặt quả cân cho thăng bằng",
-    "learn": "Ki-lô-gam, cân đĩa thăng bằng, so sánh số trong phạm vi 100",
+    "learn": "Ki-lô-gam, cân đĩa thăng bằng, cộng trừ và so sánh số trong phạm vi 100",
     "reward": "65 XP, 16 Xu, Skill XP Khối lượng, So sánh số",
     "next": "Sổ bán hàng gặp mưa"
   },
@@ -111,19 +111,19 @@
       "logicType": "puzzle",
       "target": "st-thu-ngan-tram-chuyen-cuoi-ban-can-dia",
       "skill": "khoi-luong",
-      "prompt": "Đĩa bên trái có một bao gạo. Đĩa bên phải có quả cân 5 kg và quả cân 2 kg. Hai đĩa nằm ngang bằng nhau. Bao gạo nặng bao nhiêu ki-lô-gam?",
+      "prompt": "Đĩa bên trái có một bao gạo và quả cân 2 kg. Đĩa bên phải có ba quả cân 20 kg, 10 kg và 5 kg. Hai đĩa nằm ngang bằng nhau. Bao gạo nặng bao nhiêu ki-lô-gam?",
       "choices": [
         {
           "id": "a",
-          "text": "3 kg"
+          "text": "37 kg"
         },
         {
           "id": "b",
-          "text": "7 kg"
+          "text": "33 kg"
         },
         {
           "id": "c",
-          "text": "10 kg"
+          "text": "35 kg"
         }
       ],
       "answer": {
@@ -132,57 +132,57 @@
       "support": {
         "guide": [
           "Cân thăng bằng nghĩa là hai đĩa nặng bằng nhau.",
-          "Cộng hai quả cân ở đĩa bên phải."
+          "Cộng ba quả cân ở đĩa bên phải, rồi bớt đi quả cân nằm cạnh bao gạo."
         ],
-        "hint": "Năm ki-lô-gam thêm hai ki-lô-gam.",
+        "hint": "Đĩa bên phải nặng 20 + 10 + 5 = 35 kg; bao gạo cùng quả cân 2 kg cũng nặng 35 kg.",
         "answer": {
-          "text": "7 kg",
-          "explanation": "Hai đĩa thăng bằng nên bao gạo nặng bằng 5 kg + 2 kg = 7 kg."
+          "text": "33 kg",
+          "explanation": "Đĩa bên phải nặng 20 kg + 10 kg + 5 kg = 35 kg. Hai đĩa thăng bằng nên bao gạo cùng quả cân 2 kg nặng 35 kg, vậy bao gạo nặng 35 kg − 2 kg = 33 kg."
         },
         "en": {
           "guide": [
             "A balanced scale means both pans weigh the same.",
-            "Add the two weights on the right-hand pan."
+            "Add the three weights on the right-hand pan, then take away the weight sitting next to the sack."
           ],
-          "hint": "Five kilograms and two more kilograms.",
+          "hint": "The right pan weighs 20 + 10 + 5 = 35 kg; the sack together with the 2 kg weight also weighs 35 kg.",
           "answer": {
-            "text": "7 kg",
-            "explanation": "The pans balance, so the rice sack weighs as much as 5 kg + 2 kg = 7 kg."
+            "text": "33 kg",
+            "explanation": "The right pan weighs 20 kg + 10 kg + 5 kg = 35 kg. The pans balance, so the sack and the 2 kg weight make 35 kg, and the sack alone weighs 35 kg − 2 kg = 33 kg."
           }
         }
       },
       "feedback": {
         "right": [
-          "Bảy ki-lô-gam! Kim cân đứng im chỉ đúng vạch, bác vỗ tay đen đét.",
+          "Ba mươi ba ki-lô-gam! Kim cân đứng im chỉ đúng vạch, bác vỗ tay đen đét.",
           "{name} nhìn hai đĩa cân như nhìn hai bên dấu bằng.",
           "Thăng bằng thì bằng nhau, {name} nhớ đúng bài rồi."
         ],
         "wrong": [
-          "Ba ki-lô-gam là lấy năm trừ hai rồi, ở đây hai quả cân nằm cùng một đĩa mà.",
-          "Không có quả cân mười ki-lô-gam nào trên đĩa đâu, {name} cộng lại nhé.",
-          "Đĩa bên phải có hai quả, phải gộp cả hai mới ra bao gạo."
+          "Ba mươi bảy là cộng thêm quả cân 2 kg rồi; quả cân ấy nằm cùng đĩa với bao gạo, phải bớt nó ra mới đúng.",
+          "Ba mươi lăm là cả bao gạo lẫn quả cân 2 kg đấy {name}, bao gạo nhẹ hơn thế một chút.",
+          "Gộp ba quả cân bên phải trước, rồi nhìn sang đĩa trái xem còn gì nằm cạnh bao gạo."
         ],
         "en": {
           "right": [
-            "Seven kilograms! The needle settles right on the mark and he claps loudly.",
+            "Thirty-three kilograms! The needle settles right on the mark and he claps loudly.",
             "{name} reads the two pans like the two sides of an equals sign.",
             "Balanced means equal; you remembered the lesson, {name}."
           ],
           "wrong": [
-            "Three kilograms is five take away two, but both weights sit on the same pan.",
-            "There's no ten-kilogram weight on the pan, {name}; add them again.",
-            "The right-hand pan holds two weights; put both together to get the sack."
+            "Thirty-seven adds the 2 kg weight on; that weight shares a pan with the sack, so it has to come off.",
+            "Thirty-five is the sack plus the 2 kg weight, {name}; the sack alone is a little lighter.",
+            "Add the three weights on the right first, then look at what else sits beside the sack on the left."
           ]
         }
       },
       "en": {
         "title": "How heavy is the rice sack?",
         "goTo": "Carry the weights up to the big scale table and set each one on a pan",
-        "prompt": "The left pan holds a sack of rice. The right pan holds a 5 kg weight and a 2 kg weight. The two pans hang level. How many kilograms does the rice sack weigh?",
+        "prompt": "The left pan holds a sack of rice and a 2 kg weight. The right pan holds three weights: 20 kg, 10 kg and 5 kg. The two pans hang level. How many kilograms does the rice sack weigh?",
         "choices": [
-          "3 kg",
-          "7 kg",
-          "10 kg"
+          "37 kg",
+          "33 kg",
+          "35 kg"
         ]
       }
     },
@@ -343,10 +343,10 @@
       "title": "Quả cân biết cân nhắc",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác nghĩ ra chuyện thứ chín mươi tám: «Vì sao quả cân chẳng bao giờ nói bừa? Vì nó luôn… cân nhắc!» Lần này cả dãy hàng cân đong cười theo, và bác thưởng {name} một nắm xu.",
+      "text": "Bác nghĩ ra chuyện thứ chín mươi bảy: «Vì sao quả cân chẳng bao giờ nói bừa? Vì nó luôn… cân nhắc!» Lần này cả dãy hàng cân đong cười theo, và bác thưởng {name} một nắm xu.",
       "en": {
         "title": "A weight that weighs its words",
-        "text": "He comes up with joke ninety-eight: «Why does a weight never blurt things out? Because it always weighs its words!» This time the whole weighing row laughs along, and he rewards {name} with a handful of coins."
+        "text": "He comes up with joke ninety-seven: «Why does a weight never blurt things out? Because it always weighs its words!» This time the whole weighing row laughs along, and he rewards {name} with a handful of coins."
       }
     },
     {

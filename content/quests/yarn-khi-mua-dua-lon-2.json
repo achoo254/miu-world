@@ -96,49 +96,56 @@
       "logicType": "maze",
       "target": "st-khi-mua-dua-lon-cay-do-chan-loi",
       "skill": "logic",
-      "prompt": "Ô chú khỉ là chỗ {name} và Khỉ đứng, ô ngôi sao là chòi canh, ô gạch là cây đổ và bụi gai. Dãy bước nào đưa giỏ dừa tới chòi canh? (→ sang phải, ↓ đi xuống)",
+      "prompt": "Ô có chú mèo là chỗ {name} và Khỉ đứng, ô ngôi sao là chòi canh, ô gạch là cây đổ và bụi gai. Dãy bước nào đưa giỏ dừa tới chòi canh? (→ sang phải, ↓ đi xuống)",
       "grid": [
         [
           "S",
-          ".",
           "#",
+          ".",
           ".",
           "."
         ],
         [
-          "#",
           ".",
           "#",
           ".",
-          "#"
+          "#",
+          "."
         ],
         [
           ".",
           ".",
           ".",
-          ".",
-          "#"
+          "#",
+          "."
         ],
         [
           "#",
           "#",
-          "#",
           ".",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          ".",
+          "#",
+          "#",
           "G"
         ]
       ],
       "choices": [
         {
           "id": "a",
-          "text": "↓ → → ↓ → → ↓"
+          "text": "→ ↓ ↓ → ↓ → → ↓"
         },
         {
           "id": "b",
-          "text": "→ ↓ ↓ → → → ↓"
+          "text": "↓ ↓ → → → ↓ → ↓"
         },
         {
           "id": "c",
-          "text": "→ ↓ ↓ → → ↓ →"
+          "text": "↓ ↓ → → ↓ → → ↓"
         }
       ],
       "answer": {
@@ -146,25 +153,25 @@
       },
       "support": {
         "guide": [
-          "Đặt ngón tay lên ô chú khỉ.",
-          "Đi thử từng dãy bước, chạm ô gạch là dãy đó bị chắn.",
-          "Dãy đúng dừng đúng ở ô ngôi sao."
+          "{name} và Khỉ đứng ở ô có chú mèo, đặt tay vào đó trước.",
+          "Đi thử từng dãy bước; dính cây đổ hay bụi gai (ô gạch) là phải bỏ dãy ấy.",
+          "Giỏ dừa tới nơi khi dãy bước dừng ở chòi canh, ô ngôi sao."
         ],
-        "hint": "Bước đầu tiên đi xuống là vướng bụi gai ngay. Ở hàng thứ ba, ô cuối bên phải cũng bị chắn.",
+        "hint": "Bước đầu tiên sang phải là vướng cây đổ ngay. Ở hàng thứ ba, ô thứ tư là bụi gai.",
         "answer": {
-          "text": "Sang phải, xuống hai ô, sang phải hai ô, xuống, rồi sang phải",
-          "explanation": "Dãy → ↓ ↓ → → ↓ → đi sang ô thứ hai, xuống hai lần tới hàng thứ ba, sang phải hai ô, xuống hàng cuối rồi sang phải tới chòi canh mà không chạm ô gạch nào."
+          "text": "Xuống hai ô, sang phải hai ô, xuống, sang phải hai ô, rồi xuống",
+          "explanation": "Dãy ↓ ↓ → → ↓ → → ↓ đi xuống hai lần tới hàng thứ ba, sang phải hai ô, xuống hàng bốn, sang phải hai ô rồi xuống là tới chòi canh mà không chạm ô gạch nào."
         },
         "en": {
           "guide": [
-            "Put your finger on the monkey square.",
-            "Try each sequence of steps; touch a brick square and that route is blocked.",
-            "The right one stops exactly on the star square."
+            "{name} and Khỉ stand on the cat square; put your finger there first.",
+            "Try each sequence; hit the fallen tree or thorns (a brick) and drop that one.",
+            "The baskets arrive when the steps stop at the lookout hut, the star square."
           ],
-          "hint": "Going down first hits the thorns at once. In the third row, the last square on the right is blocked too.",
+          "hint": "Going right first hits the fallen tree at once. In the third row, the fourth square is thorns.",
           "answer": {
-            "text": "Right, down two, right two, down, then right",
-            "explanation": "→ ↓ ↓ → → ↓ → moves to the second square, goes down twice to the third row, right two squares, down to the bottom row and right to the lookout hut without touching a brick square."
+            "text": "Down two, right two, down, right two, then down",
+            "explanation": "↓ ↓ → → ↓ → → ↓ goes down twice to the third row, right two squares, down to row four, right two squares and down to the lookout hut without touching a brick square."
           }
         }
       },
@@ -175,9 +182,9 @@
           "Giỏ dừa vẫn nguyên, chòi canh ở ngay trước mặt rồi!"
         ],
         "wrong": [
-          "Ái da, đi thế là chui vào bụi gai mất, {name} dò lại từng ô nhé.",
-          "Hàng thứ ba đi sang phải quá xa là đụng cây đổ đấy.",
-          "Thử đặt tay lên ô chú khỉ rồi bước chậm từng mũi tên một."
+          "Ái da, đi thế là húc vào cây đổ mất, {name} dò lại từng ô nhé.",
+          "Hàng thứ ba đi sang phải quá xa là chui vào bụi gai đấy.",
+          "Thử đặt tay lên ô chú mèo rồi bước chậm từng mũi tên một."
         ],
         "en": {
           "right": [
@@ -186,20 +193,20 @@
             "The coconut baskets are fine, and the lookout hut is right ahead!"
           ],
           "wrong": [
-            "Ouch, that way goes straight into the thorns, {name}; trace each square again.",
-            "Going too far right along the third row runs into the fallen tree.",
-            "Put your finger on the monkey square and follow one arrow at a time."
+            "Ouch, that way bumps right into the fallen tree, {name}; trace each square again.",
+            "Going too far right along the third row runs into the thorns.",
+            "Put your finger on the cat square and follow one arrow at a time."
           ]
         }
       },
       "en": {
         "title": "A fallen tree on the trail",
         "goTo": "Go to the streamside trail, where the fallen trunk lies across the way",
-        "prompt": "The monkey square is where {name} and Khỉ stand, the star square is the lookout hut, and brick squares are the fallen tree and thorn bushes. Which steps get the coconut baskets to the hut? (→ right, ↓ down)",
+        "prompt": "The cat square is where {name} and Khỉ stand, the star square is the lookout hut, and brick squares are the fallen tree and thorn bushes. Which steps get the coconut baskets to the hut? (→ right, ↓ down)",
         "choices": [
-          "↓ → → ↓ → → ↓",
-          "→ ↓ ↓ → → → ↓",
-          "→ ↓ ↓ → → ↓ →"
+          "→ ↓ ↓ → ↓ → → ↓",
+          "↓ ↓ → → → ↓ → ↓",
+          "↓ ↓ → → ↓ → → ↓"
         ]
       }
     },

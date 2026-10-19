@@ -5,13 +5,13 @@
   "title": "Chuyện của Hổ Còi Vàng, chương 1: Đội bóng thiếu người",
   "status": "active",
   "category": "story",
-  "summary": "Đội bóng trường sắp đá trận giao hữu đầu tiên mà còn thiếu người. {name} dán thông báo, tính số bạn còn thiếu, chọn bạn đủ điều kiện, đặt tên cho đội rồi tập sút phạt đền.",
+  "summary": "Đội bóng trường sắp đá trận giao hữu đầu tiên mà còn thiếu người. {name} dán thông báo, tính số bạn còn thiếu, chọn bạn đủ điều kiện, chọn bài khởi động cho buổi tập đầu rồi tập sút phạt đền.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Hổ Còi Vàng",
     "where": "Sân trường: mép sân bóng, sân trường, căng tin, bốt bảo vệ, lối vào trường, khung thành",
     "goal": "Gọi đủ người cho đội bóng trường",
-    "play": "Dán thông báo; tính số bạn còn thiếu; chọn bạn theo điều kiện; đặt tên đội; sút phạt đền",
+    "play": "Dán thông báo; tính số bạn còn thiếu; chọn bạn theo điều kiện; chọn bài khởi động; sút phạt đền",
     "learn": "Phép cộng, phép trừ trong phạm vi 20, đọc hiểu điều kiện",
     "reward": "60 XP, 15 Xu, Skill XP Phép trừ, Đọc hiểu",
     "next": "Chiếc còi vàng bỗng không kêu"
@@ -60,11 +60,11 @@
       ],
       "choices": [
         {
-          "text": "Cháu chạy đi dán ngay!",
+          "text": "Tớ chạy đi dán ngay!",
           "reply": "Tuýt! Chạy trên vỉa hè, không chạy qua bồn hoa."
         },
         {
-          "text": "Đội bạn có mạnh không anh?",
+          "text": "Đội bạn có mạnh không, Hổ?",
           "reply": "Mạnh lắm. Mà thua thì mình cười to hơn, có sao đâu!"
         }
       ],
@@ -259,45 +259,45 @@
     },
     {
       "id": "ten-doi",
-      "title": "Đặt tên cho đội",
-      "goTo": "Ra lối vào trường, nơi treo lá cờ đội còn trống tên",
+      "title": "Khởi động bằng gì?",
+      "goTo": "Ra lối vào trường, nơi lá cờ đội vừa được treo lên",
       "kind": "decision",
       "target": "st-ho-coi-giao-huu-la-co-doi",
       "speaker": "Hổ Còi Vàng",
-      "prompt": "Lá cờ đội treo ở lối vào trường còn trống tên. Hổ hỏi: «Tuýt! Đội mình tên gì?»",
+      "prompt": "Lá cờ đội phấp phới ở lối vào trường. Hổ hỏi: «Tuýt! Buổi tập đầu, cả đội khởi động bằng gì?»",
       "choices": [
         {
-          "id": "ho-vang",
-          "text": "Đội Hổ Vàng, theo màu chiếc còi của anh Hổ",
-          "consequence": "Hổ đỏ mặt, cười to: «Tên oai quá! Thua cũng phải thua thật oai!»"
+          "id": "chay-vach-phan",
+          "text": "Chạy một vòng theo vạch phấn, như Hổ chạy mỗi sáng",
+          "consequence": "Cả đội chạy nối đuôi theo vạch phấn. Hổ chạy cuối hàng, vừa chạy vừa đếm: «Một, hai, chạy!»"
         },
         {
-          "id": "mang-non",
-          "text": "Đội Măng Non, vì cả đội đều đang lớn",
-          "consequence": "Cả đội hô «Măng Non, lớn nhanh!» Tiếng hô vang tới tận cột cờ."
+          "id": "chuyen-bong-vong",
+          "text": "Đứng thành vòng tròn chuyền bóng, gọi tên bạn trước khi chuyền",
+          "consequence": "Quả bóng đi hết một vòng, bạn nào cũng được gọi tên. Gà Con và Mèo Mướp nhớ tên cả đội ngay buổi đầu."
         },
         {
-          "id": "gio-san-truong",
-          "text": "Đội Gió Sân Trường, chạy nhanh như gió",
-          "consequence": "Hổ thổi một hồi còi dài: «Gió thổi là bóng lăn! Hay!»"
+          "id": "nhay-day",
+          "text": "Nhảy dây tập thể, Hổ cầm một đầu dây",
+          "consequence": "Hổ quay dây theo nhịp còi, cả đội nhảy theo. Ai vấp là cả sân cười to, đúng luật của Hổ."
         }
       ],
       "en": {
-        "title": "Naming the team",
-        "goTo": "Go to the school entrance, where the nameless team flag hangs",
-        "prompt": "The team flag at the school entrance has no name yet. Hổ asks: \"Whistle! What's our team called?\"",
+        "title": "How do we warm up?",
+        "goTo": "Go to the school entrance, where the team flag has just gone up",
+        "prompt": "The team flag flutters at the school entrance. Hổ asks: \"Whistle! First practice: how does the team warm up?\"",
         "choices": [
           {
-            "text": "The Golden Tigers, after Hổ's whistle",
-            "consequence": "Hổ blushes and laughs: \"What a grand name! Even if we lose, we lose grandly!\""
+            "text": "Run a lap along the chalk lines, like Hổ does every morning",
+            "consequence": "The team runs nose to tail along the chalk lines. Hổ runs at the back, counting: \"One, two, run!\""
           },
           {
-            "text": "The Bamboo Shoots, because we're all still growing",
-            "consequence": "The team chants \"Bamboo Shoots, grow fast!\" and it echoes all the way to the flagpole."
+            "text": "Stand in a circle and pass the ball, calling a name before each pass",
+            "consequence": "The ball goes all the way round and everyone gets called by name. Gà Con and Mèo Mướp learn the whole team's names on day one."
           },
           {
-            "text": "The Schoolyard Wind, fast as a breeze",
-            "consequence": "Hổ blows a long blast: \"When the wind blows, the ball rolls! Love it!\""
+            "text": "Group skipping, with Hổ holding one end of the rope",
+            "consequence": "Hổ turns the rope to the beat of his whistle and the team jumps along. Whoever trips sets the whole pitch laughing, just as Hổ likes it."
           }
         ]
       }
@@ -323,7 +323,7 @@
       "title": "Đội đủ người",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ dúi vào tay {name} chiếc băng đội trưởng dự bị: «Hôm nào anh khản giọng, {name} hô thay.»",
+      "text": "Hổ dúi vào tay {name} chiếc băng đội trưởng dự bị: «Hôm nào tớ khản giọng, {name} hô thay.»",
       "en": {
         "title": "A full squad",
         "text": "Hổ presses a reserve captain's armband into {name}'s hand: \"Whenever I lose my voice, you shout for me.\""
@@ -351,6 +351,6 @@
   },
   "en": {
     "title": "Hổ Còi Vàng's story, chapter 1: A team short of players",
-    "summary": "The school team is about to play its first friendly but is still short of players. {name} puts up notices, works out how many are missing, picks the eligible players, names the team and practises penalty kicks."
+    "summary": "The school team is about to play its first friendly but is still short of players. {name} puts up notices, works out how many are missing, picks the eligible players, picks the warm-up for the first practice and practises penalty kicks."
   }
 }

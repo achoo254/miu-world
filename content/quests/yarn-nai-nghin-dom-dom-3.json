@@ -5,12 +5,12 @@
   "title": "Chuyện của Nai Đom Đóm, chương 3: Đêm rừng tắt đèn",
   "status": "active",
   "category": "story",
-  "summary": "Khách cắm trại thắp đèn sáng trưng, đom đóm không về trảng cỏ. {name} tìm đồ che bớt ánh đèn, tính số đom đóm của cả trảng, chọn cách nói chuyện với khách rồi cùng Nai nối các chòm sao trong đêm rừng tắt đèn.",
+  "summary": "Khách cắm trại muốn ngắm đom đóm thật gần, mà đèn lều sáng quá nên đàn đom đóm chỉ múa ở mép rừng xa. {name} tìm đồ che bớt ánh đèn, tính số đom đóm của cả trảng, chọn cách nói chuyện với khách rồi cùng Nai nối các chòm sao trong đêm rừng tắt đèn.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Nai Đom Đóm",
     "where": "Rừng sâu: trảng cỏ đêm, khu lều trại, đồi cỏ thấp, lối mòn đêm",
-    "goal": "Mời đom đóm trở về trảng cỏ và đếm đủ một nghìn con",
+    "goal": "Mời đom đóm bay lại gần trảng cỏ cho khách cùng ngắm, và đếm đủ một nghìn con",
     "play": "Tìm đồ che đèn theo lời tả; tính số đom đóm theo trăm; chọn cách nói với khách; nối chòm sao",
     "learn": "Đọc hiểu, số tròn trăm và số 1000",
     "reward": "75 XP, 20 Xu, Skill XP Số đến 100, Đọc hiểu, Bướm lam rừng",
@@ -39,18 +39,18 @@
   "steps": [
     {
       "id": "dom-dom-khong-ve",
-      "title": "Đom đóm không về",
+      "title": "Đêm ngắm đom đóm",
       "goTo": "Tới trảng cỏ đêm, Nai Đom Đóm đang nhìn về phía lều trại sáng trưng",
       "kind": "dialogue",
       "target": "nai-dom-dom",
       "lines": [
         {
           "speaker": "Nai Đom Đóm",
-          "text": "Ừm… {name}. Đêm qua trảng cỏ tối om mà chẳng có đốm sáng nào. Khách cắm trại thắp đèn sáng như ban ngày."
+          "text": "Ừm… {name}. Khách cắm trại nhờ tớ một việc: họ muốn ngắm đom đóm thật gần, ngay bên trảng cỏ này."
         },
         {
           "speaker": "Nai Đom Đóm",
-          "text": "Đom đóm thích chỗ tối. Đèn sáng quá, chúng không tìm thấy nhau nữa. Tớ chỉ mong đêm nay chúng về."
+          "text": "Mà đom đóm thích chỗ tối. Đèn lều sáng quá, nên tối qua chúng chỉ múa tít ở mép rừng bên kia, khách nhìn chỉ thấy lấm tấm."
         },
         {
           "speaker": "Nai Đom Đóm",
@@ -68,11 +68,11 @@
         }
       ],
       "en": {
-        "title": "The fireflies stayed away",
+        "title": "A firefly-watching night",
         "goTo": "Go to the night meadow, where Nai Đom Đóm is watching the brightly lit tents",
         "lines": [
-          "Mm… {name}. Last night the meadow was dark, but not one little light. The campers lit lamps as bright as day.",
-          "Fireflies love the dark. With lamps that bright, they can't find each other. I just hope they come back tonight.",
+          "Mm… {name}. The campers asked me a favour: they want to watch the fireflies up close, right here by the meadow.",
+          "But fireflies love the dark. The tent lamps are so bright that last night they only danced far off at the other edge of the forest, and the campers saw just a few specks.",
           "We won't chase the campers away. We just need the lamps a little softer."
         ],
         "choices": [
@@ -315,6 +315,6 @@
   },
   "en": {
     "title": "Nai Đom Đóm's story, chapter 3: Lights out in the forest",
-    "summary": "Campers' bright lamps have kept the fireflies away from the meadow. {name} finds ways to soften the light, works out the fireflies of the whole meadow, chooses how to talk to the campers and joins the constellations with Nai on a night with the lights out."
+    "summary": "The campers want to watch the fireflies up close, but the tent lamps are so bright that the fireflies only dance at the far edge of the forest. {name} finds ways to soften the light, works out the fireflies of the whole meadow, chooses how to talk to the campers and joins the constellations with Nai on a night with the lights out."
   }
 }

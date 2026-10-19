@@ -199,13 +199,13 @@
     },
     {
       "id": "cau-viet-tren-nap",
-      "title": "Câu chữ bị gió xáo",
+      "title": "Câu chữ nhặt vội",
       "goTo": "Lên thềm đá ven vườn, mấy dải giấy chữ của Koala vướng ở đó",
       "kind": "challenge",
       "mechanic": "sort",
       "target": "st-koala-nghin-manh-day-chu-giay",
       "skill": "ghep-cau",
-      "prompt": "Koala viết câu nhắc mình lên bốn dải giấy, gió thổi lộn thứ tự cả rồi. Xếp các dải giấy thành câu đúng:",
+      "prompt": "Koala viết câu nhắc mình lên bốn dải giấy, lúc nhặt vội lại xếp nhầm thứ tự. Xếp các dải giấy thành câu đúng:",
       "items": [
         {
           "id": "phan-vien",
@@ -279,9 +279,9 @@
         }
       },
       "en": {
-        "title": "Words shuffled by the wind",
+        "title": "Words picked up in a hurry",
         "goTo": "Go up to the stone terrace by the garden, where some of Koala's paper word strips are caught",
-        "prompt": "Koala wrote a reminder on four paper strips, and the wind mixed up their order. Put the strips in order to make the sentence:",
+        "prompt": "Koala wrote a reminder on four paper strips, then picked them up in a hurry and got the order wrong. Put the strips in order to make the sentence:",
         "items": [
           "the edges",
           "first.",

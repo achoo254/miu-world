@@ -50,7 +50,7 @@
         },
         {
           "speaker": "Mèo Hộp Nhạc",
-          "text": "Lúc nãy gió lùa qua sân khấu, tớ nghe lách cách mấy tiếng. Chắc vài linh kiện nhỏ đã rơi ra ngoài rồi."
+          "text": "Lúc nãy mấy bạn nhỏ trèo lên sân khấu mở nắp hộp nhạc ra xem, tớ nghe lách cách mấy tiếng. Chắc vài linh kiện nhỏ đã rơi ra ngoài rồi."
         },
         {
           "speaker": "Mèo Hộp Nhạc",
@@ -72,7 +72,7 @@
         "goTo": "Go to the middle of the festival yard, where Mèo Hộp Nhạc sits hugging his tail and staring at the stage",
         "lines": [
           "Ting-a-ling… {name}, the big music box was playing «Falling Gold Leaves» and then, ting-a-ling… silence, as if someone had covered its mouth.",
-          "A gust swept over the stage a moment ago and I heard a few little clinks. Some tiny parts must have dropped out.",
+          "A moment ago some little ones climbed onto the stage and opened the lid to peek, and I heard a few little clinks. Some tiny parts must have dropped out.",
           "The readers are waiting to hear the rest of the song. Could you help me find each piece?"
         ],
         "choices": [
@@ -141,51 +141,51 @@
       "kind": "riddle",
       "target": "st-meo-hop-nhac-tang-ban-ban-nhac-la-vang",
       "skill": "phep-tru",
-      "question": "Bản nhạc «Lá vàng rơi» có tất cả 52 nốt. Hộp nhạc đã hát được 27 nốt thì im bặt. Còn bao nhiêu nốt hộp nhạc chưa hát?",
+      "question": "Bản nhạc «Lá vàng rơi» có tất cả 61 nốt. Hộp nhạc đã hát được 34 nốt thì im bặt. Còn bao nhiêu nốt hộp nhạc chưa hát?",
       "answer": {
-        "value": 25
+        "value": 27
       },
       "support": {
         "guide": [
           "Muốn biết phần còn lại, lấy số nốt cả bài trừ đi số nốt đã hát.",
-          "Đặt tính 52 − 27: hàng đơn vị 2 không trừ được 7, phải mượn một chục."
+          "Đặt tính 61 − 34: hàng đơn vị 1 không trừ được 4, phải mượn một chục."
         ],
-        "hint": "12 − 7 = 5, viết 5 nhớ 1. Rồi 2 thêm 1 là 3, 5 − 3 = 2.",
+        "hint": "11 − 4 = 7, viết 7 nhớ 1. Rồi 3 thêm 1 là 4, 6 − 4 = 2.",
         "answer": {
-          "text": "25 nốt",
-          "explanation": "52 − 27 = 25. Hộp nhạc còn 25 nốt chưa hát."
+          "text": "27 nốt",
+          "explanation": "61 − 34 = 27. Hộp nhạc còn 27 nốt chưa hát."
         },
         "en": {
           "guide": [
             "To find what is left, take the notes already played away from the whole song.",
-            "Set out 52 − 27: in the ones, 2 cannot take away 7, so borrow one ten."
+            "Set out 61 − 34: in the ones, 1 cannot take away 4, so borrow one ten."
           ],
-          "hint": "12 − 7 = 5, write 5 and carry 1. Then 2 plus 1 is 3, and 5 − 3 = 2.",
+          "hint": "11 − 4 = 7, write 7 and carry 1. Then 3 plus 1 is 4, and 6 − 4 = 2.",
           "answer": {
-            "text": "25 notes",
-            "explanation": "52 − 27 = 25. The music box still has 25 notes left to play."
+            "text": "27 notes",
+            "explanation": "61 − 34 = 27. The music box still has 27 notes left to play."
           }
         }
       },
       "feedback": {
         "right": [
-          "Hai mươi lăm nốt! Tinh tang, tớ khoanh tròn chỗ hộp nhạc dừng trên bản nhạc rồi.",
+          "Hai mươi bảy nốt! Tinh tang, tớ khoanh tròn chỗ hộp nhạc dừng trên bản nhạc rồi.",
           "{name} mượn một chục nhẹ như rút một tờ kẹo lá khỏi quầy.",
           "Đúng rồi! Phần còn lại của bài hát đang chờ được vang lên."
         ],
         "wrong": [
-          "Hàng đơn vị nhớ mượn một chục nhé {name}, 2 không trừ nổi 7 đâu.",
+          "Hàng đơn vị nhớ mượn một chục nhé {name}, 1 không trừ nổi 4 đâu.",
           "Đã mượn thì hàng chục phải trả lại một, cậu xem lại nào.",
           "Lấy cả bài trừ phần đã hát, đừng cộng hai số với nhau."
         ],
         "en": {
           "right": [
-            "Twenty-five notes! Ting-a-ling, I've circled the spot where the music box stopped.",
+            "Twenty-seven notes! Ting-a-ling, I've circled the spot where the music box stopped.",
             "{name} borrowed a ten as lightly as taking a leaf sweet from the stall.",
             "Right! The rest of the song is waiting to ring out."
           ],
           "wrong": [
-            "Remember to borrow a ten in the ones, {name}; 2 can't take away 7.",
+            "Remember to borrow a ten in the ones, {name}; 1 can't take away 4.",
             "Once you borrow, the tens must pay one back; have another look.",
             "Take what was played away from the whole song; don't add the two numbers."
           ]
@@ -194,7 +194,7 @@
       "en": {
         "title": "How many notes are left?",
         "goTo": "Go to the leaf-sweet stall, where Mèo forgot his sheet music while buying sweets",
-        "question": "The tune «Falling Gold Leaves» has 52 notes in all. The music box played 27 notes and then went silent. How many notes has it not played yet?"
+        "question": "The tune «Falling Gold Leaves» has 61 notes in all. The music box played 34 notes and then went silent. How many notes has it not played yet?"
       }
     },
     {
@@ -206,7 +206,7 @@
       "logicType": "pattern",
       "target": "st-meo-hop-nhac-tang-ban-khan-phoi-chot",
       "skill": "logic",
-      "prompt": "Mỗi chốt nhạc khắc một con số, xếp thành hàng trên khăn. Một chốt bị gió thổi lăn đi mất. Chốt còn thiếu khắc số mấy?",
+      "prompt": "Mỗi chốt nhạc khắc một con số, xếp thành hàng trên khăn. Một chốt đã lăn tọt xuống khe bể nước. Chốt còn thiếu khắc số mấy?",
       "elements": [
         {
           "id": "c1",
@@ -299,7 +299,7 @@
       "en": {
         "title": "Numbers on the music pins",
         "goTo": "Go to the edge of the round pool, where Mèo spread a cloth to dry the pins he just washed",
-        "prompt": "Each music pin is engraved with a number, laid in a row on the cloth. The wind rolled one pin away. What number is on the missing pin?",
+        "prompt": "Each music pin is engraved with a number, laid in a row on the cloth. One pin has rolled down a crack by the pool. What number is on the missing pin?",
         "choices": [
           "21",
           "25",

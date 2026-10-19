@@ -12,7 +12,7 @@
     "where": "Khu luyện tập, hàng cờ gió, bãi tập bắn tạm, nhà gác cổng, bãi dựng bia",
     "goal": "Dựng xong sân cho giải bắn giao hữu",
     "play": "Tìm cờ gió bị đổ; cộng điểm bắn thử; xếp tên từ ngắn đến dài; chọn người bắn khai mạc; phóng phi tiêu khởi động",
-    "learn": "Cộng có nhớ trong phạm vi 100, so sánh độ dài (cm, dm)",
+    "learn": "Cộng có nhớ trong phạm vi 100, so sánh độ dài (cm)",
     "reward": "55 XP, 14 Xu, Skill XP Phép cộng, So sánh số",
     "next": "Mũi tên buộc thư"
   },
@@ -50,7 +50,7 @@
         },
         {
           "speaker": "Cáo Cung Thủ",
-          "text": "Chỉ có điều: cờ gió đổ hết, bảng điểm trống trơn, tên trong ống lẫn lộn dài ngắn. Còn bia thì chưa ai dựng."
+          "text": "Chỉ có điều: sáng nay ngựa của lính gác cọ lưng vào hàng cờ gió, đổ hết cả; bảng điểm thì trống trơn, tên trong ống lẫn lộn dài ngắn. Còn bia thì chưa ai dựng."
         }
       ],
       "choices": [
@@ -68,7 +68,7 @@
         "goTo": "Go to the training ground, where Cáo Cung Thủ is licking a finger and holding it up to test the wind",
         "lines": [
           "Whoosh! {name}, perfect timing. I'm holding a friendly archery contest. Right in front of the castle gate. Archers from everywhere are invited.",
-          "One small problem: the wind flags are all down, the scoreboard is blank, and the arrows in the quiver are muddled long and short. And nobody has put up the target yet."
+          "One small problem: this morning the guards' horse scratched its back on the wind flags and knocked them all down; the scoreboard is blank, and the arrows in the quiver are muddled long and short. And nobody has put up the target yet."
         ],
         "choices": [
           {
@@ -85,7 +85,7 @@
     {
       "id": "dung-co-gio",
       "title": "Dựng lại cờ gió",
-      "goTo": "Ra hàng cờ gió trước cổng thành, ba lá cờ bị gió đêm quật đổ nằm rải rác",
+      "goTo": "Ra hàng cờ gió trước cổng thành, ba lá cờ bị ngựa của lính gác cọ lưng làm đổ, nằm rải rác",
       "kind": "search",
       "targets": [
         "st-cao-mui-ten-mang-thu-co-gio-do",
@@ -94,7 +94,7 @@
       ],
       "en": {
         "title": "Raising the wind flags",
-        "goTo": "Go to the row of wind flags before the castle gate, where the night wind knocked three flags flat"
+        "goTo": "Go to the row of wind flags before the castle gate, where the guards' horse knocked three flags flat while scratching its back"
       }
     },
     {
@@ -104,60 +104,60 @@
       "kind": "riddle",
       "target": "st-cao-mui-ten-mang-thu-bang-diem-thu",
       "skill": "phep-cong",
-      "question": "Để thử bảng điểm, Cáo bắn hai lượt. Lượt sáng Cáo được 36 điểm, lượt chiều được 47 điểm. Cả hai lượt Cáo được bao nhiêu điểm?",
+      "question": "Để thử bảng điểm, Cáo bắn hai lượt. Lượt sáng Cáo được 29 điểm, lượt chiều được 37 điểm. Cả hai lượt Cáo được bao nhiêu điểm?",
       "answer": {
-        "value": 83
+        "value": 66
       },
       "support": {
         "guide": [
-          "Muốn biết cả hai lượt, ta làm phép cộng: 36 + 47.",
-          "Cộng hàng đơn vị trước: 6 + 7 bằng bao nhiêu? Có cần nhớ không?"
+          "Muốn biết cả hai lượt, ta làm phép cộng: 29 + 37.",
+          "Cộng hàng đơn vị trước: 9 + 7 bằng bao nhiêu? Có cần nhớ không?"
         ],
-        "hint": "6 + 7 = 13, viết 3 nhớ 1 sang hàng chục.",
+        "hint": "9 + 7 = 16, viết 6 nhớ 1 sang hàng chục.",
         "answer": {
-          "text": "83 điểm",
-          "explanation": "Hàng đơn vị: 6 + 7 = 13, viết 3 nhớ 1. Hàng chục: 3 + 4 = 7, thêm 1 là 8. Vậy 36 + 47 = 83 điểm."
+          "text": "66 điểm",
+          "explanation": "Hàng đơn vị: 9 + 7 = 16, viết 6 nhớ 1. Hàng chục: 2 + 3 = 5, thêm 1 là 6. Vậy 29 + 37 = 66 điểm."
         },
         "en": {
           "guide": [
-            "To find both rounds together, add: 36 + 47.",
-            "Add the ones first: what is 6 + 7? Do you need to carry?"
+            "To find both rounds together, add: 29 + 37.",
+            "Add the ones first: what is 9 + 7? Do you need to carry?"
           ],
-          "hint": "6 + 7 = 13: write 3 and carry 1 to the tens.",
+          "hint": "9 + 7 = 16: write 6 and carry 1 to the tens.",
           "answer": {
-            "text": "83 points",
-            "explanation": "Ones: 6 + 7 = 13, write 3 and carry 1. Tens: 3 + 4 = 7, plus the 1 carried makes 8. So 36 + 47 = 83 points."
+            "text": "66 points",
+            "explanation": "Ones: 9 + 7 = 16, write 6 and carry 1. Tens: 2 + 3 = 5, plus the 1 carried makes 6. So 29 + 37 = 66 points."
           }
         }
       },
       "feedback": {
         "right": [
-          "Tám mươi ba! Cáo viết số lên bảng, nét phấn thẳng như đường tên bay.",
+          "Sáu mươi sáu! Cáo viết số lên bảng, nét phấn thẳng như đường tên bay.",
           "{name} nhớ một sang hàng chục gọn gàng, trúng phóc luôn.",
           "Vút! Bảng điểm chạy rồi. Giờ chỉ thiếu cung thủ thôi."
         ],
         "wrong": [
-          "Sáu cộng bảy được mười ba, {name} đừng quên nhớ một nhé.",
+          "Chín cộng bảy được mười sáu, {name} đừng quên nhớ một nhé.",
           "Hàng đơn vị cộng xong rồi mới sang hàng chục nhé.",
-          "Số chục là 3 và 4, cộng thêm số nhớ nữa mới đủ."
+          "Số chục là 2 và 3, cộng thêm số nhớ nữa mới đủ."
         ],
         "en": {
           "right": [
-            "Eighty-three! Cáo chalks it on the board, the line as straight as an arrow's flight.",
+            "Sixty-six! Cáo chalks the number on the board, the line as straight as an arrow's flight.",
             "{name} carried the one into the tens neatly; dead centre.",
             "Whoosh! The scoreboard works. Now all we need is archers."
           ],
           "wrong": [
-            "Six plus seven is thirteen, {name}; remember to carry the one.",
-            "Finish the ones before you move on to the tens.",
-            "The tens are 3 and 4, and the carried one goes on top of that."
+            "Nine plus seven makes sixteen, {name}; don't forget to carry the one.",
+            "Finish adding the ones before you move on to the tens.",
+            "The tens are 2 and 3, and you still need to add the one you carried."
           ]
         }
       },
       "en": {
         "title": "Adding the practice score",
         "goTo": "Go to the makeshift practice range, where the practice scoreboard has just gone up",
-        "question": "To test the scoreboard, Cáo shoots two rounds. In the morning round he scores 36 points, in the afternoon round 47 points. How many points does he score in both rounds together?"
+        "question": "To test the scoreboard, Cáo shoots two rounds. In the morning round he scores 29 points, in the afternoon round 37 points. How many points does he score in both rounds together?"
       }
     },
     {
@@ -168,23 +168,23 @@
       "mechanic": "sort",
       "target": "st-cao-mui-ten-mang-thu-thuoc-do-ten",
       "skill": "so-sanh-so",
-      "prompt": "Cáo đo bốn mũi tên bằng thước gỗ, có mũi ghi xăng-ti-mét, có mũi ghi đề-xi-mét. Xếp các mũi tên từ ngắn nhất đến dài nhất:",
+      "prompt": "Mỗi mũi tên gồm thân tên và đầu tên, Cáo ghi độ dài từng phần lên thân. Cộng lại rồi xếp các mũi tên từ ngắn nhất đến dài nhất:",
       "items": [
         {
           "id": "ten-gio",
-          "label": "Tên Gió: 65 cm"
+          "label": "Tên Gió: 52 cm và 9 cm"
         },
         {
           "id": "ten-nhi",
-          "label": "Tên Nhí: 4 dm"
+          "label": "Tên Nhí: 38 cm và 6 cm"
         },
         {
           "id": "ten-sam",
-          "label": "Tên Sấm: 7 dm"
+          "label": "Tên Sấm: 64 cm và 8 cm"
         },
         {
           "id": "ten-may",
-          "label": "Tên Mây: 58 cm"
+          "label": "Tên Mây: 49 cm và 7 cm"
         }
       ],
       "answer": {
@@ -197,59 +197,59 @@
       },
       "support": {
         "guide": [
-          "Đổi hết về cùng một đơn vị: 1 dm = 10 cm.",
-          "4 dm là bao nhiêu xăng-ti-mét? 7 dm là bao nhiêu xăng-ti-mét?"
+          "Mỗi mũi tên dài bằng thân cộng đầu: cộng hai số đo của từng mũi.",
+          "Hàng đơn vị cộng lại từ 10 trở lên thì nhớ 1 sang hàng chục."
         ],
-        "hint": "4 dm = 40 cm và 7 dm = 70 cm. Giờ so bốn số đo xăng-ti-mét.",
+        "hint": "Tên Nhí: 38 + 6 = 44 cm. Tên Mây: 49 + 7 = 56 cm. Tính tiếp hai mũi còn lại rồi so.",
         "answer": {
           "text": "Tên Nhí, Tên Mây, Tên Gió, Tên Sấm",
-          "explanation": "4 dm = 40 cm, 7 dm = 70 cm. Vì 40 cm < 58 cm < 65 cm < 70 cm nên thứ tự là Tên Nhí, Tên Mây, Tên Gió, Tên Sấm."
+          "explanation": "38 + 6 = 44 cm, 49 + 7 = 56 cm, 52 + 9 = 61 cm, 64 + 8 = 72 cm. Vì 44 cm < 56 cm < 61 cm < 72 cm nên thứ tự là Tên Nhí, Tên Mây, Tên Gió, Tên Sấm."
         },
         "en": {
           "guide": [
-            "Change everything to the same unit: 1 dm = 10 cm.",
-            "How many centimetres is 4 dm? And 7 dm?"
+            "Each arrow is as long as its shaft plus its head: add the two lengths for each arrow.",
+            "If the ones add up to 10 or more, carry 1 to the tens."
           ],
-          "hint": "4 dm = 40 cm and 7 dm = 70 cm. Now compare four lengths in centimetres.",
+          "hint": "Little: 38 + 6 = 44 cm. Cloud: 49 + 7 = 56 cm. Work out the other two, then compare.",
           "answer": {
             "text": "Little, Cloud, Wind, Thunder",
-            "explanation": "4 dm = 40 cm, 7 dm = 70 cm. Since 40 cm < 58 cm < 65 cm < 70 cm, the order is Little, Cloud, Wind, Thunder."
+            "explanation": "38 + 6 = 44 cm, 49 + 7 = 56 cm, 52 + 9 = 61 cm, 64 + 8 = 72 cm. Since 44 cm < 56 cm < 61 cm < 72 cm, the order is Little, Cloud, Wind, Thunder."
           }
         }
       },
       "feedback": {
         "right": [
           "Ống tên ngay hàng rồi! Cáo rút thử Tên Sấm, dài nhất, oai nhất.",
-          "{name} đổi đề-xi-mét ra xăng-ti-mét nhanh như tên rời dây.",
+          "{name} cộng thân với đầu tên nhanh như tên rời dây.",
           "Ngắn trước, dài sau. Trúng phóc từng mũi."
         ],
         "wrong": [
-          "Bốn đề-xi-mét là bốn mươi xăng-ti-mét đấy {name}, ngắn hơn 58 cm.",
-          "Tên Sấm 7 dm, tức 70 cm, mới là mũi dài nhất.",
-          "Đổi về cùng một đơn vị rồi hẵng so nhé."
+          "Tên Nhí chỉ có 38 cộng 6, tức 44 cm, ngắn nhất ống đấy {name}.",
+          "Tên Sấm 64 cộng 8 là 72 cm, mới là mũi dài nhất.",
+          "Cộng thân với đầu của từng mũi trước rồi hẵng so nhé."
         ],
         "en": {
           "right": [
             "The quiver is in order! Cáo draws out Thunder, the longest and grandest.",
-            "{name} turned decimetres into centimetres as fast as an arrow off the string.",
+            "{name} added shafts and heads as fast as an arrow off the string.",
             "Short first, long last. Every single one dead centre."
           ],
           "wrong": [
-            "Four decimetres is forty centimetres, {name}, shorter than 58 cm.",
-            "Thunder is 7 dm, that's 70 cm, so it's the longest one.",
-            "Change them to the same unit before you compare."
+            "Little is only 38 plus 6, that's 44 cm, the shortest in the quiver, {name}.",
+            "Thunder is 64 plus 8, that's 72 cm, so it's the longest one.",
+            "Add each arrow's shaft and head first, then compare."
           ]
         }
       },
       "en": {
         "title": "Long arrows, short arrows",
         "goTo": "Stop at the gatehouse, where Cáo's quiver stands beside a wooden ruler",
-        "prompt": "Cáo measured four arrows with the wooden ruler; some are marked in centimetres, some in decimetres. Sort the arrows from shortest to longest:",
+        "prompt": "Each arrow has a shaft and a head, and Cáo wrote the length of each part on the shaft. Add them up, then sort the arrows from shortest to longest:",
         "items": [
-          "Wind arrow: 65 cm",
-          "Little arrow: 4 dm",
-          "Thunder arrow: 7 dm",
-          "Cloud arrow: 58 cm"
+          "Wind arrow: 52 cm and 9 cm",
+          "Little arrow: 38 cm and 6 cm",
+          "Thunder arrow: 64 cm and 8 cm",
+          "Cloud arrow: 49 cm and 7 cm"
         ]
       }
     },

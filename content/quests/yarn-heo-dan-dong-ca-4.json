@@ -60,10 +60,10 @@
       "choices": [
         {
           "text": "Mình đi cùng Heo, mang thật nhiều đèn!",
-          "reply": "Thật nhé? Có {name} đi bên cạnh thì góc ấy bớt tối một nửa rồi."
+          "reply": "Thật nhé? Để tớ ghi sổ: Mục số bốn, có {name} đi cùng, góc tối chia làm đôi."
         },
         {
-          "text": "Ai cũng có một góc tối, Heo ạ.",
+          "text": "Góc tối chỉ là chỗ đèn chưa với tới thôi, Heo ạ.",
           "reply": "Ừ… Nhưng góc của tớ to lắm. Thôi, mình đi tìm đèn trước đã."
         }
       ],
@@ -78,10 +78,10 @@
         "choices": [
           {
             "text": "I'll come with you and bring lots of lamps!",
-            "reply": "Really? With you beside me, {name}, that corner is half as dark already."
+            "reply": "Really? Let me write it down: item four, {name} comes along, the dark corner gets split in two."
           },
           {
-            "text": "Everyone has a dark corner, Heo.",
+            "text": "A dark corner is just a spot the light hasn't reached yet, Heo.",
             "reply": "Yes… but mine is a big one. Well, let’s find the lamps first."
           }
         ]
@@ -206,7 +206,7 @@
       "logicType": "puzzle",
       "target": "st-heo-dan-dong-ca-dong-ho-hien-chuong-bo",
       "skill": "xem-dong-ho",
-      "prompt": "Đêm diễn bắt đầu lúc 7 giờ tối. Heo muốn cả dàn tập lại đúng 1 giờ trước khi diễn. Cả dàn bắt đầu tập lúc mấy giờ?",
+      "prompt": "Đêm diễn bắt đầu lúc 19 giờ, tức 7 giờ tối. Heo muốn cả dàn tập đúng 2 giờ, tập xong nghỉ 30 phút ăn bánh rồi mới lên sân khấu. Cả dàn bắt đầu tập lúc mấy giờ?",
       "choices": [
         {
           "id": "a",
@@ -214,11 +214,11 @@
         },
         {
           "id": "b",
-          "text": "6 giờ tối"
+          "text": "4 giờ rưỡi"
         },
         {
           "id": "c",
-          "text": "8 giờ tối"
+          "text": "6 giờ rưỡi"
         }
       ],
       "answer": {
@@ -226,58 +226,58 @@
       },
       "support": {
         "guide": [
-          "Tập trước khi diễn, nên giờ tập phải sớm hơn 7 giờ.",
-          "Lùi kim ngắn lại một số."
+          "Đi ngược từ giờ diễn: trước hết lùi 30 phút nghỉ ăn bánh.",
+          "Rồi lùi tiếp 2 giờ tập, kim ngắn lùi hai số."
         ],
-        "hint": "Sớm hơn 7 giờ đúng một giờ.",
+        "hint": "7 giờ tối lùi 30 phút là 6 giờ rưỡi tối.",
         "answer": {
-          "text": "6 giờ tối",
-          "explanation": "7 giờ lùi lại 1 giờ là 6 giờ. Cả dàn bắt đầu tập lúc 6 giờ tối, tập xong vừa kịp diễn lúc 7 giờ."
+          "text": "4 giờ rưỡi chiều",
+          "explanation": "19 giờ là 7 giờ tối. Lùi 30 phút nghỉ được 6 giờ rưỡi tối, lùi tiếp 2 giờ tập được 4 giờ rưỡi chiều. Cả dàn tập từ 4 giờ rưỡi tới 6 giờ rưỡi, nghỉ tới 7 giờ là vừa diễn."
         },
         "en": {
           "guide": [
-            "Rehearsal comes before the show, so it must be earlier than 7.",
-            "Move the short hand back one number."
+            "Work backwards from the show: first take away the 30-minute snack break.",
+            "Then take away the 2 hours of rehearsal; the short hand moves back two numbers."
           ],
-          "hint": "Exactly one hour earlier than 7.",
+          "hint": "30 minutes before 7 in the evening is half past 6.",
           "answer": {
-            "text": "Six o’clock in the evening",
-            "explanation": "One hour before 7 o’clock is 6 o’clock. The choir starts rehearsing at 6 in the evening and finishes just in time for the 7 o’clock show."
+            "text": "Half past 4 in the afternoon",
+            "explanation": "19:00 is 7 in the evening. Back 30 minutes for the break gives half past 6; back 2 more hours of rehearsal gives half past 4 in the afternoon. They rehearse from half past 4 to half past 6, rest until 7 and go on."
           }
         }
       },
       "feedback": {
         "right": [
-          "Sáu giờ tối! Bò gật đầu, chuông đồng kêu leng keng đồng ý.",
-          "{name} lùi kim đồng hồ khéo như tớ xếp bao.",
-          "Tập một giờ rồi diễn, vừa khít như nắp hũ."
+          "Bốn giờ rưỡi chiều! Bò gật đầu, chuông đồng kêu leng keng đồng ý.",
+          "{name} lùi kim đồng hồ hai chặng mà chẳng lạc chặng nào, khéo như tớ xếp bao.",
+          "Tập hai tiếng, nghỉ nửa tiếng, rồi diễn: vừa khít như nắp hũ."
         ],
         "wrong": [
-          "Tám giờ thì đêm diễn bắt đầu mất rồi, còn tập gì nữa.",
-          "Năm giờ thì sớm hơn hai tiếng, Heo chỉ cần một tiếng thôi.",
-          "Đặt kim ngắn ở số 7 rồi lùi lại một số, {name} thử xem."
+          "Năm giờ là quên mất nửa tiếng nghỉ ăn bánh rồi {name}.",
+          "Sáu giờ rưỡi mới chỉ lùi phần nghỉ thôi, còn hai giờ tập nữa cơ.",
+          "Đi ngược từng chặng: giờ diễn, lùi phần nghỉ, rồi lùi phần tập."
         ],
         "en": {
           "right": [
-            "Six in the evening! The cow nods and her bell rings ting-a-ling in agreement.",
-            "You turned the clock back as neatly as I stack sacks, {name}.",
-            "An hour of practice, then the show: a perfect fit, like a lid on a jar."
+            "Half past four! The cow nods and her bell rings ting-a-ling in agreement.",
+            "You turned the clock back in two stages without losing either, as neatly as I stack sacks, {name}.",
+            "Two hours of practice, half an hour of rest, then the show: a perfect fit, like a lid on a jar."
           ],
           "wrong": [
-            "By eight the show has already started; too late to rehearse.",
-            "Five is two hours early, and Heo only needs one.",
-            "Put the short hand on 7 and move it back one number, {name}."
+            "Five o’clock forgets the half-hour snack break, {name}.",
+            "Half past six only takes away the break; there are still two hours of rehearsal.",
+            "Go backwards stage by stage: the show, minus the break, minus the rehearsal."
           ]
         }
       },
       "en": {
         "title": "When does rehearsal start?",
         "goTo": "Go over to the red cowshed and look at the clock on its porch",
-        "prompt": "The show starts at 7 o’clock in the evening. Heo wants the choir to rehearse for exactly 1 hour before it. What time does rehearsal start?",
+        "prompt": "The show starts at 19:00, which is 7 o’clock in the evening. Heo wants the choir to rehearse for exactly 2 hours, then rest 30 minutes with a snack before going on stage. What time does rehearsal start?",
         "choices": [
-          "5 in the afternoon",
-          "6 in the evening",
-          "8 in the evening"
+          "5 p.m.",
+          "Half past 4",
+          "Half past 6"
         ]
       }
     },

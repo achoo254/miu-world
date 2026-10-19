@@ -12,7 +12,7 @@
     "where": "Sân trường: mép sân bóng, đường chạy, vạch xuất phát, khán đài nhỏ, giữa sân bóng",
     "goal": "Đá trọn trận giao hữu đầu tiên và giữ tinh thần thể thao",
     "play": "Cắm cờ góc; chạy khởi động; đọc bảng tỉ số; chọn cách đón kết quả",
-    "learn": "Phép cộng trong phạm vi 10, so sánh hơn kém",
+    "learn": "Phép cộng có nhớ trong phạm vi 100, so sánh hơn kém",
     "reward": "75 XP, 20 Xu, Skill XP Phép cộng, Hơn kém, Khăn quàng đỏ",
     "next": "Trận giao hữu kế tiếp ở một vùng đất mới"
   },
@@ -59,11 +59,11 @@
       ],
       "choices": [
         {
-          "text": "Cháu cắm cờ ngay!",
+          "text": "Tớ cắm cờ ngay!",
           "reply": "Tuýt! Cắm thẳng, cắm chắc, mưa to cũng không đổ."
         },
         {
-          "text": "Anh có hồi hộp không?",
+          "text": "Cậu có hồi hộp không?",
           "reply": "Hồi hộp như sắp thổi còi khai cuộc lần đầu. Mà vui!"
         }
       ],
@@ -126,19 +126,19 @@
       "mechanic": "multi-select",
       "target": "st-ho-coi-giao-huu-bang-ti-so",
       "skill": "phep-cong",
-      "prompt": "Hết trận! Bảng tỉ số ghi: đội trường ghi 3 bàn ở hiệp một và 2 bàn ở hiệp hai; đội bạn ghi 4 bàn ở hiệp một và 2 bàn ở hiệp hai. Chọn những câu đúng:",
+      "prompt": "Hết trận! Đội bạn thắng 6 – 5. Bảng thống kê ghi thêm: đội trường chuyền 38 đường ở hiệp một và 27 đường ở hiệp hai; đội bạn chuyền tất cả 72 đường. Chọn những câu đúng:",
       "choices": [
         {
-          "id": "truong-5",
-          "text": "Đội trường ghi được 5 bàn"
+          "id": "truong-65",
+          "text": "Đội trường chuyền được 65 đường cả trận"
         },
         {
-          "id": "hoa",
-          "text": "Hai đội hòa nhau"
+          "id": "chuyen-bang",
+          "text": "Hai đội chuyền bóng nhiều bằng nhau"
         },
         {
-          "id": "ban-hon-1",
-          "text": "Đội bạn ghi nhiều hơn đội trường 1 bàn"
+          "id": "ban-hon-7",
+          "text": "Đội bạn chuyền nhiều hơn đội trường 7 đường"
         },
         {
           "id": "truong-thang",
@@ -147,64 +147,64 @@
       ],
       "answer": {
         "choices": [
-          "truong-5",
-          "ban-hon-1"
+          "truong-65",
+          "ban-hon-7"
         ]
       },
       "support": {
         "guide": [
-          "Cộng bàn của từng đội qua hai hiệp.",
-          "Đội trường: 3 + 2. Đội bạn: 4 + 2."
+          "Cộng số đường chuyền hai hiệp của đội trường: 38 + 27, nhớ đặt tính thẳng cột.",
+          "Rồi so với 72 đường của đội bạn: lấy số lớn trừ số bé."
         ],
-        "hint": "5 bàn và 6 bàn: ai nhiều hơn, nhiều hơn mấy bàn?",
+        "hint": "8 + 7 = 15, viết 5 nhớ 1. Còn 72 trừ 65 thì sao?",
         "answer": {
-          "text": "Đội trường 5 bàn, đội bạn hơn 1 bàn",
-          "explanation": "Đội trường ghi 3 + 2 = 5 bàn, đội bạn ghi 4 + 2 = 6 bàn. 6 hơn 5 là 1, nên đội bạn thắng sát nút."
+          "text": "Đội trường chuyền 65 đường, đội bạn hơn 7 đường",
+          "explanation": "38 + 27 = 65 (8 + 7 = 15 viết 5 nhớ 1; 3 + 2 = 5, thêm 1 là 6). 72 − 65 = 7, nên đội bạn chuyền nhiều hơn 7 đường. Tỉ số 6 – 5 nghĩa là đội bạn thắng."
         },
         "en": {
           "guide": [
-            "Add each team's goals over both halves.",
-            "Our school: 3 + 2. Visitors: 4 + 2."
+            "Add our school's passes over both halves: 38 + 27, with the columns lined up.",
+            "Then compare with the visitors' 72: take the smaller number from the larger."
           ],
-          "hint": "5 goals and 6 goals: who has more, and by how many?",
+          "hint": "8 + 7 = 15: write 5, carry 1. And what is 72 minus 65?",
           "answer": {
-            "text": "We scored 5; they scored 1 more",
-            "explanation": "Our school scored 3 + 2 = 5 and the visitors 4 + 2 = 6. 6 is 1 more than 5, so the visitors won narrowly."
+            "text": "We made 65 passes; they made 7 more",
+            "explanation": "38 + 27 = 65 (8 + 7 = 15, write 5 carry 1; 3 + 2 = 5, plus 1 makes 6). 72 − 65 = 7, so the visitors made 7 more passes. A 6–5 score means the visitors won."
           }
         }
       },
       "feedback": {
         "right": [
-          "Tuýt! Đọc tỉ số chuẩn như trọng tài chính.",
-          "{name} cộng nhanh, so đúng, không bỏ sót bàn nào.",
+          "Tuýt! Đọc bảng thống kê chuẩn như trọng tài chính.",
+          "{name} cộng có nhớ gọn gàng, so đúng từng đường chuyền.",
           "Thua một bàn thôi! Hổ cười to hơn cả lúc đội ghi bàn."
         ],
         "wrong": [
-          "Năm bàn với sáu bàn đâu phải hòa, đếm lại nhé.",
-          "Đội trường ghi ít hơn một bàn, chưa thắng được đâu.",
-          "Cộng từng hiệp của mỗi đội trước, rồi mới so."
+          "Sáu mươi lăm với bảy mươi hai đâu có bằng nhau, so lại nhé.",
+          "Tỉ số sáu – năm nghiêng về đội bạn, đội trường chưa thắng được đâu.",
+          "Cộng hai hiệp của đội trường trước, nhớ số nhớ sang hàng chục, rồi mới so."
         ],
         "en": {
           "right": [
-            "Whistle! You read the score like a head referee.",
-            "Quick adding, right comparing, no goal missed, {name}.",
+            "Whistle! You read the match stats like a head referee.",
+            "Neat carrying and a spot-on comparison, pass by pass, {name}.",
             "Only one goal behind! Hổ laughs louder than when we scored."
           ],
           "wrong": [
-            "Five and six isn't a draw; count again.",
-            "Our school scored one fewer, so we didn't win.",
-            "Add up each team's halves first, then compare."
+            "Sixty-five and seventy-two aren't the same; compare again.",
+            "Six–five goes to the visitors, so our school did not win.",
+            "Add our school's two halves first, carrying into the tens, then compare."
           ]
         }
       },
       "en": {
         "title": "Reading the scoreboard",
         "goTo": "Go up to the little stand to read the scoreboard",
-        "prompt": "Full time! The scoreboard says: our school scored 3 goals in the first half and 2 in the second; the visitors scored 4 in the first half and 2 in the second. Pick the true statements:",
+        "prompt": "Full time! The visitors win 6–5. The stats board adds: our school made 38 passes in the first half and 27 in the second; the visitors made 72 passes in all. Pick the true statements:",
         "choices": [
-          "Our school scored 5 goals",
-          "The match was a draw",
-          "The visitors scored 1 more goal than us",
+          "Our school made 65 passes in the match",
+          "Both teams made the same number of passes",
+          "The visitors made 7 more passes than our school",
           "Our school won the match"
         ]
       }
@@ -270,7 +270,7 @@
       "title": "Trận giao hữu mới",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đội bạn hẹn trận lượt về ở sân của họ, bên kia đồi. Hổ đã bắt đầu đánh dấu bản đồ: mỗi vùng đất một trận giao hữu, đúng như anh mơ.",
+      "text": "Đội bạn hẹn trận lượt về ở sân của họ, bên kia đồi. Hổ đã bắt đầu đánh dấu bản đồ: mỗi vùng đất một trận giao hữu, đúng như Hổ hằng mơ.",
       "en": {
         "title": "A new friendly",
         "text": "The visitors have arranged a return match on their pitch over the hill. Hổ has started marking a map: one friendly in every land, just as he dreamed."

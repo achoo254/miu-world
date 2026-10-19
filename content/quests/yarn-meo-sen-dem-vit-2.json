@@ -5,7 +5,7 @@
   "title": "Chuyện của Mèo Đầm Sen, chương 2: Nước cờ gửi qua thư",
   "status": "active",
   "category": "story",
-  "summary": "Lá thư cờ của người bạn phương xa bị gió thổi tung. {name} nhặt lại từng trang, đọc thư, tính nước đi cho quân Xe rồi cùng Mèo chọn nước cờ gửi đi.",
+  "summary": "Lá thư cờ của người bạn phương xa bị lũ trẻ đá bóng mượn mất. {name} nhặt lại từng trang, đọc thư, tính nước đi cho quân Xe rồi cùng Mèo chọn nước cờ gửi đi.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Mèo Đầm Sen",
@@ -50,7 +50,7 @@
         },
         {
           "speaker": "Mèo Đầm Sen",
-          "text": "Lần này Mèo muốn đọc thật kỹ, nghĩ thật chậm. Nhưng vừa bóc thư thì gió thổi tung, trang bay mỗi nơi một tờ."
+          "text": "Lần này Mèo muốn đọc thật kỹ, nghĩ thật chậm. Nhưng vừa bóc thư thì lũ trẻ đá bóng chạy ngang, tưởng giấy gấp máy bay, mượn cả xấp ra sân phóng thử."
         }
       ],
       "choices": [
@@ -68,7 +68,7 @@
         "goTo": "Go to the lotus pond, where Mèo is holding an empty envelope",
         "lines": [
           "Meow. The chess letter came. Three years, one move per letter. I have not won a single game.",
-          "This time I want to read carefully and think slowly. But the moment I opened it, the wind blew the pages everywhere."
+          "This time I want to read carefully and think slowly. But the moment I opened it, the football children ran past, took the pages for paper planes and borrowed the lot to fly on the pitch."
         ],
         "choices": [
           {
@@ -85,9 +85,9 @@
     {
       "id": "nhat-thu-co",
       "title": "Những trang thư bay",
-      "goTo": "Chạy ra sân bóng làng, gió thổi các trang thư bay tới đó",
+      "goTo": "Chạy ra sân bóng làng, các trang thư đã thành máy bay giấy rơi khắp sân",
       "kind": "find-object",
-      "prompt": "Gió cuốn thư cờ ra tận sân bóng. Đọc lời Mèo tả rồi nhặt từng thứ:",
+      "prompt": "Lũ trẻ phóng thư cờ khắp sân bóng rồi chạy về ăn cơm. Đọc lời Mèo tả rồi nhặt từng thứ:",
       "items": [
         {
           "id": "dau-sap",
@@ -110,9 +110,9 @@
       ],
       "skill": "doc-hieu",
       "en": {
-        "title": "Pages on the wind",
-        "goTo": "Run to the village football pitch, where the wind blew the pages",
-        "prompt": "The wind carried the chess letter all the way to the pitch. Read how Mèo describes each thing and pick it up:",
+        "title": "Pages turned paper planes",
+        "goTo": "Run to the village football pitch, where the pages came down as paper planes",
+        "prompt": "The children flew the chess letter all over the pitch and ran home for dinner. Read how Mèo describes each thing and pick it up:",
         "items": [
           {
             "name": "Page with the red seal",
@@ -389,6 +389,6 @@
   },
   "en": {
     "title": "Mèo Đầm Sen's story, chapter 2: A move by post",
-    "summary": "The letter from Mèo's faraway chess friend has blown away. {name} gathers the pages, reads the letter, works out the Rook's moves and helps Mèo choose which move to post."
+    "summary": "The letter from Mèo's faraway chess friend has been borrowed by the football children. {name} gathers the pages, reads the letter, works out the Rook's moves and helps Mèo choose which move to post."
   }
 }

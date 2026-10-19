@@ -12,7 +12,7 @@
     "where": "Làng núi tuyết: bệ tượng giữa quảng trường, chân dốc băng, trạm nhiệm vụ, hiên cửa hàng đồ ấm, cổng làng tuyết",
     "goal": "Chọn và chở về khối băng trong nhất cho bức tượng bảy màu",
     "play": "Tìm ba khối băng theo lời tả; cân hai khối; xếp các khối theo cạnh dài; chọn cách chở băng; cân lại cho thăng bằng",
-    "learn": "Ki-lô-gam, xăng-ti-mét và đề-xi-mét, từ chỉ đặc điểm",
+    "learn": "Ki-lô-gam, so sánh số đo xăng-ti-mét, từ chỉ đặc điểm",
     "reward": "55 XP, 14 Xu, Skill XP Khối lượng, So sánh số",
     "next": "Phác hình lên tuyết"
   },
@@ -141,52 +141,52 @@
       "kind": "riddle",
       "target": "st-cao-tuyet-tuong-bay-mau-can-dia",
       "skill": "khoi-luong",
-      "question": "Cáo đặt từng khối lên cân. Khối trong vắt nặng 46 kg, khối có vết nứt nặng 38 kg. Cả hai khối nặng tất cả bao nhiêu ki-lô-gam?",
+      "question": "Cáo đặt từng khối lên cân. Khối trong vắt nặng 27 kg, khối có vết nứt nặng 35 kg. Cả hai khối nặng tất cả bao nhiêu ki-lô-gam?",
       "answer": {
-        "value": 84
+        "value": 62
       },
       "support": {
         "guide": [
           "Muốn biết cả hai khối nặng bao nhiêu thì làm phép cộng.",
-          "Cộng hàng đơn vị trước: 6 + 8 được bao nhiêu, nhớ sang hàng chục."
+          "Cộng hàng đơn vị trước: 7 + 5 được bao nhiêu, nhớ sang hàng chục."
         ],
-        "hint": "46 kg + 38 kg = ? kg. Hàng đơn vị: 6 + 8 = 14, viết 4 nhớ 1.",
+        "hint": "27 kg + 35 kg = ? kg. Hàng đơn vị: 7 + 5 = 12, viết 2 nhớ 1.",
         "answer": {
-          "text": "84 kg",
-          "explanation": "46 + 38: 6 + 8 = 14, viết 4 nhớ 1; 4 + 3 = 7, thêm 1 là 8. Vậy hai khối nặng 84 kg."
+          "text": "62 kg",
+          "explanation": "27 + 35: 7 + 5 = 12, viết 2 nhớ 1; 2 + 3 = 5, thêm 1 là 6. Vậy hai khối nặng 62 kg."
         },
         "en": {
           "guide": [
             "To find how heavy both blocks are together, add.",
-            "Add the ones first: 6 + 8 makes how many? Carry to the tens."
+            "Add the ones first: 7 + 5 makes how many? Carry to the tens."
           ],
-          "hint": "46 kg + 38 kg = ? kg. Ones: 6 + 8 = 14, write 4 and carry 1.",
+          "hint": "27 kg + 35 kg = ? kg. Ones: 7 + 5 = 12, write 2 and carry 1.",
           "answer": {
-            "text": "84 kg",
-            "explanation": "46 + 38: 6 + 8 = 14, write 4 carry 1; 4 + 3 = 7, plus 1 is 8. So the two blocks weigh 84 kg."
+            "text": "62 kg",
+            "explanation": "27 + 35: 7 + 5 = 12, write 2 carry 1; 2 + 3 = 5, plus 1 is 6. So the two blocks weigh 62 kg."
           }
         }
       },
       "feedback": {
         "right": [
-          "Tám mươi tư ki-lô-gam. Cáo gật đầu một cái, gọn như một nét thước kẻ.",
+          "Sáu mươi hai ki-lô-gam. Cáo gật đầu một cái, gọn như một nét thước kẻ.",
           "{name} nhớ sang hàng chục rất đều tay, đúng kiểu thợ gọt băng.",
           "Chiếc xe trượt chở được chín mươi ki-lô-gam, vậy cả hai khối cùng lên xe được."
         ],
         "wrong": [
-          "Sáu cộng tám là mười bốn, {name} đừng quên nhớ một sang hàng chục nhé.",
-          "Gần đúng rồi, cộng lại hàng chục: bốn với ba, rồi thêm số đã nhớ.",
+          "Bảy cộng năm là mười hai, {name} đừng quên nhớ một sang hàng chục nhé.",
+          "Gần đúng rồi, cộng lại hàng chục: hai với ba, rồi thêm số đã nhớ.",
           "Hai khối cùng lên cân thì nặng hơn từng khối, phải lấy cả hai số cộng lại."
         ],
         "en": {
           "right": [
-            "Eighty-four kilograms. Cáo nods once, neat as a line drawn with a ruler.",
+            "Sixty-two kilograms. Cáo gives one nod, as neat as a ruled line.",
             "{name} carried to the tens as steadily as an ice carver's hand.",
             "The sled can carry ninety kilograms, so both blocks can ride together."
           ],
           "wrong": [
-            "Six plus eight is fourteen, {name}; don't forget to carry one to the tens.",
-            "Nearly there; add the tens again: four and three, then the one you carried.",
+            "Seven plus five is twelve, {name}; don't forget to carry one to the tens.",
+            "Nearly there; add the tens again: two and three, then the one you carried.",
             "Both blocks together weigh more than either alone, so add both numbers."
           ]
         }
@@ -194,7 +194,7 @@
       "en": {
         "title": "Two blocks on the scale",
         "goTo": "Push the two blocks to the quest post, where the village's big pan scale stands",
-        "question": "Cáo puts each block on the scale. The clear block weighs 46 kg and the cracked block weighs 38 kg. How many kilograms do the two blocks weigh altogether?"
+        "question": "Cáo puts each block on the scale. The clear block weighs 27 kg and the cracked block weighs 35 kg. How many kilograms do the two blocks weigh altogether?"
       }
     },
     {
@@ -205,23 +205,23 @@
       "mechanic": "sort",
       "target": "st-cao-tuyet-tuong-bay-mau-thuoc-day",
       "skill": "so-sanh-so",
-      "prompt": "Cáo đo cạnh dài nhất của bốn khối băng còn lại. Thân tượng cần khối có cạnh dài nhất. Xếp các khối theo cạnh từ ngắn đến dài (nhớ: 1 dm = 10 cm):",
+      "prompt": "Cáo đo cạnh dài nhất của bốn khối băng còn lại. Thân tượng cần khối có cạnh dài nhất. Xếp các khối theo cạnh từ ngắn đến dài:",
       "items": [
         {
           "id": "vuong-vuc",
-          "label": "Khối vuông vức: 4 dm"
+          "label": "Khối vuông vức: 47 cm"
         },
         {
           "id": "mat-guong",
-          "label": "Khối mặt gương: 35 cm"
+          "label": "Khối mặt gương: 40 cm"
         },
         {
           "id": "dang-thap",
-          "label": "Khối dáng tháp: 5 dm"
+          "label": "Khối dáng tháp: 74 cm"
         },
         {
           "id": "van-may",
-          "label": "Khối vân mây: 42 cm"
+          "label": "Khối vân mây: 70 cm"
         }
       ],
       "answer": {
@@ -234,59 +234,59 @@
       },
       "support": {
         "guide": [
-          "Đổi hết về xăng-ti-mét cho dễ so: 1 dm = 10 cm.",
-          "4 dm = 40 cm, 5 dm = 50 cm. Rồi so bốn số xăng-ti-mét với nhau."
+          "So hàng chục trước: số nào có nhiều chục hơn thì lớn hơn.",
+          "Hai số cùng số chục thì so tiếp hàng đơn vị."
         ],
-        "hint": "Bốn số cần so là 40 cm, 35 cm, 50 cm và 42 cm.",
+        "hint": "40 và 47 cùng 4 chục; 70 và 74 cùng 7 chục. So hàng đơn vị của từng cặp.",
         "answer": {
           "text": "Mặt gương, vuông vức, vân mây, dáng tháp",
-          "explanation": "35 cm < 40 cm (4 dm) < 42 cm < 50 cm (5 dm). Khối dáng tháp có cạnh dài nhất nên làm thân tượng."
+          "explanation": "40 cm < 47 cm < 70 cm < 74 cm. Khối dáng tháp có cạnh dài nhất nên làm thân tượng."
         },
         "en": {
           "guide": [
-            "Change everything to centimetres so it's easy to compare: 1 dm = 10 cm.",
-            "4 dm = 40 cm and 5 dm = 50 cm. Then compare the four centimetre numbers."
+            "Compare the tens first: the number with more tens is bigger.",
+            "If two numbers have the same tens, compare the ones."
           ],
-          "hint": "The four numbers to compare are 40 cm, 35 cm, 50 cm and 42 cm.",
+          "hint": "40 and 47 both have 4 tens; 70 and 74 both have 7 tens. Compare the ones in each pair.",
           "answer": {
             "text": "Mirror-face, square, cloud-vein, tower",
-            "explanation": "35 cm < 40 cm (4 dm) < 42 cm < 50 cm (5 dm). The tower block has the longest edge, so it becomes the statue's body."
+            "explanation": "40 cm < 47 cm < 70 cm < 74 cm. The tower block has the longest edge, so it becomes the statue's body."
           }
         }
       },
       "feedback": {
         "right": [
           "Khối dáng tháp đứng cuối hàng, thẳng như một cây nến. Cáo khẽ vẫy đuôi.",
-          "{name} đổi đề-xi-mét ra xăng-ti-mét nhanh hơn cả tớ vẽ một hình vuông.",
+          "{name} không bị 47 với 74 đánh lừa, mắt tinh hơn cả tớ khi vẽ một hình vuông.",
           "Ngắn tới dài, không lệch một xăng-ti-mét nào. Tớ thích sự ngay ngắn này."
         ],
         "wrong": [
-          "4 dm là 40 cm đấy, {name}, dài hơn 35 cm một chút.",
-          "Khối 42 cm chưa phải dài nhất đâu, 5 dm còn dài hơn.",
-          "Đổi hết sang xăng-ti-mét rồi mới so, đừng so số 4 với số 35."
+          "47 cm có 4 chục, còn 74 cm có tới 7 chục đấy, {name}.",
+          "Khối 70 cm chưa phải dài nhất đâu, 74 cm còn dài hơn.",
+          "So số chục trước, đừng chỉ nhìn chữ số cuối."
         ],
         "en": {
           "right": [
             "The tower block stands at the end of the row, straight as a candle. Cáo gives a small tail wag.",
-            "{name} turned decimetres into centimetres faster than I can draw a square.",
+            "{name} wasn't fooled by 47 and 74; sharper eyes than mine when I draw a square.",
             "Short to long, not a centimetre out of place. I love this neatness."
           ],
           "wrong": [
-            "4 dm is 40 cm, {name}, a little longer than 35 cm.",
-            "The 42 cm block isn't the longest; 5 dm is longer still.",
-            "Change everything to centimetres first; don't compare 4 with 35."
+            "47 cm has 4 tens, but 74 cm has 7 tens, {name}.",
+            "The 70 cm block isn't the longest; 74 cm is longer still.",
+            "Compare the tens first; don't just look at the last digit."
           ]
         }
       },
       "en": {
         "title": "Which edge is longest?",
         "goTo": "Go to the porch of the warm-clothes shop, where Cáo has hung his tape measure on the fence",
-        "prompt": "Cáo measures the longest edge of the four remaining blocks. The statue's body needs the block with the longest edge. Sort the blocks by edge, from shortest to longest (remember: 1 dm = 10 cm):",
+        "prompt": "Cáo measures the longest edge of the four remaining blocks. The statue's body needs the block with the longest edge. Sort the blocks by edge, from shortest to longest:",
         "items": [
-          "Square block: 4 dm",
-          "Mirror-face block: 35 cm",
-          "Tower block: 5 dm",
-          "Cloud-vein block: 42 cm"
+          "Square block: 47 cm",
+          "Mirror-face block: 40 cm",
+          "Tower block: 74 cm",
+          "Cloud-vein block: 70 cm"
         ]
       }
     },

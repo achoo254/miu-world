@@ -93,10 +93,11 @@
       "logicType": "maze",
       "target": "st-te-tuong-nghin-van-co-meo-muop-tren-ban-co",
       "skill": "logic",
-      "prompt": "Chú mèo mướp ngậm quân vua trốn trong khán phòng. Ô chữ S là chỗ {name} đứng, ô chữ G là chú mèo, ô # là dãy ghế chắn lối. Dãy bước nào đưa {name} tới chỗ chú mèo? (→ sang phải, ↓ đi xuống)",
+      "prompt": "Chú mèo mướp ngậm quân vua ngồi giữa khán phòng, đúng ô có chú mèo trên sơ đồ. {name} cầm cuộn len dẫn mèo về bàn cờ ở ô ngôi sao; ô gạch là dãy ghế chắn lối. Dãy bước nào đưa chú mèo về tới bàn cờ? (→ sang phải, ↓ đi xuống)",
       "grid": [
         [
           "S",
+          ".",
           ".",
           "#",
           ".",
@@ -104,6 +105,7 @@
         ],
         [
           "#",
+          "#",
           ".",
           "#",
           ".",
@@ -114,9 +116,11 @@
           ".",
           ".",
           ".",
+          ".",
           "#"
         ],
         [
+          ".",
           "#",
           "#",
           "#",
@@ -127,15 +131,15 @@
       "choices": [
         {
           "id": "a",
-          "text": "→ ↓ ↓ → → ↓ →"
+          "text": "→ → ↓ ↓ → → ↓ →"
         },
         {
           "id": "b",
-          "text": "→ ↓ ↓ → → → ↓"
+          "text": "→ → ↓ ↓ → → → ↓"
         },
         {
           "id": "c",
-          "text": "→ → ↓ ↓ → ↓ →"
+          "text": "→ → → ↓ ↓ → ↓ →"
         }
       ],
       "answer": {
@@ -143,46 +147,46 @@
       },
       "support": {
         "guide": [
-          "Đặt ngón tay lên ô S, đi theo từng mũi tên một.",
-          "Gặp ô # là dãy bước ấy sai, thử dãy khác."
+          "Bắt đầu từ chỗ mèo mướp đang ngồi, dò theo từng mũi tên một.",
+          "Mũi tên nào dẫn vào ô gạch thì dãy bước ấy sai, thử dãy khác."
         ],
-        "hint": "Bước thứ hai phải đi xuống, vì ô bên phải ở hàng trên cùng bị chắn.",
+        "hint": "Hàng trên cùng chỉ đi được hai ô sang phải, ô thứ tư là dãy ghế.",
         "answer": {
-          "text": "→ ↓ ↓ → → ↓ →",
-          "explanation": "Sang phải một ô, xuống hai ô, sang phải hai ô, xuống một ô, rồi sang phải một ô là tới chỗ chú mèo. Hai dãy kia đều đâm vào dãy ghế."
+          "text": "→ → ↓ ↓ → → ↓ →",
+          "explanation": "Sang phải hai ô, xuống hai ô, sang phải hai ô, xuống một ô, rồi sang phải một ô là về tới bàn cờ. Hai dãy kia đều đâm vào dãy ghế."
         },
         "en": {
           "guide": [
-            "Put your finger on square S and follow the arrows one by one.",
-            "If you hit a # square, that path is wrong; try another."
+            "Start where the tabby is sitting and trace the arrows one at a time.",
+            "If an arrow leads onto a brick square, that path is wrong; try another."
           ],
-          "hint": "The second step must go down, because the next square right on the top row is blocked.",
+          "hint": "On the top row you can only go two squares right; the fourth square is a row of seats.",
           "answer": {
-            "text": "→ ↓ ↓ → → ↓ →",
-            "explanation": "Right one, down two, right two, down one, then right one reaches the cat. The other two paths both run into a row of seats."
+            "text": "→ → ↓ ↓ → → ↓ →",
+            "explanation": "Right two, down two, right two, down one, then right one reaches the chessboard. The other two paths both run into a row of seats."
           }
         }
       },
       "feedback": {
         "right": [
-          "Chú mèo bị đón gọn, quân vua được trả về bàn. Chiếu tướng!",
-          "Ngươi lách qua các dãy ghế khéo như quân mã lách qua hàng tốt.",
-          "Mèo mướp kêu «meo» một tiếng rồi nằm cuộn tròn trong tay ngươi."
+          "Chú mèo theo cuộn len về tận bàn cờ, quân vua được trả về chỗ cũ. Chiếu tướng!",
+          "Ngươi dẫn mèo lách qua các dãy ghế khéo như quân mã lách qua hàng tốt.",
+          "Mèo mướp nhả quân vua, kêu «meo» một tiếng rồi nằm cuộn tròn bên bàn cờ."
         ],
         "wrong": [
           "Ối, dãy bước ấy húc vào dãy ghế mất rồi.",
-          "Thử đi lại từ ô S, đếm từng ô cho kỹ trước khi bước.",
+          "Thử đi lại từ ô có chú mèo, đếm từng ô cho kỹ trước khi bước.",
           "Ở hàng thứ ba, đừng đi quá xa sang phải kẻo gặp ô chắn."
         ],
         "en": {
           "right": [
-            "The cat is caught gently and the king goes back to the board. Check!",
-            "You slipped between the rows of seats like a knight through a line of pawns.",
-            "The tabby lets out a «meow» and curls up in your arms."
+            "The cat follows the ball of wool all the way to the board, and the king goes back to its square. Check!",
+            "You led the cat between the rows of seats like a knight through a line of pawns.",
+            "The tabby drops the king, lets out a «meow» and curls up beside the board."
           ],
           "wrong": [
             "Oops, that path bumps into a row of seats.",
-            "Start again from S, and count each square carefully before you step.",
+            "Start again from the cat square, and count each square carefully before you step.",
             "On the third row, do not go too far right or you will hit a blocked square."
           ]
         }
@@ -190,11 +194,11 @@
       "en": {
         "title": "Catching the tabby cat",
         "goTo": "Go into the auditorium; the tabby has just run off between the rows of seats with the king in its mouth",
-        "prompt": "The tabby cat is hiding in the auditorium with the king in its mouth. Square S is where {name} stands, square G is the cat, and # squares are rows of seats in the way. Which steps take {name} to the cat? (→ right, ↓ down)",
+        "prompt": "The tabby sits in the middle of the auditorium with the king in its mouth, on the cat square of the plan. {name} leads it back to the chessboard on the star square with a ball of wool; brick squares are rows of seats in the way. Which steps bring the cat back to the board? (→ right, ↓ down)",
         "choices": [
-          "→ ↓ ↓ → → ↓ →",
-          "→ ↓ ↓ → → → ↓",
-          "→ → ↓ ↓ → ↓ →"
+          "→ → ↓ ↓ → → ↓ →",
+          "→ → ↓ ↓ → → → ↓",
+          "→ → → ↓ ↓ → ↓ →"
         ]
       }
     },
@@ -206,66 +210,66 @@
       "mechanic": "quiz",
       "target": "st-te-tuong-nghin-van-co-can-bao-bot-tiec",
       "skill": "khoi-luong",
-      "prompt": "Khách tới sớm nên bếp phải làm bánh sớm. Bao bột cân được 26 kg, bao đường cân được 18 kg. Cả hai bao nặng bao nhiêu ki-lô-gam?",
+      "prompt": "Khách tới sớm nên bếp phải làm bánh sớm. Bao bột cân được 34 kg, bao đường cân được 17 kg. Cả hai bao nặng bao nhiêu ki-lô-gam?",
       "choices": [
         {
-          "id": "kg34",
-          "text": "34 kg"
+          "id": "kg41",
+          "text": "41 kg"
         },
         {
-          "id": "kg44",
-          "text": "44 kg"
+          "id": "kg51",
+          "text": "51 kg"
         },
         {
-          "id": "kg42",
-          "text": "42 kg"
+          "id": "kg61",
+          "text": "61 kg"
         }
       ],
       "answer": {
-        "choice": "kg44"
+        "choice": "kg51"
       },
       "support": {
         "guide": [
           "Muốn biết cả hai bao nặng bao nhiêu, ta làm phép cộng.",
-          "Đặt tính 26 + 18, cộng hàng đơn vị trước, nhớ đừng quên ghi kg."
+          "Đặt tính 34 + 17, cộng hàng đơn vị trước, nhớ đừng quên ghi kg."
         ],
-        "hint": "6 cộng 8 bằng 14, viết 4 nhớ 1.",
+        "hint": "4 cộng 7 bằng 11, viết 1 nhớ 1.",
         "answer": {
-          "text": "44 kg",
-          "explanation": "26 kg + 18 kg = 44 kg: 6 + 8 = 14, viết 4 nhớ 1; 2 + 1 = 3, thêm 1 là 4."
+          "text": "51 kg",
+          "explanation": "34 kg + 17 kg = 51 kg: 4 + 7 = 11, viết 1 nhớ 1; 3 + 1 = 4, thêm 1 là 5."
         },
         "en": {
           "guide": [
             "To find what both sacks weigh together, we add.",
-            "Set out 26 + 18, add the ones first, and remember to write kg."
+            "Set out 34 + 17, add the ones first, and remember to write kg."
           ],
-          "hint": "6 plus 8 is 14: write 4, carry 1.",
+          "hint": "4 plus 7 is 11: write 1, carry 1.",
           "answer": {
-            "text": "44 kg",
-            "explanation": "26 kg + 18 kg = 44 kg: 6 + 8 = 14, write 4 and carry 1; 2 + 1 = 3, plus 1 makes 4."
+            "text": "51 kg",
+            "explanation": "34 kg + 17 kg = 51 kg: 4 + 7 = 11, write 1 and carry 1; 3 + 1 = 4, plus 1 makes 5."
           }
         }
       },
       "feedback": {
         "right": [
-          "Bốn mươi bốn ki-lô-gam, bếp tiệc đủ bột đủ đường rồi!",
+          "Năm mươi mốt ki-lô-gam, bếp tiệc đủ bột đủ đường rồi!",
           "Ngươi nhớ một sang hàng chục mà chẳng cần ai nhắc.",
           "Bác bếp xắn tay áo, bánh sẽ ra lò kịp đón khách sớm."
         ],
         "wrong": [
           "Hình như số nhớ ở hàng đơn vị bị bỏ quên rồi.",
-          "Cộng lại hàng đơn vị: sáu với tám được bao nhiêu nhỉ?",
+          "Cộng lại hàng đơn vị: bốn với bảy được bao nhiêu nhỉ?",
           "Hai bao gộp lại phải nặng hơn mỗi bao, nhưng đừng cộng nhầm hàng chục."
         ],
         "en": {
           "right": [
-            "Forty-four kilograms; the banquet kitchen has flour and sugar enough!",
+            "Fifty-one kilograms; the banquet kitchen has flour and sugar enough!",
             "You carried the one to the tens without anyone reminding you.",
             "The cook rolls up his sleeves; the cakes will be out in time for the early guests."
           ],
           "wrong": [
             "It looks like the carried number in the ones was forgotten.",
-            "Add the ones again: what do six and eight make?",
+            "Add the ones again: what do four and seven make?",
             "Together they must weigh more than either sack, but do not slip up in the tens."
           ]
         }
@@ -273,11 +277,11 @@
       "en": {
         "title": "The banquet kitchen's two sacks",
         "goTo": "Stop at the weighing gallery, where the cook is putting two sacks on the scale",
-        "prompt": "The guests are early, so the kitchen must bake early. The flour sack weighs 26 kg and the sugar sack weighs 18 kg. How many kilograms do both sacks weigh?",
+        "prompt": "The guests are early, so the kitchen must bake early. The flour sack weighs 34 kg and the sugar sack weighs 17 kg. How many kilograms do both sacks weigh?",
         "choices": [
-          "34 kg",
-          "44 kg",
-          "42 kg"
+          "41 kg",
+          "51 kg",
+          "61 kg"
         ]
       }
     },

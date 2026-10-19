@@ -142,52 +142,52 @@
       "kind": "riddle",
       "target": "st-nai-nghin-dom-dom-phien-da-reu",
       "skill": "so-den-100",
-      "question": "Đêm qua Nai đếm được 4 chục con đom đóm và thêm 7 con nữa. Đêm qua có tất cả bao nhiêu con đom đóm?",
+      "question": "Đêm qua Nai đếm được 5 chục con đom đóm và thêm 8 con nữa. Đêm qua có tất cả bao nhiêu con đom đóm?",
       "answer": {
-        "value": 47
+        "value": 58
       },
       "support": {
         "guide": [
-          "4 chục là 40.",
-          "Thêm 7 đơn vị vào 40."
+          "5 chục là 50.",
+          "Thêm 8 đơn vị vào 50."
         ],
-        "hint": "40 và 7 ghép lại thành số nào?",
+        "hint": "50 và 8 ghép lại thành số nào?",
         "answer": {
-          "text": "47 con đom đóm",
-          "explanation": "4 chục và 7 đơn vị là 47, nên đêm qua có 47 con đom đóm."
+          "text": "58 con đom đóm",
+          "explanation": "5 chục và 8 đơn vị là 58, nên đêm qua có 58 con đom đóm."
         },
         "en": {
           "guide": [
-            "4 tens is 40.",
-            "Add 7 ones to 40."
+            "5 tens is 50.",
+            "Add 8 ones to 50."
           ],
-          "hint": "40 and 7 together make which number?",
+          "hint": "50 and 8 together make which number?",
           "answer": {
-            "text": "47 fireflies",
-            "explanation": "4 tens and 7 ones make 47, so there were 47 fireflies last night."
+            "text": "58 fireflies",
+            "explanation": "5 tens and 8 ones make 58, so there were 58 fireflies last night."
           }
         }
       },
       "feedback": {
         "right": [
-          "Bốn mươi bảy… ừm, đẹp như bốn mươi bảy ngọn nến nhỏ.",
+          "Năm mươi tám… ừm, đẹp như năm mươi tám ngọn nến nhỏ.",
           "{name} ghép chục với đơn vị khéo như ghép que tính thành bó.",
           "Đúng rồi. Nai khắc số ấy lên phiến đá cho khỏi quên."
         ],
         "wrong": [
-          "Ừm… 4 chục là bốn bó, mỗi bó mười que đấy.",
-          "Chữ số 4 đứng hàng chục, chữ số 7 đứng hàng đơn vị nhé.",
+          "Ừm… 5 chục là năm bó, mỗi bó mười que đấy.",
+          "Chữ số 5 đứng hàng chục, chữ số 8 đứng hàng đơn vị nhé.",
           "Đom đóm nháy mắt như bảo «chưa đúng». Thử lại nhé {name}."
         ],
         "en": {
           "right": [
-            "Forty-seven… mm, lovely as forty-seven tiny candles.",
+            "Fifty-eight… mm, lovely as fifty-eight tiny candles.",
             "You put tens and ones together as neatly as bundling sticks, {name}.",
             "Right. Nai carves the number on the stone so it won't be forgotten."
           ],
           "wrong": [
-            "Mm… 4 tens is four bundles of ten sticks each.",
-            "The 4 goes in the tens place and the 7 in the ones place.",
+            "Mm… 5 tens is five bundles of ten sticks each.",
+            "The 5 goes in the tens place and the 8 in the ones place.",
             "The fireflies blink as if to say \"not quite\". Try again, {name}."
           ]
         }
@@ -195,7 +195,7 @@
       "en": {
         "title": "Counting in tens",
         "goTo": "Go to the mossy stone where Nai carves each night's count",
-        "question": "Last night Nai counted 4 tens of fireflies and 7 more. How many fireflies were there in all last night?"
+        "question": "Last night Nai counted 5 tens of fireflies and 8 more. How many fireflies were there in all last night?"
       }
     },
     {
@@ -210,19 +210,19 @@
       "items": [
         {
           "id": "hai",
-          "label": "Thứ Hai: 47 con"
+          "label": "Thứ Hai: 58 con"
         },
         {
           "id": "ba",
-          "label": "Thứ Ba: 74 con"
+          "label": "Thứ Ba: 85 con"
         },
         {
           "id": "tu",
-          "label": "Thứ Tư: 39 con"
+          "label": "Thứ Tư: 49 con"
         },
         {
           "id": "nam",
-          "label": "Thứ Năm: 70 con"
+          "label": "Thứ Năm: 80 con"
         }
       ],
       "answer": {
@@ -235,23 +235,23 @@
       },
       "support": {
         "guide": [
-          "So hàng chục trước: 3 chục, 4 chục, 7 chục.",
-          "70 và 74 cùng 7 chục thì so hàng đơn vị."
+          "So hàng chục trước: 4 chục, 5 chục, 8 chục.",
+          "80 và 85 cùng 8 chục thì so hàng đơn vị."
         ],
-        "hint": "39 ít nhất; giữa 70 và 74, số nào bé hơn?",
+        "hint": "49 ít nhất; giữa 80 và 85, số nào bé hơn?",
         "answer": {
           "text": "Thứ Tư, thứ Hai, thứ Năm, thứ Ba",
-          "explanation": "39 < 47 < 70 < 74, nên thứ tự là thứ Tư, thứ Hai, thứ Năm, thứ Ba."
+          "explanation": "49 < 58 < 80 < 85, nên thứ tự là thứ Tư, thứ Hai, thứ Năm, thứ Ba."
         },
         "en": {
           "guide": [
-            "Compare tens first: 3 tens, 4 tens, 7 tens.",
-            "70 and 74 both have 7 tens, so compare the ones."
+            "Compare tens first: 4 tens, 5 tens, 8 tens.",
+            "80 and 85 both have 8 tens, so compare the ones."
           ],
-          "hint": "39 is fewest; between 70 and 74, which is smaller?",
+          "hint": "49 is fewest; between 80 and 85, which is smaller?",
           "answer": {
             "text": "Wednesday, Monday, Thursday, Tuesday",
-            "explanation": "39 < 47 < 70 < 74, so the order is Wednesday, Monday, Thursday, Tuesday."
+            "explanation": "49 < 58 < 80 < 85, so the order is Wednesday, Monday, Thursday, Tuesday."
           }
         }
       },
@@ -262,8 +262,8 @@
           "Đúng thứ tự rồi. Nai gật đầu chậm rãi, mắt lấp lánh."
         ],
         "wrong": [
-          "47 với 74 khác nhau lắm đấy, nhìn kỹ chữ số hàng chục nhé.",
-          "Đêm ít nhất là đêm chỉ có ba chục mấy con thôi.",
+          "58 với 85 khác nhau lắm đấy, nhìn kỹ chữ số hàng chục nhé.",
+          "Đêm ít nhất là đêm chỉ có bốn chục mấy con thôi.",
           "Thử xếp lại thật chậm, như cách Nai đếm sao."
         ],
         "en": {
@@ -273,8 +273,8 @@
             "The right order. Nai nods slowly, eyes twinkling."
           ],
           "wrong": [
-            "47 and 74 are very different; look closely at the tens.",
-            "The quietest night had only thirty-something.",
+            "58 and 85 are very different; look closely at the tens.",
+            "The quietest night had only forty-something.",
             "Try again slowly, the way Nai counts stars."
           ]
         }
@@ -284,10 +284,10 @@
         "goTo": "Go to the ferns to read the bark with each night's count",
         "prompt": "The bark beside the ferns lists four nights of fireflies. Order the nights from fewest fireflies to most:",
         "items": [
-          "Monday: 47",
-          "Tuesday: 74",
-          "Wednesday: 39",
-          "Thursday: 70"
+          "Monday: 58",
+          "Tuesday: 85",
+          "Wednesday: 49",
+          "Thursday: 80"
         ]
       }
     },

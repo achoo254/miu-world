@@ -106,45 +106,53 @@
       "logicType": "maze",
       "target": "st-meo-sen-dem-vit-ban-ve-ong",
       "skill": "logic",
-      "prompt": "Ô gạch là bờ ruộng đang cấy, không đào ống qua được. Dẫn ống từ ô xuất phát tới ô đích. Dãy bước nào đúng? (→ sang phải, ↓ đi xuống)",
+      "prompt": "Ô có chú mèo là chỗ Mèo đặt đầu ống, ô ngôi sao là ruộng cần nước. Ô gạch là bờ ruộng đang cấy, không đào ống qua được. Dãy bước nào dẫn ống tới ô ngôi sao? (→ sang phải, ↓ đi xuống)",
       "grid": [
         [
           "S",
+          ".",
           "#",
-          ".",
-          "."
-        ],
-        [
-          ".",
           ".",
           ".",
           "#"
         ],
         [
           "#",
+          ".",
           "#",
           ".",
-          "."
+          ".",
+          "#"
         ],
         [
           ".",
           ".",
+          ".",
+          ".",
           "#",
+          "."
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          ".",
+          ".",
           "G"
         ]
       ],
       "choices": [
         {
           "id": "a",
-          "text": "↓ → → → ↓ ↓"
+          "text": "→ ↓ ↓ → → → ↓ →"
         },
         {
           "id": "b",
-          "text": "↓ → ↓ → → ↓"
+          "text": "→ ↓ → ↓ → → ↓ →"
         },
         {
           "id": "c",
-          "text": "↓ → → ↓ → ↓"
+          "text": "→ ↓ ↓ → → ↓ → →"
         }
       ],
       "answer": {
@@ -152,23 +160,23 @@
       },
       "support": {
         "guide": [
-          "Ô ngay bên phải ô xuất phát là bờ ruộng, nên bước đầu phải đi xuống.",
+          "Ô ngay bên dưới ô có chú mèo là bờ ruộng, nên bước đầu phải sang phải.",
           "Dò từng dãy bằng ngón tay, chạm ô gạch là bỏ."
         ],
-        "hint": "Sau khi xuống một ô, đi sang phải hai ô rồi mới xuống tiếp.",
+        "hint": "Sau bước sang phải đầu tiên, ống đi xuống hai ô liền rồi mới rẽ.",
         "answer": {
-          "text": "↓ → → ↓ → ↓",
-          "explanation": "Xuống một ô, sang phải hai ô, xuống một ô, sang phải một ô, xuống một ô là tới đích mà không cắt qua bờ ruộng nào."
+          "text": "→ ↓ ↓ → → ↓ → →",
+          "explanation": "Sang phải một ô, xuống hai ô, sang phải hai ô, xuống một ô, rồi sang phải hai ô là tới ô ngôi sao mà không cắt qua bờ ruộng nào."
         },
         "en": {
           "guide": [
-            "The square right of the start is a field bank, so the first step must go down.",
+            "The square right below the cat is a field bank, so the first step must go right.",
             "Trace each set with your finger; drop it if it touches brick."
           ],
-          "hint": "After one step down, go right two squares before going down again.",
+          "hint": "After the first step right, the pipe goes down two squares before it turns.",
           "answer": {
-            "text": "↓ → → ↓ → ↓",
-            "explanation": "Down one, right two, down one, right one, down one: the pipe reaches the goal without crossing a single field bank."
+            "text": "→ ↓ ↓ → → ↓ → →",
+            "explanation": "Right one, down two, right two, down one, then right two: the pipe reaches the star square without crossing a single field bank."
           }
         }
       },
@@ -179,9 +187,9 @@
           "Meo. Đẹp. Mèo dán bản vẽ này lên vách lều."
         ],
         "wrong": [
-          "Đi sang ba ô liền là đâm vào bờ ruộng ở mép phải rồi {name}.",
-          "Xuống hai lần liền là gặp bờ ruộng đang cấy ngay đấy.",
-          "Bắt đầu lại từ ô xuất phát, nhìn kỹ ô gạch quanh mỗi bước."
+          "Đi sang ba ô liền ở hàng giữa là đâm vào bờ ruộng rồi {name}.",
+          "Xuống một ô rồi rẽ phải ngay là gặp bờ ruộng đang cấy đấy.",
+          "Bắt đầu lại từ ô có chú mèo, nhìn kỹ ô gạch quanh mỗi bước."
         ],
         "en": {
           "right": [
@@ -190,20 +198,20 @@
             "Meow. Lovely. Mèo pins this drawing to the shed wall."
           ],
           "wrong": [
-            "Three steps right in a row hits the bank on the right edge, {name}.",
-            "Two steps down in a row runs straight into a planted bank.",
-            "Start again from the start square and watch the brick squares round each step."
+            "Three steps right along the middle row hits a bank, {name}.",
+            "One step down and then straight right runs into a planted bank.",
+            "Start again from the cat square and watch the brick squares round each step."
           ]
         }
       },
       "en": {
         "title": "The new pipe",
         "goTo": "Go into the pipe shed, where Mèo has spread the pipe drawing on a mat",
-        "prompt": "Brick squares are field banks being planted; no pipe can be dug through them. Lead the pipe from the start square to the goal. Which moves work? (→ right, ↓ down)",
+        "prompt": "The square with the cat is where Mèo lays the start of the pipe; the star square is the field that needs water. Brick squares are field banks being planted; no pipe can be dug through them. Which moves lead the pipe to the star square? (→ right, ↓ down)",
         "choices": [
-          "↓ → → → ↓ ↓",
-          "↓ → ↓ → → ↓",
-          "↓ → → ↓ → ↓"
+          "→ ↓ ↓ → → → ↓ →",
+          "→ ↓ → ↓ → → ↓ →",
+          "→ ↓ ↓ → → ↓ → →"
         ]
       }
     },

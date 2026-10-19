@@ -189,7 +189,7 @@
       "logicType": "maze",
       "target": "st-cao-mui-ten-mang-thu-thung-ten-chan",
       "skill": "logic",
-      "prompt": "Ô chú cáo là chỗ Cáo đứng, ô ngôi sao là bục bắn, ô gạch là thùng tên. Dãy bước nào đưa Cáo tới bục bắn mà không vấp thùng nào? (→ sang phải, ↓ đi xuống)",
+      "prompt": "Ô có chú mèo là chỗ Cáo đứng, ô ngôi sao là bục bắn, ô gạch là thùng tên. Dãy bước nào đưa Cáo tới bục bắn mà không vấp thùng nào? (→ sang phải, ↓ đi xuống)",
       "grid": [
         [
           "S",
@@ -201,37 +201,44 @@
         [
           "#",
           ".",
+          ".",
           "#",
+          "."
+        ],
+        [
+          ".",
+          "#",
+          ".",
           ".",
           "#"
         ],
         [
           ".",
           ".",
+          "#",
           ".",
-          ".",
-          "#"
+          "."
         ],
         [
           "#",
-          "#",
-          "#",
           ".",
+          ".",
+          "#",
           "G"
         ]
       ],
       "choices": [
         {
           "id": "a",
-          "text": "→ ↓ → → ↓ ↓ →"
+          "text": "→ ↓ → → ↓ ↓ → ↓"
         },
         {
           "id": "b",
-          "text": "→ ↓ ↓ → → ↓ →"
+          "text": "→ ↓ → ↓ → ↓ → ↓"
         },
         {
           "id": "c",
-          "text": "↓ → ↓ → → ↓ →"
+          "text": "→ ↓ → ↓ ↓ → → ↓"
         }
       ],
       "answer": {
@@ -239,25 +246,25 @@
       },
       "support": {
         "guide": [
-          "Đặt ngón tay lên ô chú cáo.",
-          "Đi thử từng dãy; gặp ô gạch là dãy ấy hỏng.",
-          "Dãy đúng dừng ở ô ngôi sao."
+          "Chỗ Cáo đứng là ô có chú mèo, bắt đầu từ đó.",
+          "Dò từng dãy một, chạm thùng tên (ô gạch) là dãy ấy hỏng.",
+          "Dãy nào dừng ngay trên bục bắn là dãy đúng."
         ],
-        "hint": "Cột thứ hai có ba ô trống liền nhau từ trên xuống.",
+        "hint": "Các ô trống xếp thành bậc thang: cứ sang phải một ô lại xuống một ô.",
         "answer": {
-          "text": "Sang phải, xuống hai ô, sang phải hai ô, xuống, sang phải",
-          "explanation": "Dãy → ↓ ↓ → → ↓ → đi sang ô thứ hai, xuống hai lần tới hàng thứ ba, sang phải hai ô, xuống một ô rồi sang phải tới bục bắn mà không chạm thùng tên nào."
+          "text": "Sang phải, xuống, cứ thế bốn lần",
+          "explanation": "Dãy → ↓ → ↓ → ↓ → ↓ leo xuống như bậc thang: mỗi lần sang phải một ô rồi xuống một ô, bốn lần là tới bục bắn mà không chạm thùng tên nào."
         },
         "en": {
           "guide": [
-            "Put your finger on the fox square.",
-            "Try each sequence; land on a brick and that one fails.",
-            "The right one stops on the star square."
+            "Cáo stands on the cat square, so start there.",
+            "Trace one sequence at a time; touch an arrow crate (a brick) and it fails.",
+            "The sequence that stops right on the platform is the one."
           ],
-          "hint": "The second column has three open squares in a row from the top.",
+          "hint": "The open squares make a staircase: one step right, then one step down.",
           "answer": {
-            "text": "Right, down twice, right twice, down, right",
-            "explanation": "→ ↓ ↓ → → ↓ → moves to the second square, goes down twice to the third row, right twice, down once, then right onto the shooting platform without touching a single arrow crate."
+            "text": "Right, down, four times over",
+            "explanation": "→ ↓ → ↓ → ↓ → ↓ goes down like a staircase: one square right, then one down, four times, and reaches the platform without touching an arrow crate."
           }
         }
       },
@@ -268,9 +275,9 @@
           "Lối gọn, bước chắc. Bục bắn đây rồi!"
         ],
         "wrong": [
-          "Rẽ phải ngay ở hàng thứ hai là đụng thùng tên đấy {name}.",
-          "Bước đầu đi xuống là vấp thùng liền, thử dãy khác nhé.",
-          "Xuống tới hàng thứ ba rồi mới rẽ phải."
+          "Sang phải hai ô liền ở hàng thứ hai là đụng thùng tên đấy {name}.",
+          "Xuống hai ô liền ở cột thứ ba là vấp thùng ngay, thử dãy khác nhé.",
+          "Lối này đi như bậc thang, mỗi bậc một ô thôi."
         ],
         "en": {
           "right": [
@@ -279,20 +286,20 @@
             "Clean route, steady steps. Here's the platform!"
           ],
           "wrong": [
-            "Turning right on the second row runs into a crate, {name}.",
-            "Going down first trips over a crate at once; try another sequence.",
-            "Go down to the third row before turning right."
+            "Two steps right on the second row run into a crate, {name}.",
+            "Two steps down in the third column trip over a crate at once; try another sequence.",
+            "This way goes like a staircase, one square per step."
           ]
         }
       },
       "en": {
         "title": "The way to the platform",
         "goTo": "Go to the path out to the shooting platform, where arrow crates are stacked across the way",
-        "prompt": "The fox square is where Cáo stands, the star square is the shooting platform, and brick squares are arrow crates. Which steps get Cáo to the platform without tripping over a crate? (→ right, ↓ down)",
+        "prompt": "The cat square is where Cáo stands, the star square is the shooting platform, and brick squares are arrow crates. Which steps get Cáo to the platform without tripping over a crate? (→ right, ↓ down)",
         "choices": [
-          "→ ↓ → → ↓ ↓ →",
-          "→ ↓ ↓ → → ↓ →",
-          "↓ → ↓ → → ↓ →"
+          "→ ↓ → → ↓ ↓ → ↓",
+          "→ ↓ → ↓ → ↓ → ↓",
+          "→ ↓ → ↓ ↓ → → ↓"
         ]
       }
     },

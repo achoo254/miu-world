@@ -5,7 +5,7 @@
   "title": "Chuyện của Tể Tướng Cờ Vua, chương 1: Ba quân cờ trốn khỏi hộp",
   "status": "active",
   "category": "story",
-  "summary": "Một cơn gió vô phép hất tung quân cờ và trang sách của Tể Tướng Cờ Vua ngay trước ván cờ tuần. {name} tính xem hộp thiếu mấy quân, tìm ba quân đi lạc, xếp lại trang sách và chọn nước mở đầu cho ván cờ.",
+  "summary": "Tể Tướng Cờ Vua mải nghĩ nước đi, phất tay áo hất tung quân cờ và trang sách của chính mình ngay trước ván cờ tuần. {name} tính xem hộp thiếu mấy quân, tìm ba quân đi lạc, xếp lại trang sách và chọn nước mở đầu cho ván cờ.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Tể Tướng Cờ Vua",
@@ -39,7 +39,7 @@
   "steps": [
     {
       "id": "gio-lua-qua-dai-sanh",
-      "title": "Cơn gió lùa qua đại sảnh",
+      "title": "Tay áo quét qua bàn cờ",
       "goTo": "Tới bàn cờ đại sảnh, Tể Tướng Cờ Vua đang đứng nhìn chiếc hộp cờ mở toang",
       "kind": "dialogue",
       "target": "te-tuong-co-the",
@@ -54,7 +54,7 @@
         },
         {
           "speaker": "Tể Tướng Cờ Vua",
-          "text": "Thế mà một cơn gió vô phép lùa qua cửa sổ, hất tung mấy quân cờ và mấy trang sách. Một nước đi không có trong luật nào cả!"
+          "text": "Thế mà ta mải nghĩ nước đi, phất tay áo một cái, hất tung mấy quân cờ và mấy trang sách. Một nước đi không có trong luật nào cả!"
         }
       ],
       "choices": [
@@ -68,12 +68,12 @@
         }
       ],
       "en": {
-        "title": "A draught through the great hall",
+        "title": "A sleeve sweeps the board",
         "goTo": "Go to the chessboard in the great hall, where Tể Tướng Cờ Vua stands staring at an open chess box",
         "lines": [
           "Twelve… thirteen… fourteen steps. Ah, {name}! You arrive just as my board finds itself in a tight corner.",
           "This afternoon, as every Saturday, I play my weekly game with Bác Thợ Khóa Thành. I also meant to copy it into my book «A Thousand Games Nobody Loses».",
-          "Yet an ill-mannered gust swept through the window and scattered some pieces and some pages. A move found in no rulebook whatsoever!"
+          "Yet, lost in thought over a move, I flung out my sleeve and scattered some pieces and some pages. A move found in no rulebook whatsoever!"
         ],
         "choices": [
           {
@@ -153,7 +153,7 @@
     {
       "id": "ba-quan-co-tron",
       "title": "Ba quân cờ trốn quanh ngai",
-      "goTo": "Tới ngai vàng, gió đã cuốn mấy quân cờ lăn về phía ấy",
+      "goTo": "Tới ngai vàng, mấy quân cờ đã lăn lông lốc về phía ấy",
       "kind": "find-object",
       "skill": "doc-hieu",
       "prompt": "Ta nhớ rõ dáng từng quân đi lạc. Ngươi đọc kỹ lời tả rồi tìm cho đủ ba quân:",
@@ -179,7 +179,7 @@
       ],
       "en": {
         "title": "Three pieces hiding round the throne",
-        "goTo": "Go to the golden throne; the wind sent some pieces rolling that way",
+        "goTo": "Go to the golden throne; some pieces went rolling all the way over there",
         "prompt": "I remember the shape of every runaway piece. Read the descriptions carefully and find all three:",
         "items": [
           {
@@ -382,6 +382,6 @@
   },
   "en": {
     "title": "Tể Tướng Cờ Vua's story, chapter 1: Three pieces escape the box",
-    "summary": "An ill-mannered gust scatters Tể Tướng Cờ Vua's chess pieces and book pages just before his weekly game. {name} works out how many pieces are missing, finds the three runaways, puts the pages back in order and chooses how the game should begin."
+    "summary": "Lost in thought, Tể Tướng Cờ Vua flings out his sleeve and scatters his own chess pieces and book pages just before his weekly game. {name} works out how many pieces are missing, finds the three runaways, puts the pages back in order and chooses how the game should begin."
   }
 }

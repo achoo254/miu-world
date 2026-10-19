@@ -164,6 +164,26 @@
         {
           "id": "b5",
           "label": "dừng"
+        },
+        {
+          "id": "b6",
+          "label": "trái"
+        },
+        {
+          "id": "b7",
+          "label": "phải"
+        },
+        {
+          "id": "b8",
+          "label": "trái"
+        },
+        {
+          "id": "b9",
+          "label": "phải"
+        },
+        {
+          "id": "b10",
+          "label": "?"
         }
       ],
       "choices": [
@@ -238,7 +258,12 @@
           "right",
           "left",
           "right",
-          "halt"
+          "halt",
+          "left",
+          "right",
+          "left",
+          "right",
+          "?"
         ],
         "choices": [
           "Left foot",

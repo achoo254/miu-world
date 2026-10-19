@@ -12,7 +12,7 @@
     "where": "Bãi lướt sóng, bãi vỏ ốc, trạm thư ven biển, thuyền đưa thư, đá ngồi ngắm sóng",
     "goal": "Gói vỏ ốc biết hát gửi lên núi băng phương bắc cho bác Gấu",
     "play": "Tìm đồ gói quà theo lời tả; cân gói quà; xếp túi thư; chọn lời nhắn; thả chai thư theo dòng nước",
-    "learn": "Đọc hiểu lời tả, cộng số đo ki-lô-gam, thứ tự bảng chữ cái",
+    "learn": "Đọc hiểu lời tả, cộng có nhớ số đo ki-lô-gam, thứ tự bảng chữ cái",
     "reward": "85 XP, 25 Xu, Skill XP Khối lượng, Bảng chữ cái, Vỏ ốc xà cừ",
     "next": "Chờ thư hồi âm từ núi băng phương bắc"
   },
@@ -136,60 +136,60 @@
       "kind": "riddle",
       "target": "st-cua-dem-nhip-song-can-tram-thu",
       "skill": "khoi-luong",
-      "question": "Ngoài vỏ ốc, Cua còn gửi bác Gấu ít rong biển khô và một hũ cát trắng. Vỏ ốc nặng 2 kg, túi rong biển nặng 3 kg, hũ cát nặng 4 kg. Cả gói quà nặng bao nhiêu ki-lô-gam?",
+      "question": "Vỏ ốc nhẹ tênh, nhưng Cua còn gửi bác Gấu một bao dừa khô và một thùng cá khô cho mùa đông. Bao dừa nặng 28 kg, thùng cá nặng 15 kg. Cả gói quà nặng bao nhiêu ki-lô-gam?",
       "answer": {
-        "value": 9
+        "value": 43
       },
       "support": {
         "guide": [
-          "Cộng cân nặng của cả ba thứ trong gói.",
-          "Cộng hai số đầu trước, rồi cộng tiếp số thứ ba."
+          "Muốn biết cả gói nặng bao nhiêu, cộng cân nặng bao dừa với thùng cá.",
+          "Đặt tính 28 + 15, cộng hàng đơn vị trước."
         ],
-        "hint": "2 kg + 3 kg = 5 kg, rồi thêm 4 kg nữa.",
+        "hint": "8 + 5 = 13, viết 3 nhớ 1 sang hàng chục.",
         "answer": {
-          "text": "9 kg",
-          "explanation": "2 kg + 3 kg + 4 kg = 9 kg. Cả gói quà nặng 9 ki-lô-gam."
+          "text": "43 kg",
+          "explanation": "28 kg + 15 kg: 8 + 5 = 13, viết 3 nhớ 1; 2 + 1 = 3, thêm 1 là 4. Cả gói quà nặng 43 ki-lô-gam."
         },
         "en": {
           "guide": [
-            "Add the weights of all three things in the parcel.",
-            "Add the first two, then add the third."
+            "To find what the whole parcel weighs, add the sack of coconuts and the box of fish.",
+            "Set out 28 + 15 and add the ones first."
           ],
-          "hint": "2 kg + 3 kg = 5 kg, then add 4 kg more.",
+          "hint": "8 + 5 = 13: write 3 and carry 1 to the tens.",
           "answer": {
-            "text": "9 kg",
-            "explanation": "2 kg + 3 kg + 4 kg = 9 kg. The whole parcel weighs 9 kilograms."
+            "text": "43 kg",
+            "explanation": "28 kg + 15 kg: 8 + 5 = 13, write 3 and carry 1; 2 + 1 = 3, plus 1 makes 4. The whole parcel weighs 43 kilograms."
           }
         }
       },
       "feedback": {
         "right": [
-          "Chín ki-lô-gam, kim cân chỉ đúng y như bồ nói!",
-          "{name} cộng ba món gọn như buộc một cái nơ.",
+          "Bốn mươi ba ki-lô-gam, kim cân chỉ đúng y như bồ nói!",
+          "{name} nhớ một sang hàng chục gọn như buộc một cái nơ.",
           "Ầu ơ, gói quà vừa cân, bưu tá đóng dấu cái cộp."
         ],
         "wrong": [
-          "Nhớ cộng cả hũ cát nữa bồ, nó nặng nhất đấy.",
-          "Cộng 2 với 3 trước, được bao nhiêu rồi hẵng thêm 4.",
-          "Đừng quên viết «kg» sau con số, nhưng trước hết đếm lại cho đủ ba món nhé {name}."
+          "Tám cộng năm là mười ba đấy bồ, nhớ một sang hàng chục nhé.",
+          "Hàng chục có 2 với 1, cộng thêm số nhớ nữa mới đủ.",
+          "Đừng quên viết «kg» sau con số, nhưng trước hết đặt tính cho thẳng cột nhé {name}."
         ],
         "en": {
           "right": [
-            "Nine kilograms; the needle points exactly where you said, buddy!",
-            "{name} adds three things as neatly as tying a bow.",
+            "Forty-three kilograms; the needle points exactly where you said, buddy!",
+            "{name} carried the one to the tens as neatly as tying a bow.",
             "Ahoy-oh, the parcel is weighed and the postman stamps it with a thump."
           ],
           "wrong": [
-            "Remember to add the jar of sand too, buddy; it’s the heaviest.",
-            "Add 2 and 3 first, then add the 4.",
-            "Count all three things again first, {name}, then put “kg” after the number."
+            "Eight plus five is thirteen, buddy; carry one to the tens.",
+            "The tens are 2 and 1, and you still need to add the one you carried.",
+            "Line the columns up straight first, {name}, then put “kg” after the number."
           ]
         }
       },
       "en": {
         "title": "What does the parcel weigh?",
         "goTo": "Take the parcel to the seaside post office and put it on the scales",
-        "question": "As well as the shell, Cua is sending Uncle Bear some dried seaweed and a jar of white sand. The shell weighs 2 kg, the seaweed 3 kg and the jar of sand 4 kg. How many kilograms does the whole parcel weigh?"
+        "question": "The shell is as light as a feather, but Cua is also sending Uncle Bear a sack of dried coconut and a box of dried fish for the winter. The sack weighs 28 kg and the box 15 kg. How many kilograms does the whole parcel weigh?"
       }
     },
     {

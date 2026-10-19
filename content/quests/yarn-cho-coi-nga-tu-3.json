@@ -10,7 +10,7 @@
   "sevenQuestions": {
     "who": "{name}, Chó Cảnh Sát Còi",
     "where": "Quảng trường: ngã tư, tháp đồng hồ, ghế đá, bảng nhiệm vụ, cổng về nhà, bục giao thông",
-    "goal": "Cho Chó một giờ ăn trưa không bị gọi đi",
+    "goal": "Cho Chó nửa giờ ăn trưa không bị gọi đi",
     "play": "Đếm tiếng chuông; tìm đồ ăn trưa; chọn bạn rảnh; chọn người trực; điều khiển ngã tư",
     "learn": "Xem đồng hồ, đọc hiểu",
     "reward": "70 XP, 18 Xu, Skill XP Xem đồng hồ, Đọc hiểu",
@@ -55,12 +55,12 @@
         },
         {
           "speaker": "Chó Cảnh Sát Còi",
-          "text": "Hôm nay mình thử nhé. Trước hết phải biết giờ ăn trưa bắt đầu lúc nào."
+          "text": "Một giờ thì xa quá, hôm nay Chó xin nửa giờ thôi. Trước hết phải biết giờ ăn trưa nằm giữa những tiếng chuông nào."
         }
       ],
       "choices": [
         {
-          "text": "Cháu sẽ giúp chú có một giờ trọn vẹn!",
+          "text": "Cháu sẽ giúp chú có nửa giờ yên ổn trước đã!",
           "reply": "Tuýt! Câu đó Chó ghi vào sổ rồi đấy."
         }
       ],
@@ -70,11 +70,11 @@
         "lines": [
           "Twelve years at this crossroads and I've never finished a lunch. Open the box and there's a horn, or someone calling.",
           "My dream is small: one hour on the stone bench, all my rice eaten, all my water drunk, no one calling.",
-          "Let's try today. First we need to know when lunchtime starts."
+          "An hour is too far off, so today I ask for half an hour. First we need to know which chimes my lunchtime sits between."
         ],
         "choices": [
           {
-            "text": "I'll get you one whole hour!",
+            "text": "I'll get you a quiet half hour first!",
             "reply": "Whistle! I've written that promise in my notebook."
           }
         ]
@@ -314,16 +314,16 @@
         {
           "id": "bac-hai-truc",
           "text": "Nhờ Bác Hải đứng trực, bóp kèn khi cần",
-          "consequence": "Bác Hải đứng ngã tư, bóp kèn hai tiếng cho xe dừng. Chó ăn được tới miếng cuối."
+          "consequence": "Bác Hải đứng ngã tư, bóp kèn hai tiếng cho xe dừng. Chó ăn được hơn nửa hộp cơm mà không phải đứng dậy."
         },
         {
           "id": "meo-truc",
           "text": "Nhờ Mèo Xếp Khối xếp một hàng nón giao thông",
-          "consequence": "Mèo xếp nón thẳng như domino. Xe tự đi theo hàng, Chó ăn xong còn kịp gọt táo."
+          "consequence": "Mèo xếp nón thẳng như domino. Xe tự đi theo hàng, Chó ăn gần hết hộp cơm, mắt vẫn liếc ra đường."
         },
         {
           "id": "ten-truc",
-          "text": "{name} đứng bục chỉ huy mười lăm phút",
+          "text": "{name} đứng bục chỉ huy nửa giờ",
           "consequence": "Chó đưa {name} chiếc còi dự phòng: «Dừng, nhìn, đi. Nhớ chưa?» rồi ngồi ăn, mắt vẫn liếc theo."
         }
       ],
@@ -334,14 +334,14 @@
         "choices": [
           {
             "text": "Ask Bác Hải to stand in and honk when needed",
-            "consequence": "Bác Hải takes the crossroads and honks twice to stop traffic. Chó eats to the very last bite."
+            "consequence": "Bác Hải takes the crossroads and honks twice to stop traffic. Chó gets through more than half his lunch without standing up."
           },
           {
             "text": "Ask Mèo Xếp Khối to set out a row of traffic cones",
-            "consequence": "Mèo lines up cones like dominoes. Traffic follows them on its own, and Chó even peels an apple."
+            "consequence": "Mèo lines up cones like dominoes. Traffic follows them on its own, and Chó eats nearly all his lunch, one eye on the road."
           },
           {
-            "text": "{name} takes the traffic stand for fifteen minutes",
+            "text": "{name} takes the traffic stand for half an hour",
             "consequence": "Chó hands {name} a spare whistle: \"Stop, look, go. Got it?\" then eats, still glancing over."
           }
         ]
@@ -365,13 +365,13 @@
     },
     {
       "id": "bua-trua-tron-ven",
-      "title": "Bữa trưa trọn vẹn",
+      "title": "Bữa trưa gần trọn vẹn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Lần đầu tiên sau mười hai năm, hộp cơm của Chó sạch trơn. Chó tặng {name} chiếc còi dự phòng thứ ba, vì «giờ Chó tin {name} như tin cái còi».",
+      "text": "Lần đầu tiên sau mười hai năm, Chó ngồi yên được nửa giờ, ăn gần hết hộp cơm. Chuông mười hai giờ điểm, Chó cất mấy miếng cuối lại, cười: «Bữa trọn vẹn để dành lần sau.» Chó tặng {name} chiếc còi dự phòng thứ ba, vì «giờ Chó tin {name} như tin cái còi».",
       "en": {
-        "title": "A whole lunch",
-        "text": "For the first time in twelve years, Chó's lunch box is empty. He gives {name} his third spare whistle, because \"now I trust you like my whistle.\""
+        "title": "An almost whole lunch",
+        "text": "For the first time in twelve years, Chó sits still for half an hour and eats nearly all his lunch. When the tower strikes twelve he saves the last few bites and grins: \"The whole lunch can wait for next time.\" He gives {name} his third spare whistle, because \"now I trust you like my whistle.\""
       }
     },
     {

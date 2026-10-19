@@ -807,7 +807,7 @@
           "letter": {
             "from": "koala-ghep-tranh",
             "title": { "vi": "Khung viền đầu tiên", "en": "The first frame" },
-            "body": { "vi": "{name} ơi… tớ viết thư này lúc vừa ngủ dậy. Khung viền tranh tập vẫn nằm yên dưới bốn viên sỏi, không mảnh nào bỏ đi chơi nữa. Tớ ghép thêm được một dải mây ở giữa, để phần đẹp nhất chờ cậu quay lại. Koala.", "en": "{name}… I'm writing this just after waking up. The practice frame is still lying quietly under its four pebbles, and not one piece has run off to play. I've added a strip of cloud in the middle and saved the nicest part for when you come back. Koala." },
+            "body": { "vi": "{name} ơi… tớ viết thư này lúc vừa ngủ dậy. Khung viền tranh tập vẫn nằm yên ở chỗ hai đứa mình chọn, không mảnh nào bỏ đi chơi nữa. Tớ ghép thêm được một dải mây ở giữa, để phần đẹp nhất chờ cậu quay lại. Koala.", "en": "{name}… I'm writing this just after waking up. The practice frame is still lying quietly in the spot we chose together, and not one piece has run off to play. I've added a strip of cloud in the middle and saved the nicest part for when you come back. Koala." },
             "reward": { "coins": 15, "xp": 15, "items": {} }
           }
         },
@@ -887,11 +887,11 @@
           "letter": {
             "from": "tho-ngam-sao",
             "title": { "vi": "Bài ru dưới vì sao bánh flan", "en": "A lullaby under the custard-pudding star" },
-            "body": { "vi": "{name} ơi… buổi hòa nhạc chiều nay, tớ ngồi hàng sau… ngáp mất hai lần mà vẫn nghe trọn… Đêm xuống, Mèo mang hộp nhạc ra bãi cỏ, chơi lại bài ru tớ ghi trên phiếu… Ngay lúc ấy sao Bánh Flan sáng lên… Tớ gửi cậu tấm bản đồ sao, có đánh dấu chỗ ngôi sao ấy…", "en": "{name}… at this afternoon's concert I sat in the back row… yawned twice but still heard it all… When night came, Mèo carried the music box to the lawn and played the lullaby I wrote on my slip… Right then the Custard Pudding star lit up… I'm sending you my star map, with that star marked on it…" },
+            "body": { "vi": "{name} ơi… buổi hòa nhạc chiều nay, tớ ngồi hàng sau… ngáp mất hai lần mà vẫn nghe trọn… Đêm xuống, Mèo mang hộp nhạc ra bãi cỏ, chơi lại bài ru tớ ghi trên phiếu… Ngay lúc ấy sao Bánh Flan sáng lên… Tớ chép bài ru lên một trang sổ, gửi cậu kèm chiếc kẹp sách ruy băng để đánh dấu trang ấy…", "en": "{name}… at this afternoon's concert I sat in the back row… yawned twice but still heard it all… When night came, Mèo carried the music box to the lawn and played the lullaby I wrote on my slip… Right then the Custard Pudding star lit up… I've copied the lullaby onto a notebook page and I'm sending it with a ribbon bookmark to keep the place…" },
             "reward": {
               "coins": 25,
               "xp": 25,
-              "items": { "ban-do-sao-dem": 1 }
+              "items": { "kep-sach-ruy-bang": 1 }
             }
           }
         }

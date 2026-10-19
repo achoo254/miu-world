@@ -5,13 +5,13 @@
   "title": "Chuyện của Cáo Tuyết Điêu Khắc, chương 3: Bảy màu buổi sáng đầu tiên",
   "status": "active",
   "category": "story",
-  "summary": "Buổi sáng trời quang đầu tiên đã tới. {name} mượn đồ trưng bày trong nhà dân, dẫn lối cho khách, cộng số khách đang chờ, đặt tên cho bức tượng và giúp tia nắng tìm đường vào ngực thiên nga để bảy màu hiện ra.",
+  "summary": "Buổi sáng trời quang đầu tiên đã tới. {name} mượn đồ trưng bày trong nhà dân, dẫn lối cho khách, cộng số khách đang chờ, chọn cách mở màn triển lãm và giúp tia nắng tìm đường vào ngực thiên nga để bảy màu hiện ra.",
   "review": "teacher-pending",
   "sevenQuestions": {
     "who": "{name}, Cáo Tuyết Điêu Khắc",
     "where": "Làng núi tuyết: quảng trường, trong nhà dân, đồi ngắm nắng, lối vào triển lãm, góc bảng đếm khách",
     "goal": "Mở buổi triển lãm nhỏ cho bức tượng thiên nga bảy màu",
-    "play": "Tìm đồ trưng bày theo lời tả; dò lối cho khách; cộng số khách đang chờ; đặt tên tượng; dẫn tia nắng bằng gương",
+    "play": "Tìm đồ trưng bày theo lời tả; dò lối cho khách; cộng số khách đang chờ; chọn cách mở màn; dẫn tia nắng bằng gương",
     "learn": "Từ chỉ đặc điểm, dò đường, cộng có nhớ trong phạm vi 100",
     "reward": "85 XP, 25 Xu, Skill XP Phép cộng, Logic, một Bông tuyết pha lê",
     "next": "Ảnh gửi Mèo Xếp Khối"
@@ -143,31 +143,35 @@
       "logicType": "maze",
       "target": "st-cao-tuyet-tuong-bay-mau-cot-chi-loi",
       "skill": "logic",
-      "prompt": "Khách sắp tới. Ô chữ S là cột chỉ lối ở đầu đường, ô chữ G là tượng thiên nga, ô dấu # là đống tuyết. Dãy bước nào đưa khách tới tượng mà không phải trèo qua đống tuyết? (→ sang phải, ↓ đi xuống)",
+      "prompt": "Khách sắp tới. Ô có chú mèo là cột chỉ lối ở đầu đường, ô ngôi sao là tượng thiên nga, ô gạch là đống tuyết. Dãy bước nào đưa khách tới tượng mà không phải trèo qua đống tuyết? (→ sang phải, ↓ đi xuống)",
       "grid": [
         [
           "S",
           ".",
           "#",
           ".",
+          ".",
           "."
         ],
         [
           "#",
           ".",
+          ".",
+          ".",
+          "#",
+          "."
+        ],
+        [
+          ".",
+          "#",
           "#",
           ".",
-          "#"
+          ".",
+          "."
         ],
         [
           ".",
           ".",
-          ".",
-          ".",
-          "#"
-        ],
-        [
-          "#",
           "#",
           "#",
           ".",
@@ -177,15 +181,15 @@
       "choices": [
         {
           "id": "a",
-          "text": "↓ → → → → ↓ ↓"
+          "text": "↓ → → → ↓ ↓ → →"
         },
         {
           "id": "b",
-          "text": "→ ↓ ↓ → → ↓ →"
+          "text": "→ ↓ → → ↓ → ↓ →"
         },
         {
           "id": "c",
-          "text": "→ ↓ ↓ → → → ↓"
+          "text": "→ ↓ → → → ↓ ↓ →"
         }
       ],
       "answer": {
@@ -193,25 +197,25 @@
       },
       "support": {
         "guide": [
-          "Đặt ngón tay lên ô S.",
-          "Đi thử từng dãy, gặp ô # là dãy ấy bị chắn.",
-          "Dãy đúng dừng đúng ở ô G."
+          "Cột chỉ lối nằm ở ô có chú mèo, khách xuất phát từ đây.",
+          "Dò thử từng dãy; bước vào đống tuyết (ô gạch) là dãy ấy bị chắn.",
+          "Dãy đúng đưa khách dừng trước tượng ở ô ngôi sao."
         ],
-        "hint": "Ngay dưới ô S là một đống tuyết, và cột bên phải cùng của hàng thứ ba cũng vậy.",
+        "hint": "Ngay dưới ô chú mèo là một đống tuyết. Ở hàng thứ hai, ô thứ năm cũng là tuyết.",
         "answer": {
-          "text": "Phải một ô, xuống hai ô, phải hai ô, xuống một ô, phải một ô",
-          "explanation": "Dãy → ↓ ↓ → → ↓ → đi qua các ô trống tới hàng thứ ba, sang cột thứ tư, xuống hàng cuối rồi sang phải là tới tượng, không chạm đống tuyết nào."
+          "text": "Phải, xuống, phải hai ô, xuống, phải, xuống, phải",
+          "explanation": "Dãy → ↓ → → ↓ → ↓ → sang ô thứ hai, xuống hàng hai, đi tới cột thứ tư, xuống hàng ba, sang cột thứ năm, xuống hàng cuối rồi sang phải là tới tượng, không chạm đống tuyết nào."
         },
         "en": {
           "guide": [
-            "Put your finger on the S square.",
-            "Try each sequence; reach a # and that route is blocked.",
-            "The right one stops exactly on the G square."
+            "The signpost is on the cat square; visitors set off from there.",
+            "Trace each sequence; step onto a snow pile (a brick) and that route is blocked.",
+            "The right sequence leaves visitors in front of the statue on the star square."
           ],
-          "hint": "Right below S is a snow pile, and so is the far-right square of the third row.",
+          "hint": "Right below the cat is a snow pile. On the second row, the fifth square is snow too.",
           "answer": {
-            "text": "One right, two down, two right, one down, one right",
-            "explanation": "→ ↓ ↓ → → ↓ → goes through open squares to the third row, across to the fourth column, down to the bottom row, then right to the statue, touching no snow pile."
+            "text": "Right, down, right twice, down, right, down, right",
+            "explanation": "→ ↓ → → ↓ → ↓ → moves to the second square, down to row two, across to the fourth column, down to row three, right to the fifth column, down to the bottom row and right to the statue, touching no snow pile."
           }
         }
       },
@@ -219,34 +223,34 @@
         "right": [
           "Lối đi gấp khúc như một nét chữ chi, mà khách nào cũng tới được tượng.",
           "{name} dò lối không vấp một đống tuyết nào. Cáo buộc ruy băng đỏ dọc đường ấy.",
-          "Bảy bước, không thừa không thiếu. Gọn như một hình vẽ xong."
+          "Tám bước, không thừa không thiếu. Gọn như một hình vẽ xong."
         ],
         "wrong": [
           "Đi xuống ngay từ ô đầu là gặp đống tuyết, {name} thử bước khác nhé.",
-          "Dãy ấy rẽ quá xa sang phải ở hàng thứ ba, ô cuối hàng là tuyết.",
-          "Dò chậm từng ô một, ô có dấu # thì khách không đi qua được."
+          "Dãy ấy đi sang phải quá xa ở hàng thứ hai, ô thứ năm là tuyết.",
+          "Dò chậm từng ô một, ô gạch là đống tuyết, khách không đi qua được."
         ],
         "en": {
           "right": [
             "The path zigzags like a lightning stroke, and every visitor can still reach the statue.",
             "{name} traced the path without bumping a single snow pile. Cáo ties the red ribbon all along it.",
-            "Seven steps, not one too many or too few. As neat as a finished drawing."
+            "Eight steps, not one too many or too few. As neat as a finished drawing."
           ],
           "wrong": [
             "Going straight down from the first square hits a snow pile, {name}; try another sequence.",
-            "That route goes too far right along the third row; the last square there is snow.",
-            "Trace one square at a time; visitors can't pass a square marked #."
+            "That route goes too far right along the second row; the fifth square is snow.",
+            "Trace one square at a time; brick squares are snow piles that visitors cannot pass."
           ]
         }
       },
       "en": {
         "title": "Which way to the statue?",
         "goTo": "Go down to the exhibition entrance, where snow cleared last night blocks a few squares of the path",
-        "prompt": "Visitors are coming. The S square is the signpost at the start of the path, the G square is the swan statue, and # squares are snow piles. Which sequence brings visitors to the statue without climbing a snow pile? (→ right, ↓ down)",
+        "prompt": "Visitors are coming. The cat square is the signpost at the start of the path, the star square is the swan statue, and brick squares are snow piles. Which sequence brings visitors to the statue without climbing a snow pile? (→ right, ↓ down)",
         "choices": [
-          "↓ → → → → ↓ ↓",
-          "→ ↓ ↓ → → ↓ →",
-          "→ ↓ ↓ → → → ↓"
+          "↓ → → → ↓ ↓ → →",
+          "→ ↓ → → ↓ → ↓ →",
+          "→ ↓ → → → ↓ ↓ →"
         ]
       }
     },
@@ -315,45 +319,45 @@
     },
     {
       "id": "ten-cho-buc-tuong",
-      "title": "Tên cho bức tượng",
-      "goTo": "Trong lúc khách chờ, mang tấm biển lên đồi ngắm nắng, ngồi trên tảng đá phẳng mà nghĩ tên",
+      "title": "Mở màn thế nào?",
+      "goTo": "Trong lúc khách chờ, lên đồi ngắm nắng, ngồi trên tảng đá phẳng bàn cách mở màn",
       "kind": "decision",
       "target": "st-cao-tuyet-tuong-bay-mau-tang-da-ngam",
       "speaker": "Cáo Tuyết Điêu Khắc",
-      "prompt": "Cáo cầm bút than, đưa cho {name}: «Tớ giỏi gọt hình, nhưng đặt tên thì vụng lắm. Cậu viết giúp tớ được không?»",
+      "prompt": "Cáo phủi tuyết trên tấm vải bạt phủ tượng: «Gọt thì tớ gọt được, nhưng mở màn sao cho đúng lúc nắng lên thì tớ chịu. Cậu chọn giúp tớ nhé?»",
       "choices": [
         {
-          "id": "thien-nga-bay-sac",
-          "text": "«Thiên nga bảy sắc»",
-          "consequence": "Cáo đọc khẽ hai lần. «Ngắn và tròn trịa như một viên sỏi.» Cậu treo biển lên, ngay ngắn từng li."
+          "id": "moi-ban-nho",
+          "text": "Mời bạn nhỏ nhất trong hàng khách kéo tấm vải",
+          "consequence": "Cáo dắt một bé thỏ con lên bục. Bé kéo vải mạnh tới mức ngã ngồi lên tuyết, cả hàng khách bật cười, còn bé thì cười to nhất."
         },
         {
-          "id": "cau-vong-ngu",
-          "text": "«Cầu vồng ngủ trong băng»",
-          "consequence": "Cáo nhìn tấm biển rất lâu rồi gật đầu: «Ừ. Cầu vồng đang ngủ, chỉ chờ nắng gọi dậy.»"
+          "id": "dem-nguoc",
+          "text": "Cả quảng trường cùng đếm ngược từ mười",
+          "consequence": "Tiếng đếm vang tới tận đồi ngắm nắng. Tới tiếng «một», tấm vải rơi xuống đúng lúc đám mây cuối cùng trôi đi."
         },
         {
-          "id": "chao-buoi-sang",
-          "text": "«Chào buổi sáng, nắng ơi»",
-          "consequence": "Đuôi Cáo vẽ một hình tròn rất to lên tuyết. «Tên này biết cười,» cậu nói."
+          "id": "go-tung-goc",
+          "text": "Gỡ từng góc vải cho tượng hiện ra dần",
+          "consequence": "Cáo gỡ từng góc thật chậm, mỗi lần một mảng băng lấp lánh hiện ra. Khách nín thở theo từng nếp vải."
         }
       ],
       "en": {
-        "title": "A name for the statue",
-        "goTo": "While the visitors wait, take the sign up to the sun-watching hill and sit on the flat rock to think of a name",
-        "prompt": "Cáo holds out the charcoal pencil to {name}: \"I'm good at carving shapes, but clumsy at naming things. Would you write it for me?\"",
+        "title": "How shall we unveil it?",
+        "goTo": "While the visitors wait, go up the sun-watching hill and sit on the flat rock to plan the unveiling",
+        "prompt": "Cáo brushes the snow off the canvas over the statue: \"Carving I can do, but unveiling it right as the sun comes out is beyond me. Will you choose for me?\"",
         "choices": [
           {
-            "text": "\"Seven-colour Swan\"",
-            "consequence": "Cáo reads it softly twice. \"Short and round as a pebble.\" He hangs the sign up, straight to the last millimetre."
+            "text": "Ask the smallest visitor in the queue to pull the cloth",
+            "consequence": "Cáo leads a little rabbit up onto the plinth. She pulls so hard she sits down in the snow; the whole queue laughs, and she laughs loudest of all."
           },
           {
-            "text": "\"A Rainbow Asleep in the Ice\"",
-            "consequence": "Cáo looks at the sign for a long time, then nods: \"Yes. The rainbow is sleeping, waiting for the sun to wake it.\""
+            "text": "Have the whole square count down from ten",
+            "consequence": "The countdown echoes all the way to the sun-watching hill. On \"one\", the cloth slips off just as the last cloud drifts away."
           },
           {
-            "text": "\"Good Morning, Sunshine\"",
-            "consequence": "Cáo's tail draws a very big circle in the snow. \"This name knows how to smile,\" he says."
+            "text": "Lift the cloth one corner at a time so the statue appears bit by bit",
+            "consequence": "Cáo lifts each corner very slowly, and each time a patch of sparkling ice appears. The visitors hold their breath with every fold."
           }
         ]
       }
@@ -408,6 +412,6 @@
   },
   "en": {
     "title": "Cáo Tuyết Điêu Khắc's story, chapter 3: Seven colours on the first sunny morning",
-    "summary": "The first clear morning has come. {name} borrows things for the exhibition from a village house, finds a path for the visitors, adds up how many are waiting, names the statue and helps the sunbeam find its way into the swan's chest so the seven colours appear."
+    "summary": "The first clear morning has come. {name} borrows things for the exhibition from a village house, finds a path for the visitors, adds up how many are waiting, chooses how to unveil the statue and helps the sunbeam find its way into the swan's chest so the seven colours appear."
   }
 }
