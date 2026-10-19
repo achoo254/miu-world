@@ -25,6 +25,7 @@ Lệnh cụ thể và danh sách cấm cho agent: `CLAUDE.md`. File này giải 
 - Chữ trong game gọi người chơi bằng tên nhân vật: nội dung viết `{name}`, UI điền bằng `fillPlayerName`; mọi câu lặp lại (phản hồi, lời NPC, lời mời thử lại) chọn từ pool bằng `freshPicker`, không lặp ngay. `content:check` chặn chữ quest cứng "Miu".
 - Đáp án quest chỉ ở server: web không import `content/quests`; `pnpm security:dist` (CI, sau build web) quét bundle.
 - Generator phải xác định (cùng input → cùng byte output); kiểm bằng chạy lại và so hash.
+- **Đo tải hub online** (`pnpm loadtest`, `tools/loadtest/`): chỉ trên máy dev. Lệnh tự chạy server local ở `127.0.0.1:8787` (bộ nhớ, đăng nhập mật khẩu test), không có tùy chọn trỏ tới URL khác, và từ chối nếu cổng đang bận; không bao giờ chạy trên production. Mỗi lượt chờ máy rảnh (một job nặng một lúc, load ≤ 8, còn ≥ 30% RAM trống). Ví dụ: `pnpm loadtest --scenario room --steps 10,25,50,100 --window 30`. Số liệu và giới hạn người mỗi room: [`plans/dattqh/reports/loadtest-multiplayer-261019.md`](../plans/dattqh/reports/loadtest-multiplayer-261019.md).
 - Không làm yếu test để qua gate. Test không chạy được vì giới hạn môi trường thì skip có điều kiện ngay trong test (bắt đúng mã lỗi, như test symlink trên Windows), không xóa, và CI phải còn chạy nó.
 - Thay đổi về đăng nhập, phân quyền, thưởng, dữ liệu trẻ em: kèm test bảo mật tự động (IDOR, chống gian lận, CSP).
 
