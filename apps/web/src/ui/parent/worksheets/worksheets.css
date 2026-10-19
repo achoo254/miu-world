@@ -50,7 +50,7 @@
   background: var(--color-oli-margin);
 }
 
-/* Model hand (HP001), served by our server from outside git; see oli.tsx. */
+/* Model hand (HP001): the server answers 404 (no open license), so no model is drawn; see oli.tsx. */
 @font-face {
   font-family: 'Chu Mau Tieu Hoc';
   font-weight: 400;

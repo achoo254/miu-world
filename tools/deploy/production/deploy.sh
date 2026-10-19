@@ -162,7 +162,8 @@ analytics() {
 }
 
 # Worksheet handwriting font (no open license: kept out of git). Uploads the .woff2 files from
-# $MIU_FONT_DIR (default .data/fonts of this checkout) to /opt/miu/fonts; served only to signed-in parents.
+# $MIU_FONT_DIR (default .data/fonts of this checkout) to /opt/miu/fonts. Unused: the server no longer serves the
+# font to anyone (the worksheet prints without the model letters); kept so the upload path is not lost.
 fonts() {
   local dir="${MIU_FONT_DIR:-.data/fonts}"
   ls "$dir"/*.woff2 >/dev/null 2>&1 || { echo "no .woff2 in $dir: set MIU_FONT_DIR" >&2; exit 1; }

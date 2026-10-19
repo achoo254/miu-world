@@ -1,6 +1,6 @@
 // Writing space in vở ô li, and the model hand written on it. The model is the primary-school font
-// (HP001), served by our own server only where it has been installed; without it the sheet shows no
-// model at all rather than letters in a hand the child should not copy.
+// (HP001); it has no open license, so the server does not serve it and the sheet shows no model at all
+// rather than letters in a hand the child should not copy.
 import { useEffect, useState, type CSSProperties } from 'react';
 
 const MODEL_FONT = 'Chu Mau Tieu Hoc';

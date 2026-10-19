@@ -154,7 +154,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(journeyRoutes({ db, content, shopNames: new Map(shop.items.map((item) => [item.id, item.name])) }));
   api.use(achievementRoutes({ db, content, clock }));
   api.use(trophyRoomRoutes({ db, content }));
-  api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
+  api.use(worksheetRoutes({ worksheets, clock }));
   const now = (): number => clock().getTime();
   api.use(voiceRoutes({ db, content, ice: new IceServerSource({ turn: config.turn, fetchImpl: turnFetch, now }), now }));
   app.use('/api', api);

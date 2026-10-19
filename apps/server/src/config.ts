@@ -32,8 +32,6 @@ const Env = z.object({
   PASSWORD_LOGIN: z.enum(['0', '1']).optional(),
   /** Test-only folder of extra quest files (E2E plays fixture quests); refused in production. */
   EXTRA_QUEST_DIR: z.string().min(1).optional(),
-  /** Folder holding the primary-school model handwriting font (kept out of git; see the deployment guide). */
-  HANDWRITING_FONT_DIR: z.string().min(1).optional(),
   /**
    * JSON timetable every child starts from until her family saves its own (the owner's class; kept out of git
    * because it names a school and a teacher; see the deployment guide). Unset: the blank template.
@@ -101,8 +99,6 @@ export interface ServerConfig {
   passwordLogin: boolean;
   /** Extra quest files loaded next to the shipped ones (tests only). */
   extraQuestDir: string | null;
-  /** Override for where the handwriting font files live; null uses `.data/fonts` in the repo. */
-  handwritingFontDir: string | null;
   timetableDefaultFile: string | null;
   /** Lower-case emails that get the default timetable; null: every account (never in production). */
   timetableDefaultAccounts: ReadonlySet<string> | null;
@@ -186,7 +182,6 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     // Off unless asked for: a public review build must not let anyone pre-register a parent's email.
     passwordLogin: !production && e.PASSWORD_LOGIN === '1',
     extraQuestDir: production ? null : (e.EXTRA_QUEST_DIR ?? null),
-    handwritingFontDir: e.HANDWRITING_FONT_DIR ?? null,
     timetableDefaultFile: e.TIMETABLE_DEFAULT_FILE ?? null,
     timetableDefaultAccounts: timetableAccounts(e.TIMETABLE_DEFAULT_ACCOUNTS, production),
     turn: e.CF_TURN_KEY_ID && e.CF_TURN_API_TOKEN ? { keyId: e.CF_TURN_KEY_ID, apiToken: e.CF_TURN_API_TOKEN } : null,
