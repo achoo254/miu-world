@@ -5,6 +5,7 @@
 import { eq } from 'drizzle-orm';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import type { ServerWsMessage } from '@miu/schema/multiplayer';
+import { vietnamDay } from '@miu/schema/npc';
 import type { ReportListResponse, ReportView } from '@miu/schema/moderation';
 import type { MailListResponse } from '@miu/schema/mail';
 import { FIXTURE_CONTENT, createTestApp, fakeParent, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
@@ -228,16 +229,21 @@ describe('retention and the daily digest', () => {
 
   it('leaves the moderator one letter a day counting new reports, and none when nothing new came', async () => {
     const moderators = new Set([moderatorAccount.email.toLowerCase()]);
-    const day = new Date('2026-10-20T02:00:00Z');
+    // 09:00 in Vietnam two days ahead of the real clock: every report filed earlier in this file (the hub stamps
+    // reports with the real time) is then older than the first letter, so only this test's report is new for it and
+    // nothing is new for the next day's letter, whatever today's date is.
+    const day = new Date(Date.now() + 2 * 24 * 3_600_000);
+    day.setUTCHours(2, 0, 0, 0);
+    const digestId = `moderation-digest:${vietnamDay(day)}`;
     const a = await parentWithChild(t);
     const b = await parentWithChild(t);
     await fileReport(t.db, { childId: a.childId, reportedChildId: b.childId, reason: 'spam', mapId: null }, new Date(day.getTime() - 60_000));
     expect(await sendDigests(t.db, moderators, day)).toBe(1);
     expect(await sendDigests(t.db, moderators, new Date(day.getTime() + 3_600_000))).toBe(0);
     expect(await sendDigests(t.db, moderators, new Date(day.getTime() + 24 * 3_600_000))).toBe(0);
-    const [letter] = await t.db.select().from(mail).where(eq(mail.templateId, 'moderation-digest:2026-10-20'));
+    const [letter] = await t.db.select().from(mail).where(eq(mail.templateId, digestId));
     expect(letter).toMatchObject({ childId: moderatorChild, params: { count: expect.stringMatching(/^[1-9]\d*$/), open: expect.stringMatching(/^\d+$/) } });
-    const shown = (await mailOf(moderator)).find((m) => m.templateId === 'moderation-digest:2026-10-20');
+    const shown = (await mailOf(moderator)).find((m) => m.templateId === digestId);
     expect(shown?.title).toMatch(/^Báo cáo mới cần xem: \d+$/);
     expect(shown?.body).toContain('/kiem-duyet');
     // Not a moderator: nothing. The scheduled chores run the same steps without throwing.

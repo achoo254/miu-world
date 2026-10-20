@@ -3,7 +3,7 @@
 # pictured, and CI passed on the commit pictured (docs/deployment-guide.md, docs/screen-review.md).
 #   MIU_RELEASE_FORCE="<reason>"  lets an urgent fix through (CI broken for a reason outside the code): the reason is
 #                                 printed and written beside REVISION in the release as RELEASE_FORCED.
-#   MIU_GH_REPO                   the GitHub repository whose CI is asked (default achoo254/miu-world).
+#   MIU_GH_REPO                   the GitHub repository whose CI is asked (default achoo254/miu-world-next).
 # Sets RELEASE_FORCED (the reason, or empty) for the caller.
 
 # Read by the deploy script that sources this file.
@@ -68,7 +68,7 @@ release_gate() {
   fi
 
   # CI of the commit pictured (not of HEAD: a commit that only adds the pictures needs no CI run of its own).
-  local repo="${MIU_GH_REPO:-achoo254/miu-world}" runs
+  local repo="${MIU_GH_REPO:-achoo254/miu-world-next}" runs
   runs="$(gh run list -R "$repo" --workflow ci --commit "$pictured" --json status,conclusion,url --limit 5 2>/dev/null)" \
     || { echo "chặn: không hỏi được CI qua gh (gh auth status; mạng)" >&2; return 1; }
   local ci
