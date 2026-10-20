@@ -45,5 +45,5 @@
   background: var(--color-surface-glass);
 }
 .landing > .note { padding: var(--space-xs) var(--space-md); }
-/* The privacy link at the foot of the page is a 44 px touch target, clear of the screen edge. */
+/* The privacy and terms links at the foot of the page are 44 px touch targets, clear of the screen edge. */
 .landing > .note a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 var(--space-sm); }

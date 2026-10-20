@@ -1248,6 +1248,18 @@ export const PrivacyDocument = z.object({
 export type PrivacyDocument = z.infer<typeof PrivacyDocument>;
 
 /**
+ * Public terms of use page (`/terms`), readable before signing in. Not part of the consent: accounts are not asked to
+ * accept it, so it carries no consent version. Its contact address is the privacy page's.
+ */
+export const TermsDocument = z.object({
+  title: z.string().min(1),
+  /** Date of the last wording change, `YYYY-MM-DD`. */
+  updatedOn: z.iso.date(),
+  sections: z.array(z.object({ heading: z.string().min(1), paragraphs: z.array(z.string().min(1)).min(1) })).min(1),
+});
+export type TermsDocument = z.infer<typeof TermsDocument>;
+
+/**
  * Cumulative XP needed to reach each level: `thresholds[0]` is level 1 and must be 0.
  * Strictly increasing so every XP total maps to exactly one level.
  */

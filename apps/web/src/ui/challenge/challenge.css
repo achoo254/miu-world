@@ -38,6 +38,8 @@
   background: var(--color-field);
 }
 .drag-container { flex-direction: column; background: var(--color-tile-1); border: 4px dashed var(--color-primary-top); cursor: pointer; }
+.drag-source { cursor: pointer; }
+.drag-source:focus-visible,
 .drag-container:focus-visible { box-shadow: var(--focus-ring); outline: none; }
 .drag-container-label { display: flex; align-items: center; gap: var(--space-xs); font-weight: 800; }
 .drag-container-items { display: flex; flex-wrap: wrap; gap: var(--space-xs); }

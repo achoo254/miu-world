@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { ConsentDocument, NameList, PrivacyDocument, QuestDefinition, SkillCatalog } from './content';
+import { ConsentDocument, NameList, PrivacyDocument, QuestDefinition, SkillCatalog, TermsDocument } from './content';
+import { LOCK_DAYS } from './moderation';
 
 describe('content schema', () => {
   it('validates the shipped skill catalogue', () => {
@@ -464,6 +465,21 @@ describe('shipped account content', () => {
     const page = PrivacyDocument.parse(load('legal/privacy-vi.json'));
     expect(page.consentVersion).toBe(ConsentDocument.parse(load('legal/consent-vi.json')).version);
     expect(page.sections.flatMap((s) => s.paragraphs).join(' ')).toMatch(/tự soạn/);
+  });
+
+  it('ships terms of use that keep the account and safety rules the privacy page and consent state', () => {
+    const terms = TermsDocument.parse(load('legal/terms-vi.json'));
+    const text = terms.sections.flatMap((s) => s.paragraphs).join(' ');
+    expect(text).toMatch(/mọi lứa tuổi/);
+    expect(text).toMatch(/bạn là người chịu trách nhiệm/);
+    expect(text).toMatch(/tối đa 2 người chơi phụ/);
+    expect(text).toMatch(/Không có ô chat tự gõ/);
+    expect(text).toMatch(/không ghi âm và không lưu giọng nói/);
+    expect(text).toMatch(/14 ngày/);
+    expect(text).toMatch(/tự soạn/);
+    expect(text).toMatch(/trang Quyền riêng tư/);
+    // The temporary online locks a moderator can pick, as the terms list them.
+    expect(text).toContain(`(${LOCK_DAYS.slice(0, -1).join(', ')} hoặc ${LOCK_DAYS.at(-1)} ngày)`);
   });
 
   it('tells the anonymous numbers sent to Google Analytics, and nothing the old wording claimed', () => {

@@ -94,6 +94,13 @@ describe('content:check', () => {
     expect(checkContent(dir).issues.join('\n')).toMatch(/privacy-vi\.json: .*updatedOn/s);
   });
 
+  it('flags a terms page that does not parse, or is missing', () => {
+    writeFileSync(path.join(dir, 'legal/terms-vi.json'), JSON.stringify({ title: 'x', updatedOn: 'hôm nay', sections: [] }));
+    expect(checkContent(dir).issues.join('\n')).toMatch(/terms-vi\.json: .*updatedOn/s);
+    rmSync(path.join(dir, 'legal/terms-vi.json'));
+    expect(checkContent(dir).issues).toEqual(['content/legal/terms-vi.json is missing: the web app shows it at /terms']);
+  });
+
   it('flags an accessory that unlocks with an unknown quest', () => {
     writeFileSync(path.join(dir, 'accessories/hat-ghost.json'), JSON.stringify({ id: 'hat-ghost', name: 'Mũ ma', variantOf: 'hat-witch-pink', variant: 'mint', unlock: { quest: 'forest-ch9' } }));
     expect(checkContent(dir).issues).toEqual([

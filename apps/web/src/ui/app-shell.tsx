@@ -17,6 +17,7 @@ import { InviteScreen } from './friends/invite-screen';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
 import { LandingScreen } from './landing/landing-screen';
 import { PrivacyScreen } from './legal/privacy-screen';
+import { TermsScreen } from './legal/terms-screen';
 import { Logo, PageLoading, SkyScene } from './kit/sky-scene';
 import type { MusicMood } from './sound/music';
 import { useMusicMood } from './sound/music-player';
@@ -178,6 +179,7 @@ export function AppRoutes() {
         <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/register" element={<WithMusic mood="home"><SignedOutOnly><RegisterScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/privacy" element={<PrivacyScreen />} />
+        <Route path="/terms" element={<TermsScreen />} />
         <Route path="/moi/:code" element={<WithMusic mood="home"><InviteScreen /></WithMusic>} />
         <Route path="/set-pin" element={<RequireParent needsConsent={false}><SetPinScreen /></RequireParent>} />
         <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />

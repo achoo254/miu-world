@@ -1,19 +1,33 @@
 // M2.4 Kéo thả: drag pieces (apples) into the container (the beaver's basket) until the total is
 // right; drag back out to remove. Tap a piece then tap the basket does the same for children who
 // find dragging hard. The server checks the placed set.
-import { useCallback, useState } from 'react';
+import { useCallback, useState, type KeyboardEvent } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
 import { Icon } from '../kit/art';
+import { useT } from '../i18n/use-t';
 import { ChallengeFrame, type ChallengeContext } from './challenge-frame';
 import { DROP_ZONE_ATTR, usePointerDrag } from './use-pointer-drag';
 import { isStringList, useDraftState } from '../quest/step-draft';
 
 type DragDropStep = Extract<QuestStepPublic, { kind: 'challenge'; mechanic: 'drag-drop' }>;
 
+/**
+ * Enter or Space on a drop zone itself does what a click does, so a keyboard can move the selected piece too. Keys
+ * pressed on a piece inside the zone are left to that piece's own button.
+ */
+const onActivateKey = (action: () => void) => (e: KeyboardEvent<HTMLElement>) => {
+  if (e.target !== e.currentTarget) return;
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    action();
+  }
+};
+
 export function DragDropChallenge({ step, context, onAnswer }: { step: DragDropStep; context: ChallengeContext; onAnswer: (answer: StepAnswer) => void }) {
   const [placed, setPlaced] = useDraftState<string[]>('placed', [], isStringList);
   const [selected, setSelected] = useState<string | null>(null);
+  const { t } = useT();
 
   const move = useCallback((id: string, into: boolean) => {
     setPlaced((prev) => (into ? (prev.includes(id) ? prev : [...prev, id]) : prev.filter((p) => p !== id)));
@@ -50,7 +64,16 @@ export function DragDropChallenge({ step, context, onAnswer }: { step: DragDropS
   return (
     <ChallengeFrame context={context} prompt={context.say(step.prompt, step.en?.prompt)} onCheck={() => onAnswer({ placed })} canCheck={placed.length > 0} onReset={() => setPlaced([])}>
       <div className="drag-board">
-        <div className="drag-source" {...{ [DROP_ZONE_ATTR]: 'source' }} data-id="drag-source" onClick={() => dropSelected(false)}>
+        <div
+          className="drag-source"
+          role="button"
+          tabIndex={0}
+          aria-label={t('challenge.dragBack')}
+          {...{ [DROP_ZONE_ATTR]: 'source' }}
+          data-id="drag-source"
+          onClick={() => dropSelected(false)}
+          onKeyDown={onActivateKey(() => dropSelected(false))}
+        >
           {step.pieces.filter((p) => !placed.includes(p.id)).map((p) => piece(p.id, context.fill(p.label)))}
         </div>
         <div
@@ -61,9 +84,7 @@ export function DragDropChallenge({ step, context, onAnswer }: { step: DragDropS
           {...{ [DROP_ZONE_ATTR]: 'container' }}
           data-id="drag-container"
           onClick={() => dropSelected(true)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') dropSelected(true);
-          }}
+          onKeyDown={onActivateKey(() => dropSelected(true))}
         >
           <p className="drag-container-label">
             <Icon name="basket" size={40} />

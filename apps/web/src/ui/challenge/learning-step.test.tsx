@@ -131,7 +131,25 @@ describe('learning steps send the answer the server checks', () => {
     expect(sentAnswer(submit)).toEqual({ placed: ['apple-1', 'apple-2', 'apple-3'] });
   });
 
-  it('sort: tap a stone then a slot, reset clears, check sends the order', () => {
+  it('drag-drop: both sides are keyboard buttons; a key on a piece inside is left to the piece', () => {
+    renderStep(steps.apples);
+    const container = document.querySelector('[data-id="drag-container"]') as HTMLElement;
+    const source = document.querySelector('[data-id="drag-source"]') as HTMLElement;
+    expect(source.getAttribute('role')).toBe('button');
+    expect(source.tabIndex).toBe(0);
+    expect(source.getAttribute('aria-label')).toBeTruthy();
+    tapTile('[data-id="piece-apple-1"]');
+    fireEvent.keyDown(container, { key: 'Enter' });
+    expect(document.querySelector('[data-id="drag-count"]')?.textContent).toBe('1');
+    tapTile('[data-id="drag-container"] [data-id="piece-apple-1"]');
+    // Enter on the selected piece itself does not drop it into the zone around it.
+    fireEvent.keyDown(document.querySelector('[data-id="drag-container"] [data-id="piece-apple-1"]') as Element, { key: 'Enter' });
+    expect(document.querySelector('[data-id="drag-count"]')?.textContent).toBe('1');
+    fireEvent.keyDown(source, { key: ' ' });
+    expect(document.querySelector('[data-id="drag-count"]')?.textContent).toBe('0');
+  });
+
+  it('sort:tap a stone then a slot, reset clears, check sends the order', () => {
     const submit = renderStep(steps.stones);
     const put = (stone: string, slot: number) => {
       tapTile(`[data-id="stone-${stone}"]`);

@@ -71,6 +71,9 @@ export function SpeakStepScreen({
                 <button type="button" className={buttonClass('ghost')} data-id="speak-playback" onClick={() => void audio.current?.play()}>
                   <T k="speak.playback" />
                 </button>
+                {/* The child's own recording, heard back at once and never sent anywhere: there is no text to caption
+                    it with (no speech-to-text, by the privacy promise), and it has no on-screen controls. */}
+                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                 <audio ref={audio} src={recorder.url} data-id="speak-audio" preload="auto" />
               </>
             ) : null}

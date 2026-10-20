@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
 
@@ -117,5 +118,10 @@ export default tseslint.config(
     files: ['apps/web/**/*.{ts,tsx}'],
     plugins: { 'react-hooks': reactHooks },
     rules: reactHooks.configs.recommended.rules,
+  },
+  {
+    // Accessibility of the React UI's markup (labels, roles, keyboard reach of clickable elements).
+    files: ['apps/web/**/*.tsx'],
+    ...jsxA11y.flatConfigs.recommended,
   },
 );

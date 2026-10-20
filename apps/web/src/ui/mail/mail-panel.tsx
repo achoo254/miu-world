@@ -91,7 +91,7 @@ export function MailPanel({ onClose, onCoinsUpdated }: MailPanelProps) {
             <button
               type="button"
               className="mail-tab-btn"
-              aria-selected={filter === 'all'}
+              aria-pressed={filter === 'all'}
               data-id="mail-tab-all"
               onClick={() => setFilter('all')}
             >
@@ -101,7 +101,7 @@ export function MailPanel({ onClose, onCoinsUpdated }: MailPanelProps) {
             <button
               type="button"
               className="mail-tab-btn"
-              aria-selected={filter === 'unread'}
+              aria-pressed={filter === 'unread'}
               data-id="mail-tab-unread"
               onClick={() => setFilter('unread')}
             >

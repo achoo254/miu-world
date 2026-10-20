@@ -39,7 +39,7 @@
   gap: var(--space-xs);
 }
 
-.mail-tab-btn[aria-selected='true'] {
+.mail-tab-btn[aria-pressed='true'] {
   background: var(--color-field);
   border-color: var(--color-field-edge);
   color: var(--color-primary);
