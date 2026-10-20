@@ -1,78 +1,57 @@
 {
-  "capturedFrom": "601d07ea56fd33d7af94805172ab6dd230ca7d13",
-  "capturedAt": "2026-10-19T15:23:52+07:00",
-  "reviewedAt": "2026-10-19T15:45:00+07:00",
-  "reviewer": "agent:claude (4 subagent duyệt 11e785f2; phiên chính duyệt các màn đổi ở 601d07ea)",
+  "capturedFrom": "b189e7eee9a2f6de2577d845ec5911e20ab1f2fc",
+  "capturedAt": "2026-10-20T17:36:06+07:00",
+  "reviewedAt": "2026-10-20T17:39:20+07:00",
+  "reviewer": "agent:claude (5 subagent duyệt 54 ảnh theo checklist, so với ảnh đã duyệt ở 601d07ea); quyết định duyệt giao cho Jev (jev-1.13.0) theo chỉ thị của phiên điều phối: pass, xác suất 1.0",
   "verdict": "pass",
   "findings": [
     {
-      "shot": "360x740/02-players.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Đã sửa: ảnh chụp sớm khi danh sách người chơi chưa tải (bản 11e785f2 thiếu thẻ); spec giờ chờ thẻ người chơi, ảnh hiện «Mèo Mây» và «Thêm người chơi».",
-      "fixedIn": "95c9164c"
-    },
-    {
-      "shot": "820x1180/25-online-off.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Đã sửa: thông báo tắt online là thẻ gọn ở giữa, trên nút Chạy/Nhảy; không che nút HUD, tên chương đọc đủ.",
-      "fixedIn": "c3f5267e"
-    },
-    {
-      "shot": "360x740/26-moderation.png",
-      "kind": "missing-close",
-      "severity": "note",
-      "text": "Đã sửa: màn kiểm duyệt có nút «Quay lại»; nút «Bỏ qua» có viền; không còn chữ ONLINE_MODE; loài ghi tiếng Việt.",
-      "fixedIn": "1dd840bb"
-    },
-    {
-      "shot": "820x1180/12-event-panel.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Đã sửa: nền sau bảng sự kiện và bảng Olympic là nền trời tối đục, không còn lộ chữ màn Home ở đáy.",
-      "fixedIn": "f20b323f"
-    },
-    {
-      "shot": "820x1180/27-puzzle-clues.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Đã sửa: hộp «Manh mối» có ba manh mối thật (giải được: cốc đỏ), Bồ Câu Đưa Tin dùng ảnh chim thay chữ «B».",
-      "fixedIn": "570f7616"
-    },
-    {
       "shot": "360x740/13-olympiad-practice.png",
-      "kind": "off-screen",
+      "kind": "clipped",
       "severity": "note",
-      "text": "Đã sửa: nút ← dính ở góc phải khi cuộn, không che câu hỏi.",
-      "fixedIn": "5739582b"
-    },
-    {
-      "shot": "360x740/12-event-panel.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Ghi chú: lần chụp đầu ở 601d07ea bắt đúng lúc bảng sự kiện còn «Đang tải…» (spec chỉ chờ khung bảng); chụp lại cùng commit thì đủ nội dung. Nên cho spec chờ nội dung bảng.",
+      "text": "Màn đang cuộn xuống nên dòng đầu đề bài bị cắt nửa ở mép trên; nút quay lại (←) nổi đè góc phải bong bóng đề (không che chữ). Giống hệt ảnh đã duyệt.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/18-party.png",
-      "kind": "overlap",
+      "shot": "360x740/15-shop.png",
+      "kind": "other",
       "severity": "note",
-      "text": "Còn: bảng «Đội của bạn» có thể che khoảng 10 px bong bóng thoại 3D trên iPad (bong bóng vẽ trong cảnh 3D); không có trong ảnh lần này.",
+      "text": "Toast «+80 XP» còn sót, thò một mẩu ở mép trên phía sau bảng Cửa hàng; không che nút nào. Có từ ảnh đã duyệt.",
       "fixedIn": null
     },
     {
       "shot": "360x740/22-friends-invite.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Còn: nút «Quay lại game» đè góc dưới phải khung Bạn bè, không che chữ hay nút.",
+      "text": "Nút «Quay lại game» đè lên viền góc dưới phải của bảng Bạn bè (không che chữ hay nút «Chia sẻ»/«Thu hồi»). Có từ ảnh đã duyệt.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/27-puzzle-clues.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Khổ điện thoại chỉ thấy «Cốc đỏ», «Cốc xanh»; lựa chọn thứ ba phải cuộn mới thấy, bé có thể tưởng chỉ có hai. Có từ ảnh đã duyệt.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/04-home.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Tên bài hôm nay dài hơn (xuống 2 dòng) đẩy dòng nhiệm vụ «Hoàn thành 0/11 · +100 XP» xuống, chỉ thấy nửa trên ở mép dưới; trang cuộn được. Do dữ liệu theo ngày, bố cục không đổi.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/08-play-prompt.png",
       "kind": "other",
       "severity": "note",
-      "text": "Còn: nhãn «Vẹt · Nói chuyện» đã lên trên đầu nhân vật, nhưng Vẹt vẫn bị nhân vật che do góc máy của ảnh.",
+      "text": "Nhân vật Mochi đứng chắn trước NPC Vẹt, chỉ thấy nhãn «Vẹt · Nói chuyện». Có từ ảnh đã duyệt.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/18-party.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Thú cưng Mèo xám đứng ngay trước nhân vật Mochi trong cảnh 3D, che gần hết thân; giao diện không đổi, không chồng nhau.",
       "fixedIn": null
     }
   ]
