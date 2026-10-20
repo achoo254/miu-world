@@ -1,59 +1,45 @@
-// The Miu logo (assets/generated/brand/, `pnpm assets:logo`) as the pages' favicon and the home-screen icon of the
-// installed web app: links every page to the favicon and the iPhone icon, and gives the game page a web app manifest
-// (served in dev, emitted into the build). Icon URLs carry their manifest hash so a new logo is fetched past
-// Cloudflare's cache; the files themselves ship through repoAssets like any other runtime asset.
+// The logo (assets/generated/brand/, `pnpm assets:logo`) as the pages' favicon and the home-screen icon of the installed
+// web app: links every page to the favicon and the iPhone icon, and gives the game page a web app manifest (served in
+// dev, emitted into the build). Name, colours, icons and the manifest come from brand.config.json (@miu/brand), which
+// the build validates here. Icon URLs carry their manifest hash so a new logo is fetched past Cloudflare's cache; the
+// files themselves ship through repoAssets like any other runtime asset.
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import type { Connect, HtmlTagDescriptor, Plugin } from 'vite';
+import { brand } from '@miu/brand/brand';
+import { parseBrandConfig } from '@miu/brand/config';
+import { generateManifests, manifestText } from '@miu/brand/generate';
+import { iconFor, rasterIcons } from '@miu/brand/icons';
 import { versioned } from './src/asset-versions.ts';
 import { assetUrlResolver } from './vite-asset-url.ts';
 
-const BRAND_DIR = 'generated/brand';
-const FAVICON = `${BRAND_DIR}/miu-logo-32.png`;
-const APPLE_TOUCH_ICON = `${BRAND_DIR}/miu-logo-180.png`;
-/** The logo the static pages show beside the game's name. */
-export const APP_LOGO = `${BRAND_DIR}/miu-logo-192.png`;
-const MANIFEST_ICONS = [
-  { file: APP_LOGO, sizes: '192x192', purpose: 'any' },
-  { file: `${BRAND_DIR}/miu-logo-512.png`, sizes: '512x512', purpose: 'any' },
-  { file: `${BRAND_DIR}/miu-logo-maskable-512.png`, sizes: '512x512', purpose: 'maskable' },
-];
+function smallestManifestLogo(): string {
+  const [logo] = rasterIcons(brand).filter((icon) => icon.purpose === 'any');
+  if (!logo) throw new Error('brand: no manifest logo');
+  return logo.file;
+}
+
+/** The logo the static pages show beside the game's name (the 192 px manifest icon). */
+export const APP_LOGO = smallestManifestLogo();
 /** Repo asset paths the pages load: shipped into the build next to the UI art. */
-export const APP_ICON_PATHS = [FAVICON, APPLE_TOUCH_ICON, ...MANIFEST_ICONS.map((icon) => icon.file)];
+export const APP_ICON_PATHS = rasterIcons(brand).map((icon) => icon.file);
 
 const WEB_MANIFEST = 'manifest.webmanifest';
-const APP_NAME = 'Miu World';
-/** --color-sky-top and --color-sky-mid of src/ui/tokens.css: the logo's sky behind the browser bar and splash. */
-const THEME_COLOR = '#8fd0ff';
-const BACKGROUND_COLOR = '#cdebff';
 
 /** The favicon and iPhone icon links every page carries (the static lesson pages too); `url` resolves a manifest path. */
 export function iconLinkTags(url: (file: string) => string): HtmlTagDescriptor[] {
+  const favicon = iconFor(brand, 'favicon');
   return [
-    { tag: 'link', attrs: { rel: 'icon', type: 'image/png', sizes: '32x32', href: url(FAVICON) }, injectTo: 'head' },
-    { tag: 'link', attrs: { rel: 'apple-touch-icon', href: url(APPLE_TOUCH_ICON) }, injectTo: 'head' },
+    { tag: 'link', attrs: { rel: 'icon', type: 'image/png', sizes: `${favicon.size}x${favicon.size}`, href: url(favicon.file) }, injectTo: 'head' },
+    { tag: 'link', attrs: { rel: 'apple-touch-icon', href: url(iconFor(brand, 'apple-touch').file) }, injectTo: 'head' },
   ];
 }
 
 export function appIcons(assetsDir: string): Plugin {
   const url = assetUrlResolver(assetsDir);
-  const webManifest = `${JSON.stringify(
-    {
-      name: APP_NAME,
-      short_name: APP_NAME,
-      description: 'Thế giới 3D vừa chơi vừa học Toán và Tiếng Việt, chơi cùng bạn bè.',
-      lang: 'vi',
-      start_url: '/',
-      scope: '/',
-      display: 'fullscreen',
-      orientation: 'any',
-      theme_color: THEME_COLOR,
-      background_color: BACKGROUND_COLOR,
-      icons: MANIFEST_ICONS.map((icon) => ({ src: url(icon.file), sizes: icon.sizes, type: 'image/png', purpose: icon.purpose })),
-    },
-    null,
-    2,
-  )}\n`;
+  // Fails the build (and the dev server) on a brand.config.json its schema rejects.
+  parseBrandConfig(brand);
+  const webManifest = manifestText(generateManifests(brand, url)['web.webmanifest.json']);
   const manifestUrl = versioned(`/${WEB_MANIFEST}`, createHash('sha256').update(webManifest).digest('hex').slice(0, 12));
   const serveManifest: Connect.NextHandleFunction = (req, res, next) => {
     if (req.url?.split('?')[0] !== `/${WEB_MANIFEST}`) return next();
@@ -72,10 +58,10 @@ export function appIcons(assetsDir: string): Plugin {
       if (path.basename(ctx.filename) === 'index.html') {
         tags.push(
           { tag: 'link', attrs: { rel: 'manifest', href: manifestUrl }, injectTo: 'head' },
-          { tag: 'meta', attrs: { name: 'theme-color', content: THEME_COLOR }, injectTo: 'head' },
+          { tag: 'meta', attrs: { name: 'theme-color', content: brand.colors.theme }, injectTo: 'head' },
           { tag: 'meta', attrs: { name: 'apple-mobile-web-app-capable', content: 'yes' }, injectTo: 'head' },
           { tag: 'meta', attrs: { name: 'mobile-web-app-capable', content: 'yes' }, injectTo: 'head' },
-          { tag: 'meta', attrs: { name: 'apple-mobile-web-app-title', content: APP_NAME }, injectTo: 'head' },
+          { tag: 'meta', attrs: { name: 'apple-mobile-web-app-title', content: brand.shortName }, injectTo: 'head' },
         );
       }
       return tags;

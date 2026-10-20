@@ -24,6 +24,7 @@
     "vitest.config.ts",
     "playwright.config.ts",
     "playwright.ci.config.ts",
+    "../../packages/brand/src/**/*.ts",
     "../../packages/schema/src/**/*.ts",
     "../../packages/quest/src/**/*.ts",
     "../../packages/voxel/src/**/*.ts"

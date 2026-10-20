@@ -29,7 +29,7 @@ export function drawBlindGoat(ctx: CanvasRenderingContext2D, state: BlindGoatSta
   ctx.fill('evenodd');
   ctx.restore();
   const glow = ctx.createRadialGradient(state.me.x, state.me.y, SIGHT * 0.6, state.me.x, state.me.y, SIGHT);
-  glow.addColorStop(0, 'rgba(0,0,0,0)');
+  glow.addColorStop(0, 'transparent');
   glow.addColorStop(1, theme.ink);
   ctx.globalAlpha = 0.6;
   ctx.fillStyle = glow;

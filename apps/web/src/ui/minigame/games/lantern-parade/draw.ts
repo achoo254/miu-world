@@ -73,7 +73,7 @@ export function drawLanternParade(ctx: CanvasRenderingContext2D, state: LanternP
   if (lit) {
     const glow = ctx.createRadialGradient(x + 40, g - 120, 5, x + 40, g - 120, 110);
     glow.addColorStop(0, theme.star);
-    glow.addColorStop(1, 'rgba(0,0,0,0)');
+    glow.addColorStop(1, 'transparent');
     ctx.globalAlpha = 0.55 * flicker;
     ctx.fillStyle = glow;
     ctx.fillRect(x - 80, g - 240, 240, 240);

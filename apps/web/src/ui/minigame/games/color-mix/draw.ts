@@ -21,6 +21,7 @@ export function blend(a: string, b: string): string {
   const y = parseHex(b);
   if (!x || !y) return a;
   const c = x.map((v, i) => Math.round((v + (y[i] ?? v)) / 2));
+  // eslint-disable-next-line no-restricted-syntax -- a blend of two token colours, not a colour of its own.
   return `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
 }
 

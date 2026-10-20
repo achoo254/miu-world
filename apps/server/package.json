@@ -12,6 +12,7 @@
     "db:check": "drizzle-kit check"
   },
   "dependencies": {
+    "@miu/brand": "workspace:*",
     "@electric-sql/pglite": "^0.5.8",
     "@miu/quest": "workspace:*",
     "@miu/schema": "workspace:*",

@@ -29,7 +29,7 @@ export function drawFireflyTorch(ctx: CanvasRenderingContext2D, state: FireflySt
   ctx.arc(bx, by, r, 0, Math.PI * 2, true);
   ctx.fill('evenodd');
   const rim = ctx.createRadialGradient(bx, by, r * 0.6, bx, by, r);
-  rim.addColorStop(0, 'rgba(0,0,0,0)');
+  rim.addColorStop(0, 'transparent');
   rim.addColorStop(1, theme.ink);
   ctx.globalAlpha = 0.5;
   ctx.fillStyle = rim;

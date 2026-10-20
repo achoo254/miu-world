@@ -429,8 +429,8 @@ input:focus-visible, select:focus-visible { border-color: var(--color-secondary)
   inset: -12%;
   border-radius: 50%;
   background: conic-gradient(var(--color-primary), var(--color-secondary), var(--color-badge), var(--color-primary));
-  mask: radial-gradient(circle, transparent 38%, #000 40%, #000 52%, transparent 54%, transparent 60%, #000 62%, #000 70%, transparent 72%);
-  -webkit-mask: radial-gradient(circle, transparent 38%, #000 40%, #000 52%, transparent 54%, transparent 60%, #000 62%, #000 70%, transparent 72%);
+  mask: radial-gradient(circle, transparent 38%, var(--color-mask) 40%, var(--color-mask) 52%, transparent 54%, transparent 60%, var(--color-mask) 62%, var(--color-mask) 70%, transparent 72%);
+  -webkit-mask: radial-gradient(circle, transparent 38%, var(--color-mask) 40%, var(--color-mask) 52%, transparent 54%, transparent 60%, var(--color-mask) 62%, var(--color-mask) 70%, transparent 72%);
   animation: loading-portal-spin 2.4s linear infinite;
   z-index: 0;
 }

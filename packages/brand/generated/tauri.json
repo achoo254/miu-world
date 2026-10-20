@@ -1,0 +1,13 @@
+{
+  "productName": "Miu World",
+  "identifier": "com.hoandat.miu",
+  "plugins": {
+    "deep-link": {
+      "desktop": {
+        "schemes": [
+          "com.hoandat.miu"
+        ]
+      }
+    }
+  }
+}

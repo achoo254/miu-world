@@ -1,6 +1,7 @@
 // Backdrop for the screens before the game (direction A): sky, clouds and a floating voxel island.
 // Motion (drifting clouds, bobbing island, floating treasures, a parrot crossing) lives in sky-scene.css
 // and stops under prefers-reduced-motion.
+import { brand } from '@miu/brand/brand';
 import { T } from '../i18n/use-t';
 import type { CSSProperties, ReactNode } from 'react';
 import { Icon, MiuPortrait } from './art';
@@ -124,7 +125,7 @@ export function MiuOnIsland({ pose, altPose, size, species, bare = false }: { po
   );
 }
 
-const LOGO_TEXT = 'Miu World';
+const LOGO_TEXT = brand.appName;
 
 /** The letters hop in one after another; screen readers get the name once, not letter by letter. */
 export function Logo() {

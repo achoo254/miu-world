@@ -77,6 +77,37 @@
   /* Dims the paused game behind a modal. */
   --color-backdrop: rgba(43, 33, 64, 0.55);
   --color-backdrop-light: rgba(43, 33, 64, 0.18);
+  /* Small dark shadow under a count badge, and the faint inner shade of a parchment letter (--color-parchment-ink). */
+  --color-badge-shadow: rgba(0, 0, 0, 0.25);
+  --color-parchment-inset: rgba(74, 50, 24, 0.05);
+  /* Opaque stop of a CSS mask: only its alpha counts, the colour never shows. */
+  --color-mask: #000;
+  /* The cooking screen keeps its own warm palette (orange header and button, green/red ingredient tags). */
+  --color-cooking-ink: #333;
+  --color-cooking-title: #212121;
+  --color-cooking-muted: #666;
+  --color-cooking-label: #757575;
+  --color-cooking-sub: #6d4c41;
+  --color-cooking-accent: #e65100;
+  --color-cooking-header-from: #fff8e1;
+  --color-cooking-header-to: #ffecb3;
+  --color-cooking-header-line: #ffd54f;
+  --color-cooking-shadow: rgba(0, 0, 0, 0.08);
+  --color-cooking-card-line: #e0e0e0;
+  --color-cooking-card-hover: #ffb74d;
+  --color-cooking-ok: #e8f5e9;
+  --color-cooking-ok-line: #81c784;
+  --color-cooking-ok-line-soft: #c8e6c9;
+  --color-cooking-ok-ink: #2e7d32;
+  --color-cooking-lack: #fbe9e7;
+  --color-cooking-lack-line: #ffccbc;
+  --color-cooking-lack-ink: #d84315;
+  --color-cooking-hunger: #fff3e0;
+  --color-cooking-happy: #fce4ec;
+  --color-cooking-happy-ink: #c2185b;
+  --color-cooking-button-from: #ff9800;
+  --color-cooking-button-to: #f57c00;
+  --color-cooking-button-shadow: rgba(245, 124, 0, 0.25);
 
   --font-display: 'Baloo 2', system-ui, sans-serif;
   --font-body: 'Nunito', system-ui, sans-serif;

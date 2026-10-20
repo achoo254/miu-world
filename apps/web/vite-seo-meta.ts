@@ -7,14 +7,16 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { HtmlTagDescriptor, Plugin } from 'vite';
+import { brand } from '@miu/brand/brand';
+import { primaryOrigin } from '@miu/brand/hosts';
 import { GENERAL_SHARE_CARD, SHARE_CARD_SIZE } from '../../packages/schema/src/share-cards.ts';
 import { pairOf } from './src/ui/i18n/i18n.ts';
 import viLocale from './src/ui/i18n/locales/vi.json';
 import { assetUrlResolver } from './vite-asset-url.ts';
 
-/** Where the game is served: the base of every absolute address in a page or the sitemap. */
-export const SITE_ORIGIN = 'https://miu.hoandat.com';
-export const SITE_NAME = 'Miu World';
+/** Where the game is served (the primary tenant's web host): the base of every absolute address in a page or the sitemap. */
+export const SITE_ORIGIN = primaryOrigin(brand);
+export const SITE_NAME = brand.appName;
 
 export const absoluteUrl = (urlPath: string): string => `${SITE_ORIGIN}${urlPath}`;
 

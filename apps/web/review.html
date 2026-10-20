@@ -321,7 +321,7 @@
 
       <section data-id="review-deps">
         <h2>Dependency mới của đợt</h2>
-        <p class="sub">Đợt Nhà của bé rủ bé sang các map khác (10/10/2026) <b>không thêm dependency</b>. Đợt nói chuyện bằng giọng (06/10/2026) <b>không thêm dependency</b> (WebRTC, Web Audio, đọc giọng đều là API của trình duyệt). Đợt vertical slice <b>không thêm dependency</b> (chỉ thêm script <code>assets:home</code>, <code>security:dist</code>, <code>e2e:ci</code>). Bảng dưới là dependency của đợt Foundation. Khóa phiên bản trong <code>pnpm-lock.yaml</code>; <code>pnpm audit --prod</code> chạy trong CI.</p>
+        <p class="sub">Đợt brand một nguồn (20/10/2026) thêm <code>ajv</code> 8.20.0 (MIT) cho <code>@miu/brand</code>: kiểm <code>brand.config.json</code> theo JSON Schema lúc build web, <code>pnpm brand:gen</code> và test; không vào bundle trình duyệt hay bundle server. Cùng phiên bản với <code>chat-next</code>. Đợt Nhà của bé rủ bé sang các map khác (10/10/2026) <b>không thêm dependency</b>. Đợt nói chuyện bằng giọng (06/10/2026) <b>không thêm dependency</b> (WebRTC, Web Audio, đọc giọng đều là API của trình duyệt). Đợt vertical slice <b>không thêm dependency</b> (chỉ thêm script <code>assets:home</code>, <code>security:dist</code>, <code>e2e:ci</code>). Bảng dưới là dependency của đợt Foundation. Khóa phiên bản trong <code>pnpm-lock.yaml</code>; <code>pnpm audit --prod</code> chạy trong CI.</p>
         <div class="table-wrap"><table>
           <thead><tr><th>Gói</th><th>Dùng ở</th><th>Để làm gì</th><th>License</th></tr></thead>
           <tbody>
