@@ -1,0 +1,1 @@
+- [Test strategy 07/10](project-test-strategy-smoke-audits-screens.md) — smoke E2E blocks deploy, Node quest-target audit, AI-reviewed phone/iPad screenshots

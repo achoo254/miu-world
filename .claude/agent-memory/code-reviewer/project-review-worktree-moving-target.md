@@ -13,6 +13,8 @@ Same on `main`: during the 2026-10-05 skills/journey/achievements review, HEAD g
 
 Recurring defect class: a new quest `category` gets excluded in web helpers but not in server `regionQuests` (apps/server/src/progression/player-facts.ts), which buckets every non-story/non-coop quest as a lesson; grep every `category ===` exclusion list when a category is added.
 
+Recurring defect class 2 (2026-10-07 boss duel review): the quest controller's network retry (`OfflineBanner` → `submitRef`) re-sends a step without going back through the step screen, so any per-response UI hook added in a screen (`onRight` vở card, `onWon`, party "ally" detection) silently misses retried answers; check every new screen-level response handler against the retry path.
+
 A scout-block hook denies any Bash/Read path containing `node_modules` (e.g. checking drizzle driver internals): reason from existing repo usage instead (e.g. `date()` columns already exported as strings).
 
 **How to apply:** record `ls --time-style` mtimes at start, re-read a file right before citing line numbers, say in the report which snapshot was reviewed. Review screenshots in `.data/<feature>/review-shots/` are useful evidence (they exposed a delayed-tap bug) — check them. Never run E2E yourself there. Scratch scripts: `.mts` + `pnpm exec tsx` from `apps/web` can import worktree TS modules for quick behavioural checks without editing the repo.
