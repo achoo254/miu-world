@@ -16,7 +16,8 @@ const noQuestContentStrings = [
 ];
 
 // A colour written in code: a hex colour (#abc, #aabbcc, with alpha) or a CSS colour function. The web UI takes its
-// colours from src/ui/tokens.css (var(--color-…)); tools/brand/check-brand.ts checks the UI's CSS files the same way.
+// colours from src/ui/tokens.css (var(--color-…)); `pnpm check:brand` (@shared-next/brand) checks the UI's CSS files the same
+// way.
 const COLOUR_LITERAL = '(^|[^&\\w])#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\\b|\\b(rgba?|hsla?|hwb|lab|lch|oklab|oklch)\\(';
 const colourMessage = 'Colours live in apps/web/src/ui/tokens.css: add a token there and use var(--color-…).';
 const noColourLiterals = [

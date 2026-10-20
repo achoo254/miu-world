@@ -12,7 +12,7 @@
     "db:check": "drizzle-kit check"
   },
   "dependencies": {
-    "@miu/brand": "workspace:*",
+    "@shared-next/brand": "github:achoo254/shared-next#v0.2.0&path:/packages/brand",
     "@electric-sql/pglite": "^0.5.8",
     "@miu/quest": "workspace:*",
     "@miu/schema": "workspace:*",

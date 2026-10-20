@@ -1,8 +1,8 @@
 // Khung ứng dụng và điều hướng theo trạng thái tài khoản (NEW SCREEN, Master Plan §6 Tài khoản).
 import { Suspense, lazy, useEffect, type ReactNode } from 'react';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router';
-import { brand } from '@miu/brand/brand';
 import { usePageViews } from '../analytics/use-page-views';
+import { brand } from '../brand';
 import { takePostLoginTarget } from '../post-login-target';
 import { AccountProvider, useAccount } from './account/account-context';
 import { ConsentScreen } from './account/consent-screen';

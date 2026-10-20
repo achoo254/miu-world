@@ -15,7 +15,7 @@
     "screens": "playwright test --project setup --project screens"
   },
   "dependencies": {
-    "@miu/brand": "workspace:*",
+    "@shared-next/brand": "github:achoo254/shared-next#v0.2.0&path:/packages/brand",
     "@miu/schema": "workspace:*",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

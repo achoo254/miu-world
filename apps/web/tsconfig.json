@@ -20,11 +20,11 @@
     "e2e/**/*.ts",
     "vite.config.ts",
     "vite-*.ts",
+    "brand-*.ts",
     "lesson-page-data*.ts",
     "vitest.config.ts",
     "playwright.config.ts",
     "playwright.ci.config.ts",
-    "../../packages/brand/src/**/*.ts",
     "../../packages/schema/src/**/*.ts",
     "../../packages/quest/src/**/*.ts",
     "../../packages/voxel/src/**/*.ts"

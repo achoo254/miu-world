@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { brand } from '@miu/brand/brand';
+import { brand } from './src/brand';
 import { APP_ICON_PATHS, APP_LOGO } from './vite-app-icons';
 
 /** The value of a custom property declared in the UI token file. */

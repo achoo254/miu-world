@@ -1,16 +1,15 @@
 // The logo (assets/generated/brand/, `pnpm assets:logo`) as the pages' favicon and the home-screen icon of the installed
 // web app: links every page to the favicon and the iPhone icon, and gives the game page a web app manifest (served in
-// dev, emitted into the build). Name, colours, icons and the manifest come from brand.config.json (@miu/brand), which
-// the build validates here. Icon URLs carry their manifest hash so a new logo is fetched past Cloudflare's cache; the
+// dev, emitted into the build). Name, colours, icons and the manifest come from brand.config.json (@shared-next/brand,
+// with Miu's logo list in brand-icons.ts), which the build validates here. Icon URLs carry their manifest hash so a new logo is fetched past Cloudflare's cache; the
 // files themselves ship through repoAssets like any other runtime asset.
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import type { Connect, HtmlTagDescriptor, Plugin } from 'vite';
-import { brand } from '@miu/brand/brand';
-import { parseBrandConfig } from '@miu/brand/config';
-import { generateManifests, manifestText } from '@miu/brand/generate';
-import { iconFor, rasterIcons } from '@miu/brand/icons';
+import { formatGenerated, parseBrandConfig, webManifest as brandWebManifest } from '@shared-next/brand/build';
+import { BRAND_REQUIRE, iconFor, rasterIcons, webManifestOptions } from './brand-icons.ts';
 import { versioned } from './src/asset-versions.ts';
+import { brand } from './src/brand.ts';
 import { assetUrlResolver } from './vite-asset-url.ts';
 
 function smallestManifestLogo(): string {
@@ -38,8 +37,8 @@ export function iconLinkTags(url: (file: string) => string): HtmlTagDescriptor[]
 export function appIcons(assetsDir: string): Plugin {
   const url = assetUrlResolver(assetsDir);
   // Fails the build (and the dev server) on a brand.config.json its schema rejects.
-  parseBrandConfig(brand);
-  const webManifest = manifestText(generateManifests(brand, url)['web.webmanifest.json']);
+  parseBrandConfig(brand, { require: BRAND_REQUIRE });
+  const webManifest = formatGenerated(brandWebManifest(brand, webManifestOptions(brand, url)));
   const manifestUrl = versioned(`/${WEB_MANIFEST}`, createHash('sha256').update(webManifest).digest('hex').slice(0, 12));
   const serveManifest: Connect.NextHandleFunction = (req, res, next) => {
     if (req.url?.split('?')[0] !== `/${WEB_MANIFEST}`) return next();

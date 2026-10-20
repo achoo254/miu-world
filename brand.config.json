@@ -1,5 +1,5 @@
 {
-  "$schema": "./brand.config.schema.json",
+  "$schema": "./node_modules/@shared-next/brand/brand.config.schema.json",
   "appName": "Miu World",
   "shortName": "Miu World",
   "description": "Thế giới 3D vừa chơi vừa học Toán và Tiếng Việt, chơi cùng bạn bè.",
@@ -11,8 +11,7 @@
   "iconMaskable": "generated/brand/miu-logo-maskable-512.png",
   "appIds": {
     "ios": "com.hoandat.miu",
-    "android": "com.hoandat.miu",
-    "desktop": "com.hoandat.miu"
+    "android": "com.hoandat.miu"
   },
   "urlScheme": "com.hoandat.miu",
   "primaryTenant": {
