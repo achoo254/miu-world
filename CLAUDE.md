@@ -1,8 +1,10 @@
 # CLAUDE.md — Miu World
 
+Thư mục repo: `miu-world-next` (tên hiển thị sản phẩm vẫn là “Miu World”).
+
 Quy tắc hành vi cho agent trong repo này. Lý do và bối cảnh nằm ở `docs/` (bản đồ: `docs/README.md`); nguồn quyết định sản phẩm là Master Plan v3 ở gốc repo.
 
-Giai đoạn hiện tại: Vertical slice MVP đã xong 10 phase; nội dung SGK lớp 2 tập 1 (70 quest) đã kích hoạt, chia trên 8 map rộng (plan `plans/dattqh/261001-2106-more-maps-lesson-regroup/`); chờ người duyệt (report `plans/dattqh/reports/mvp-slice-review-260930.md`, trang `apps/web/review.html`; việc của người: DEVICE-01, giáo viên, designer) — `apps/web` (Vite + React, runtime Three.js ở `src/game`, UI ở `src/ui`), `apps/server` (Express + Drizzle), `packages/{voxel,quest,schema}`. Plan: `plans/dattqh/260929-2141-vertical-slice-mvp/` (trên `main`). Song song: nội dung SGK lớp 2 — `plans/dattqh/260930-0846-sgk-lop2-game-content/`, chạy trong worktree `../miu-world-sgk` (branch `dattqh/feat/sgk-lop2-content`); tôn trọng bảng file dùng chung trong `plan.md` của plan đó.
+Giai đoạn hiện tại: Vertical slice MVP đã xong 10 phase; nội dung SGK lớp 2 tập 1 (70 quest) đã kích hoạt, chia trên 8 map rộng (plan `plans/dattqh/261001-2106-more-maps-lesson-regroup/`); chờ người duyệt (report `plans/dattqh/reports/mvp-slice-review-260930.md`, trang `apps/web/review.html`; việc của người: DEVICE-01, giáo viên, designer) — `apps/web` (Vite + React, runtime Three.js ở `src/game`, UI ở `src/ui`), `apps/server` (Express + Drizzle), `packages/{voxel,quest,schema}`. Plan: `plans/dattqh/260929-2141-vertical-slice-mvp/` (trên `main`). Song song: nội dung SGK lớp 2 — `plans/dattqh/260930-0846-sgk-lop2-game-content/`, chạy trong worktree `../../miu-world-sgk` (branch `dattqh/feat/sgk-lop2-content`; thư mục này hiện không còn trên đĩa, git đánh dấu worktree là prunable); tôn trọng bảng file dùng chung trong `plan.md` của plan đó.
 
 ## Lệnh
 
@@ -43,7 +45,7 @@ Gom lại, hỏi một lần: thay đổi cách thu thập/chia sẻ dữ liệu
 ## Dễ vấp
 
 - Trên Windows chưa bật Developer Mode, test symlink trong `tools/assets/check-assets.test.ts` tự skip (không tạo được symlink); CI (Ubuntu) vẫn chạy. Skip này không có nghĩa là gate symlink đã được kiểm trên máy local.
-- Dữ liệu dev (tài khoản, hồ sơ, tiến độ) nằm ở `.data/pglite` của **từng** worktree: `../miu-world-sgk` có database riêng, không dùng chung với `main`. Không xóa `.data/pglite`; lần duyệt cần dữ liệu giả thì chạy server với `PGLITE_DIR=.data/pglite-review` và chỉ xóa thư mục đó. E2E dùng database trong RAM (`PGLITE_DIR=memory`), tắt là mất. Lúc khởi động server in dòng `database: …` cho biết đang mở database nào và có phải vừa tạo rỗng không.
+- Dữ liệu dev (tài khoản, hồ sơ, tiến độ) nằm ở `.data/pglite` của **từng** worktree: `../../miu-world-sgk` có database riêng, không dùng chung với `main`. Không xóa `.data/pglite`; lần duyệt cần dữ liệu giả thì chạy server với `PGLITE_DIR=.data/pglite-review` và chỉ xóa thư mục đó. E2E dùng database trong RAM (`PGLITE_DIR=memory`), tắt là mất. Lúc khởi động server in dòng `database: …` cho biết đang mở database nào và có phải vừa tạo rỗng không.
 - `render-preview.ts` và perf test tự sinh lại manifest khi chạy xong; nếu tự sửa file trong `assets/generated/` bằng cách khác thì phải chạy `pnpm assets:manifest`.
 - Cổng cố định: web dev 5173, preview/E2E 4173 (Vite `--strictPort`); server 8787 (cổng cố định trong config, lỗi nếu bận); render-preview 5199. Báo cổng bận thì tìm và tắt server cũ, không đổi cổng. Quy tắc này chỉ áp cho máy dev: trên máy chủ dùng chung, tiến trình giữ cổng có thể thuộc dự án khác, nên không được tắt (xem `docs/deployment-guide.md`).
 - Server từ chối POST không có `Origin` trong danh sách cho phép (chống CSRF). Mặc định chỉ có localhost/127.0.0.1 ở 5173/4173 (và 5174/4174 cũ); duyệt qua LAN thì chạy server với `ALLOWED_ORIGINS=http://<ip-LAN>:<cổng>` (danh sách phân tách bằng dấu phẩy) và mở web với `--host`.
