@@ -68,7 +68,9 @@ export function InviteScreen() {
           )}
         </div>
         <p className="note">
-          <Link to="/privacy"><T k="auth.privacyLink" /></Link> · <Link to="/terms"><T k="auth.termsLink" /></Link>
+          <Link to="/privacy">
+            <T k="auth.privacyLink" />
+          </Link>
         </p>
       </main>
     </SkyScene>

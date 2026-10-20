@@ -1,5 +1,5 @@
-// The layout the public legal pages share (Quyền riêng tư, Điều khoản sử dụng): a title, the date of the last wording
-// change, the sections from content/legal/, the page's own closing section and the way back.
+// The layout of a public legal page (today Quyền riêng tư): a title, the date of the last wording change, the sections
+// from content/legal/, the page's own closing section and the way back.
 import type { ReactNode } from 'react';
 import { Link } from 'react-router';
 import { buttonClass } from '../kit/button';

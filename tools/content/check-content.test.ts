@@ -94,11 +94,11 @@ describe('content:check', () => {
     expect(checkContent(dir).issues.join('\n')).toMatch(/privacy-vi\.json: .*updatedOn/s);
   });
 
-  it('flags a terms page that does not parse, or is missing', () => {
+  it('flags draft terms of use that do not parse, or are missing', () => {
     writeFileSync(path.join(dir, 'legal/terms-vi.json'), JSON.stringify({ title: 'x', updatedOn: 'hôm nay', sections: [] }));
     expect(checkContent(dir).issues.join('\n')).toMatch(/terms-vi\.json: .*updatedOn/s);
     rmSync(path.join(dir, 'legal/terms-vi.json'));
-    expect(checkContent(dir).issues).toEqual(['content/legal/terms-vi.json is missing: the web app shows it at /terms']);
+    expect(checkContent(dir).issues).toEqual(['content/legal/terms-vi.json is missing: the draft terms of use wait there for approval']);
   });
 
   it('flags an accessory that unlocks with an unknown quest', () => {

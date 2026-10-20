@@ -51,7 +51,6 @@ export function LandingScreen() {
         </nav>
         <p className="note">
           <Link to="/privacy"><T k="auth.privacyLink" /></Link>
-          <Link to="/terms"><T k="auth.termsLink" /></Link>
         </p>
       </main>
     </SkyScene>

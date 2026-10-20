@@ -1248,8 +1248,8 @@ export const PrivacyDocument = z.object({
 export type PrivacyDocument = z.infer<typeof PrivacyDocument>;
 
 /**
- * Public terms of use page (`/terms`), readable before signing in. Not part of the consent: accounts are not asked to
- * accept it, so it carries no consent version. Its contact address is the privacy page's.
+ * Terms of use (`content/legal/terms-vi.json`): a draft the web app does not show until a person approves it. Not part
+ * of the consent: accounts are not asked to accept it, so it carries no consent version.
  */
 export const TermsDocument = z.object({
   title: z.string().min(1),

@@ -49,7 +49,7 @@ function GoogleSignIn({ title, hint, dataId, switchTo }: { title: ReactNode; hin
         <p className="note">
           <Icon name="heart" size={28} />
           <span>
-            <T k="auth.privacyNote" /> <Link to="/privacy"><T k="auth.privacyLink" /></Link> · <Link to="/terms"><T k="auth.termsLink" /></Link>
+            <T k="auth.privacyNote" /> <Link to="/privacy"><T k="auth.privacyLink" /></Link>
           </span>
         </p>
         <p className="hint">

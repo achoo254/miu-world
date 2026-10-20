@@ -179,16 +179,6 @@ describe('account flow', () => {
     expect(screen.getByText(/tự soạn/)).toBeTruthy();
   });
 
-  it('shows the terms page to a visitor who is not signed in, linked from the login screen, and points to privacy', async () => {
-    stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
-    renderAt('/login');
-    fireEvent.click(await screen.findByRole('link', { name: 'Điều khoản sử dụng' }));
-    expect(await screen.findByRole('heading', { name: 'Điều khoản sử dụng Miu World' })).toBeTruthy();
-    expect(screen.getByRole('heading', { name: 'Chặn, báo cáo và kiểm duyệt' })).toBeTruthy();
-    fireEvent.click(screen.getByRole('link', { name: 'Quyền riêng tư' }));
-    expect(await screen.findByRole('heading', { name: 'Quyền riêng tư của Miu World' })).toBeTruthy();
-  });
-
   it('deletes the account only after a second confirmation, then signs out', async () => {
     const calls = stubApi({
       'GET /api/auth/me': () => ({ status: 200, body: me({ parentGateOpen: true }) }),
