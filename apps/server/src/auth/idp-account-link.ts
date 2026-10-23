@@ -4,7 +4,8 @@
 // onto an account already linked to another identity: one identity per account, one account per identity
 // (`parent_idp_links`). An account of the former Google sign-in (`google_sub` set) is only linked when this sign-in
 // went through Google at the IdP (`amr` "google") with that very Google account (the IdP's `google_sub`): anyone else
-// with the email is refused and told to ask support, who relinks by hand (docs/deployment-guide.md §5.1).
+// with the email is refused and told to ask support, who relinks by hand (docs/deployment-guide.md §5.1). When no
+// account has the email, the same Google account still finds its former parent (the email changed at Google).
 import { randomUUID } from 'node:crypto';
 import { and, eq } from 'drizzle-orm';
 import type { Db } from '../db/client';
@@ -50,6 +51,15 @@ export async function accountForIdentity(db: Db, issuer: string, identity: IdpId
         }
         console.info('parent linked to the account service', byEmail.id);
         return { ok: true, parentId: byEmail.id, outcome: 'linked' };
+      }
+      // The email changed at Google since the former Google sign-in: the same Google account finds its parent.
+      const byGoogle = identity.amr.includes('google') && identity.googleSub ? (await tx.select().from(parents).where(eq(parents.googleSub, identity.googleSub)).for('update'))[0] : undefined;
+      if (byGoogle) {
+        const [taken] = await tx.select({ parentId: parentIdpLinks.parentId }).from(parentIdpLinks).where(eq(parentIdpLinks.parentId, byGoogle.id));
+        if (taken) return { ok: false, reason: 'conflict' };
+        await tx.insert(parentIdpLinks).values({ parentId: byGoogle.id, issuer, subject: identity.sub, linkedAt: now });
+        console.info('parent linked to the account service by its Google account', byGoogle.id);
+        return { ok: true, parentId: byGoogle.id, outcome: 'linked' };
       }
       const parentId = randomUUID();
       await tx.insert(parents).values({ id: parentId, email: identity.email });

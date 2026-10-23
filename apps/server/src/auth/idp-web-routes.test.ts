@@ -101,6 +101,22 @@ describe('signing in through the account service (web)', () => {
     expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ parent: { id: legacyId }, pinSet: true, parentGateOpen: false });
   });
 
+  it('finds a former Google parent by its Google account when the email changed at Google', async () => {
+    const legacyId = await legacyParent(`old-${Date.now()}@example.vn`, `google-sub-moved-${Date.now()}`);
+    const [legacy] = await app.db.select().from(t.parents).where(eq(t.parents.id, legacyId));
+    const googleSub = legacy?.googleSub ?? '';
+    // Through GitHub with the same id claim: not a Google sign-in, so a new account.
+    const viaGithub = person({ amr: ['fed', 'github'], google_sub: googleSub });
+    await signIn(app.agent(), viaGithub);
+    expect((await parentByEmail(viaGithub.email))?.id).not.toBe(legacyId);
+    expect(await linkOf(legacyId)).toBeUndefined();
+    const agent = app.agent();
+    const moved = person({ amr: ['fed', 'google'], google_sub: googleSub });
+    expect((await signIn(agent, moved)).res.headers.location).toBe('/');
+    expect(await linkOf(legacyId)).toMatchObject({ subject: moved.sub });
+    expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ parent: { id: legacyId } });
+  });
+
   it('never links or creates an account on an unverified email', async () => {
     const existing = person();
     await app.db.insert(t.parents).values({ id: crypto.randomUUID(), email: String(existing.email) });
@@ -148,6 +164,9 @@ describe('signing in through the account service (web)', () => {
     expect((await signIn(agent, { ...user, auth_time: nowS - 3600, amr: reauth }, { intent: 'reauth' })).res.headers.location).toBe('/login?error=idp-reauth');
     expect((await signIn(agent, { ...user, auth_time: nowS - 5, amr: ['fed', 'github'] }, { intent: 'reauth' })).res.headers.location).toBe('/login?error=idp-reauth');
     expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinLocked: true });
+    // A "reauth" the server did not ask for (an earlier sign-in elsewhere left it in the IdP session) opens nothing.
+    expect((await signIn(agent, { ...user, auth_time: nowS - 5, amr: reauth })).res.headers.location).toBe('/');
+    expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinLocked: true, parentGateOpen: false });
     expect((await signIn(agent, { ...user, auth_time: nowS - 5, amr: reauth }, { intent: 'reauth' })).res.headers.location).toBe('/');
     expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinLocked: false, parentGateOpen: true });
   });

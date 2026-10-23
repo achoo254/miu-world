@@ -749,7 +749,7 @@
   "auth.callback.emailUnverified": "The email of this sign-in account is not verified. Verify it, then try again.",
   "auth.callback.googleMismatch": "This email belongs to a Miu World account that used to sign in with Google. Sign in with that same Google account, or contact support (email on the Privacy page) to merge the accounts.",
   "auth.callback.rateLimited": "Too many attempts. Please wait a moment and try again.",
-  "auth.callback.reauth": "Please sign in again to unlock your PIN. Try again.",
+  "auth.callback.reauth": "Signing in again could not be confirmed with Google or Apple, so the PIN stays locked. Try again with Google or Apple (GitHub cannot confirm it); if it still fails, contact support by the email on the Privacy page.",
   "gate.title": "Account",
   "gate.pinLockedMessage": "PIN locked due to too many incorrect attempts. Sign in again to unlock.",
   "gate.relogin": "Sign in again",

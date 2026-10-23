@@ -43,8 +43,9 @@ export async function signInWithIdentity(
   options: { reauth: boolean; kind: SessionKind },
 ): Promise<{ ok: true; signedIn: SignedIn } | { ok: false; code: IdpSignInFailure }> {
   if (!identity) return { ok: false, code: 'idp' };
-  const freshReauth = provesReauth(identity, clock());
-  // A re-authentication was asked for (the web's own cookie, or the app) and the token does not prove it.
+  // Counted only when this sign-in asked for one (the web: the server's own pending state; the app: its request) and
+  // the token proves it; a "reauth" left in the IdP session from an earlier sign-in elsewhere does not open anything.
+  const freshReauth = options.reauth && provesReauth(identity, clock());
   if (options.reauth && !freshReauth) return { ok: false, code: 'idp-reauth' };
   const account = await accountForIdentity(db, issuer, identity, clock());
   if (!account.ok) return { ok: false, code: FAILURE_OF[account.reason] };
