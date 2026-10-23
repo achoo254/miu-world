@@ -20,12 +20,12 @@ const PREFLIGHT_MAX_AGE_S = '600';
  * follows still rejects its state-changing requests. A preflight from the app is answered here without a session.
  */
 export function appCors(appOrigins: readonly string[]): RequestHandler {
-  const allowed = new Set(appOrigins);
   return (req, res, next) => {
     res.vary('Origin');
-    const origin = req.headers.origin;
-    if (!origin || !allowed.has(origin)) return next();
-    res.setHeader('Access-Control-Allow-Origin', origin);
+    // The header echoes the configured origin, never the request's string.
+    const allowedOrigin = appOrigins.find((candidate) => candidate === req.headers.origin);
+    if (allowedOrigin === undefined) return next();
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
     if (req.method !== 'OPTIONS') return next();
     res.setHeader('Access-Control-Allow-Methods', ALLOWED_METHODS);
     res.setHeader('Access-Control-Allow-Headers', ALLOWED_HEADERS);
