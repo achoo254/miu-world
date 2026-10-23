@@ -1,7 +1,7 @@
 ---
 title: Mobile app Miu World cho iPhone và Android
 description: Đóng gói game web hiện có thành app iPhone và Android (Capacitor), đăng nhập bản địa, tải asset theo map, giao diện điện thoại, thử nội bộ rồi phát hành công khai trên App Store và Google Play.
-status: pending
+status: in-progress
 priority: P1
 tier: XL
 branch: main
@@ -13,7 +13,7 @@ created: 2026-10-07
 
 # Mobile app Miu World: iPhone và Android
 
-**Trạng thái:** đã duyệt hướng (07/10/2026), chờ bắt đầu · **Tier:** XL · **Nhánh:** `main` · **Ngày:** 07/10/2026
+**Trạng thái:** đang làm (rà 24/10/2026): pha 1, 3, 6 xong (`6fdf0bff`, CI dựng APK debug và app iOS Simulator); pha 2 thay bằng đăng nhập qua auth-next (`31d8a48a`, prod 23/10, không dùng SDK Google/Apple bản địa theo plan `hoandat-app/plans/dattqh/261023-0620-mobile-apps-all-products`); pha 4 làm theo cách tải asset qua https từ server, không đóng gói vào app; hồ sơ store, icon, ảnh store (`62577234`) và tài khoản cho người duyệt (`72f8aad6`) đã có; pha 5 chưa kiểm trên máy thật; pha 7 chờ app record App Store Connect, Play Console và `moderation-safety` · **Tier:** XL · **Nhánh:** `main` · **Ngày:** 07/10/2026
 **Nguồn:** người sở hữu 07/10/2026 "chuẩn bị plan làm mobile app, ưu tiên iPhone và Android"; `.claude/rules/product-audience.md` (web hôm nay, mobile app sau; logic ở server và `packages/*` để app dùng lại); Master Plan v3 §12 (hiệu năng mobile).
 
 ## Kết quả mong muốn
