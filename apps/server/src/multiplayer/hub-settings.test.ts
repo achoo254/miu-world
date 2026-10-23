@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { hubHarness, settle } from '../../test/hub-harness';
-import { WS_CLOSE } from './multiplayer-hub';
+import { RECHECK_MS, WS_CLOSE } from './multiplayer-hub';
 
 let h: ReturnType<typeof hubHarness>;
 
@@ -54,6 +54,27 @@ describe('the account owner’s online switch', () => {
     expect(b.closed).toBe(WS_CLOSE.ownerOff);
     expect(a.last('despawn')).toEqual({ type: 'despawn', id: b.id });
     expect(a.last('party-state')?.party ?? null).toBeNull();
+  });
+});
+
+describe('the account owner’s switches, read again after she came in', () => {
+  it('turned off while she was connecting: she is closed out as soon as she is in', async () => {
+    h.db.characters.set('child-a', { displayName: 'Mèo Mây', species: 'cat', outfit: [], pet: null });
+    // The owner turns online play off between the read at the door and her arrival.
+    let reads = 0;
+    h.db.store.controls = async () => (reads++ === 0 ? { voiceChatAllowed: true, onlineAllowed: true } : { voiceChatAllowed: true, onlineAllowed: false });
+    const closed: number[] = [];
+    const conn = await h.hub.connect('child-a', { send: () => {}, close: (code) => closed.push(code) });
+    expect(conn).not.toBeNull();
+    await settle();
+    expect(closed).toEqual([WS_CLOSE.ownerOff]);
+  });
+
+  it('changed with no news reaching the hub: the periodic re-check applies it', async () => {
+    const a = await h.joined('child-a');
+    h.db.controls.set('child-a', { voiceChatAllowed: true, onlineAllowed: false });
+    await vi.advanceTimersByTimeAsync(RECHECK_MS);
+    expect(a.closed).toBe(WS_CLOSE.ownerOff);
   });
 });
 

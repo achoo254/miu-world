@@ -9,6 +9,7 @@ import { characters } from '../db/schema';
 import { HttpError } from '../http-error';
 import { idParam } from '../player/owned-player';
 import type { PlayerEvents } from '../player/player-events';
+import { requireOnlineAllowed } from '../player/player-controls';
 import { DEFAULT_CHARACTER_NAME } from '../player/player-routes';
 import { ipKey, limiter } from '../rate-limit';
 import { acceptInvite, createInvite, listInvites, revokeInvite } from './invite-store';
@@ -58,6 +59,8 @@ export function inviteRoutes({ db, content, clock, events }: InviteRouteDeps): R
 
   router.post('/invites', requireParent, createLimit, async (_req, res) => {
     const childId = await activePlayerId(db, res, version);
+    // Online off (account owner): no new friends, by link either.
+    await requireOnlineAllowed(db, childId);
     const created = await createInvite(db, childId, clock());
     if (!created) throw new HttpError(409, 'invite-limit');
     res.set('Cache-Control', 'no-store');
@@ -72,6 +75,7 @@ export function inviteRoutes({ db, content, clock, events }: InviteRouteDeps): R
 
   router.post('/invites/:code/accept', requireParent, acceptLimit, async (req, res) => {
     const childId = await activePlayerId(db, res, version);
+    await requireOnlineAllowed(db, childId);
     const outcome = await acceptInvite(db, childId, codeParam(req.params.code), clock());
     if (outcome.kind === 'not-found') throw new HttpError(404, 'not-found');
     if (outcome.kind === 'friends-full') throw new HttpError(409, 'friends-full');

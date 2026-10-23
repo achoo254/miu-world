@@ -2,15 +2,14 @@
 // Signed in and playing as a player who accepted the policy, from an allowed Origin (every POST is checked). While
 // the emergency switch is off, her online play is locked, or the account owner turned her online play off, no ticket
 // is given and the answer says why, so the game shows a friendly line instead of trying to connect.
-import { eq } from 'drizzle-orm';
 import { Router } from 'express';
 import type { WsTicketResponse } from '@miu/schema/multiplayer';
 import { activePlayerId, auth, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
-import { childProfiles } from '../db/schema';
 import { HttpError } from '../http-error';
 import { activeRestriction } from '../moderation/moderation-store';
+import { requireOnlineAllowed } from '../player/player-controls';
 import type { OnlineSwitch } from './online-switch';
 import type { WsTickets } from './online-tickets';
 
@@ -29,8 +28,7 @@ export function wsTicketRoutes({ db, content, clock, tickets, onlineSwitch }: Ws
     const childId = await activePlayerId(db, res, content.consent.version);
     if (onlineSwitch.mode === 'off') throw new HttpError(503, 'online-paused');
     if (await activeRestriction(db, childId, clock())) throw new HttpError(403, 'online-restricted');
-    const [controls] = await db.select({ onlineAllowed: childProfiles.onlineAllowed }).from(childProfiles).where(eq(childProfiles.id, childId));
-    if (!controls?.onlineAllowed) throw new HttpError(403, 'online-off');
+    await requireOnlineAllowed(db, childId);
     const body: WsTicketResponse = { ticket: tickets.issue(auth(res).session.id, childId) };
     res.set('Cache-Control', 'no-store').json(body);
   });

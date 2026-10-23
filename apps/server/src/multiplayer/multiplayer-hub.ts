@@ -274,7 +274,7 @@ const LINE_MEMORY_MAX = 20;
 const ALWAYS_ALLOWED = new Set<ClientWsMessage['type']>(['join', 'update', 'leave', 'block', 'report']);
 const REPORT_COOLDOWN_MS = 10 * 60_000;
 /** How often open connections re-check their session (sign-out, expiry, a deleted player, a new policy). */
-const RECHECK_MS = 2 * 60_000;
+export const RECHECK_MS = 2 * 60_000;
 const MAX_PAYLOAD_BYTES = 4096;
 /** A friend request to a companion bot is forgotten after this long (its runner answers within seconds). */
 const BOT_ASK_TTL_MS = 60_000;
@@ -520,6 +520,9 @@ export class MultiplayerHub {
     if (options.fromApp) this.appChildren.add(childId);
     else this.appChildren.delete(childId);
     this.peakPlayers = Math.max(this.peakPlayers, this.playersOnline());
+    // The account owner may have changed her switches while she was coming in (after they were read above, before she
+    // was here to be told): read them again now that she is.
+    void this.refreshControls(player);
     return {
       publicId,
       receive: (raw) => this.receive(player, raw),
@@ -1103,10 +1106,30 @@ export class MultiplayerHub {
     this.appearances.delete(id);
   }
 
-  /** Closes the connections whose session no longer plays as their player (signed out, expired, deleted). */
+  /** Her switches as the database says now, applied if they changed (online off closes her connection). */
+  private async refreshControls(player: OnlinePlayer): Promise<void> {
+    const read = this.store?.controls;
+    if (!read) return;
+    let controls: PlayerControls;
+    try {
+      controls = await read(player.childId);
+    } catch (err) {
+      console.error('player switches re-check failed', err instanceof Error ? err.name : typeof err);
+      return;
+    }
+    if (this.players.get(player.publicId) !== player) return;
+    if (!controls.onlineAllowed || controls.voiceChatAllowed !== player.voice) this.controlsChanged(player.childId, controls);
+  }
+
+  /**
+   * Closes the connections whose session no longer plays as their player (signed out, expired, deleted), and applies
+   * the account owner's switches again (a change missed while she connected).
+   */
   private async recheckSessions(): Promise<void> {
     this.forgetOldLines();
     for (const player of [...this.players.values()]) {
+      await this.refreshControls(player);
+      if (this.players.get(player.publicId) !== player) continue;
       const check = player.transport.stillValid;
       if (!check) continue;
       let valid = true;

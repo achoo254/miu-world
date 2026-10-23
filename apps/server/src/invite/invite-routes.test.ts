@@ -265,3 +265,25 @@ describe('when a player is deleted', () => {
     expect(await app.db.select().from(t.playerInvites).where(eq(t.playerInvites.childId, a.childId))).toEqual([]);
   });
 });
+
+describe('a player whose online play the account owner turned off', () => {
+  const onlineOff = (childId: string) => app.db.update(t.childProfiles).set({ onlineAllowed: false }).where(eq(t.childProfiles.id, childId));
+
+  it('makes no invite link', async () => {
+    const { agent, childId } = await parentWithChild(app);
+    await onlineOff(childId);
+    await agent.post('/api/invites').expect(403, { error: 'online-off' });
+    expect(await app.db.select().from(t.playerInvites).where(eq(t.playerInvites.childId, childId))).toEqual([]);
+  });
+
+  it('cannot use one: no friendship is made, and the link stays good for her later', async () => {
+    const inviter = await parentWithChild(app);
+    const { code } = CreatedInviteDto.parse((await inviter.agent.post('/api/invites').expect(201)).body);
+    const guest = await parentWithChild(app);
+    await onlineOff(guest.childId);
+    await guest.agent.post(`/api/invites/${code}/accept`).expect(403, { error: 'online-off' });
+    expect(await app.db.select().from(t.friendships).where(eq(t.friendships.childId, guest.childId))).toEqual([]);
+    await app.db.update(t.childProfiles).set({ onlineAllowed: true }).where(eq(t.childProfiles.id, guest.childId));
+    await guest.agent.post(`/api/invites/${code}/accept`).expect(200);
+  });
+});

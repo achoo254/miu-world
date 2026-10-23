@@ -1,5 +1,7 @@
+import { eq } from 'drizzle-orm';
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { createTestApp, parentWithChild, signedInWithoutPlayer, type TestApp } from '../../test/test-app';
+import * as t from '../db/schema';
 import { CLOUDFLARE_TURN_API, IceServerSource, STUN_ONLY, TURN_CACHE_MS, TURN_TTL_S } from './ice-servers';
 
 const KEY_ID = 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6';
@@ -101,6 +103,12 @@ describe('GET /api/voice/ice-servers', () => {
   afterAll(async () => {
     await app.handle.close();
     await stunApp.handle.close();
+  });
+
+  it('gives nothing to a player whose voice chat the account owner turned off', async () => {
+    const { agent, childId } = await parentWithChild(stunApp);
+    await stunApp.db.update(t.childProfiles).set({ voiceChatAllowed: false }).where(eq(t.childProfiles.id, childId));
+    await agent.get('/api/voice/ice-servers').expect(403, { error: 'voice-off' });
   });
 
   it('gives a signed-in player the relay servers, never cached on the way', async () => {

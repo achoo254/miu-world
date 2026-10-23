@@ -232,3 +232,18 @@ describe('the account owner looks after a player’s friends and blocks', () => 
     await a.agent.get(`/api/players/${a.childId}/friends`).expect(200);
   });
 });
+
+describe('a player whose online play the account owner turned off', () => {
+  it('may say no to a friend request, never yes', async () => {
+    const a = await player('Cáo Cam');
+    const b = await player('Thỏ Bông');
+    await store().request(a.childId, b.childId);
+    await app.db.update(t.childProfiles).set({ onlineAllowed: false }).where(eq(t.childProfiles.id, b.childId));
+    const requestId = (await social(b.agent)).incoming[0]?.id ?? '';
+    await b.agent.post(`/api/friends/requests/${requestId}`).send({ accept: true }).expect(403, { error: 'online-off' });
+    expect((await social(b.agent)).friends).toEqual([]);
+    const after = SocialView.parse((await b.agent.post(`/api/friends/requests/${requestId}`).send({ accept: false }).expect(200)).body);
+    expect(after.incoming).toEqual([]);
+    expect(after.friends).toEqual([]);
+  });
+});

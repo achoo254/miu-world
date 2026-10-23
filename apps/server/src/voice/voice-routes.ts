@@ -7,6 +7,7 @@ import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { HttpError } from '../http-error';
+import { requireVoiceAllowed } from '../player/player-controls';
 import type { IceServerSource } from './ice-servers';
 
 export interface VoiceRouteDeps {
@@ -40,6 +41,8 @@ export function voiceRoutes({ db, content, ice, now = Date.now, perWindow = 30, 
 
   router.get('/voice/ice-servers', requireParent, async (_req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
+    // Voice off (account owner): no relay credentials either.
+    await requireVoiceAllowed(db, childId);
     if (!allow(childId)) throw new HttpError(429, 'rate-limited');
     // Credentials: never kept by a cache on the way.
     res.set('Cache-Control', 'no-store');

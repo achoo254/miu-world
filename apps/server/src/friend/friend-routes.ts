@@ -8,6 +8,7 @@ import { characters } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
 import { idParam, ownedPlayer } from '../player/owned-player';
 import type { PlayerEvents } from '../player/player-events';
+import { requireOnlineAllowed } from '../player/player-controls';
 import { DEFAULT_CHARACTER_NAME } from '../player/player-routes';
 import { NOBODY_ONLINE, answerRequest, cancelRequest, hasRequest, removeFriend, socialView, unblock, type OnlineLookup } from './friend-store';
 
@@ -60,6 +61,8 @@ export function friendRoutes({ db, content, clock, events, online = NOBODY_ONLIN
     // Not hers (or gone) is "not found" whatever the body says.
     if (!(await hasRequest(db, childId, requestId))) throw new HttpError(404, 'not-found');
     const { accept } = parseInput(FriendAnswer, req.body);
+    // Online off (account owner): she may still say no, never yes.
+    if (accept) await requireOnlineAllowed(db, childId);
     const outcome = await answerRequest(db, childId, requestId, accept);
     if (outcome.kind === 'not-found') throw new HttpError(404, 'not-found');
     if (outcome.kind === 'friends-full') throw new HttpError(409, 'friends-full');

@@ -4,6 +4,7 @@
 import { eq, or } from 'drizzle-orm';
 import type { IncomingMessage } from 'node:http';
 import type { PlayerControls, PlayerSettings } from '@miu/schema/account';
+import { playerControls } from '../player/player-controls';
 import type { PlayerAppearanceInput, ReportReason } from '@miu/schema/multiplayer';
 import { findActivePlayer } from '../auth/auth-context';
 import { readSessionToken } from '../auth/session-cookie';
@@ -78,14 +79,7 @@ export function dbMultiplayerStore(db: Db): MultiplayerStore {
         .where(eq(childProfiles.id, childId));
       return row ?? { botsEnabled: false };
     },
-    async controls(childId) {
-      const [row] = await db
-        .select({ voiceChatAllowed: childProfiles.voiceChatAllowed, onlineAllowed: childProfiles.onlineAllowed })
-        .from(childProfiles)
-        .where(eq(childProfiles.id, childId));
-      // No such player: nothing allowed (the connection is refused anyway).
-      return row ?? { voiceChatAllowed: false, onlineAllowed: false };
-    },
+    controls: (childId) => playerControls(db, childId),
   };
 }
 
