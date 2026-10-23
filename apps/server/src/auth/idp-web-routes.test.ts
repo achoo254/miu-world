@@ -5,7 +5,7 @@ import { loadConfig } from '../config';
 import * as t from '../db/schema';
 import { TEST_PIN, createTestApp, fakeParent, type Agent, type TestApp } from '../../test/test-app';
 import { FAKE_ISSUER, FakeIdp, IDP_ENV, WEB_CLIENT } from '../../test/fake-idp';
-import { accountForIdentity } from './idp-account-link';
+import { accountForIdentity, reviewAccountEmail } from './idp-account-link';
 import { createSession } from './session-store';
 
 const idp = new FakeIdp();
@@ -128,6 +128,48 @@ describe('signing in through the account service (web)', () => {
     expect((await signIn(app.agent(), stranger)).res.headers.location).toBe('/login?error=idp-email-unverified');
     expect(await parentByEmail(stranger.email)).toBeUndefined();
     await agent.get('/api/auth/me').expect(401);
+  });
+
+  it('gives the app-review sign-in an account of its own, found again by its identity alone', async () => {
+    const reviewer = person({ email: `appreview-${seq}@example.vn`, email_verified: false, amr: ['pwd', 'review'] });
+    const agent = app.agent();
+    expect((await signIn(agent, reviewer)).res.headers.location).toBe('/');
+    const me = (await agent.get('/api/auth/me').expect(200)).body as { parent: { id: string; email: string } };
+    expect(me.parent.email).toBe(reviewAccountEmail(FAKE_ISSUER, String(reviewer.sub)));
+    expect(me.parent.email.endsWith('@review.invalid')).toBe(true);
+    expect(await linkOf(me.parent.id)).toMatchObject({ issuer: FAKE_ISSUER, subject: reviewer.sub });
+    expect(await parentByEmail(reviewer.email)).toBeUndefined();
+    // Signing in again reaches the same account, not a new one.
+    const again = app.agent();
+    expect((await signIn(again, reviewer)).res.headers.location).toBe('/');
+    expect((await again.get('/api/auth/me').expect(200)).body).toMatchObject({ parent: { id: me.parent.id } });
+  });
+
+  it('never lets an app-review sign-in reach an existing account by its email or Google account', async () => {
+    const owner = person({ amr: ['fed', 'google'], google_sub: `google-sub-owner-${seq}` });
+    await signIn(app.agent(), owner);
+    const ownerId = (await parentByEmail(owner.email))?.id ?? '';
+    const legacy = person();
+    const legacyId = crypto.randomUUID();
+    await app.db.insert(t.parents).values({ id: legacyId, email: String(legacy.email), googleSub: `google-sub-legacy-${seq}` });
+    for (const claims of [
+      { email: owner.email, email_verified: true, amr: ['pwd', 'review'] },
+      { email: legacy.email, email_verified: false, amr: ['pwd', 'review'], google_sub: `google-sub-legacy-${seq}` },
+      { email: legacy.email, email_verified: true, amr: ['pwd', 'review', 'google'], google_sub: `google-sub-legacy-${seq}` },
+    ]) {
+      const agent = app.agent();
+      expect((await signIn(agent, person(claims))).res.headers.location).toBe('/');
+      const id = ((await agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } }).parent.id;
+      expect([ownerId, legacyId]).not.toContain(id);
+    }
+    expect((await app.db.select().from(t.parentIdpLinks).where(eq(t.parentIdpLinks.parentId, ownerId))).map((l) => l.subject)).toEqual([owner.sub]);
+    expect(await linkOf(legacyId)).toBeUndefined();
+  });
+
+  it('still refuses an unverified email that is not the app-review sign-in', async () => {
+    const stranger = person({ email_verified: false, amr: ['pwd'] });
+    expect((await signIn(app.agent(), stranger)).res.headers.location).toBe('/login?error=idp-email-unverified');
+    expect(await parentByEmail(stranger.email)).toBeUndefined();
   });
 
   it('refuses a second identity with the email of an account already linked to another one', async () => {

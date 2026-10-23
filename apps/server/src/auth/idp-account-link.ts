@@ -6,7 +6,13 @@
 // went through Google at the IdP (`amr` "google") with that very Google account (the IdP's `google_sub`): anyone else
 // with the email is refused and told to ask support, who relinks by hand (docs/deployment-guide.md §5.1). When no
 // account has the email, the same Google account still finds its former parent (the email changed at Google).
-import { randomUUID } from 'node:crypto';
+//
+// The app-review sign-in of the account service (auth-next ADR 0010: a password account for store reviewers, only
+// while the IdP has it switched on, its email unverified, `amr` "review") gets an account of its own, keyed by issuer
+// and `sub` alone: never matched by email or Google account, and its stored email is a made-up `.invalid` address
+// derived from the identity, so it cannot collide with a real parent's or match an email-based list (moderators).
+// Nothing on Miu's side turns it on or off: the IdP issuing such tokens is the switch.
+import { createHash, randomUUID } from 'node:crypto';
 import { and, eq } from 'drizzle-orm';
 import type { Db } from '../db/client';
 import { parentIdpLinks, parents, sessions } from '../db/schema';
@@ -30,9 +36,35 @@ const sameGoogleAccount = (identity: IdpIdentity, googleSub: string): boolean =>
 /** The Postgres error code of a failed write (unique violation 23505…), for the log; never the message (it holds values). */
 const pgCode = (err: unknown): string => (typeof err === 'object' && err !== null && 'code' in err && typeof err.code === 'string' ? err.code : 'unknown');
 
+/** The method the account service names its app-review password sign-in with in `amr`. */
+export const REVIEW_SIGN_IN = 'review';
+
+/** The stored email of a review account: unique per identity, in the reserved `.invalid` domain, never a real inbox. */
+export const reviewAccountEmail = (issuer: string, sub: string): string =>
+  `app-review-${createHash('sha256').update(`${issuer}\n${sub}`).digest('hex').slice(0, 32)}@review.invalid`;
+
+/** A review identity's own new account (its link is checked first by the caller). */
+async function createReviewAccount(db: Db, issuer: string, sub: string, now: Date): Promise<AccountLink> {
+  try {
+    return await db.transaction(async (tx): Promise<AccountLink> => {
+      const parentId = randomUUID();
+      await tx.insert(parents).values({ id: parentId, email: reviewAccountEmail(issuer, sub) });
+      await tx.insert(parentIdpLinks).values({ parentId, issuer, subject: sub, linkedAt: now });
+      console.info('app review account registered', parentId);
+      return { ok: true, parentId, outcome: 'created' };
+    });
+  } catch (err) {
+    const raced = await linkedParent(db, issuer, sub);
+    if (raced) return { ok: true, parentId: raced, outcome: 'signed-in' };
+    console.warn('app review account failed', pgCode(err));
+    return { ok: false, reason: 'conflict' };
+  }
+}
+
 export async function accountForIdentity(db: Db, issuer: string, identity: IdpIdentity, now: Date): Promise<AccountLink> {
   const known = await linkedParent(db, issuer, identity.sub);
   if (known) return { ok: true, parentId: known, outcome: 'signed-in' };
+  if (identity.amr.includes(REVIEW_SIGN_IN)) return createReviewAccount(db, issuer, identity.sub, now);
   if (!identity.emailVerified || identity.email === '') return { ok: false, reason: 'email-unverified' };
   try {
     return await db.transaction(async (tx): Promise<AccountLink> => {
