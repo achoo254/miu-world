@@ -1,6 +1,7 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { AccountProvider } from '../account/account-context';
 import { Modal } from '../kit/modal';
 import { OfflineBanner } from './offline-banner';
 import { PauseScreen } from './pause-screen';
@@ -126,12 +127,35 @@ describe('SettingsDialog', () => {
     expect(screen.getByRole('button', { name: /Nhạc nền: Bật/ })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Đổi nhân vật/ }).getAttribute('href')).toBe('/create');
     expect(screen.getByRole('link', { name: /Đổi người chơi/ }).getAttribute('href')).toBe('/profiles');
+    expect(screen.getByRole('link', { name: 'Quản lý tài khoản' }).getAttribute('href')).toBe('/parent');
 
     fireEvent.click(screen.getByRole('button', { name: /Xong/ }));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
-});
 
+  it('leads an account with a single player to account management (sign-out, delete), with no player switch', async () => {
+    const me = {
+      parent: { id: '1b0e8e0c-6f1a-4b8e-9a53-1f1c2a3b4c5d', email: 'p@example.vn' },
+      consentAccepted: true,
+      activePlayerId: '0b0e8e0c-6f1a-4b8e-9a53-1f1c2a3b4c5d',
+      players: [{ id: '0b0e8e0c-6f1a-4b8e-9a53-1f1c2a3b4c5d', displayName: 'Mèo Mây', primary: true }],
+      parentGateOpen: false,
+      pinLocked: false,
+      pinSet: true,
+    };
+    vi.stubGlobal('fetch', vi.fn(async (url: string) => new Response(JSON.stringify(url === '/api/auth/me' ? me : { error: 'not-found' }), { status: url === '/api/auth/me' ? 200 : 404 })));
+    render(
+      <MemoryRouter>
+        <AccountProvider>
+          <SettingsDialog onClose={vi.fn()} />
+        </AccountProvider>
+      </MemoryRouter>,
+    );
+    expect((await screen.findByRole('link', { name: 'Quản lý tài khoản' })).getAttribute('href')).toBe('/parent');
+    await waitFor(() => expect(screen.queryByRole('link', { name: /Đổi người chơi/ })).toBeNull());
+    vi.unstubAllGlobals();
+  });
+});
 
 describe('OfflineBanner', () => {
   it('retries once per press and shows that it is reconnecting', async () => {
