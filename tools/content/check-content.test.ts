@@ -13,7 +13,10 @@ beforeEach(() => {
 });
 afterEach(() => rmSync(dir, { recursive: true, force: true }));
 
-describe('content:check', () => {
+/** Each case copies the ~2,000 content files and runs the whole check: 5-10 s on Windows file systems, more under a parallel full run. Other platforms keep the default limit. */
+const SLOW_FS_TIMEOUT = process.platform === 'win32' ? 90_000 : undefined;
+
+describe('content:check', { timeout: SLOW_FS_TIMEOUT }, () => {
   it('passes the shipped content', () => {
     expect(checkContent().issues).toEqual([]);
   });

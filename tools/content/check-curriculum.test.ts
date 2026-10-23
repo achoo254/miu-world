@@ -105,7 +105,10 @@ describe('checkCurriculum', () => {
   });
 });
 
-describe('content:check with the inventory', () => {
+/** Each case copies the ~2,000 content files and runs the whole check: about 5-10 s on Windows file systems, far more under a parallel full run. Other platforms keep the default limit. */
+const SLOW_FS_TIMEOUT = process.platform === 'win32' ? 90_000 : undefined;
+
+describe('content:check with the inventory', { timeout: SLOW_FS_TIMEOUT }, () => {
   it('validates the nested curriculum folders instead of flagging them', () => {
     const content = mkdtempSync(path.join(tmpdir(), 'miu-content-'));
     try {

@@ -77,10 +77,12 @@ describe('runtime asset selection for the web build', async () => {
     // Anything else under src/ that names generated/review/ would load in review builds and 404 in production.
     const SRC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src');
     const pageOnly = ['review/', 'preview/']; // the review and render tool pages, left out of a release
+    // readdirSync returns native separators; compare in POSIX form so Windows matches the same folders.
     const naming = readdirSync(SRC, { recursive: true, encoding: 'utf8' })
+      .map((f) => f.split(path.sep).join('/'))
       .filter((f) => /\.tsx?$/.test(f) && !/\.test\.tsx?$/.test(f) && !pageOnly.some((dir) => f.startsWith(dir)))
       .filter((f) => readFileSync(path.join(SRC, f), 'utf8').includes('generated/review/'));
-    expect(naming).toEqual([path.join('ui', 'kit', 'ui-art.ts')]);
+    expect(naming).toEqual(['ui/kit/ui-art.ts']);
   });
 
   it('refuses a runtime asset missing from the manifest', async () => {

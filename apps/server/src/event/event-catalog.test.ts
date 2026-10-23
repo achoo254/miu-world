@@ -1,6 +1,7 @@
 import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import type { PlayableQuest } from '@miu/schema/content';
 import { LiveEvent } from '@miu/schema/live-event';
@@ -23,7 +24,7 @@ const ctx = {
 
 describe('event files', () => {
   it('reads a folder of events; a missing folder has none', () => {
-    expect(readEventFiles(path.dirname(new URL(FIXTURE).pathname)).map((e) => e.id)).toEqual(['fixture-fair']);
+    expect(readEventFiles(path.dirname(fileURLToPath(FIXTURE))).map((e) => e.id)).toEqual(['fixture-fair']);
     expect(readEventFiles(path.join(tmpdir(), 'miu-no-such-events-folder'))).toEqual([]);
   });
 
