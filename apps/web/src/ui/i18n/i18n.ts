@@ -5,6 +5,7 @@
 // React-free, so the game runtime can label its own buttons with `t()`; React screens use `useT()` / `<Bi>`.
 import enJson from './locales/en.json';
 import viJson from './locales/vi.json';
+import { apiUrl } from '../../platform/endpoints';
 
 export type Lang = 'vi' | 'en';
 export type LangMode = Lang | 'both';
@@ -127,7 +128,7 @@ export function getLangMode(): LangMode {
 
 function syncLanguageToServer(childId: string, mode: LangMode): void {
   if (typeof fetch === 'undefined') return;
-  void fetch(`/api/players/${childId}/language`, {
+  void fetch(apiUrl(`/players/${childId}/language`), {
     method: 'PATCH',
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },

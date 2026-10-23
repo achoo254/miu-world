@@ -1,6 +1,7 @@
 import type { z } from 'zod';
 import { ANALYTICS_HEADER } from '@miu/schema/analytics';
 import { analyticsHeaderValue } from '../analytics/analytics-ids';
+import { apiUrl } from '../platform/endpoints';
 import { t, type TextKey } from './i18n/i18n';
 
 /** Server error with its stable code (`invalid-credentials`, `parent-gate-closed`…). */
@@ -15,14 +16,14 @@ export class ApiError extends Error {
 }
 
 /**
- * Same-origin JSON call; responses are validated so the UI never trusts an unexpected shape.
+ * JSON call to the server (same origin on the web, the server's origin in the app: platform/endpoints.ts); responses are validated so the UI never trusts an unexpected shape.
  * `keepalive` lets a small write finish while the page is being closed or hidden. Every call carries the browser's
  * anonymous GA ids, so the usage events the server emits (sign-up, quests) join this visit.
  */
 export async function api<S extends z.ZodType>(method: string, path: string, schema: S, body?: unknown, options: { keepalive?: boolean } = {}): Promise<z.infer<S>> {
   let res: Response;
   try {
-    res = await fetch(`/api${path}`, {
+    res = await fetch(apiUrl(path), {
       method,
       credentials: 'same-origin',
       keepalive: options.keepalive,

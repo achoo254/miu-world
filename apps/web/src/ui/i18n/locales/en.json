@@ -731,6 +731,8 @@
   "auth.haveAccountPrompt": "Already have an account?",
   "auth.loginLink": "Sign in",
   "auth.googleSignIn": "Sign in with Google",
+  "auth.appSignInSoon": "Signing in on the app is coming soon",
+  "auth.appSignInSoonHint": "Meanwhile, open Miu World in a browser to sign in and play; your account and progress stay the same.",
   "auth.privacyNote": "We only receive the verified email from your Google account, not your name, photo, or contacts.",
   "auth.privacyLink": "Privacy",
   "auth.setPinTitle": "Set account PIN",
@@ -1722,5 +1724,6 @@
   "moderation.action.warn": "Warn",
   "moderation.action.rename": "Reset character name",
   "moderation.action.lock-temp": "Lock {days} days",
-  "moderation.action.lock-permanent": "Lock for good"
+  "moderation.action.lock-permanent": "Lock for good",
+  "app.exitConfirm": "Leave Miu World?"
 }

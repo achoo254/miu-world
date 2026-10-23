@@ -48,6 +48,15 @@ Hệ quả cần xử lý (đã kiểm trong code):
 - Google chặn OAuth trong WebView (`disallowed_useragent`), nên app đăng nhập bằng SDK bản địa và gửi ID token cho server kiểm.
 - Apple bắt buộc có "Sign in with Apple" khi app có đăng nhập Google (App Store Review Guideline 4.8), nên bảng `parents` cần thêm `apple_sub` (migration).
 
+## Quyết định 23/10/2026: đăng nhập trong app đi qua auth-next
+
+Jev (23/10/2026, plan chung `../../../../plans/dattqh/261023-0620-mobile-apps-all-products/plan.md` phase 06, độ tin 0,99) thay hướng của pha 2: app **không** dùng SDK Google/Apple bản địa. Đăng nhập trong app sẽ đi qua IdP dùng chung auth-next, mở trên trình duyệt hệ thống (không bao giờ trong WebView), sau khi Miu chuyển đăng nhập phụ huynh sang auth-next; việc chuyển đó chờ người sở hữu chốt (ngưỡng tắt đăng nhập Google trực tiếp, nội dung privacy). Vì vậy:
+
+- Pha 2 **chưa làm** và sẽ viết lại theo auth-next; `apple_sub`, migration và thu hồi token Apple trong pha 2 cũ không còn là hướng đã chốt. Tiêu chí nghiệm thu 2 đổi theo khi viết lại pha 2.
+- Pha 1 đã chừa chỗ cho app gọi API bằng `Authorization: Bearer` (CORS cho phép header này, không `credentials`) và WebSocket bằng vé dùng một lần (đã có `/api/online-ticket`), nhưng chưa thêm cách đăng nhập mới. Màn đăng nhập trong app ghi "Đăng nhập trên app sẽ có sớm", không mở Google OAuth.
+- Pha 4 (tải asset theo map) chưa làm ở đợt này; app đọc asset trực tiếp từ `/game-assets/` của server qua https, gói app chỉ có bản web và font (6,4 MB phần web, khoảng 12 MB cả app iOS Simulator).
+- Bundle ID theo `brand.config.json`: `com.hoandat.miu` (cả iOS và Android), thay `com.hoandat.miuworld` ghi ngày 07/10/2026; plan chung cũng dùng `com.hoandat.miu`.
+
 ## Pha
 
 | Pha | Tier | Nội dung | Phụ thuộc |

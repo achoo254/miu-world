@@ -2,6 +2,7 @@
 // with a strip of grass and soil. Drawn in the browser on a canvas from what the progress view already holds; the
 // fonts are the game's own (served from this origin) and the colours are read from the design tokens. It has no name
 // of the player and nothing else of hers, in Vietnamese whatever the display mode, and no network request is made.
+import { webOrigin } from '../../platform/endpoints';
 import { pairOf } from '../i18n/i18n';
 
 export const WEEKLY_CARD_SIZE = { width: 1080, height: 1080 } as const;
@@ -152,7 +153,7 @@ async function loadCardFonts(texts: CardTexts): Promise<void> {
 }
 
 /** The card as a PNG. */
-export async function renderWeeklyCard(facts: WeeklyCardFacts, site: string = window.location.host): Promise<Blob> {
+export async function renderWeeklyCard(facts: WeeklyCardFacts, site: string = new URL(webOrigin()).host): Promise<Blob> {
   const canvas = document.createElement('canvas');
   canvas.width = W;
   canvas.height = H;

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { OnlineMode } from '@miu/schema/multiplayer';
+import { APP_ORIGINS } from './auth/app-cors';
 import { DEFAULT_SCRYPT, type ScryptParams } from './auth/secret-hashing';
 
 const DEV_ORIGINS = [5173, 5174, 4173, 4174].flatMap((port) => [`http://localhost:${port}`, `http://127.0.0.1:${port}`]);
@@ -92,8 +93,13 @@ export interface TurnConfig {
 export interface ServerConfig {
   nodeEnv: 'development' | 'test' | 'production';
   port: number;
-  /** Origins allowed to make state-changing requests (CSRF check). */
+  /** Origins of the web app allowed to make state-changing requests (CSRF check). */
   allowedOrigins: string[];
+  /**
+   * Origins of the iPhone/Android app: allowed by the CSRF and multiplayer checks too, and the only ones the API
+   * answers cross-origin (CORS, without credentials). Always `APP_ORIGINS`; tests may inject.
+   */
+  appOrigins: readonly string[];
   /** Postgres connection; absent in dev/test, where embedded PGlite is used. */
   databaseUrl: string | undefined;
   /** PGlite location when no DATABASE_URL: a directory, or null for in-memory. */
@@ -182,6 +188,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     nodeEnv: e.NODE_ENV,
     port: e.PORT,
     allowedOrigins: e.ALLOWED_ORIGINS ?? DEV_ORIGINS,
+    appOrigins: APP_ORIGINS,
     databaseUrl: e.DATABASE_URL,
     pgliteDir: e.PGLITE_DIR === 'memory' ? null : e.PGLITE_DIR,
     scrypt: DEFAULT_SCRYPT,

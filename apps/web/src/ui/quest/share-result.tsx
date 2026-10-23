@@ -12,6 +12,7 @@ import { T } from '../i18n/use-t';
 import { buttonClass } from '../kit/button';
 import { shareLink } from '../share/share-actions';
 import { lessonPageOf } from '../share/lesson-link';
+import { webOrigin } from '../../platform/endpoints';
 import { resultLink } from '../share/share-links';
 
 type Notice = 'shared' | 'copied' | 'failed';
@@ -31,7 +32,7 @@ export function ShareResult({ textbook }: { textbook: QuestTextbook | undefined 
     try {
       const invite = withInvite ? await createInvite() : null;
       const outcome = await shareLink(
-        { title: pairOf('shareResult.title').vi, text: pairOf('shareResult.text').vi, url: resultLink(window.location.origin, page?.slug ?? null, invite?.code) },
+        { title: pairOf('shareResult.title').vi, text: pairOf('shareResult.text').vi, url: resultLink(webOrigin(), page?.slug ?? null, invite?.code) },
         { contentType: 'result', ...(page ? { lessonId: page.lessonId } : {}) },
       );
       // A link nobody got must not keep one of her few live invites.

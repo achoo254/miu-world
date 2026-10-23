@@ -18,3 +18,6 @@ apps/web/playwright/.auth/
 *.dump
 access-tokens*.json
 all-in-one*.json
+
+# The iPhone/Android app build of the web app (pnpm mobile:build)
+apps/web/dist-native/

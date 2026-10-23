@@ -9,6 +9,7 @@ import { T, useT } from '../i18n/use-t';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { canShareFile, copyText, shareImage } from '../share/share-actions';
+import { webOrigin } from '../../platform/endpoints';
 import { weeklyLink } from '../share/share-links';
 import { renderWeeklyCard, type WeeklyCardFacts } from './weekly-card';
 import './weekly-share.css';
@@ -53,7 +54,7 @@ function WeeklyCardDialog({ facts, onClose }: { facts: WeeklyCardFacts; onClose:
   const send = async (file: File): Promise<void> => {
     setBusy(true);
     setNotice(null);
-    const link = weeklyLink(window.location.origin);
+    const link = weeklyLink(webOrigin());
     const outcome = await shareImage(file, `${pairOf('weeklyShare.shareText').vi} ${link}`, { contentType: 'weekly' });
     if (outcome === 'web-share') setNotice('shared');
     // A saved picture has no link with it: the link is copied so it can be pasted next to the picture.

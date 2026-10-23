@@ -12,6 +12,7 @@ import { UI_ART_PATHS } from './src/ui/kit/ui-art.ts';
 import { MINIGAME_SPRITE_PATHS } from './src/ui/minigame/sprites.ts';
 import { appIcons, APP_ICON_PATHS } from './vite-app-icons.ts';
 import { LESSON_PAGE_ENTRY, buildSite, lessonPageFiles, sitemapPages } from './vite-lesson-pages.ts';
+import { NATIVE_MODE, NATIVE_OUT_DIR, nativeContentSecurityPolicy, nativeServerOrigin, nativeViewport } from './vite-native.ts';
 import { repoAssets } from './vite-repo-assets.ts';
 import { seoMeta } from './vite-seo-meta.ts';
 import { LASTMOD_LEDGER, readLedger, sitemap } from './vite-sitemap.ts';
@@ -35,13 +36,11 @@ export const CONTENT_SECURITY_POLICY =
  * Injects the CSP meta into built pages only. The dev server's React Fast Refresh preamble is an
  * inline script that `script-src 'self'` would block; E2E runs against the production build.
  */
-function contentSecurityPolicy(): Plugin {
+function contentSecurityPolicy(policy: string): Plugin {
   return {
     name: 'miu-csp',
     apply: 'build',
-    transformIndexHtml: () => [
-      { tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: CONTENT_SECURITY_POLICY }, injectTo: 'head-prepend' },
-    ],
+    transformIndexHtml: () => [{ tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: policy }, injectTo: 'head-prepend' }],
   };
 }
 
@@ -77,35 +76,42 @@ const publicHosts = (process.env.MIU_PUBLIC_HOSTS ?? '')
   .filter(Boolean);
 
 /**
- * `vite build --mode release` (production): the game only. Every other build (E2E, local review,
- * staging) also carries the review page, the render tool page, the minigame dev page and the review
- * material they show.
+ * `vite build --mode release` (production): the game only. `--mode native` (the iPhone/Android app, apps/mobile): the
+ * game only, into dist-native/, talking to the server's origin (vite-native.ts), without the game's assets (read from the
+ * server) and without the static lesson pages. Every other build (E2E, local review, staging) also carries the review
+ * page, the render tool page, the minigame dev page and the review material they show.
  */
 export default defineConfig(({ mode, command }) => {
-  const review = mode !== 'release';
-  // The static pages (a page per subject and lesson, robots.txt, the sitemap) are written by the build only.
-  const site = command === 'build' ? buildSite({ contentDir: CONTENT_DIR, assetsDir: ASSETS_DIR, csp: CONTENT_SECURITY_POLICY }) : null;
+  const native = mode === NATIVE_MODE;
+  const review = mode !== 'release' && !native;
+  const serverOrigin = native ? nativeServerOrigin(process.env) : '';
+  const policy = native ? nativeContentSecurityPolicy(CONTENT_SECURITY_POLICY, serverOrigin) : CONTENT_SECURITY_POLICY;
+  // The static pages (a page per subject and lesson, robots.txt, the sitemap) are written by the web build only.
+  const site = command === 'build' && !native ? buildSite({ contentDir: CONTENT_DIR, assetsDir: ASSETS_DIR, csp: CONTENT_SECURITY_POLICY }) : null;
   return {
     plugins: [
       react(),
-      contentSecurityPolicy(),
-      appIcons(ASSETS_DIR),
+      contentSecurityPolicy(policy),
+      // The app has its own icons (apps/mobile); the favicon and the install manifest are the web's.
+      ...(native ? [nativeViewport()] : [appIcons(ASSETS_DIR)]),
       seoMeta(ASSETS_DIR),
-      repoAssets(ASSETS_DIR, APP_DIR, [...UI_PATHS, ...APP_ICON_PATHS], { review }),
+      repoAssets(ASSETS_DIR, APP_DIR, [...UI_PATHS, ...APP_ICON_PATHS], { review, fontsOnly: native }),
       ...(site ? [lessonPageFiles(site), sitemap({ pages: sitemapPages(site, INDEX_HTML), ledger: readLedger(LASTMOD_LEDGER), release: !review })] : []),
     ],
-    define: assetVersionDefines(),
+    // The server origin is '' on the web (every address relative, src/platform/endpoints.ts).
+    define: { ...assetVersionDefines(), __MIU_SERVER_ORIGIN__: JSON.stringify(serverOrigin) },
     publicDir: false,
     server: { proxy: apiProxy, allowedHosts: publicHosts },
     preview: { proxy: apiProxy, allowedHosts: publicHosts },
     worker: { format: 'es' },
     build: {
       target: 'es2022',
+      ...(native ? { outDir: NATIVE_OUT_DIR } : {}),
       rollupOptions: {
         input: {
           index: INDEX_HTML,
           // The script of the static lesson pages (page view, destination after sign-in); the build links it into each.
-          [LESSON_PAGE_ENTRY]: path.join(APP_DIR, 'src/seo/lesson-page-entry.ts'),
+          ...(native ? {} : { [LESSON_PAGE_ENTRY]: path.join(APP_DIR, 'src/seo/lesson-page-entry.ts') }),
           // The minigame dev page opens any game without signing in: review builds only, like the render tool.
           ...(review
             ? { preview: path.join(APP_DIR, 'preview.html'), review: path.join(APP_DIR, 'review.html'), minigame: path.join(APP_DIR, 'minigame.html') }

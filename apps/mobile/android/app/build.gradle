@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+// The store version is apps/mobile/package.json `version`; the build number grows with every upload and comes from
+// scripts/release.ts (-PmiuVersionCode), 1 for debug builds.
+def miuPackage = new groovy.json.JsonSlurper().parse(file('../../package.json'))
+def miuVersionName = project.findProperty('miuVersionName') ?: miuPackage.version
+def miuVersionCode = (project.findProperty('miuVersionCode') ?: '1') as Integer
+// Release signing: the upload keystore stays outside the repository; scripts/release.ts checks these are set.
+def miuKeystore = System.getenv('MIU_ANDROID_KEYSTORE')
+
+android {
+    namespace = "com.hoandat.miu"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.hoandat.miu"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode miuVersionCode
+        versionName miuVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    signingConfigs {
+        if (miuKeystore) {
+            release {
+                storeFile file(miuKeystore)
+                storePassword System.getenv('MIU_ANDROID_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('MIU_ANDROID_KEY_ALIAS')
+                keyPassword System.getenv('MIU_ANDROID_KEY_PASSWORD')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (miuKeystore) signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

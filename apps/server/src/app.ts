@@ -6,6 +6,7 @@ import { AnalyticsSessions, rememberAnalyticsIds } from './analytics/analytics-s
 import { ANALYTICS_BODY_LIMIT, analyticsCatalog, analyticsRoutes } from './analytics/analytics-routes';
 import type { EventSink } from './analytics/ga4-forwarder';
 import { accountRoutes } from './auth/account-routes';
+import { appCors } from './auth/app-cors';
 import { loadSession } from './auth/auth-context';
 import { authRoutes } from './auth/auth-routes';
 import { googleAuthRoutes } from './auth/google-auth-routes';
@@ -125,7 +126,9 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   app.use(express.json({ limit: '32kb' }));
 
   const api = express.Router();
-  api.use(requireAllowedOrigin(config.allowedOrigins));
+  // The app's origins get CORS (no credentials) before the CSRF check, which accepts them like the web's own.
+  api.use(appCors(config.appOrigins));
+  api.use(requireAllowedOrigin([...config.allowedOrigins, ...config.appOrigins]));
   api.use(loadSession(db, config, clock));
   api.use(rememberAnalyticsIds(analytics.sessions));
   api.get('/health', (_req, res) => {

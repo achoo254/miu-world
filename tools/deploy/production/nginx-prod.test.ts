@@ -5,10 +5,10 @@ import { CONTENT_SECURITY_POLICY } from '../../../apps/web/vite.config';
 const conf = readFileSync(new URL('./nginx-prod.conf', import.meta.url), 'utf8');
 const lines = conf.split('\n');
 
-/** `add_header <Name> "<value>" always;` lines of the config, with their line index. */
+/** `add_header <Name> "<value>" always;` (or a `$variable` value) lines of the config, with their line index. */
 const headers = lines.flatMap((line, index) => {
-  const match = /^\s*add_header\s+(\S+)\s+"([^"]*)"\s+always;\s*$/.exec(line);
-  return match ? [{ index, name: match[1] ?? '', value: match[2] ?? '' }] : [];
+  const match = /^\s*add_header\s+(\S+)\s+(?:"([^"]*)"|(\$\w+))\s+always;\s*$/.exec(line);
+  return match ? [{ index, name: match[1] ?? '', value: match[2] ?? match[3] ?? '' }] : [];
 });
 
 const directives = (policy: string): Map<string, string> =>
@@ -27,7 +27,7 @@ describe('production nginx security headers', () => {
   it('sends each header once, with `always` so error pages carry it too', () => {
     expect(lines.filter((line) => /^\s*add_header\s/.test(line)).length).toBe(headers.length);
     expect(headers.map((h) => h.name).sort()).toEqual(
-      ['Content-Security-Policy', 'Permissions-Policy', 'Referrer-Policy', 'Strict-Transport-Security', 'X-Content-Type-Options', 'X-Frame-Options'].sort(),
+      ['Access-Control-Allow-Origin', 'Content-Security-Policy', 'Permissions-Policy', 'Referrer-Policy', 'Strict-Transport-Security', 'X-Content-Type-Options', 'X-Frame-Options'].sort(),
     );
   });
 
@@ -56,5 +56,27 @@ describe('production nginx security headers', () => {
 
   it('pins HTTPS for a year without joining the preload list', () => {
     expect(headers.find((h) => h.name === 'Strict-Transport-Security')?.value).toBe('max-age=31536000; includeSubDomains');
+  });
+});
+
+describe('production nginx CORS for the app', () => {
+  /** The `map` block whose result is `$variable`, as its entries (key → value). */
+  const mapEntries = (variable: string): Map<string, string> => {
+    const block = new RegExp(`^map [^\\n]+ \\$${variable} \\{\\n([\\s\\S]*?)^\\}`, 'm').exec(conf)?.[1] ?? '';
+    return new Map(
+      [...block.matchAll(/^\s*("[^"]*"|\S+)\s+("[^"]*"|\S+);\s*$/gm)].map((m) => [(m[1] ?? '').replace(/^"|"$/g, ''), (m[2] ?? '').replace(/^"|"$/g, '')] as const),
+    );
+  };
+
+  it('opens /game-assets/ to every origin, one cacheable answer, and nothing else', () => {
+    const entries = mapEntries('miu_asset_cors');
+    expect(entries.get('default')).toBe('');
+    expect([...entries.keys()].filter((key) => key !== 'default')).toEqual(['~^/game-assets/']);
+    expect(entries.get('~^/game-assets/')).toBe('*');
+  });
+
+  it('never allows credentials and does not vary the cached files by Origin', () => {
+    expect(conf).not.toMatch(/Access-Control-Allow-Credentials/);
+    expect(conf).not.toMatch(/add_header\s+Vary/);
   });
 });

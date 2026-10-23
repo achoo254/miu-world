@@ -5,6 +5,7 @@
 // A child who owns boosters from the shop ("Thêm một tim", "Thêm 10 giây") picks one on the how-to card: the
 // server uses it up first, then the round starts with it (the same for every game, round.ts).
 import { useCallback, useEffect, useRef, useState, type ReactElement } from 'react';
+import { appHidden, onAppVisibilityChange } from '../../platform/app-lifecycle';
 import type { MinigameParams } from '@miu/schema/content';
 import type { CollectibleDrop, StepCompleteResponse } from '@miu/schema/game';
 import { CollectibleDropNote } from '../collection/collectible-drop';
@@ -220,16 +221,16 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
   useEffect(() => {
     if (phase !== 'playing') return;
     const onHide = (): void => {
-      if (document.visibilityState === 'hidden') pause();
+      if (appHidden()) pause();
     };
     const onKey = (e: KeyboardEvent): void => {
       if (e.key === 'Escape') pause();
     };
-    document.addEventListener('visibilitychange', onHide);
+    const offVisibility = onAppVisibilityChange(onHide);
     window.addEventListener('blur', pause);
     window.addEventListener('keydown', onKey);
     return () => {
-      document.removeEventListener('visibilitychange', onHide);
+      offVisibility();
       window.removeEventListener('blur', pause);
       window.removeEventListener('keydown', onKey);
     };

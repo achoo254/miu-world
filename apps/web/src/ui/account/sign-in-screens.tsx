@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router';
 import { MeResponse, ParentPin } from '@miu/schema/account';
+import { NATIVE_APP } from '../../platform/endpoints';
 import { api } from '../api-client';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -43,9 +44,17 @@ function GoogleSignIn({ title, hint, dataId, switchTo }: { title: ReactNode; hin
             <T k={callbackErrorKey(error)} />
           </p>
         ) : null}
-        <a className={buttonClass('primary', { block: true })} href={GOOGLE_SIGN_IN} data-id={`${dataId}-google`}>
-          <T k="auth.googleSignIn" />
-        </a>
+        {NATIVE_APP ? (
+          // The app signs in through the shared account service in the system browser, never Google inside this
+          // WebView (Google refuses it); until that ships the app says so instead of offering a button that fails.
+          <p className="hint" role="status" data-id={`${dataId}-app-soon`}>
+            <strong><T k="auth.appSignInSoon" /></strong> <T k="auth.appSignInSoonHint" />
+          </p>
+        ) : (
+          <a className={buttonClass('primary', { block: true })} href={GOOGLE_SIGN_IN} data-id={`${dataId}-google`}>
+            <T k="auth.googleSignIn" />
+          </a>
+        )}
         <p className="note">
           <Icon name="heart" size={28} />
           <span>

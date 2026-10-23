@@ -4,6 +4,8 @@
 // reads from her saved character; she only says where she is and what she does. Single-player goes on as if
 // nothing happened when the server cannot be reached.
 import { ClientWsMessage, ServerWsMessage, WsTicketResponse, type SafeEmote } from '@miu/schema/multiplayer';
+import { appHidden, onAppVisibilityChange } from '../../platform/app-lifecycle';
+import { apiUrl, wsUrl } from '../../platform/endpoints';
 
 /**
  * Close codes after which reconnecting is pointless: another tab took over, there is no player to play as, or her
@@ -50,7 +52,7 @@ type TicketAnswer = { ticket: string } | { pause: 'off' | 'restricted' } | { fai
 async function askTicket(): Promise<TicketAnswer> {
   let res: Response;
   try {
-    res = await fetch('/api/online-ticket', { method: 'POST', credentials: 'same-origin', cache: 'no-store' });
+    res = await fetch(apiUrl('/online-ticket'), { method: 'POST', credentials: 'same-origin', cache: 'no-store' });
   } catch {
     return { failed: true };
   }
@@ -78,16 +80,31 @@ export class MultiplayerClient {
   private retry: number | null = null;
   /** Connections in a row that never opened. */
   private failures = 0;
+  private readonly offVisibility: () => void;
 
   constructor(start: MultiplayerStart, handlers: MultiplayerClientHandlers) {
     this.start = start;
     this.host = start.host ?? null;
     this.here = { x: start.x, y: start.y, z: start.z, yaw: start.yaw, riding: false };
     this.handlers = handlers;
+    // Back from the background (the phone locked, another app): a connection dropped meanwhile is retried at once
+    // instead of after its back-off, so she is with the others again as soon as the game shows.
+    this.offVisibility = onAppVisibilityChange(() => {
+      if (!appHidden()) this.reconnectNow();
+    });
+    this.connect();
+  }
+
+  /** Skips the wait of a pending reconnect; nothing to do while connected, connecting, or after a final close. */
+  private reconnectNow(): void {
+    if (this.disposed || this.retry === null) return;
+    window.clearTimeout(this.retry);
+    this.failures = 0;
     this.connect();
   }
 
   private connect(): void {
+    this.retry = null;
     if (this.disposed || typeof window === 'undefined') return;
     void askTicket().then((answer) => {
       if (this.disposed) return;
@@ -105,10 +122,9 @@ export class MultiplayerClient {
   }
 
   private open(ticket: string): void {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     let ws: WebSocket;
     try {
-      ws = new WebSocket(`${protocol}//${window.location.host}/api/ws?ticket=${encodeURIComponent(ticket)}`);
+      ws = new WebSocket(wsUrl(`/api/ws?ticket=${encodeURIComponent(ticket)}`));
     } catch {
       return; // no WebSocket here: play goes on alone
     }
@@ -180,6 +196,7 @@ export class MultiplayerClient {
   }
 
   dispose(): void {
+    this.offVisibility();
     if (this.retry !== null) window.clearTimeout(this.retry);
     this.send({ type: 'leave' });
     this.disposed = true;

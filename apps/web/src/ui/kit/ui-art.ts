@@ -8,6 +8,7 @@ import type { Pet } from '../../../../../packages/schema/src/pet';
 import { petArtPath } from '../../../../../packages/schema/src/pet-art';
 import { REGION_CHEST_ICON, regionBackdropPath } from '../../../../../packages/schema/src/region-art';
 import { UI_ASSET_VERSIONS, versioned } from '../../asset-versions';
+import { assetUrl as servedAssetUrl } from '../../platform/endpoints';
 
 const FLUENT = 'packs/fluent-emoji/1ffb34c752ec/icons';
 const FLUENT_MINI = 'packs/fluent-emoji/1ffb34c752ec/minigame';
@@ -225,4 +226,4 @@ export const UI_ART_PATHS: readonly string[] = [
 ];
 
 /** URL of a file the UI shows, with its content version (asset-versions.ts) so a new release shows the new file. */
-export const assetUrl = (manifestPath: string): string => versioned(`/game-assets/${manifestPath}`, UI_ASSET_VERSIONS[manifestPath]);
+export const assetUrl = (manifestPath: string): string => versioned(servedAssetUrl(manifestPath), UI_ASSET_VERSIONS[manifestPath]);

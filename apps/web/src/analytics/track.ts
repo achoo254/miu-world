@@ -2,6 +2,7 @@
 // (`POST /api/analytics/events`), which checks them and forwards them to Google Analytics; the browser never contacts
 // Google. Reporting never gets in the way: a failed or refused report is dropped silently.
 import { ANALYTICS_HEADER, MAX_ENGAGEMENT_MSEC, formatAnalyticsHeader, type SHARE_CONTENT_TYPES, type SHARE_METHODS } from '@miu/schema/analytics';
+import { apiUrl } from '../platform/endpoints';
 import { currentGaIds } from './analytics-ids';
 import { visitAttribution } from './attribution';
 
@@ -16,7 +17,7 @@ function report(body: Record<string, string | number | undefined>, nowMs: number
   const engaged = lastEventAt === null ? 1 : Math.min(MAX_ENGAGEMENT_MSEC, Math.max(1, Math.round(nowMs - lastEventAt)));
   lastEventAt = nowMs;
   try {
-    void fetch('/api/analytics/events', {
+    void fetch(apiUrl('/analytics/events'), {
       method: 'POST',
       credentials: 'same-origin',
       keepalive: true,

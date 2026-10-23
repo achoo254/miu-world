@@ -2,6 +2,9 @@
 // web bundle. Answers and support layers live only on the server (content/quests is read there); a
 // stray import from the web app would ship them to every child's browser. It also checks the static
 // lesson pages (dist/bai/): each carries the game's CSP and runs no inline script.
+// `pnpm security:dist --native` checks the iPhone/Android app build (apps/web/dist-native, `vite build --mode native`)
+// instead: no quest answer either, and none of the game's assets packed inside but the fonts (the app reads the rest
+// from the server).
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -11,6 +14,7 @@ import { REPO_ROOT } from '../assets/asset-lib';
 const QUEST_DIR = path.join(REPO_ROOT, 'content/quests');
 const CURRICULUM_DIR = path.join(REPO_ROOT, 'content/curriculum');
 const DIST_DIR = path.join(REPO_ROOT, 'apps/web/dist');
+const NATIVE_DIST_DIR = path.join(REPO_ROOT, 'apps/web/dist-native');
 /**
  * Shorter strings ("13", "Bạn Hải ly") also appear as public choice labels; only distinctive text counts.
  * This scan is a tripwire for a stray import of content/quests, not the protection itself: that is
@@ -129,17 +133,33 @@ export function scanLessonPages(distDir = DIST_DIR): string[] {
   return pages.flatMap((f) => lessonPageIssues(readFileSync(f, 'utf8')).map((issue) => `${path.relative(REPO_ROOT, f)}: ${issue}`));
 }
 
+/** Game asset files packed into the app build other than the fonts: the app must read them from the server. */
+export function nativeBundleIssues(distDir = NATIVE_DIST_DIR): string[] {
+  const assets = path.join(distDir, 'game-assets');
+  if (!existsSync(assets)) return [];
+  return files(assets)
+    .map((f) => path.relative(assets, f).split(path.sep).join('/'))
+    .filter((rel) => !(rel.startsWith('packs/font-') && rel.endsWith('.woff2')))
+    .map((rel) => `${path.relative(REPO_ROOT, path.join(assets, rel))}: a game asset packed into the app (only fonts ship inside)`);
+}
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const native = process.argv.includes('--native');
+  const dir = native ? NATIVE_DIST_DIR : DIST_DIR;
   let issues: string[];
   try {
-    issues = [...scanDist(), ...scanLessonPages()];
+    issues = native ? [...scanDist(dir), ...nativeBundleIssues(dir)] : [...scanDist(), ...scanLessonPages()];
   } catch (error) {
-    issues = [`cannot scan apps/web/dist (build it first): ${error instanceof Error ? error.message : String(error)}`];
+    issues = [`cannot scan ${path.relative(REPO_ROOT, dir)} (build it first): ${error instanceof Error ? error.message : String(error)}`];
   }
   if (issues.length > 0) {
     console.error(`security:dist FAILED (${issues.length}):`);
     for (const issue of issues) console.error(`  - ${issue}`);
     process.exit(1);
   }
-  console.log('security:dist OK — no quest answer in apps/web/dist, every lesson page keeps the CSP and runs no inline script');
+  console.log(
+    native
+      ? 'security:dist OK — no quest answer in apps/web/dist-native, and no game asset but the fonts packed into the app'
+      : 'security:dist OK — no quest answer in apps/web/dist, every lesson page keeps the CSP and runs no inline script',
+  );
 }

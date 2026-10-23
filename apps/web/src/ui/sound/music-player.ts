@@ -4,6 +4,7 @@
 // through Web Audio because Safari on the iPad ignores `audio.volume`. A browser that refuses to play
 // before a tap waits for the first tap; one with no Web Audio at all (tests) stays silent.
 import { useEffect } from 'react';
+import { appHidden, onAppVisibilityChange } from '../../platform/app-lifecycle';
 import { assetUrl } from '../kit/ui-art';
 import { onSoundSettingChange, readMusicOn, readSoundOn } from '../system/sound-setting';
 import { MUSIC_MOODS, musicPath, type MusicMood } from './music';
@@ -168,7 +169,7 @@ function sync(): void {
   if (!ctx) return;
   window.__miuMusic = stats;
   listen();
-  if (document.visibilityState === 'hidden') {
+  if (appHidden()) {
     // Paused where it is, picked up again when the child comes back.
     playing?.audio.pause();
     stats.playing = false;
@@ -199,7 +200,7 @@ function listen(): void {
     if (playing?.audio.paused && audible()) void playing.audio.play()?.catch(() => undefined);
   };
   for (const type of ['pointerdown', 'keydown', 'touchend'] as const) window.addEventListener(type, unlock, { capture: true });
-  document.addEventListener('visibilitychange', sync);
+  onAppVisibilityChange(sync);
   onSoundSettingChange(sync);
 }
 

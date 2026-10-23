@@ -31,6 +31,18 @@ Mới: `apps/web/src/platform/endpoints.ts` (+ test), test CORS ở server.
 - `pnpm --filter @miu/web build` (web không đổi hành vi), build `--mode native` thành công.
 - E2E `@smoke` của web xanh (bản web không bị ảnh hưởng).
 
+## Tiến độ (23/10/2026)
+
+- [x] `apps/web/src/platform/endpoints.ts` (`apiUrl`, `assetUrl`, `assetOrigin`, `wsUrl`, `webOrigin`, `NATIVE_APP`) + test hai chế độ. Gốc server đọc lúc build từ `VITE_MIU_SERVER_ORIGIN`, mặc định là origin web của brand (`https://miu.hoandat.com`); chỉ nhận https, http chỉ tới loopback (`apps/web/vite-native.ts`).
+- [x] Đổi các chỗ gọi: `api-client.ts`, `mail-api.ts` (nay đi qua `api()`), `i18n.ts`, `analytics/track.ts`, `asset-loader.ts`, `ui-art.ts`, `multiplayer-client.ts`; link chia sẻ (mời bạn, kết quả, thẻ tuần) dùng `webOrigin()` để app không chia sẻ link `capacitor://`. `asset-versions.ts` không cần sửa.
+- [x] `vite.config.ts` mode `native`: ra `apps/web/dist-native`, không trang bài học, không trang review, không asset game ngoài font; CSP bản native thêm origin server vào `connect-src` (cả `wss:`), `img-src`, `media-src` (font nằm trong gói nên `font-src` giữ `'self'`); `viewport-fit=cover` chỉ ở bản native. CSP bản web giữ nguyên (test `content-security-policy.test.ts`).
+- [x] Server: `apps/server/src/auth/app-cors.ts` trả CORS cho đúng `capacitor://localhost` và `https://localhost` trên `/api` (không `credentials`, header `Authorization, Content-Type, x-miu-ga`, preflight không cần phiên); hai origin đó được nhận ở kiểm `Origin` chống CSRF và WebSocket; origin khác và request thiếu `Origin` vẫn bị từ chối (test `app-cors.test.ts`). Hằng số trong code, không qua `ALLOWED_ORIGINS`, nên production không cần đổi env.
+- [x] `/game-assets/` (nginx): `nginx-prod.conf` trả `Access-Control-Allow-Origin: *` chỉ ở `/game-assets/` (test `nginx-prod.test.ts`). 23/10/2026: đổi từ "đúng hai origin + `Vary: Origin`" sang `*` vì Cloudflare không chia cache theo `Vary` và file game công khai; bỏ được Cache Rule.
+- [x] `pnpm security:dist --native` quét `dist-native` (không đáp án quest, không asset game ngoài font).
+- [ ] Deploy nginx + server (`docs/deployment-guide.md` §6); user cho phép deploy khi CI xanh (23/10/2026).
+- [ ] Phiếu viết in (`/parent/worksheets`) dùng font qua `url('/api/worksheets/fonts/…')` trong CSS; trong app đường dẫn này không tới server. Làm cùng đăng nhập trong app (cần đăng nhập mới vào được màn đó).
+- [ ] E2E `@smoke` của web chạy trên CI (không chạy ở máy dev).
+
 ## Rủi ro, hoàn tác
 
 Sai CSP làm trắng trang web: test `apps/web/src/content-security-policy.test.ts` giữ CSP bản web y nguyên. Hoàn tác: revert commit, server không có migration ở pha này.

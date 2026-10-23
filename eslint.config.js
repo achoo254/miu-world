@@ -31,6 +31,10 @@ export default tseslint.config(
     ignores: [
       '**/node_modules/**',
       '**/dist/**',
+      '**/dist-native/**',
+      // Capacitor's native projects: the web bundle copied into them, and Gradle/Xcode output.
+      'apps/mobile/ios/**',
+      'apps/mobile/android/**',
       'assets/**',
       'plans/**',
       '**/test-results/**',

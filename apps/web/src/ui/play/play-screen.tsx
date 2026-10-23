@@ -2,6 +2,7 @@
 // owns the HUD (badge, quest tracker, menu buttons, Interact), the interaction label (content and
 // visibility from game-bridge), Pause (the game stops rendering while it is open) and the offline retry.
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
+import { appHidden, onAppVisibilityChange } from '../../platform/app-lifecycle';
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router';
 import { rememberPlay } from '../system/back-to-game';
 import type { PlayerPosition } from '@miu/schema/player-position';
@@ -53,6 +54,7 @@ import { PartyQuestCard } from '../coop/party-quest-card';
 import { useCoopChallenges } from '../coop/use-coop';
 import { useMapEvents } from '../event/use-map-events';
 import type { EventLayerOption } from '../../game/event/event-layer';
+import { keepScreenOn } from '../../platform/keep-awake';
 
 const HOME_PATH = '/home';
 /** A pet wearing nothing (a stable value: the game is not rebuilt for it). */
@@ -255,15 +257,15 @@ function GameView({
     const timer = window.setInterval(() => save(instance.currentSpot()), SAVE_SPOT_MS);
     // A hidden page may never come back (tab closed, iPad app switched): keepalive lets the save finish.
     const onHidden = (): void => {
-      if (document.visibilityState === 'hidden') save(instance.currentSpot(), { keepalive: true });
+      if (appHidden()) save(instance.currentSpot(), { keepalive: true });
     };
     const onPageHide = (): void => save(instance.currentSpot(), { keepalive: true });
-    document.addEventListener('visibilitychange', onHidden);
+    const offVisibility = onAppVisibilityChange(onHidden);
     window.addEventListener('pagehide', onPageHide);
     // StrictMode mounts twice in dev: the first game is fully disposed before the second starts.
     return () => {
       window.clearInterval(timer);
-      document.removeEventListener('visibilitychange', onHidden);
+      offVisibility();
       window.removeEventListener('pagehide', onPageHide);
       save(instance.currentSpot(), { keepalive: true }); // leaving /play: read before dispose clears it
       instance.dispose();
@@ -286,6 +288,8 @@ export function PlayScreen() {
   const [social] = useState(createSocialStore);
   /** Voice with her party or a friend: outlives the maps she goes through. */
   const voice = useVoiceManager(social);
+  // The phone's screen stays on while she plays (the app only), and may sleep again once she leaves the game.
+  useEffect(keepScreenOn, []);
   /** The online menu on another player is open (it covers the game like the other screens). */
   const onlineMenu = useSocial(social, (s) => s.menu !== null);
   /** A co-op lobby, challenge or its end is on screen (it covers the game). */

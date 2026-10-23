@@ -2,6 +2,7 @@
 // The sound stays in this screen's memory (a Blob behind an object URL) and is never sent or stored;
 // leaving the step, hiding the tab or unmounting stops the microphone and drops the recording.
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { appHidden, onAppVisibilityChange } from '../../../platform/app-lifecycle';
 import { holdMusic } from '../../sound/music-player';
 
 export type RecorderState = 'idle' | 'recording' | 'recorded' | 'unsupported' | 'denied';
@@ -105,11 +106,11 @@ export function useVoiceRecorder(maxMs: number = MAX_RECORDING_MS): VoiceRecorde
   useEffect(() => {
     // A hidden tab stops recording, so the microphone is never left open in the background.
     const onHidden = (): void => {
-      if (document.visibilityState === 'hidden') stop();
+      if (appHidden()) stop();
     };
-    document.addEventListener('visibilitychange', onHidden);
+    const offVisibility = onAppVisibilityChange(onHidden);
     return () => {
-      document.removeEventListener('visibilitychange', onHidden);
+      offVisibility();
       clearTimers();
       if (recorder.current && recorder.current.state !== 'inactive') {
         recorder.current.onstop = null;

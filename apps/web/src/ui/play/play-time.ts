@@ -2,6 +2,7 @@
 // reported to the server every minute. Only the total per week is kept (no session or event log); a failed
 // report is simply lost, like a missed second on a stopwatch.
 import { useEffect, useRef } from 'react';
+import { appHidden } from '../../platform/app-lifecycle';
 import { z } from 'zod';
 import { PLAY_BEAT_SECONDS } from '@miu/schema/progress';
 import { api } from '../api-client';
@@ -22,7 +23,7 @@ export function usePlayTime(playing: boolean, report: (seconds: number) => Promi
   useEffect(() => {
     let counted = 0;
     const timer = window.setInterval(() => {
-      if (!playingRef.current || document.visibilityState !== 'visible') return;
+      if (!playingRef.current || appHidden()) return;
       counted += TICK_SECONDS;
       if (counted < PLAY_BEAT_SECONDS) return;
       counted -= PLAY_BEAT_SECONDS;

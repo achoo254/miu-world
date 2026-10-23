@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { CONTENT_SECURITY_POLICY } from '../../apps/web/vite.config';
-import { leaksIn, lessonPageIssues, publicBookTitles, questSecrets, scanDist, scanLessonPages } from './scan-dist';
+import { leaksIn, lessonPageIssues, nativeBundleIssues, publicBookTitles, questSecrets, scanDist, scanLessonPages } from './scan-dist';
 
 const quest = {
   id: 'q',
@@ -53,6 +53,21 @@ describe('dist answer scan', () => {
     expect(scanDist(path.join(root, 'dist'), path.join(root, 'quests'))).toEqual([]);
     writeFileSync(path.join(root, 'dist/assets/leak.js'), 'x="Lá thư viết Hải ly sẽ chỉ đường."');
     expect(scanDist(path.join(root, 'dist'), path.join(root, 'quests'))).toHaveLength(1);
+  });
+});
+
+describe('app build contents', () => {
+  it('lets the fonts in and reports any other game asset packed into the app', () => {
+    const root = mkdtempSync(path.join(tmpdir(), 'miu-dist-'));
+    dir = root;
+    expect(nativeBundleIssues(root)).toEqual([]);
+    mkdirSync(path.join(root, 'game-assets/packs/font-nunito/5.3.0'), { recursive: true });
+    writeFileSync(path.join(root, 'game-assets/packs/font-nunito/5.3.0/nunito-latin-400.woff2'), 'font');
+    expect(nativeBundleIssues(root)).toEqual([]);
+    mkdirSync(path.join(root, 'game-assets/generated/world/forest'), { recursive: true });
+    writeFileSync(path.join(root, 'game-assets/generated/world/forest/horizon.bin'), 'map');
+    writeFileSync(path.join(root, 'game-assets/manifest.json'), '{}');
+    expect(nativeBundleIssues(root)).toHaveLength(2);
   });
 });
 

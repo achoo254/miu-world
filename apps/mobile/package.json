@@ -1,0 +1,23 @@
+{
+  "name": "@miu/mobile",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "iPhone and Android app (Capacitor) around the Miu World web app; its version is the store version of both apps",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "icons": "tsx scripts/native-icons.ts",
+    "release:ios": "tsx scripts/release.ts ios",
+    "release:android": "tsx scripts/release.ts android"
+  },
+  "dependencies": {
+    "@capacitor-community/keep-awake": "8.0.1",
+    "@capacitor/android": "8.5.3",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/ios": "8.5.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.3"
+  }
+}

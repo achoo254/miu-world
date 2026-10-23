@@ -11,6 +11,7 @@
 // - She connects straight only to a friend (the server says who is one). With anyone else the connection goes only
 //   through the relay, so a stranger never learns her address; without a relay server she does not connect to them.
 import { VOICE_CALL_RING_MS, VoiceIceServers, type BotVoice, type VoiceBotLineKey, type VoiceChannel } from '@miu/schema/voice';
+import { appHidden, onAppVisibilityChange } from '../../platform/app-lifecycle';
 import type { SocialStore, VoiceIn, VoiceOut } from '../../game-bridge/social-store';
 import { api } from '../api-client';
 import { speakVoiceLine } from '../dialogue/speech';
@@ -162,16 +163,16 @@ export class VoiceManager {
     if (typeof document !== 'undefined') {
       const visibility = (): void => {
         // The microphone is never left open in the background; back in front, the sound goes on.
-        if (document.visibilityState === 'hidden') {
+        if (appHidden()) {
           if (this.snapshot.mic) this.setMic(false);
         } else this.resumeAudio();
       };
       // iPad Safari stops the audio output after the tab hid, Siri or a phone call: any tap starts it again.
       const tap = (): void => this.resumeAudio();
-      document.addEventListener('visibilitychange', visibility);
+      const offVisibility = onAppVisibilityChange(visibility);
       document.addEventListener('pointerdown', tap, { capture: true });
       this.offs.push(() => {
-        document.removeEventListener('visibilitychange', visibility);
+        offVisibility();
         document.removeEventListener('pointerdown', tap, { capture: true });
       });
     }
@@ -367,7 +368,7 @@ export class VoiceManager {
       // In a call she accepted (or made): her microphone as it opened, never live in a hidden tab. The server is told
       // how it really is.
       this.pendingJoin = false;
-      const mic = this.stream !== null && document.visibilityState !== 'hidden';
+      const mic = this.stream !== null && !appHidden();
       this.setOutgoing(null);
       this.patch({ joined: true, mic });
       this.applyTrack();

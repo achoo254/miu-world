@@ -1,0 +1,87 @@
+# The iPhone/Android app (apps/mobile, Capacitor) around the web app's native build, on every change that can affect
+# it: a debug APK to install for testing, and an unsigned iOS Simulator build that proves the Xcode project compiles.
+# Store builds are signed on the owner's Mac (`pnpm mobile:release:*`); no keystore or certificate is in this repo or
+# in CI.
+name: mobile
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/web/**'
+      - 'apps/mobile/**'
+      - 'packages/**'
+      - 'assets/manifest.json'
+      - 'brand.config.json'
+      - 'pnpm-lock.yaml'
+      - 'tools/security/**'
+      - '.github/workflows/mobile.yml'
+  pull_request:
+    paths:
+      - 'apps/web/**'
+      - 'apps/mobile/**'
+      - 'packages/**'
+      - 'assets/manifest.json'
+      - 'brand.config.json'
+      - 'pnpm-lock.yaml'
+      - 'tools/security/**'
+      - '.github/workflows/mobile.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: 21
+      - run: pnpm install --frozen-lockfile
+      - name: App build of the web app
+        run: pnpm --filter @miu/web build:native
+      - name: No quest answer, and no game asset but the fonts, in the app
+        run: pnpm security:dist --native
+      - run: pnpm --filter @miu/mobile exec cap sync android
+      - name: Debug APK
+        run: ./gradlew --no-daemon assembleDebug
+        working-directory: apps/mobile/android
+      - uses: actions/upload-artifact@v6
+        with:
+          name: miu-world-debug-apk
+          path: apps/mobile/android/app/build/outputs/apk/debug/*.apk
+          retention-days: 14
+
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: App build of the web app
+        run: pnpm --filter @miu/web build:native
+      - run: pnpm --filter @miu/mobile exec cap sync ios
+      - name: Unsigned iOS Simulator build
+        run: >
+          xcodebuild -project apps/mobile/ios/App/App.xcodeproj -scheme App
+          -configuration Debug -sdk iphonesimulator
+          -destination 'generic/platform=iOS Simulator'
+          -derivedDataPath build/ios CODE_SIGNING_ALLOWED=NO build

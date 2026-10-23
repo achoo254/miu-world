@@ -77,7 +77,7 @@ const multiplayer = new MultiplayerHub(server, {
   friends: dbFriendStore(db),
   authenticate: ticketAuthenticator(wsTickets, sessionAuth, config),
   revalidate: sessionAuth,
-  allowedOrigins: config.allowedOrigins,
+  allowedOrigins: [...config.allowedOrigins, ...config.appOrigins],
   onlineSwitch,
 });
 hub = multiplayer;

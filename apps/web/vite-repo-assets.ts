@@ -31,6 +31,16 @@ const REVIEW_PREFIX = 'generated/review/';
 /** Maps that only exist to be rendered into an image at build time (the world overview): never shipped. */
 const RENDER_ONLY_PREFIXES = [`generated/world/${WORLD_OVERVIEW_MAP}/`];
 const renderOnly = (p: string): boolean => RENDER_ONLY_PREFIXES.some((prefix) => p.startsWith(prefix));
+/** The self-hosted fonts (src/ui/fonts.css). */
+const isFont = (p: string): boolean => p.startsWith('packs/font-') && p.endsWith('.woff2');
+
+/**
+ * What the iPhone/Android app packs inside (`fontsOnly`): the fonts alone, so text renders before the network answers.
+ * Everything else the game reads from the server's /game-assets/ (vite-native.ts).
+ */
+export function fontAssetPaths(manifestPaths: readonly string[]): string[] {
+  return manifestPaths.filter(isFont).sort();
+}
 
 interface ManifestJson {
   files: Array<{ path: string }>;
@@ -80,7 +90,7 @@ export async function runtimeAssetPaths(
   const shippedPrefixes = review ? [...SHIPPED_PREFIXES, REVIEW_PREFIX] : SHIPPED_PREFIXES;
   for (const p of manifestPaths) {
     if (shippedPrefixes.some((prefix) => p.startsWith(prefix)) && !renderOnly(p)) wanted.add(p);
-    if (p.startsWith('packs/font-') && p.endsWith('.woff2')) wanted.add(p);
+    if (isFont(p)) wanted.add(p);
   }
   // Models the UI or the game loads by name (pets) bring their textures, like the ones the maps place.
   const models = new Set<string>(uiPaths.filter((p) => p.endsWith('.glb')));
@@ -123,7 +133,7 @@ async function eventSceneModels(eventsDir: string): Promise<string[]> {
   return models;
 }
 
-export function repoAssets(assetsDir: string, appDir: string, uiPaths: readonly string[] = [], options: { review?: boolean } = {}): Plugin {
+export function repoAssets(assetsDir: string, appDir: string, uiPaths: readonly string[] = [], options: { review?: boolean; fontsOnly?: boolean } = {}): Plugin {
   const manifestPaths = createManifestReader(assetsDir);
   const serve = async (url: string | undefined, res: ServerResponse, next: () => void): Promise<void> => {
     if (!url?.startsWith(ASSET_PREFIX)) return next();
@@ -194,7 +204,7 @@ export function repoAssets(assetsDir: string, appDir: string, uiPaths: readonly 
     },
     async writeBundle(output) {
       const outDir = output.dir ?? path.join(appDir, 'dist');
-      const shipped = await runtimeAssetPaths(assetsDir, await manifestPaths(), uiPaths, options);
+      const shipped = options.fontsOnly ? fontAssetPaths(await manifestPaths()) : await runtimeAssetPaths(assetsDir, await manifestPaths(), uiPaths, options);
       let bytes = 0;
       for (const rel of shipped) {
         const target = path.join(outDir, ASSET_PREFIX, rel);

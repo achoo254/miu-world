@@ -10,6 +10,7 @@ import { T, useT } from '../i18n/use-t';
 import { buttonClass } from '../kit/button';
 import { useLoaded } from '../progression/progression-api';
 import { hasShareSheet, shareLink } from '../share/share-actions';
+import { webOrigin } from '../../platform/endpoints';
 import { inviteLink } from '../share/share-links';
 import { createInvite, loadInvites, revokeInvite } from './invite-api';
 
@@ -31,7 +32,7 @@ function LiveInvite({ invite, code, onShare, onRevoke }: { invite: InviteDto; co
           className="invite-link"
           type="text"
           readOnly
-          value={inviteLink(window.location.origin, code)}
+          value={inviteLink(webOrigin(), code)}
           aria-label={t('invite.linkLabel')}
           data-id={`invite-link-${invite.id}`}
           onFocus={(e) => e.currentTarget.select()}
@@ -72,7 +73,7 @@ export function InvitePanel({ codes, onCode }: { codes: Readonly<Record<string, 
   };
 
   const share = async (code: string): Promise<void> => {
-    const url = inviteLink(window.location.origin, code);
+    const url = inviteLink(webOrigin(), code);
     const outcome = await shareLink({ title: pairOf('invite.shareTitle').vi, text: pairOf('invite.shareText').vi, url }, { contentType: 'invite' });
     if (outcome === 'web-share') setNotice('shared');
     else if (outcome === 'copy-link') setNotice('copied');

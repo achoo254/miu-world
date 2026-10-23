@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { UI_ART_PATHS } from './src/ui/kit/ui-art';
-import { createManifestReader, glbDependencies, runtimeAssetPaths } from './vite-repo-assets';
+import { createManifestReader, fontAssetPaths, glbDependencies, runtimeAssetPaths } from './vite-repo-assets';
 
 const ASSETS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../assets');
 
@@ -86,5 +86,18 @@ describe('runtime asset selection for the web build', async () => {
   it('refuses a runtime asset missing from the manifest', async () => {
     const withoutParrot = manifest.filter((p) => !p.endsWith('animal-parrot.glb'));
     await expect(runtimeAssetPaths(ASSETS_DIR, withoutParrot)).rejects.toThrow(/missing from manifest/);
+  });
+});
+
+describe('asset selection for the app build', async () => {
+  const manifest = await createManifestReader(ASSETS_DIR)();
+
+  it('packs the fonts (every one fonts.css names) and no world, model, sound or picture', () => {
+    const fonts = fontAssetPaths(manifest);
+    const css = readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), 'src/ui/fonts.css'), 'utf8');
+    const named = [...css.matchAll(/url\('\/game-assets\/([^']+)'\)/g)].map((m) => m[1]).sort();
+    expect(named.length).toBeGreaterThan(0);
+    for (const font of named) expect(fonts).toContain(font);
+    expect(fonts.every((p) => p.endsWith('.woff2'))).toBe(true);
   });
 });

@@ -18,6 +18,16 @@ Sửa: `package.json`, `.github/workflows/ci.yml`, `tools/private/private-files.
 
 CI xanh cả hai job trên một nhánh thử; `pnpm mobile:build` chạy trên máy dev; quét `git log -p origin/main..HEAD` không có khóa ký hay secret trước khi push.
 
+## Tiến độ (23/10/2026)
+
+- [x] Lệnh ở `package.json` gốc: `mobile:build` (`vite build --mode native` → `security:dist --native` → `cap sync`), `mobile:ios` / `mobile:android` (`cap run`), `mobile:release:ios` / `mobile:release:android` (`apps/mobile/scripts/release.ts`).
+- [x] CI: workflow riêng `.github/workflows/mobile.yml` (không gộp vào `ci.yml`, để chỉ chạy khi `apps/web/**`, `apps/mobile/**`, `packages/**`, `assets/manifest.json`, `brand.config.json`, lockfile, `tools/security/**` đổi): job `android` (Ubuntu, Temurin 21, `assembleDebug`, artifact `miu-world-debug-apk` giữ 14 ngày) và job `ios` (macOS, Simulator, `CODE_SIGNING_ALLOWED=NO`). `actions/setup-java` khóa theo commit; các action khác theo tag như `ci.yml`.
+- [x] Ký phát hành ngoài repo: Android đọc keystore và mật khẩu từ env `MIU_ANDROID_*` trong `build.gradle` (không qua dòng lệnh, `*.jks`/`*.keystore` bị bỏ qua trong git); iOS ký tự động theo `MIU_APPLE_TEAM_ID`. Script không in giá trị. Chưa đưa ký lên CI.
+- [x] Phiên bản: `version` của `apps/mobile/package.json` (1.0.0) là `versionName` / `MARKETING_VERSION`; số build từ `MIU_BUILD_NUMBER` cho mỗi lần phát hành (test `apps/mobile/mobile-project.test.ts`).
+- [ ] `tools/private/private-files.json`: thêm keystore Android và chứng chỉ iOS khi người sở hữu tạo chúng (cần file thật để ghi sha256).
+- [ ] `CLAUDE.md` mục Lệnh: thêm `pnpm mobile:build` vào gate khi sửa `apps/mobile/**` (người hoặc phiên chính sửa; tác tử này không sửa tệp hướng dẫn của repo).
+- [ ] CI xanh cả hai job sau khi push.
+
 ## Rủi ro, hoàn tác
 
 Job macOS trên GitHub tốn phút CI hơn Linux (repo công khai được miễn phí phút runner tiêu chuẩn). Hoàn tác: xóa hai job.

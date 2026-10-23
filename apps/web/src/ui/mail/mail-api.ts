@@ -1,34 +1,18 @@
+// The child's mailbox on the server (`/api/mail`): the list, reading one, claiming its reward (the server pays it).
+import { z } from 'zod';
 import { MailClaimResponse, MailListResponse } from '@miu/schema/mail';
+import { api } from '../api-client';
 
-export async function fetchMailList(): Promise<MailListResponse> {
-  const res = await fetch('/api/mail', {
-    headers: { Accept: 'application/json' },
-  });
-  if (!res.ok) {
-    throw new Error(`fetch_mail_failed: ${res.status}`);
-  }
-  const data = await res.json();
-  return MailListResponse.parse(data);
+const MailReadResponse = z.object({ success: z.literal(true) });
+
+export function fetchMailList(): Promise<MailListResponse> {
+  return api('GET', '/mail', MailListResponse);
 }
 
 export async function markMailRead(id: string): Promise<void> {
-  const res = await fetch(`/api/mail/${id}/read`, {
-    method: 'POST',
-    headers: { Accept: 'application/json' },
-  });
-  if (!res.ok) {
-    throw new Error(`mark_mail_read_failed: ${res.status}`);
-  }
+  await api('POST', `/mail/${encodeURIComponent(id)}/read`, MailReadResponse);
 }
 
-export async function claimMailReward(id: string): Promise<MailClaimResponse> {
-  const res = await fetch(`/api/mail/${id}/claim`, {
-    method: 'POST',
-    headers: { Accept: 'application/json' },
-  });
-  if (!res.ok) {
-    throw new Error(`claim_mail_reward_failed: ${res.status}`);
-  }
-  const data = await res.json();
-  return MailClaimResponse.parse(data);
+export function claimMailReward(id: string): Promise<MailClaimResponse> {
+  return api('POST', `/mail/${encodeURIComponent(id)}/claim`, MailClaimResponse);
 }
