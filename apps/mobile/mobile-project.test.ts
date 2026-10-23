@@ -27,6 +27,19 @@ describe('the iPhone/Android projects', () => {
     expect(manifest).toContain('android.permission.MODIFY_AUDIO_SETTINGS');
   });
 
+  it('sign in through the system browser on the brand scheme, and keep the session in the Keychain/Keystore', () => {
+    expect(read('./android/app/build.gradle')).toContain(`manifestPlaceholders += [systemAuthRedirectScheme: "${brand.urlScheme}"]`);
+    // No other intent filter may claim the sign-in scheme (Android would show a chooser).
+    expect(read('./android/app/src/main/AndroidManifest.xml')).not.toContain(`android:scheme="${brand.urlScheme}"`);
+    const spm = read('./ios/App/CapApp-SPM/Package.swift');
+    expect(spm).toContain('SharedNextCapacitorSystemAuth');
+    expect(spm).toContain('AparajitaCapacitorSecureStorage');
+    const gradle = read('./android/capacitor.settings.gradle');
+    expect(gradle).toContain("include ':shared-next-capacitor-system-auth'");
+    expect(gradle).toContain("include ':aparajita-capacitor-secure-storage'");
+    expect(Object.keys(pkg.dependencies)).toEqual(expect.arrayContaining(['@shared-next/capacitor-system-auth', '@aparajita/capacitor-secure-storage']));
+  });
+
   it('keep the signing material out of the repository', () => {
     const gradle = read('./android/app/build.gradle');
     expect(gradle).toContain("System.getenv('MIU_ANDROID_KEYSTORE')");

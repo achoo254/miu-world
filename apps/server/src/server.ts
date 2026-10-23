@@ -15,7 +15,7 @@ import { dbFriendStore, type OnlineLookup } from './friend/friend-store';
 import { BotRunner } from './multiplayer/bot-runner';
 import { WalkStore } from './multiplayer/bot-brain/walk-store';
 import { MultiplayerHub } from './multiplayer/multiplayer-hub';
-import { dbMultiplayerStore, sessionAuthenticator, ticketAuthenticator } from './multiplayer/multiplayer-store';
+import { dbMultiplayerStore, ticketAuthenticator } from './multiplayer/multiplayer-store';
 import { OnlineSwitch } from './multiplayer/online-switch';
 import { WsTickets } from './multiplayer/online-tickets';
 import { startModerationJobs } from './moderation/moderation-jobs';
@@ -71,12 +71,10 @@ const server = app.listen(config.port, '127.0.0.1', () => {
   console.log(`miu server listening on :${config.port} (${config.nodeEnv})`);
 });
 
-const sessionAuth = sessionAuthenticator(db, config, content.consent.version, () => new Date());
 const multiplayer = new MultiplayerHub(server, {
   store: dbMultiplayerStore(db),
   friends: dbFriendStore(db),
-  authenticate: ticketAuthenticator(wsTickets, sessionAuth, config),
-  revalidate: sessionAuth,
+  authenticate: ticketAuthenticator(db, wsTickets, config, content.consent.version, () => new Date()),
   allowedOrigins: [...config.allowedOrigins, ...config.appOrigins],
   onlineSwitch,
 });

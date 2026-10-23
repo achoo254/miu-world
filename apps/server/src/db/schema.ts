@@ -10,16 +10,19 @@ import type { Timetable } from '@miu/schema/timetable';
 const createdAt = () => timestamp('created_at', { withTimezone: true }).notNull().defaultNow();
 
 /**
- * Account owner: the person who signs in with Google and plays as the account's primary player. The
- * table keeps its historical name (`parents`) so no foreign key has to move.
+ * Account owner: the person who signs in through the shared account service (auth-next, `parent_idp_links`) and
+ * plays as the account's primary player. The table keeps its historical name (`parents`) so no foreign key has to move.
  */
 export const parents = pgTable('parents', {
   id: uuid('id').primaryKey(),
   /** Always stored lower-case (normalised by the request schema). */
   email: text('email').notNull().unique(),
-  /** Google account id (`sub`); the normal sign-in. Null only for dev/test password accounts. */
+  /**
+   * Google account id (`sub`) of the former direct Google sign-in. No longer written or read for signing in: kept so
+   * the data is not lost; the account is reached through its `parent_idp_links` row (linked by verified email).
+   */
   googleSub: text('google_sub').unique(),
-  /** Dev/test sign-in only (disabled in production); Google accounts have none. */
+  /** Dev/test sign-in only (disabled in production); accounts of the account service have none. */
   passwordHash: text('password_hash'),
   /** Optional PIN that locks the account area; null when the owner has not set one. */
   pinHash: text('pin_hash'),
@@ -55,11 +58,36 @@ export const childProfiles = pgTable(
   ],
 );
 
+/**
+ * The account-service identity of an account: the issuer and subject (`sub`) of the IdP's ID token. One per account
+ * (the primary key) and one account per identity (the unique pair). A separate table, so it can be dropped without
+ * touching the accounts themselves.
+ */
+export const parentIdpLinks = pgTable(
+  'parent_idp_links',
+  {
+    parentId: uuid('parent_id')
+      .primaryKey()
+      .references(() => parents.id, { onDelete: 'cascade' }),
+    issuer: text('issuer').notNull(),
+    subject: text('subject').notNull(),
+    linkedAt: timestamp('linked_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [unique('parent_idp_links_identity').on(t.issuer, t.subject)],
+);
+
+export const SESSION_KINDS = ['web', 'native'] as const;
+export type SessionKind = (typeof SESSION_KINDS)[number];
+
 export const sessions = pgTable(
   'sessions',
   {
-  /** sha256 of the cookie token; the raw token is never stored. */
+  /** sha256 of the session token; the raw token is never stored. */
   id: text('id').primaryKey(),
+  /** `web`: the token is only accepted as the session cookie; `native` (the app): only as a Bearer token. */
+  kind: text('kind', { enum: SESSION_KINDS }).notNull().default('web'),
+  /** The IdP's session id (`sid` of the ID token) of a web sign-in, so the IdP's back-channel logout can end it. */
+  idpSid: text('idp_sid'),
   parentId: uuid('parent_id')
     .notNull()
     .references(() => parents.id, { onDelete: 'cascade' }),
@@ -70,7 +98,12 @@ export const sessions = pgTable(
   lastSeenAt: timestamp('last_seen_at', { withTimezone: true }).notNull().defaultNow(),
   expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
   },
-  (t) => [index('sessions_parent_idx').on(t.parentId), index('sessions_active_child_idx').on(t.activeChildId)],
+  (t) => [
+    index('sessions_parent_idx').on(t.parentId),
+    index('sessions_active_child_idx').on(t.activeChildId),
+    index('sessions_idp_sid_idx').on(t.idpSid),
+    check('sessions_kind_valid', sql`${t.kind} in ('web', 'native')`),
+  ],
 );
 
 /** One row per parent and accepted policy version. */

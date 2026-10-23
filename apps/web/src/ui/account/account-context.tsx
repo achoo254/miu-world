@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { MeResponse } from '@miu/schema/account';
+import { NATIVE_APP } from '../../platform/endpoints';
 import { ApiError, api } from '../api-client';
 
 type AccountState =
@@ -18,6 +19,14 @@ interface AccountApi {
 }
 
 const AccountContext = createContext<AccountApi | null>(null);
+
+/** The app forgets its stored session token once the account is signed out or gone (the web's cookie is the server's). */
+function forgetNativeSession(): void {
+  if (!NATIVE_APP) return;
+  import('../../platform/native-session')
+    .then(({ clearNativeSession }) => clearNativeSession())
+    .catch(() => console.warn('native session unavailable'));
+}
 
 async function loadAccount(): Promise<AccountState> {
   try {
@@ -47,7 +56,10 @@ export function AccountProvider({ children }: { children: ReactNode }) {
       state,
       refresh,
       setMe: (me) => setState({ status: 'signed-in', me }),
-      signOut: () => setState({ status: 'signed-out' }),
+      signOut: () => {
+        forgetNativeSession();
+        setState({ status: 'signed-out' });
+      },
     }),
     [state, refresh],
   );

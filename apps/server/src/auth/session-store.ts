@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from 'node:crypto';
 import { and, eq } from 'drizzle-orm';
 import type { Db } from '../db/client';
-import { childProfiles, sessions } from '../db/schema';
+import { childProfiles, sessions, type SessionKind } from '../db/schema';
 
 export const SESSION_ABSOLUTE_MS = 30 * 24 * 60 * 60 * 1000;
 export const SESSION_IDLE_MS = 7 * 24 * 60 * 60 * 1000;
@@ -11,7 +11,7 @@ const TOUCH_INTERVAL_MS = 60 * 1000;
 
 export type SessionRow = typeof sessions.$inferSelect;
 
-/** Only the sha256 of the cookie token is stored, so a DB leak does not hand out live sessions. */
+/** Only the sha256 of the session token is stored, so a DB leak does not hand out live sessions. */
 export function hashToken(token: string): string {
   return createHash('sha256').update(token).digest('hex');
 }
@@ -20,7 +20,7 @@ export async function createSession(
   db: Db,
   parentId: string,
   now: Date,
-  options: { openParentGate: boolean },
+  options: { openParentGate: boolean; kind: SessionKind; idpSid?: string | null },
 ): Promise<{ token: string; session: SessionRow }> {
   const token = randomBytes(32).toString('base64url');
   // A new session plays as the account's own (primary) player; extra players pick themselves later.
@@ -32,6 +32,8 @@ export async function createSession(
     .insert(sessions)
     .values({
       id: hashToken(token),
+      kind: options.kind,
+      idpSid: options.idpSid ?? null,
       parentId,
       activeChildId: primary?.id ?? null,
       createdAt: now,
@@ -44,9 +46,17 @@ export async function createSession(
   return { token, session };
 }
 
-/** Resolves a cookie token to a live session; expired (absolute or idle) sessions are deleted. */
-export async function findSession(db: Db, token: string, now: Date): Promise<SessionRow | null> {
-  const id = hashToken(token);
+/**
+ * Resolves a token to a live session of `kind`: a web session only from the cookie, an app session only from the
+ * Bearer header, so one kind's token is worthless in the other's place. Expired (absolute or idle) sessions are deleted.
+ */
+export async function findSession(db: Db, token: string, kind: SessionKind, now: Date): Promise<SessionRow | null> {
+  const session = await findSessionById(db, hashToken(token), now);
+  return session?.kind === kind ? session : null;
+}
+
+/** A live session by its stored id (the token's sha256); expired ones are deleted. */
+export async function findSessionById(db: Db, id: string, now: Date): Promise<SessionRow | null> {
   const [session] = await db.select().from(sessions).where(eq(sessions.id, id));
   if (!session) return null;
   const idleExpired = now.getTime() - session.lastSeenAt.getTime() > SESSION_IDLE_MS;
@@ -62,4 +72,16 @@ export async function findSession(db: Db, token: string, now: Date): Promise<Ses
 
 export async function deleteSession(db: Db, sessionId: string): Promise<void> {
   await db.delete(sessions).where(eq(sessions.id, sessionId));
+}
+
+/** The IdP ended its session `sid` (back-channel logout): the web sessions signed in through it end too. */
+export async function deleteWebSessionsByIdpSid(db: Db, sid: string): Promise<number> {
+  const removed = await db.delete(sessions).where(and(eq(sessions.kind, 'web'), eq(sessions.idpSid, sid))).returning({ id: sessions.id });
+  return removed.length;
+}
+
+/** The IdP signed the person out everywhere (a logout token without `sid`): every web session of the account ends. */
+export async function deleteWebSessionsOf(db: Db, parentId: string): Promise<number> {
+  const removed = await db.delete(sessions).where(and(eq(sessions.kind, 'web'), eq(sessions.parentId, parentId))).returning({ id: sessions.id });
+  return removed.length;
 }

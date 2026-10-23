@@ -1,4 +1,4 @@
-// Whole parent → child journey through the real UI: Google sign-in (local fake), PIN, consent, create a profile, hand the
+// Whole parent → child journey through the real UI: sign-in at the account service (local fake), PIN, consent, create a profile, hand the
 // device to the child, create the character, Home, the world map, the forest, play, meet the parrot. Fake data only
 // (in-memory database).
 import { execFileSync } from 'node:child_process';
@@ -32,7 +32,7 @@ test.afterAll(() => {
   if (REVIEW_SHOTS) execFileSync('pnpm', ['-s', 'assets:manifest'], { cwd: REPO_ROOT, stdio: 'inherit', shell: true });
 });
 
-test('Google sign-in → consent → create character → Home → map → forest → play → parrot → extra player and optional PIN → data and deletion', async ({ page }) => {
+test('sign-in → consent → create character → Home → map → forest → play → parrot → extra player and optional PIN → data and deletion', async ({ page }) => {
   // The whole journey, with a load of the forest and a second player: 19-31 s on CI's software rendering.
   test.setTimeout(60_000);
   const consoleErrors: string[] = [];
@@ -50,9 +50,9 @@ test('Google sign-in → consent → create character → Home → map → fores
   await expect(page).toHaveURL(/\/login$/);
   await expect(page.locator('input[type="password"]')).toHaveCount(0); // no password sign-in in the UI
   await shot(page, '01-login');
-  await page.getByRole('link', { name: 'Đăng nhập bằng Google' }).click();
+  await page.locator('[data-id="login-sign-in"]').click();
 
-  // Fake Google signs in a new account and redirects back; no PIN is asked.
+  // The fake account service signs in a new person and redirects back; no PIN is asked.
   await expect(page.locator('[data-id="consent-text"]')).toBeVisible();
   await expect(page.locator('[data-id="consent-draft"]')).toHaveCount(0); // the shipped consent is final
   await expect(page.locator('[data-id="consent-privacy"]')).toBeVisible();
@@ -128,7 +128,7 @@ test('Google sign-in → consent → create character → Home → map → fores
   const file = await download;
   expect(file.suggestedFilename()).toMatch(/^miu-world-du-lieu-\d{4}-\d{2}-\d{2}\.json$/);
   const exported = JSON.parse(readFileSync(await file.path(), 'utf8')) as { parent: { signIn: string }; players: Array<{ displayName: string; primary: boolean; character: { name: string } }> };
-  expect(exported.parent.signIn).toBe('google');
+  expect(exported.parent.signIn).toBe('idp');
   expect(exported.players.map((p) => [p.displayName, p.primary, p.character.name])).toEqual([['Mèo Mây', true, 'Bông'], ['Thỏ Bông', false, 'Miu']]);
   await page.getByRole('button', { name: 'Xóa tài khoản' }).click();
   await page.getByRole('button', { name: 'Xóa hẳn tài khoản' }).scrollIntoViewIfNeeded();

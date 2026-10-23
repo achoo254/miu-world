@@ -1,5 +1,5 @@
 // The multiplayer connection over a real socket: who may open one (a one-use ticket issued to the session whose
-// cookie comes with it, from an allowed origin), and that what others see of a player is her saved character, kept
+// cookie comes with it, or to the app's Bearer session, from an allowed origin), and that what others see of a player is her saved character, kept
 // up to date when she saves new clothes.
 import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
@@ -9,9 +9,11 @@ import { WebSocket } from 'ws';
 import type { ServerWsMessage } from '@miu/schema/multiplayer';
 import { FIXTURE_CONTENT, ORIGIN, createTestApp, fakeParent, type TestApp } from '../../test/test-app';
 import { CharacterEvents } from '../character/character-events';
-import { playerBlocks, playerRestrictions } from '../db/schema';
+import { playerBlocks, playerRestrictions, sessions } from '../db/schema';
+import { createSession, hashToken } from '../auth/session-store';
+import { APP_ORIGINS } from '../auth/app-cors';
 import { MultiplayerHub, WS_CLOSE } from './multiplayer-hub';
-import { dbMultiplayerStore, sessionAuthenticator, ticketAuthenticator } from './multiplayer-store';
+import { dbMultiplayerStore, ticketAuthenticator } from './multiplayer-store';
 import { OnlineSwitch } from './online-switch';
 import { TICKET_TTL_MS, WsTickets } from './online-tickets';
 
@@ -28,12 +30,10 @@ beforeAll(async () => {
   const events = new CharacterEvents();
   t = await createTestApp(undefined, undefined, undefined, FIXTURE_CONTENT, { characterEvents: events, wsTickets: tickets, onlineSwitch: online });
   server = createServer(t.app);
-  const session = sessionAuthenticator(t.db, t.config, FIXTURE_CONTENT.consent.version, () => new Date());
   hub = new MultiplayerHub(server, {
     store: dbMultiplayerStore(t.db),
-    authenticate: ticketAuthenticator(tickets, session, t.config),
-    revalidate: session,
-    allowedOrigins: t.config.allowedOrigins,
+    authenticate: ticketAuthenticator(t.db, tickets, t.config, FIXTURE_CONTENT.consent.version, () => new Date()),
+    allowedOrigins: [...t.config.allowedOrigins, ...APP_ORIGINS],
     onlineSwitch: online,
   });
   events.on((childId, character) => hub.characterSaved(childId, character));
@@ -103,7 +103,33 @@ const first = <T extends ServerWsMessage['type']>(inbox: ServerWsMessage[], type
 
 const join = (ws: WebSocket, mapId = 'trung-tam') => ws.send(JSON.stringify({ type: 'join', mapId, x: 10, y: 5, z: 10, yaw: 0 }));
 
+/** An app (Bearer) session of the same account as `cookie`'s, as the native sign-in makes it. */
+async function appSession(cookie: string): Promise<string> {
+  const me = await t.request().get('/api/auth/me').set('Cookie', cookie).expect(200);
+  const parentId = (me.body as { parent: { id: string } }).parent.id;
+  return (await createSession(t.db, parentId, new Date(), { openParentGate: false, kind: 'native' })).token;
+}
+
 describe('opening a multiplayer connection', () => {
+  it('lets the app connect with a ticket its Bearer session asked for, and only while that session lives', async () => {
+    const { cookie, childId } = await player();
+    const token = await appSession(cookie);
+    const [appOrigin = ''] = APP_ORIGINS;
+    const ask = () => t.request().post('/api/online-ticket').set('Origin', appOrigin).set('Authorization', `Bearer ${token}`);
+    const ticket = ((await ask().expect(200)).body as { ticket: string }).ticket;
+    // The app's WebSocket carries no cookie and no header: the ticket alone opens it.
+    const opened = await open({ Origin: appOrigin }, ticket);
+    expect('ws' in opened).toBe(true);
+    // The app token is no cookie, and a web cookie is no Bearer token.
+    await t.request().post('/api/online-ticket').set('Origin', ORIGIN).set('Cookie', `miu_session=${token}`).expect(401);
+    await t.request().post('/api/online-ticket').set('Origin', appOrigin).set('Authorization', `Bearer ${cookie.split('=')[1] ?? ''}`).expect(401);
+    // Signed out on the app: its tickets no longer open anything.
+    const spare = ((await ask().expect(200)).body as { ticket: string }).ticket;
+    await t.db.delete(sessions).where(eq(sessions.id, hashToken(token)));
+    expect(await open({ Origin: appOrigin }, spare)).toEqual({ status: 401 });
+    expect(childId).not.toBe('');
+  });
+
   it('refuses without a session, from another origin, and without a player (no consent yet)', async () => {
     const { cookie } = await player();
     expect(await open({ Origin: ORIGIN }, await ticketFor(cookie))).toEqual({ status: 401 });

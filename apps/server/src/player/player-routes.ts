@@ -86,8 +86,8 @@ export async function acceptPolicy(db: Db, content: ContentCatalog, parentId: st
       .onConflictDoNothing()
       .returning({ id: consents.id });
     const firstEver = !earlier && inserted.length > 0;
-    const [account] = firstEver ? await tx.select({ googleSub: parents.googleSub }).from(parents).where(eq(parents.id, parentId)) : [];
-    const signUp: SignUpMethod | null = account ? (account.googleSub ? 'google' : 'password') : null;
+    const [account] = firstEver ? await tx.select({ passwordHash: parents.passwordHash }).from(parents).where(eq(parents.id, parentId)) : [];
+    const signUp: SignUpMethod | null = account ? (account.passwordHash === null ? 'idp' : 'password') : null;
     return { primaryId: await ensurePrimaryIn(tx, content, parentId, now), signUp };
   });
   if (signUp) serverEvents()?.signUp(parentId, signUp);

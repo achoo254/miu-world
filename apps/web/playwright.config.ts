@@ -6,7 +6,7 @@ import { DEFAULT_TEST_TIMEOUT_MS } from './e2e/time-budget-reporter';
 const WEB_PORT = 4173;
 const API_PORT = 8787;
 const BASE_URL = `http://127.0.0.1:${WEB_PORT}`;
-const FAKE_GOOGLE = 'http://127.0.0.1:8788';
+const FAKE_IDP = 'http://127.0.0.1:8788';
 export const PARENT_STATE = 'playwright/.auth/parent.json';
 
 /**
@@ -33,9 +33,9 @@ export default defineConfig({
   },
   webServer: [
     {
-      // Local stand-in for Google's OAuth endpoints (test-only override; refused in production).
-      command: 'pnpm exec tsx e2e/fake-google-server.ts',
-      url: `${FAKE_GOOGLE}/health`,
+      // Local stand-in for the account service (plain-http loopback issuer: refused in production).
+      command: 'pnpm exec tsx e2e/fake-idp-server.ts',
+      url: `${FAKE_IDP}/health`,
       reuseExistingServer: false,
       timeout: 60_000,
     },
@@ -52,11 +52,9 @@ export default defineConfig({
         // Each spec signs up its own fake parent from one IP, and retries sign up again: 10 an hour is too few.
         REGISTER_LIMIT_PER_HOUR: '1000',
         ALLOWED_ORIGINS: BASE_URL,
-        GOOGLE_CLIENT_ID: 'e2e-client-id',
-        GOOGLE_CLIENT_SECRET: 'test-secret-e2e',
-        GOOGLE_REDIRECT_URI: `${BASE_URL}/api/auth/google/callback`,
-        GOOGLE_AUTH_URL: `${FAKE_GOOGLE}/authorize`,
-        GOOGLE_TOKEN_URL: `${FAKE_GOOGLE}/token`,
+        OIDC_ISSUER: FAKE_IDP,
+        OIDC_WEB_CLIENT_SECRET: 'test-secret-e2e-web-client-0123456789',
+        OIDC_REDIRECT_URI: `${BASE_URL}/api/auth/callback`,
         // The screens project's fake moderator (screens.spec.ts): no other spec signs up with this email, so to every
         // other account the moderation routes stay 404 as in production without the setting.
         MODERATOR_ACCOUNTS: 'moderator-e2e@example.vn',

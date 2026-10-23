@@ -7,7 +7,7 @@ import type { PlayerSettings } from '@miu/schema/account';
 import type { PlayerAppearanceInput, ReportReason } from '@miu/schema/multiplayer';
 import { findActivePlayer } from '../auth/auth-context';
 import { readSessionToken } from '../auth/session-cookie';
-import { findSession, hashToken } from '../auth/session-store';
+import { findSessionById, hashToken } from '../auth/session-store';
 import type { ServerConfig } from '../config';
 import type { Db } from '../db/client';
 import { characters, childProfiles, playerBlocks } from '../db/schema';
@@ -34,8 +34,15 @@ export interface MultiplayerStore {
   restricted?(childId: string): Promise<boolean>;
 }
 
+/** Who opened a multiplayer connection, and the re-check of it the hub runs while it stays open. */
+export interface WsPlayer {
+  childId: string;
+  /** Whether her session still lives and still plays as her (signed out, consent changed, player switched). */
+  stillPlays(): Promise<boolean>;
+}
+
 /** Who opens a multiplayer connection: the player her session plays as, or null (no session, no player, no consent). */
-export type Authenticate = (req: Pick<IncomingMessage, 'headers'> & { url?: string }) => Promise<string | null>;
+export type Authenticate = (req: Pick<IncomingMessage, 'headers'> & { url?: string }) => Promise<WsPlayer | null>;
 
 export function dbMultiplayerStore(db: Db): MultiplayerStore {
   return {
@@ -70,30 +77,34 @@ export function dbMultiplayerStore(db: Db): MultiplayerStore {
   };
 }
 
-/** The session cookie of the upgrade request, checked like every game route (`findActivePlayer`). */
-export function sessionAuthenticator(db: Db, config: ServerConfig, policyVersion: string, clock: () => Date): Authenticate {
-  return async (req) => {
-    const token = readSessionToken(req, config);
-    if (!token) return null;
-    const session = await findSession(db, token, clock());
-    if (!session) return null;
-    const player = await findActivePlayer(db, session, policyVersion);
-    return player.ok ? player.childId : null;
-  };
+/** The player session `sessionId` plays as now, checked like every game route (`findActivePlayer`); null when none. */
+async function playerOfSession(db: Db, sessionId: string, policyVersion: string, now: Date): Promise<string | null> {
+  const session = await findSessionById(db, sessionId, now);
+  if (!session) return null;
+  const player = await findActivePlayer(db, session, policyVersion);
+  return player.ok ? player.childId : null;
 }
 
 /**
- * The upgrade request of a multiplayer connection: a one-use ticket (`?ticket=…`, from `POST /api/online-ticket`) issued
- * to the very session its cookie carries, which must still play as the ticket's player (`sessionAuthenticator`).
+ * The upgrade request of a multiplayer connection: a one-use ticket (`?ticket=…`, from `POST /api/online-ticket`) of a
+ * session that still plays as the ticket's player. A web session's ticket only counts together with that very
+ * session's cookie. The app's WebSocket can send neither a cookie nor an `Authorization` header, so an app session's
+ * ticket (asked for with its Bearer token, used once within seconds) is the proof on its own. While the connection is
+ * open, the hub re-checks the same session by its id.
  */
-export function ticketAuthenticator(tickets: WsTickets, session: Authenticate, config: ServerConfig): Authenticate {
+export function ticketAuthenticator(db: Db, tickets: WsTickets, config: ServerConfig, policyVersion: string, clock: () => Date): Authenticate {
   return async (req) => {
     const raw = new URL(req.url ?? '/', 'http://localhost').searchParams.get('ticket');
     const ticket = raw ? tickets.take(raw) : null;
     if (!ticket) return null;
-    const token = readSessionToken(req, config);
-    if (!token || hashToken(token) !== ticket.sessionId) return null;
-    const childId = await session(req);
-    return childId === ticket.childId ? childId : null;
+    const session = await findSessionById(db, ticket.sessionId, clock());
+    if (!session) return null;
+    if (session.kind === 'web') {
+      const token = readSessionToken(req, config);
+      if (!token || hashToken(token) !== ticket.sessionId) return null;
+    }
+    const childId = await playerOfSession(db, ticket.sessionId, policyVersion, clock());
+    if (childId === null || childId !== ticket.childId) return null;
+    return { childId, stillPlays: async () => (await playerOfSession(db, ticket.sessionId, policyVersion, clock())) === childId };
   };
 }

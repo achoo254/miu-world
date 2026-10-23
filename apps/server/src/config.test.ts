@@ -20,14 +20,14 @@ describe('loadConfig', () => {
   it('loads extra quest files only outside production', () => {
     expect(loadConfig({ NODE_ENV: 'test', EXTRA_QUEST_DIR: '/tmp/quests' }).extraQuestDir).toBe('/tmp/quests');
     expect(loadConfig({}).extraQuestDir).toBeNull();
-    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', GOOGLE_CLIENT_ID: 'id', GOOGLE_CLIENT_SECRET: 'test-secret', GOOGLE_REDIRECT_URI: 'https://miu.example/api/auth/google/callback' };
+    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', OIDC_WEB_CLIENT_SECRET: 'test-secret-0123456789abcdef0123456789', OIDC_REDIRECT_URI: 'https://miu.example/api/auth/callback' };
     expect(() => loadConfig({ ...production, EXTRA_QUEST_DIR: '/tmp/quests' })).toThrow(/EXTRA_QUEST_DIR is test-only/);
   });
 
   it('raises the sign-up cap only outside production', () => {
     expect(loadConfig({ NODE_ENV: 'test' }).registerLimitPerHour).toBe(10);
     expect(loadConfig({ NODE_ENV: 'test', REGISTER_LIMIT_PER_HOUR: '1000' }).registerLimitPerHour).toBe(1000);
-    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', GOOGLE_CLIENT_ID: 'id', GOOGLE_CLIENT_SECRET: 'test-secret', GOOGLE_REDIRECT_URI: 'https://miu.example/api/auth/google/callback' };
+    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', OIDC_WEB_CLIENT_SECRET: 'test-secret-0123456789abcdef0123456789', OIDC_REDIRECT_URI: 'https://miu.example/api/auth/callback' };
     expect(() => loadConfig({ ...production, REGISTER_LIMIT_PER_HOUR: '1000' })).toThrow(/REGISTER_LIMIT_PER_HOUR is test-only/);
   });
 
@@ -85,7 +85,7 @@ describe('loadConfig', () => {
   });
 
   it('gives the default timetable to every account only outside production', () => {
-    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', GOOGLE_CLIENT_ID: 'id', GOOGLE_CLIENT_SECRET: 'test-secret', GOOGLE_REDIRECT_URI: 'https://miu.example/api/auth/google/callback' };
+    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', OIDC_WEB_CLIENT_SECRET: 'test-secret-0123456789abcdef0123456789', OIDC_REDIRECT_URI: 'https://miu.example/api/auth/callback' };
     expect(loadConfig({}).timetableDefaultAccounts).toBeNull();
     expect(loadConfig(production).timetableDefaultAccounts).toEqual(new Set());
     expect(loadConfig({ ...production, TIMETABLE_DEFAULT_ACCOUNTS: 'A@x.vn,,b@x.vn ' }).timetableDefaultAccounts).toEqual(new Set(['a@x.vn', 'b@x.vn']));

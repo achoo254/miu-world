@@ -6,6 +6,7 @@
 import enJson from './locales/en.json';
 import viJson from './locales/vi.json';
 import { apiUrl } from '../../platform/endpoints';
+import { authHeaders } from '../../platform/session-token';
 
 export type Lang = 'vi' | 'en';
 export type LangMode = Lang | 'both';
@@ -131,7 +132,7 @@ function syncLanguageToServer(childId: string, mode: LangMode): void {
   void fetch(apiUrl(`/players/${childId}/language`), {
     method: 'PATCH',
     credentials: 'same-origin',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...authHeaders() },
     body: JSON.stringify({ language: mode }),
   }).catch(() => {
     // Best-effort server sync; local storage is the instant offline cache.

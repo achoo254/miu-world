@@ -12,8 +12,11 @@ const PUBLIC: Record<string, string> = {
   'POST /auth/logout': 'ends whatever session there is',
   'GET /auth/me': 'tells the web app whether it is signed in (401 when not)',
   'GET /consents/policy': 'the consent text a parent reads before accepting',
-  'GET /auth/google/start': 'starts Google sign-in',
-  'GET /auth/google/callback': 'finishes Google sign-in',
+  'GET /auth/start': 'starts sign-in at the account service',
+  'GET /auth/callback': 'finishes sign-in (state cookie, PKCE, signed ID token)',
+  'POST /auth/backchannel-logout': 'the IdP ends web sessions; signed logout token, no Origin (server to server)',
+  'GET /auth/native/config': "the app's sign-in parameters, no account data",
+  'POST /auth/native/exchange': "creates the app's session (PKCE, nonce, signed ID token)",
   'POST /analytics/events': 'page views and shares of public pages too; Origin check, 4 KB body, per-IP limit, checked values only',
 };
 

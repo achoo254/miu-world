@@ -1,12 +1,20 @@
 import { z } from 'zod';
+import { defineBrand } from '@shared-next/brand';
 import { OnlineMode } from '@miu/schema/multiplayer';
+import brandConfig from '../../../brand.config.json' with { type: 'json' };
 import { APP_ORIGINS } from './auth/app-cors';
 import { DEFAULT_SCRYPT, type ScryptParams } from './auth/secret-hashing';
 
 const DEV_ORIGINS = [5173, 5174, 4173, 4174].flatMap((port) => [`http://localhost:${port}`, `http://127.0.0.1:${port}`]);
 
-export const GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
-export const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
+const brand = defineBrand(brandConfig);
+/** The account service of the primary tenant (brand.config.json), where parents sign in. */
+export const DEFAULT_IDP_ISSUER = brand.primaryTenant.issuer;
+export const DEFAULT_WEB_CLIENT_ID = 'miu-web';
+export const DEFAULT_MOBILE_CLIENT_ID = 'miu-mobile';
+/** The app's private-use redirect (RFC 8252 §7.1), on the scheme of brand.config.json. */
+export const DEFAULT_MOBILE_REDIRECT_URI = `${brand.urlScheme}:/auth/callback`;
+const LOOPBACK_HOSTS = ['127.0.0.1', 'localhost', '[::1]'];
 
 const originList = z
   .string()
@@ -23,13 +31,16 @@ const Env = z.object({
   DATABASE_URL: z.url().optional(),
   /** PGlite directory for dev; `memory` keeps it in RAM (E2E runs start from an empty database). */
   PGLITE_DIR: z.string().min(1).optional(),
-  GOOGLE_CLIENT_ID: z.string().min(1).optional(),
-  GOOGLE_CLIENT_SECRET: z.string().min(1).optional(),
-  /** Exact callback URL registered on the Google OAuth client, e.g. https://<host>/api/auth/google/callback. */
-  GOOGLE_REDIRECT_URI: z.url().optional(),
-  /** Test-only endpoint overrides (E2E fake Google); refused in production. */
-  GOOGLE_AUTH_URL: z.url().optional(),
-  GOOGLE_TOKEN_URL: z.url().optional(),
+  /** Issuer of the account service (auth-next). Default: the primary tenant's, https://auth.hoandat.com. */
+  OIDC_ISSUER: z.preprocess(emptyIsUnset, z.url().optional()),
+  OIDC_WEB_CLIENT_ID: z.preprocess(emptyIsUnset, z.string().min(1).optional()),
+  /** Secret of the confidential web client (`miu-web`), from the IdP's MIU_WEB_CLIENT_SECRET. */
+  OIDC_WEB_CLIENT_SECRET: z.preprocess(emptyIsUnset, z.string().min(32).optional()),
+  /** Exact callback registered on the web client, e.g. https://<host>/api/auth/callback. */
+  OIDC_REDIRECT_URI: z.preprocess(emptyIsUnset, z.url().optional()),
+  OIDC_MOBILE_CLIENT_ID: z.preprocess(emptyIsUnset, z.string().min(1).optional()),
+  /** Redirect of the app's public client (`miu-mobile`). Default: com.hoandat.miu:/auth/callback. */
+  OIDC_MOBILE_REDIRECT_URI: z.preprocess(emptyIsUnset, z.string().regex(/^[a-z][a-z0-9+.-]*\.[a-z0-9+.-]+:\/[^/]/).optional()),
   /** `1` enables email+password sign-in: explicit opt-in for dev/test tooling; refused in production. */
   PASSWORD_LOGIN: z.enum(['0', '1']).optional(),
   /** Test-only folder of extra quest files (E2E plays fixture quests); refused in production. */
@@ -70,12 +81,11 @@ const Env = z.object({
   GA4_API_SECRET: z.preprocess(emptyIsUnset, z.string().min(8).max(128).regex(/^\S+$/).optional()),
 });
 
-export interface GoogleConfig {
-  clientId: string;
-  clientSecret: string;
-  redirectUri: string;
-  authUrl: string;
-  tokenUrl: string;
+/** Sign-in through the account service: the web's confidential client and the app's public one. */
+export interface IdpConfig {
+  issuer: string;
+  web: { clientId: string; clientSecret: string; redirectUri: string };
+  mobile: { clientId: string; redirectUri: string };
 }
 
 /** The GA4 property and secret anonymous usage events are sent with (Measurement Protocol). */
@@ -108,10 +118,10 @@ export interface ServerConfig {
   scrypt: ScryptParams;
   /** Requests per window per IP for account creation. */
   registerLimitPerHour: number;
-  /** Google start/callback requests per 15 minutes per IP. */
-  googleLimitPer15Min: number;
-  /** Google sign-in; null when not configured (the button reports it as unavailable). */
-  google: GoogleConfig | null;
+  /** Sign-in start/callback/exchange requests per 15 minutes per IP. */
+  signInLimitPer15Min: number;
+  /** Sign-in through the account service; null when not configured (the button reports it as unavailable). */
+  idp: IdpConfig | null;
   /** Email+password routes; hidden in the UI and always off in production. */
   passwordLogin: boolean;
   /** Extra quest files loaded next to the shipped ones (tests only). */
@@ -154,29 +164,26 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     const missing = [
       !e.ALLOWED_ORIGINS && 'ALLOWED_ORIGINS',
       !e.DATABASE_URL && 'DATABASE_URL',
-      !e.GOOGLE_CLIENT_ID && 'GOOGLE_CLIENT_ID',
-      !e.GOOGLE_CLIENT_SECRET && 'GOOGLE_CLIENT_SECRET',
-      !e.GOOGLE_REDIRECT_URI && 'GOOGLE_REDIRECT_URI',
+      !e.OIDC_WEB_CLIENT_SECRET && 'OIDC_WEB_CLIENT_SECRET',
+      !e.OIDC_REDIRECT_URI && 'OIDC_REDIRECT_URI',
     ].filter(Boolean);
     if (missing.length > 0) throw new Error(`Invalid server env: ${missing.join(', ')} required in production`);
-    if (e.GOOGLE_AUTH_URL || e.GOOGLE_TOKEN_URL) throw new Error('Invalid server env: Google endpoint overrides are test-only');
     if (e.PASSWORD_LOGIN === '1') throw new Error('Invalid server env: PASSWORD_LOGIN is dev/test only');
     if (e.EXTRA_QUEST_DIR) throw new Error('Invalid server env: EXTRA_QUEST_DIR is test-only');
     if (e.REGISTER_LIMIT_PER_HOUR) throw new Error('Invalid server env: REGISTER_LIMIT_PER_HOUR is test-only');
   }
-  // Outside production the endpoints may point at a local fake Google, never at another host.
-  for (const [key, value] of [['GOOGLE_AUTH_URL', e.GOOGLE_AUTH_URL], ['GOOGLE_TOKEN_URL', e.GOOGLE_TOKEN_URL]] as const) {
-    if (value && !['127.0.0.1', 'localhost', '[::1]'].includes(new URL(value).hostname)) {
-      throw new Error(`Invalid server env: ${key} may only point at loopback`);
-    }
+  const issuer = e.OIDC_ISSUER ?? DEFAULT_IDP_ISSUER;
+  // https only; plain http only for a local fake IdP outside production (E2E).
+  const issuerUrl = new URL(issuer);
+  if (issuerUrl.protocol !== 'https:' && (production || issuerUrl.protocol !== 'http:' || !LOOPBACK_HOSTS.includes(issuerUrl.hostname))) {
+    throw new Error('Invalid server env: OIDC_ISSUER must be https (http only on loopback outside production)');
   }
-  // The ID token is trusted because it comes straight from Google over verified TLS.
-  if (e.GOOGLE_CLIENT_ID && env.NODE_TLS_REJECT_UNAUTHORIZED === '0') {
-    throw new Error('Invalid server env: NODE_TLS_REJECT_UNAUTHORIZED=0 is not allowed with Google sign-in');
+  // The code exchange and the IdP's keys are only as trustworthy as the TLS they come over.
+  if (e.OIDC_WEB_CLIENT_SECRET && env.NODE_TLS_REJECT_UNAUTHORIZED === '0') {
+    throw new Error('Invalid server env: NODE_TLS_REJECT_UNAUTHORIZED=0 is not allowed with sign-in');
   }
-  const googleParts = [e.GOOGLE_CLIENT_ID, e.GOOGLE_CLIENT_SECRET, e.GOOGLE_REDIRECT_URI];
-  if (googleParts.some(Boolean) && !googleParts.every(Boolean)) {
-    throw new Error('Invalid server env: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET and GOOGLE_REDIRECT_URI go together');
+  if (Boolean(e.OIDC_WEB_CLIENT_SECRET) !== Boolean(e.OIDC_REDIRECT_URI)) {
+    throw new Error('Invalid server env: OIDC_WEB_CLIENT_SECRET and OIDC_REDIRECT_URI go together');
   }
   if (Boolean(e.CF_TURN_KEY_ID) !== Boolean(e.CF_TURN_API_TOKEN)) {
     throw new Error('Invalid server env: CF_TURN_KEY_ID and CF_TURN_API_TOKEN go together');
@@ -193,15 +200,13 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     pgliteDir: e.PGLITE_DIR === 'memory' ? null : e.PGLITE_DIR,
     scrypt: DEFAULT_SCRYPT,
     registerLimitPerHour: e.REGISTER_LIMIT_PER_HOUR ?? 10,
-    googleLimitPer15Min: 30,
-    google:
-      e.GOOGLE_CLIENT_ID && e.GOOGLE_CLIENT_SECRET && e.GOOGLE_REDIRECT_URI
+    signInLimitPer15Min: 30,
+    idp:
+      e.OIDC_WEB_CLIENT_SECRET && e.OIDC_REDIRECT_URI
         ? {
-            clientId: e.GOOGLE_CLIENT_ID,
-            clientSecret: e.GOOGLE_CLIENT_SECRET,
-            redirectUri: e.GOOGLE_REDIRECT_URI,
-            authUrl: e.GOOGLE_AUTH_URL ?? GOOGLE_AUTH_URL,
-            tokenUrl: e.GOOGLE_TOKEN_URL ?? GOOGLE_TOKEN_URL,
+            issuer,
+            web: { clientId: e.OIDC_WEB_CLIENT_ID ?? DEFAULT_WEB_CLIENT_ID, clientSecret: e.OIDC_WEB_CLIENT_SECRET, redirectUri: e.OIDC_REDIRECT_URI },
+            mobile: { clientId: e.OIDC_MOBILE_CLIENT_ID ?? DEFAULT_MOBILE_CLIENT_ID, redirectUri: e.OIDC_MOBILE_REDIRECT_URI ?? DEFAULT_MOBILE_REDIRECT_URI },
           }
         : null,
     // Off unless asked for: a public review build must not let anyone pre-register a parent's email.

@@ -2,6 +2,7 @@ import type { z } from 'zod';
 import { ANALYTICS_HEADER } from '@miu/schema/analytics';
 import { analyticsHeaderValue } from '../analytics/analytics-ids';
 import { apiUrl } from '../platform/endpoints';
+import { authHeaders } from '../platform/session-token';
 import { t, type TextKey } from './i18n/i18n';
 
 /** Server error with its stable code (`invalid-credentials`, `parent-gate-closed`…). */
@@ -27,7 +28,7 @@ export async function api<S extends z.ZodType>(method: string, path: string, sch
       method,
       credentials: 'same-origin',
       keepalive: options.keepalive,
-      headers: { [ANALYTICS_HEADER]: analyticsHeaderValue(), ...(body === undefined ? {} : { 'Content-Type': 'application/json' }) },
+      headers: { [ANALYTICS_HEADER]: analyticsHeaderValue(), ...authHeaders(), ...(body === undefined ? {} : { 'Content-Type': 'application/json' }) },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
   } catch {

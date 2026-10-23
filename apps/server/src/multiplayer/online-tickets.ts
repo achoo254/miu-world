@@ -1,6 +1,7 @@
 // One-use tickets for the multiplayer connection. The web app asks for one (`POST /api/online-ticket`, a signed-in
 // request with an allowed Origin) right before it opens `/api/ws?ticket=…`; the upgrade takes it back once, within
-// TICKET_TTL_MS, and only together with the session cookie it was issued to. Only the sha256 of a ticket is kept, in
+// TICKET_TTL_MS: for a web session only together with the session cookie it was issued to; for the app's session
+// (asked for with its Bearer token) on its own, since the app's WebSocket carries neither cookie nor header. Only the sha256 of a ticket is kept, in
 // memory (one server instance), so a ticket seen in a log line is spent or stale.
 import { createHash, randomBytes } from 'node:crypto';
 

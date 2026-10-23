@@ -1,11 +1,12 @@
 // Multiplayer WebSocket client (Master Plan §8 & §8b): asks the API for a one-use ticket, connects to
-// /api/ws?ticket=… (the session cookie goes along), joins the map's room where the child stands and passes server
+// /api/ws?ticket=… (on the web the session cookie goes along; the app's ticket is enough on its own), joins the map's room where the child stands and passes server
 // messages on. Who she is (name, clothes, pet) the server
 // reads from her saved character; she only says where she is and what she does. Single-player goes on as if
 // nothing happened when the server cannot be reached.
 import { ClientWsMessage, ServerWsMessage, WsTicketResponse, type SafeEmote } from '@miu/schema/multiplayer';
 import { appHidden, onAppVisibilityChange } from '../../platform/app-lifecycle';
 import { apiUrl, wsUrl } from '../../platform/endpoints';
+import { authHeaders } from '../../platform/session-token';
 
 /**
  * Close codes after which reconnecting is pointless: another tab took over, there is no player to play as, or her
@@ -52,7 +53,8 @@ type TicketAnswer = { ticket: string } | { pause: 'off' | 'restricted' } | { fai
 async function askTicket(): Promise<TicketAnswer> {
   let res: Response;
   try {
-    res = await fetch(apiUrl('/online-ticket'), { method: 'POST', credentials: 'same-origin', cache: 'no-store' });
+    // The web's cookie goes along; the app sends its Bearer token (its socket then opens with the ticket alone).
+    res = await fetch(apiUrl('/online-ticket'), { method: 'POST', credentials: 'same-origin', cache: 'no-store', headers: authHeaders() });
   } catch {
     return { failed: true };
   }

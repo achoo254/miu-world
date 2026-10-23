@@ -20,7 +20,7 @@ pnpm test && pnpm typecheck && pnpm lint
 pnpm dev                                           # API 127.0.0.1:8787 (PGlite trong .data/) + web http://localhost:5173 (proxy /api)
 ```
 
-`pnpm dev` lấy Google OAuth client cho đăng nhập từ `access-tokens.json` trong iCloud Drive của người phụ trách (đặt `MIU_TOKEN_FILE` hoặc `MIU_ICLOUD_DIR` nếu nằm chỗ khác). Không có file đó thì game vẫn mở nhưng không đăng nhập được. Chạy riêng từng phần: `pnpm --filter @miu/server dev` và `pnpm --filter @miu/web dev`.
+`pnpm dev` lấy client dev `miu-web-dev` của dịch vụ đăng nhập auth-next (entry `auth.hoandat.com` / `miu-world dev`) từ `access-tokens.json` trong iCloud Drive của người phụ trách (đặt `MIU_TOKEN_FILE` hoặc `MIU_ICLOUD_DIR` nếu nằm chỗ khác). Không có file đó thì game vẫn mở nhưng không đăng nhập được. Chạy riêng từng phần: `pnpm --filter @miu/server dev` và `pnpm --filter @miu/web dev`.
 
 Trang duyệt cuối: chạy server, rồi `pnpm --filter @miu/web build` và `pnpm --filter @miu/web preview`, mở `/review.html` ở cổng 4173. E2E (bộ smoke chặn deploy, danh sách luồng ở [`docs/code-standards.md`](docs/code-standards.md)): `pnpm --filter @miu/web e2e:smoke`, hoặc một luồng: `pnpm --filter @miu/web e2e --project setup --project <tên>`.
 

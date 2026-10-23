@@ -145,7 +145,7 @@ const GEAR_NAMES: Record<string, string> = {
   'pet-scarf': 'khăn quàng',
 };
 const UI_STEPS: Record<string, string> = {
-  '01-login': 'Đăng nhập: chỉ nút Google',
+  '01-login': 'Đăng nhập: chỉ một nút đăng nhập (dịch vụ tài khoản dùng chung)',
   '03-consent': 'Đồng ý chính sách (kèm dòng phụ huynh chịu trách nhiệm)',
   '04-parent-area': 'Quản lý tài khoản: người chơi chính, thêm người chơi phụ, PIN tùy chọn',
   '05-profiles': 'Đổi người chơi trên máy dùng chung',

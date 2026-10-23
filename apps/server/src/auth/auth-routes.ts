@@ -54,7 +54,7 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
 
   const signIn = createSignIn({ db, config, clock });
 
-  /** Email+password is dev/test tooling only (Google is the sign-in); in production the routes do not exist. */
+  /** Email+password is dev/test tooling only (the account service is the sign-in); in production the routes do not exist. */
   const passwordRoutes: RequestHandler = (_req, _res, next) => {
     if (!config.passwordLogin) throw new HttpError(404, 'not-found');
     next();
@@ -78,7 +78,7 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     if (!parent) throw new HttpError(409, 'email-taken');
     await rotateOut(res);
     // The parent has just set the PIN, so the parent area opens straight away for consent + first profile.
-    const { token, session } = await createSession(db, parent.id, clock(), { openParentGate: true });
+    const { token, session } = await createSession(db, parent.id, clock(), { openParentGate: true, kind: 'web' });
     setSessionCookie(res, config, token);
     console.info('parent registered', parent.id);
     res.status(201).json(await summary({ session, parent }));
@@ -88,7 +88,7 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     const input = parseInput(LoginRequest, req.body);
     const [parent] = await db.select().from(parents).where(eq(parents.email, input.email));
     if (!parent?.passwordHash) {
-      // Unknown email, or a Google account (no password): same answer and same cost as a wrong password.
+      // Unknown email, or an account-service account (no password): same answer and same cost as a wrong password.
       decoy ??= decoyHash(config.scrypt).catch((err: unknown) => {
         decoy = undefined; // never cache a failure: retry on the next unknown-email login
         throw err;
@@ -98,9 +98,11 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     }
     if (!(await verifySecret(input.password, parent.passwordHash))) throw new HttpError(401, 'invalid-credentials');
     // Proving the account also clears a PIN lock-out.
-    res.json(await summary(await signIn(res, parent.id, { openParentGate: true, clearPinLock: true })));
+    const signedIn = await signIn(res, parent.id, { openParentGate: true, clearPinLock: true, kind: 'web' });
+    res.json(await summary({ session: signedIn.session, parent: signedIn.parent }));
   });
 
+  /** Ends the session the request came with: the web's cookie or the app's Bearer token alike. */
   router.post('/auth/logout', async (_req, res) => {
     await rotateOut(res);
     clearSessionCookie(res, config);

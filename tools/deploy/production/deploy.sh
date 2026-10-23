@@ -5,6 +5,10 @@
 #   tools/deploy/production/deploy.sh fonts     upload the worksheet handwriting font (kept out of git)
 #   tools/deploy/production/deploy.sh timetable upload the default class timetable (kept out of git); restart to apply
 #   tools/deploy/production/deploy.sh turn      write the voice relay (Cloudflare TURN) key into the env file; restart to apply
+#   tools/deploy/production/deploy.sh signin    write the account-service (auth-next, miu-web) client into the env file;
+#                                               before the first release that signs in through it (GOOGLE_* lines stay)
+#   tools/deploy/production/deploy.sh google-cleanup  drop the former direct Google sign-in lines (GOOGLE_*), once that
+#                                               release is live; restart to apply
 #   tools/deploy/production/deploy.sh analytics write the Google Analytics (GA4) property and secret into the env file;
 #                                               only after a release with the privacy page that tells it; restart to apply
 #   tools/deploy/production/deploy.sh gate      check the release gate only (tools/deploy/release-gate.sh), touching no server
@@ -58,8 +62,8 @@ setup() {
     | prod 'cd /tmp && sudo -u postgres psql -q -v ON_ERROR_STOP=1 -d postgres'
 
   echo "== env file"
-  local google='.tokens[] | select(.service == "accounts.google.com" and .used_by == "miu-world") | .token'
-  # Read before anything is written: a missing TURN entry stops here, with the env file as it was.
+  # Read before anything is written: a missing TURN or sign-in entry stops here, with the env file as it was.
+  local signin; signin="$(signin_env)"
   local turn; turn="$(turn_env)"
   # The GA4 lines `analytics` wrote are kept as they are (both or none); setup never turns analytics on by itself.
   local ga; ga="$(analytics_env)"
@@ -70,14 +74,47 @@ setup() {
     echo "PORT=$PORT"
     echo "DATABASE_URL=postgres://miu:$pw@127.0.0.1:5432/miu"
     echo "ALLOWED_ORIGINS=https://$DOMAIN"
-    echo "GOOGLE_CLIENT_ID=$(secret "$google.client_id")"
-    echo "GOOGLE_CLIENT_SECRET=$(secret "$google.client_secret")"
-    echo "GOOGLE_REDIRECT_URI=https://$DOMAIN/api/auth/google/callback"
+    printf '%s\n' "$signin"
     printf '%s\n' "$turn"
     [ -z "$ga" ] || printf '%s\n' "$ga"
     [ -z "$kept" ] || printf '%s\n' "$kept"
   } | prod 'install -m 640 -o root -g miu /dev/stdin /etc/miu/production.env'
   echo "setup done"
+}
+
+# Parent sign-in through the account service: the confidential web client `miu-web`, whose secret the IdP holds as
+# MIU_WEB_CLIENT_SECRET (auth-next docs/deployment-guide.md). Issuer and client ids keep the server's defaults.
+SIGNIN_ENTRY='.tokens[] | select(.service == "auth.hoandat.com" and .used_by == "miu-world") | .token'
+signin_env() {
+  local sec
+  sec="$(secret "$SIGNIN_ENTRY.client_secret")" && [ "${#sec}" -ge 32 ] \
+    || { echo "no auth.hoandat.com entry for miu-world (client_secret, 32+ characters) in access-tokens.json" >&2; return 1; }
+  printf 'OIDC_WEB_CLIENT_SECRET=%s\nOIDC_REDIRECT_URI=https://%s/api/auth/callback\n' "$sec" "$DOMAIN"
+}
+
+# Puts (or replaces) the OIDC_* lines, every other line as it is (the running release still reads its GOOGLE_* ones).
+signin() {
+  local lines
+  lines="$(signin_env)"
+  printf '%s\n' "$lines" | prod 'set -e
+    f=/etc/miu/production.env
+    [ -s "$f" ] || { echo "no $f: run setup first" >&2; exit 1; }
+    t=$(mktemp); trap "rm -f $t" EXIT
+    grep -Ev "^OIDC_[A-Z_]+=" "$f" > "$t" || [ $? -eq 1 ]
+    cat >> "$t"
+    install -m 640 -o root -g miu "$t" "$f"
+    grep -c "^OIDC_" "$f" | xargs echo OIDC lines in env file:'
+}
+
+# Drops the GOOGLE_* lines once a release that signs in through the account service is live (it ignores them).
+google_cleanup() {
+  prod 'set -e
+    f=/etc/miu/production.env
+    grep -q "^OIDC_WEB_CLIENT_SECRET=" "$f" || { echo "no OIDC_WEB_CLIENT_SECRET in $f: run signin and release first" >&2; exit 1; }
+    t=$(mktemp); trap "rm -f $t" EXIT
+    grep -Ev "^GOOGLE_[A-Z_]+=" "$f" > "$t" || [ $? -eq 1 ]
+    install -m 640 -o root -g miu "$t" "$f"
+    echo "GOOGLE_ lines left: $(grep -c "^GOOGLE_" "$f" || true)"'
 }
 
 # The voice relay key: the server asks Cloudflare for short-lived TURN credentials with it (docs/deployment-guide.md).
@@ -253,7 +290,9 @@ case "${1:-}" in
   fonts) fonts ;;
   timetable) timetable ;;
   turn) turn ;;
+  signin) signin ;;
+  google-cleanup) google_cleanup ;;
   analytics) analytics ;;
   release) release ;;
-  *) echo "usage: $0 setup|fonts|timetable|turn|analytics|gate|release" >&2; exit 2 ;;
+  *) echo "usage: $0 setup|fonts|timetable|turn|signin|google-cleanup|analytics|gate|release" >&2; exit 2 ;;
 esac

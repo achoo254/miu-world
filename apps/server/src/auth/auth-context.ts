@@ -5,7 +5,7 @@ import type { Db } from '../db/client';
 import { childProfiles, parents } from '../db/schema';
 import { HttpError } from '../http-error';
 import { hasCurrentConsent } from './consent-store';
-import { readSessionToken } from './session-cookie';
+import { readBearerToken, readSessionToken } from './session-cookie';
 import { findSession, type SessionRow } from './session-store';
 
 export const PIN_MAX_FAILS = 5;
@@ -19,12 +19,17 @@ const AUTH = Symbol('auth');
 
 type WithAuth = Response & { locals: { [AUTH]?: AuthContext } };
 
-/** Loads the session for every request; routes decide whether it is required. */
+/**
+ * Loads the session for every request; routes decide whether it is required. A request with an `Authorization`
+ * header is the app's: only an app session answers it, and the cookie is not looked at. Otherwise the cookie, and
+ * only a web session answers it.
+ */
 export function loadSession(db: Db, config: ServerConfig, clock: () => Date): RequestHandler {
   return async (req: Request, res: Response, next: NextFunction) => {
-    const token = readSessionToken(req, config);
+    const native = req.headers.authorization !== undefined;
+    const token = native ? readBearerToken(req) : readSessionToken(req, config);
     if (token) {
-      const session = await findSession(db, token, clock());
+      const session = await findSession(db, token, native ? 'native' : 'web', clock());
       if (session) {
         const [parent] = await db.select().from(parents).where(eq(parents.id, session.parentId));
         if (parent) (res as WithAuth).locals[AUTH] = { session, parent };

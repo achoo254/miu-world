@@ -32,6 +32,34 @@ export const ParentGateUnlockRequest = z.object({ pin: ParentPin });
 export const SetPinRequest = z.object({ pin: ParentPin });
 
 /** Public view of a parent. Parsing a DB row through it strips hashes (Zod drops unknown keys). */
+/**
+ * What the iPhone/Android app needs to build its sign-in request to the account service itself (PKCE, `state` and
+ * `nonce` are made and kept by the app): `GET /api/auth/native/config`.
+ */
+export const NativeAuthConfig = z.object({
+  authorizationEndpoint: z.url({ protocol: /^https?$/ }),
+  clientId: z.string().min(1),
+  redirectUri: z.string().min(1),
+  scope: z.string().min(1),
+});
+export type NativeAuthConfig = z.infer<typeof NativeAuthConfig>;
+
+/** `POST /api/auth/native/exchange`: the code of the app's sign-in, with its PKCE verifier and nonce. */
+export const NativeExchangeRequest = z.object({
+  code: z.string().min(1).max(512),
+  /** RFC 7636 §4.1: 43 to 128 unreserved characters. */
+  codeVerifier: z.string().regex(/^[A-Za-z0-9._~-]{43,128}$/),
+  redirectUri: z.string().min(1).max(256),
+  nonce: z.string().min(16).max(128),
+  /** The app asked the IdP for a fresh sign-in (prompt=login, max_age=0) to clear a PIN lock-out. */
+  reauth: z.boolean().default(false),
+});
+export type NativeExchangeRequest = z.infer<typeof NativeExchangeRequest>;
+
+/** The app's new session: an opaque token it keeps in the Keychain/Keystore and sends as `Authorization: Bearer`. */
+export const NativeSessionResponse = z.object({ token: z.string().regex(/^[A-Za-z0-9_-]{16,128}$/) });
+export type NativeSessionResponse = z.infer<typeof NativeSessionResponse>;
+
 export const ParentDto = z.object({ id: Id, email: z.string() });
 export type ParentDto = z.infer<typeof ParentDto>;
 
@@ -99,9 +127,16 @@ const Instant = z.iso.datetime({ offset: true });
  */
 export const AccountExport = z.object({
   exportedAt: Instant,
-  parent: z.object({ email: z.string(), signIn: z.enum(['google', 'password']), createdAt: Instant }),
+  parent: z.object({
+    email: z.string(),
+    /** `idp`: the shared account service; `password`: dev/test only. */
+    signIn: z.enum(['idp', 'password']),
+    /** The account service's id of the person and when it was linked; null for a password account. */
+    idp: z.object({ issuer: z.string(), subject: z.string(), linkedAt: Instant }).nullable(),
+    createdAt: Instant,
+  }),
   consents: z.array(z.object({ policyVersion: z.string(), acceptedAt: Instant })),
-  sessions: z.array(z.object({ createdAt: Instant, lastSeenAt: Instant, expiresAt: Instant })),
+  sessions: z.array(z.object({ device: z.enum(['web', 'app']), createdAt: Instant, lastSeenAt: Instant, expiresAt: Instant })),
   players: z.array(
     z.object({
       displayName: z.string(),

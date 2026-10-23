@@ -40,6 +40,8 @@ async function playedFamily() {
   await app.db.insert(t.petBonds).values({ childId, petId: 'meo-xam', name: 'Bông', happiness: 90, fullness: 60, cleanliness: 70, statsAt: new Date('2026-10-05T08:00:00Z'), careXp: 20, walkSeconds: 120 });
   await app.db.insert(t.botMemories).values({ botId: 'bot-tt-1', childId, runs: 2, lastQuestId: 'with-dung-cau-tre' });
   const me = (await family.agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
+  // Its account-service identity, as a sign-in through the IdP links it.
+  await app.db.insert(t.parentIdpLinks).values({ parentId: me.parent.id, issuer: 'https://auth.test.example', subject: `idp-sub-${randomUUID()}` });
   return { ...family, parentId: me.parent.id };
 }
 
@@ -74,9 +76,9 @@ describe('account export', () => {
     const res = await agent.get('/api/account/export').expect(200);
     expect(res.headers['cache-control']).toBe('no-store');
     const data = AccountExport.parse(res.body);
-    expect(data.parent).toMatchObject({ email: parent.email, signIn: 'password' });
+    expect(data.parent).toMatchObject({ email: parent.email, signIn: 'idp', idp: { issuer: 'https://auth.test.example', subject: expect.stringMatching(/^idp-sub-/), linkedAt: expect.any(String) } });
     expect(data.consents).toEqual([{ policyVersion: app.content.consent.version, acceptedAt: expect.any(String) }]);
-    expect(data.sessions).toHaveLength(1);
+    expect(data.sessions).toEqual([expect.objectContaining({ device: 'web' })]);
     expect(data.players).toHaveLength(1);
     const [child] = data.players;
     expect(child).toMatchObject({
@@ -176,7 +178,7 @@ describe('account deletion', () => {
     const before = await rowsOf(parentId, [childId, second.id]);
     // Every table holds something of this family, so a table the delete misses fails below.
     expect(Object.entries(before).filter(([, n]) => n === 0)).toEqual([]);
-    expect(before).toMatchObject({ parents: 1, child_profiles: 2, sessions: 1, consents: 1, characters: 2, quest_progress: 2, step_attempts: 1 });
+    expect(before).toMatchObject({ parents: 1, parent_idp_links: 1, child_profiles: 2, sessions: 1, consents: 1, characters: 2, quest_progress: 2, step_attempts: 1 });
 
     const res = await agent.delete('/api/account').expect(204);
     expect(String(res.headers['set-cookie'])).toMatch(/Expires=Thu, 01 Jan 1970/);

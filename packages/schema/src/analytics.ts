@@ -24,7 +24,7 @@ const HOSTNAME = /^(?=.{1,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2
 export const SHARE_METHODS = ['web-share', 'copy-link', 'download'] as const;
 /** What was shared: an invite link, a quest result card, the week's summary. */
 export const SHARE_CONTENT_TYPES = ['invite', 'result', 'weekly'] as const;
-export const SIGN_UP_METHODS = ['google', 'password'] as const;
+export const SIGN_UP_METHODS = ['idp', 'password'] as const;
 /** Engaged time one web event may claim (GA needs some to count the session as active). */
 export const MAX_ENGAGEMENT_MSEC = 30 * 60_000;
 

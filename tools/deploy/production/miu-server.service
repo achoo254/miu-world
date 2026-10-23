@@ -6,8 +6,8 @@ Wants=network-online.target postgresql.service
 [Service]
 User=miu
 Group=miu
-# NODE_ENV, PORT (8797: 8787 is taken on .65), DATABASE_URL, ALLOWED_ORIGINS, GOOGLE_*: written by
-# deploy.sh setup, never in the repo.
+# NODE_ENV, PORT (8797: 8787 is taken on .65), DATABASE_URL, ALLOWED_ORIGINS, OIDC_*: written by
+# deploy.sh setup (OIDC_* also by deploy.sh signin), never in the repo.
 EnvironmentFile=/etc/miu/production.env
 # Own journal with a 14-day retention (journald-miu.conf); logs carry ids only, never email or names.
 LogNamespace=miu

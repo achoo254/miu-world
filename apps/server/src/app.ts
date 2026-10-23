@@ -9,7 +9,9 @@ import { accountRoutes } from './auth/account-routes';
 import { appCors } from './auth/app-cors';
 import { loadSession } from './auth/auth-context';
 import { authRoutes } from './auth/auth-routes';
-import { googleAuthRoutes } from './auth/google-auth-routes';
+import { IdpClient } from './auth/idp-client';
+import { idpNativeRoutes } from './auth/idp-native-routes';
+import { idpBackchannelRoute, idpWebRoutes } from './auth/idp-web-routes';
 import { requireAllowedOrigin } from './auth/origin-check';
 import { HashQueueFullError } from './auth/secret-hashing';
 import type { CharacterEvents } from './character/character-events';
@@ -64,7 +66,7 @@ export interface AppDeps {
   worksheets?: ReadonlyMap<string, Worksheet>;
   /** Injectable for tests (session expiry, parent-gate window). */
   clock?: () => Date;
-  /** Google token endpoint call; tests inject a fake so Google is never contacted. */
+  /** Calls to the account service (discovery, keys, token endpoint); tests inject a fake IdP so none is contacted. */
   fetchImpl?: typeof fetch;
   /** Voice relay credentials (Cloudflare TURN); tests inject a fake so Cloudflare is never contacted. */
   turnFetch?: typeof fetch;
@@ -114,7 +116,7 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, turnFetch, characterEvents, playerEvents, online, partyQuests, analytics = { sink: DROP_EVENTS, sessions: new AnalyticsSessions() }, wsTickets, onlineSwitch = new OnlineSwitch(config.onlineMode) }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl = fetch, turnFetch, characterEvents, playerEvents, online, partyQuests, analytics = { sink: DROP_EVENTS, sessions: new AnalyticsSessions() }, wsTickets, onlineSwitch = new OnlineSwitch(config.onlineMode) }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
@@ -124,6 +126,10 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   // Analytics events are small and open without sign-in: their own tighter limit, read before the general parser.
   app.use('/api/analytics', express.json({ limit: ANALYTICS_BODY_LIMIT }));
   app.use(express.json({ limit: '32kb' }));
+
+  const idp = config.idp ? new IdpClient(config.idp.issuer, fetchImpl, () => clock().getTime()) : null;
+  // The IdP's back-channel logout comes server to server, without an Origin: ahead of the CSRF check (signed token).
+  app.use('/api', idpBackchannelRoute({ db, config, idp }));
 
   const api = express.Router();
   // The app's origins get CORS (no credentials) before the CSRF check, which accepts them like the web's own.
@@ -137,7 +143,8 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   });
   api.use(analyticsRoutes({ sink: analytics.sink, catalog: analyticsCatalog(content), limitPerMinute: config.analyticsLimitPerMinute, clientLimitPerMinute: config.analyticsClientLimitPerMinute }));
   api.use(authRoutes({ db, config, content, clock }));
-  api.use(googleAuthRoutes({ db, config, clock, fetchImpl }));
+  api.use(idpWebRoutes({ db, config, clock, idp }));
+  api.use(idpNativeRoutes({ db, config, clock, idp }));
   api.use(accountRoutes({ db, config, clock }));
   api.use(playerRoutes({ db, content, clock }));
   api.use(progressRoutes({ db, content, clock }));

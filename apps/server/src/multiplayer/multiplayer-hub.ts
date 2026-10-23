@@ -2,7 +2,7 @@
 // players and companion bots; targeted interactions (wave, a line, block, report) and parties that outlive rooms.
 //
 // Who a player is comes from her session and her saved character, never from the client: the upgrade request must
-// come from an allowed origin with a live session cookie, and her name, species, outfit and pet are read from the
+// come from an allowed origin with a one-use ticket of a live session (web or app), and her name, species, outfit and pet are read from the
 // database (and re-sent to the others when she saves new ones). Others know her by a public id that is not her
 // profile id. Blocked pairs never see each other, nor meet in a party.
 //
@@ -34,7 +34,7 @@ import type { PlayerSettings } from '@miu/schema/account';
 import type { FriendPerson } from '@miu/schema/friends';
 import type { PlayerEvent } from '../player/player-events';
 import type { CharacterDto } from '@miu/schema/game';
-import type { Authenticate, MultiplayerStore } from './multiplayer-store';
+import type { Authenticate, MultiplayerStore, WsPlayer } from './multiplayer-store';
 import type { IncidentLineInput } from '../moderation/moderation-store';
 import { OnlineSwitch } from './online-switch';
 import { PartyService, type PartyError } from './party-service';
@@ -213,8 +213,6 @@ export interface Connection {
 export interface HubOptions {
   store?: MultiplayerStore;
   authenticate?: Authenticate;
-  /** Who keeps playing on an open connection, from its cookie (every RECHECK_MS); defaults to `authenticate`. */
-  revalidate?: Authenticate;
   /** Origins allowed to open a connection (the same list as the API's CSRF check). */
   allowedOrigins?: readonly string[];
   /** The emergency switch (on when left out). */
@@ -340,7 +338,6 @@ export class MultiplayerHub {
   private partyQuestBots: PartyQuestBotDriver | null = null;
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
-  private readonly revalidate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
   private readonly now: () => number;
   private readonly partyGraceMs: number;
@@ -351,7 +348,6 @@ export class MultiplayerHub {
   constructor(server?: HttpServer, options: HubOptions = {}) {
     this.store = options.store ?? null;
     this.authenticate = options.authenticate ?? null;
-    this.revalidate = options.revalidate ?? this.authenticate;
     this.onlineSwitch = options.onlineSwitch ?? new OnlineSwitch();
     this.stopSwitch = this.onlineSwitch.on((mode) => this.switched(mode));
     this.allowedOrigins = new Set(options.allowedOrigins ?? []);
@@ -717,9 +713,9 @@ export class MultiplayerHub {
     const authenticate = this.authenticate;
     if (!authenticate) return refuse(socket, 401, 'Unauthorized');
     authenticate(req).then(
-      (childId) => {
-        if (!childId) return refuse(socket, 401, 'Unauthorized');
-        this.wss.handleUpgrade(req, socket, head, (ws) => void this.accept(ws, req, childId));
+      (player) => {
+        if (!player) return refuse(socket, 401, 'Unauthorized');
+        this.wss.handleUpgrade(req, socket, head, (ws) => void this.accept(ws, player));
       },
       (err: unknown) => {
         console.error('multiplayer upgrade failed', err instanceof Error ? err.name : typeof err);
@@ -728,7 +724,8 @@ export class MultiplayerHub {
     );
   }
 
-  private async accept(ws: WebSocket, req: IncomingMessage, childId: string): Promise<void> {
+  private async accept(ws: WebSocket, player: WsPlayer): Promise<void> {
+    const { childId } = player;
     const early: string[] = [];
     let connection: Connection | null = null;
     let closed = false;
@@ -742,16 +739,14 @@ export class MultiplayerHub {
       connection?.close();
     });
     ws.on('error', () => ws.terminate());
-    // Only the cookie is kept for the re-checks, not the whole request.
-    const cookie = { headers: { cookie: req.headers.cookie } };
-    const authenticate = this.revalidate;
     const transport: Transport = {
       send: (message) => {
         if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(message));
       },
       close: (code, reason) => ws.close(code, reason),
       alive: () => !closed,
-      stillValid: async () => (authenticate ? (await authenticate(cookie)) === childId : false),
+      // The session the connection opened with (web or app) must still play as her.
+      stillValid: () => player.stillPlays(),
     };
     try {
       connection = await this.connect(childId, transport);

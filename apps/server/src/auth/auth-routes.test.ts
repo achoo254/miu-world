@@ -196,9 +196,8 @@ describe('production cookie', () => {
         NODE_ENV: 'production',
         ALLOWED_ORIGINS: ORIGIN,
         DATABASE_URL: 'postgres://db.invalid/unused',
-        GOOGLE_CLIENT_ID: 'test-client-id',
-        GOOGLE_CLIENT_SECRET: 'test-secret-google',
-        GOOGLE_REDIRECT_URI: 'https://miu.example/api/auth/google/callback',
+        OIDC_WEB_CLIENT_SECRET: 'test-secret-0123456789abcdef0123456789',
+        OIDC_REDIRECT_URI: 'https://miu.example/api/auth/callback',
       },
       // Test-only override: the cookie flags are shared by every sign-in; password is the easy way in here.
       { passwordLogin: true },

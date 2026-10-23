@@ -18,6 +18,7 @@ import {
   playerReports,
   playerRestrictions,
   playTime,
+  parentIdpLinks,
   parents,
   questProgress,
   rewardLedger,
@@ -57,6 +58,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
   const profiles = await db.select().from(childProfiles).where(eq(childProfiles.parentId, parent.id)).orderBy(childProfiles.createdAt);
   const ids = profiles.map((p) => p.id);
   const ofChildren = <T extends { childId: string }>(rows: Promise<T[]>) => (ids.length ? rows : Promise.resolve([] as T[]));
+  const [link] = await db.select().from(parentIdpLinks).where(eq(parentIdpLinks.parentId, parent.id));
   const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows, decorRows, objectRows, shopRows, playRows, mailRows, reportRows, bondRows, memoryRows, petRows, lockRows] = await Promise.all([
     db.select().from(consents).where(eq(consents.parentId, parent.id)).orderBy(consents.acceptedAt),
     db.select().from(sessions).where(eq(sessions.parentId, parent.id)).orderBy(sessions.createdAt),
@@ -103,9 +105,14 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
   const pets = byChild(petRows);
   return {
     exportedAt: iso(now),
-    parent: { email: parent.email, signIn: parent.googleSub ? 'google' : 'password', createdAt: iso(parent.createdAt) },
+    parent: {
+      email: parent.email,
+      signIn: link ? 'idp' : 'password',
+      idp: link ? { issuer: link.issuer, subject: link.subject, linkedAt: iso(link.linkedAt) } : null,
+      createdAt: iso(parent.createdAt),
+    },
     consents: consentRows.map((c) => ({ policyVersion: c.policyVersion, acceptedAt: iso(c.acceptedAt) })),
-    sessions: sessionRows.map((s) => ({ createdAt: iso(s.createdAt), lastSeenAt: iso(s.lastSeenAt), expiresAt: iso(s.expiresAt) })),
+    sessions: sessionRows.map((s) => ({ device: s.kind === 'native' ? ('app' as const) : ('web' as const), createdAt: iso(s.createdAt), lastSeenAt: iso(s.lastSeenAt), expiresAt: iso(s.expiresAt) })),
     players: profiles.map((p) => {
       const character = characterRows.find((c) => c.childId === p.id);
       return {
@@ -180,8 +187,9 @@ export function accountRoutes({ db, config, clock }: AccountRouteDeps): Router {
   });
 
   /**
-   * Hard delete: the parent row cascades to sessions, consents, profiles and every child table, so
-   * nothing is left to restore (backups age out on their own schedule).
+   * Hard delete: the parent row cascades to sessions (web and app), consents, the account-service link, profiles and
+   * every child table, so nothing is left to restore (backups age out on their own schedule). The account at the
+   * account service is the person's own and is not touched; Miu holds no IdP token to revoke.
    */
   router.delete('/account', requireParent, gate, async (_req, res) => {
     const { parent } = auth(res);

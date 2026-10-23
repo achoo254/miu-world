@@ -1,37 +1,20 @@
-// NEW SCREEN (Master Plan §6, Tài khoản): đăng nhập / tạo tài khoản phụ huynh bằng Google; PIN phụ huynh là tùy chọn.
+// NEW SCREEN (Master Plan §6, Tài khoản): đăng nhập / tạo tài khoản phụ huynh qua dịch vụ tài khoản dùng chung (auth-next);
+// PIN phụ huynh là tùy chọn.
 // Chưa có mock riêng; theo visual language M1–M3, hướng A (đảo mây kẹo hồng).
 import { useState, type ReactNode } from 'react';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router';
 import { MeResponse, ParentPin } from '@miu/schema/account';
-import { NATIVE_APP } from '../../platform/endpoints';
 import { api } from '../api-client';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
+import { IdpSignInButton, signInErrorKey } from './idp-sign-in-button';
 import { SkyScene } from '../kit/sky-scene';
 import { T } from '../i18n/use-t';
-import { t, type TextKey } from '../i18n/i18n';
+import { t } from '../i18n/i18n';
 import { useAccount } from './account-context';
 import { useSubmit } from './use-submit';
 
-/** Server-side OAuth: the browser just navigates; no Google script is loaded (CSP stays same-origin). */
-export const GOOGLE_SIGN_IN = '/api/auth/google/start';
-
-const callbackErrorKey = (code: string): TextKey => {
-  switch (code) {
-    case 'google-unavailable':
-      return 'auth.callback.unavailable';
-    case 'google-conflict':
-      return 'auth.callback.conflict';
-    case 'rate-limited':
-      return 'auth.callback.rateLimited';
-    case 'google-reauth':
-      return 'auth.callback.reauth';
-    default:
-      return 'auth.callback.google';
-  }
-};
-
-function GoogleSignIn({ title, hint, dataId, switchTo }: { title: ReactNode; hint: ReactNode; dataId: string; switchTo: { text: ReactNode; label: ReactNode; to: string } }) {
+function SignIn({ title, hint, dataId, switchTo }: { title: ReactNode; hint: ReactNode; dataId: string; switchTo: { text: ReactNode; label: ReactNode; to: string } }) {
   const [params] = useSearchParams();
   const error = params.get('error');
   return (
@@ -41,20 +24,10 @@ function GoogleSignIn({ title, hint, dataId, switchTo }: { title: ReactNode; hin
         <p className="hint">{hint}</p>
         {error ? (
           <p role="alert" className="error">
-            <T k={callbackErrorKey(error)} />
+            <T k={signInErrorKey(error)} />
           </p>
         ) : null}
-        {NATIVE_APP ? (
-          // The app signs in through the shared account service in the system browser, never Google inside this
-          // WebView (Google refuses it); until that ships the app says so instead of offering a button that fails.
-          <p className="hint" role="status" data-id={`${dataId}-app-soon`}>
-            <strong><T k="auth.appSignInSoon" /></strong> <T k="auth.appSignInSoonHint" />
-          </p>
-        ) : (
-          <a className={buttonClass('primary', { block: true })} href={GOOGLE_SIGN_IN} data-id={`${dataId}-google`}>
-            <T k="auth.googleSignIn" />
-          </a>
-        )}
+        <IdpSignInButton dataId={`${dataId}-sign-in`} label={<T k="auth.signIn" />} />
         <p className="note">
           <Icon name="heart" size={28} />
           <span>
@@ -71,7 +44,7 @@ function GoogleSignIn({ title, hint, dataId, switchTo }: { title: ReactNode; hin
 
 export function LoginScreen() {
   return (
-    <GoogleSignIn
+    <SignIn
       dataId="login"
       title={<T k="auth.loginTitle" />}
       hint={<T k="auth.loginHint" />}
@@ -82,7 +55,7 @@ export function LoginScreen() {
 
 export function RegisterScreen() {
   return (
-    <GoogleSignIn
+    <SignIn
       dataId="register"
       title={<T k="auth.registerTitle" />}
       hint={<T k="auth.registerHint" />}

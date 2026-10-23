@@ -442,12 +442,15 @@ describe('shipped account content', () => {
   it('ships a final consent that states what is kept and how to delete it', () => {
     const doc = ConsentDocument.parse(load('legal/consent-vi.json'));
     expect(doc.requiresLegalReview).toBe(false);
-    expect(doc.version).toBe('v4');
+    expect(doc.version).toBe('v5');
     expect(doc.updatedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     const text = doc.paragraphs.join(' ');
     expect(text).toMatch(/thời khóa biểu/);
     expect(text).toMatch(/không lưu nội dung câu trả lời/);
     expect(text).toMatch(/xóa hẳn tài khoản/);
+    // Sign-in goes through the shared account service, no longer Google directly.
+    expect(text).toMatch(/auth\.hoandat\.com/);
+    expect(text).not.toMatch(/tài khoản Google\./);
     expect(text).toMatch(/14 ngày/);
     expect(text).toMatch(/mọi lứa tuổi/);
     expect(text).toMatch(/bạn là người chịu trách nhiệm/);

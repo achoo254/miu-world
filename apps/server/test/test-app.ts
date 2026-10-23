@@ -91,7 +91,7 @@ export async function createTestApp(
 ): Promise<TestApp> {
   const dbHandle = await createTestDb();
   // Every test agent shares one loopback IP, so the per-IP register cap is lifted; its own test lowers it.
-  const config = { ...loadConfig(env), scrypt: FAST_SCRYPT, registerLimitPerHour: 10_000, googleLimitPer15Min: 10_000, passwordLogin: true, ...overrides };
+  const config = { ...loadConfig(env), scrypt: FAST_SCRYPT, registerLimitPerHour: 10_000, signInLimitPer15Min: 10_000, passwordLogin: true, ...overrides };
   let offset = 0;
   const app = createApp({ config, db: dbHandle.db, content, worksheets: FIXTURE_WORKSHEETS, clock: () => new Date(Date.now() + offset), fetchImpl, ...deps });
   const server = await listenOnLoopback(app);

@@ -84,17 +84,29 @@ describe('account flow', () => {
     expect(await screen.findByRole('heading', { name: 'Đăng nhập' })).toBeTruthy();
   });
 
-  it('offers only Google sign-in, through a same-origin server redirect', async () => {
+  it('offers only the account-service sign-in, through a same-origin server redirect', async () => {
     const calls = stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
-    renderAt('/register?error=google');
-    const link = await screen.findByRole('link', { name: 'Đăng nhập bằng Google' });
-    expect(link.getAttribute('href')).toBe('/api/auth/google/start');
+    renderAt('/register?error=idp');
+    const link = (await screen.findAllByRole('link', { name: 'Đăng nhập' })).find((a) => a.getAttribute('data-id') === 'register-sign-in');
+    expect(link?.getAttribute('href')).toBe('/api/auth/start');
     expect((await screen.findByRole('alert')).textContent).toContain('chưa thành công');
     expect(document.querySelector('input[type="password"]')).toBeNull();
     expect(calls.map((c) => c.key)).toEqual(['GET /api/auth/me']);
   });
 
-  it('takes a parent fresh from Google straight to the consent, without asking for a PIN', async () => {
+  it('explains a refused unverified email', async () => {
+    stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
+    renderAt('/login?error=idp-email-unverified');
+    expect((await screen.findByRole('alert')).textContent).toContain('chưa được xác minh');
+  });
+
+  it('tells a former Google parent signing in another way to use that Google account or ask support', async () => {
+    stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
+    renderAt('/login?error=idp-google-mismatch');
+    expect((await screen.findByRole('alert')).textContent).toContain('liên hệ hỗ trợ');
+  });
+
+  it('takes a parent fresh from sign-in straight to the consent, without asking for a PIN', async () => {
     const calls = stubApi({
       'GET /api/auth/me': () => ({ status: 200, body: me({ pinSet: false, consentAccepted: false, parentGateOpen: true }) }),
       'GET /api/consents/policy': () => ({ status: 200, body: { version: 'draft-2', requiresLegalReview: true, title: 'Đồng ý', paragraphs: ['x'] } }),
@@ -146,6 +158,20 @@ describe('account flow', () => {
     expect(calls.find((c) => c.key === 'POST /api/consents')?.body).toEqual({ policyVersion: 'draft-1' });
   }, 15000);
 
+  it('asks an account behind a PIN to re-accept a new policy only after the PIN, never showing it to whoever is at the device', async () => {
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ consentAccepted: false, parentGateOpen: false, pinSet: true }) }),
+      'GET /api/consents/policy': () => ({ status: 200, body: { version: 'v5', requiresLegalReview: false, title: 'Đồng ý chính sách dữ liệu', paragraphs: ['Nội dung v5.'] } }),
+      'GET /api/players': () => ({ status: 200, body: [] }),
+    });
+    renderAt('/');
+    expect(await screen.findByText(/Chủ tài khoản nhập mã PIN để đọc và đồng ý lại/)).toBeTruthy();
+    expect(screen.queryByText('Nội dung v5.')).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Tôi đồng ý' })).toBeNull();
+    expect(document.querySelector('[data-id="parent-gate-pin"]')).not.toBeNull();
+    expect(calls.some((c) => c.key === 'POST /api/consents')).toBe(false);
+  });
+
   it('asks for the PIN before showing parent-only controls', async () => {
     stubApi({
       'GET /api/auth/me': () => ({ status: 200, body: me() }),
@@ -160,14 +186,14 @@ describe('account flow', () => {
     expect((await screen.findByRole('alert')).textContent).toBe('Mã PIN chưa đúng.');
   });
 
-  it('sends a parent with a locked PIN back through Google to unlock it', async () => {
+  it('sends a parent with a locked PIN back through a fresh sign-in to unlock it', async () => {
     stubApi({
       'GET /api/auth/me': () => ({ status: 200, body: me({ pinLocked: true }) }),
       'GET /api/players': () => ({ status: 200, body: [] }),
     });
     renderAt('/parent');
-    const link = await screen.findByRole('link', { name: 'Đăng nhập lại bằng Google' });
-    expect(link.getAttribute('href')).toBe('/api/auth/google/start?intent=reauth');
+    const link = await screen.findByRole('link', { name: 'Đăng nhập lại' });
+    expect(link.getAttribute('href')).toBe('/api/auth/start?intent=reauth');
   });
 
   it('shows the privacy page to a visitor who is not signed in, linked from the login screen', async () => {
@@ -196,7 +222,7 @@ describe('account flow', () => {
   });
 
   it('downloads the account data as a JSON file', async () => {
-    const exported = { exportedAt: '2026-09-30T06:00:00.000Z', parent: { email: PARENT.email, signIn: 'google', createdAt: '2026-09-01T00:00:00.000Z' }, consents: [], sessions: [], players: [] };
+    const exported = { exportedAt: '2026-09-30T06:00:00.000Z', parent: { email: PARENT.email, signIn: 'idp', idp: { issuer: 'https://auth.example.vn', subject: 'idp-sub-1', linkedAt: '2026-09-01T00:00:00.000Z' }, createdAt: '2026-09-01T00:00:00.000Z' }, consents: [], sessions: [], players: [] };
     stubApi({
       'GET /api/auth/me': () => ({ status: 200, body: me({ parentGateOpen: true }) }),
       'GET /api/players': () => ({ status: 200, body: [] }),

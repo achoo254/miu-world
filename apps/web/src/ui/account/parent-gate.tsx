@@ -8,10 +8,10 @@ import { buttonClass } from '../kit/button';
 import { PinPad } from '../kit/pin-pad';
 import { T } from '../i18n/use-t';
 import { useAccount } from './account-context';
-import { GOOGLE_SIGN_IN } from './sign-in-screens';
+import { IdpSignInButton } from './idp-sign-in-button';
 import { useSubmit } from './use-submit';
 
-/** A PIN lock-out is cleared by signing in with Google again (the server resets the counter). */
+/** A PIN lock-out is cleared by signing in again, freshly, at the account service (the server resets the counter). */
 function PinLockedRelogin() {
   return (
     <section className="panel gate-panel" data-id="parent-gate-locked">
@@ -20,9 +20,7 @@ function PinLockedRelogin() {
       <p role="alert" className="error">
         <T k="gate.pinLockedMessage" />
       </p>
-      <a className={buttonClass('primary', { block: true })} href={`${GOOGLE_SIGN_IN}?intent=reauth`} data-id="parent-gate-relogin-google">
-        <T k="gate.reloginGoogle" />
-      </a>
+      <IdpSignInButton dataId="parent-gate-relogin" reauth label={<T k="gate.relogin" />} />
     </section>
   );
 }

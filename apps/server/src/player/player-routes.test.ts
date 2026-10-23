@@ -138,18 +138,26 @@ describe('players', () => {
   it('asks an account that accepted an older policy to accept again, then plays on with the same players', async () => {
     const { agent, childId } = await parentWithChild(app);
     const me = (await agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
-    // The account as it was before the policy changed: only the previous version accepted.
-    await app.db.update(t.consents).set({ policyVersion: 'v3' }).where(eq(t.consents.parentId, me.parent.id));
+    // The account as it was before the policy changed: only the previous version accepted (v4, before sign-in moved to
+    // the account service in v5).
+    expect(app.content.consent.version).toBe('v5');
+    await app.db.update(t.consents).set({ policyVersion: 'v4' }).where(eq(t.consents.parentId, me.parent.id));
     expect(((await agent.get('/api/auth/me').expect(200)).body as { consentAccepted: boolean }).consentAccepted).toBe(false);
     await agent.post(`/api/players/${childId}/select`).expect(403, { error: 'consent-required' });
     await agent.get('/api/progress').expect(403, { error: 'consent-required' });
-    await agent.post('/api/consents').send({ policyVersion: 'v3' }).expect(400, { error: 'policy-version-mismatch' });
+    await agent.post('/api/consents').send({ policyVersion: 'v4' }).expect(400, { error: 'policy-version-mismatch' });
+    // With a PIN, only who unlocks the account area accepts it (a child at the device cannot).
+    await agent.post('/api/parent-gate/lock').expect(200);
+    await agent.post('/api/consents').send({ policyVersion: app.content.consent.version }).expect(403, { error: 'parent-gate-closed' });
+    await agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(200);
     const again = (await agent.post('/api/consents').send({ policyVersion: app.content.consent.version }).expect(201)).body as { consentAccepted: boolean; players: Array<{ id: string }> };
     expect(again.consentAccepted).toBe(true);
     expect(again.players.map((p) => p.id)).toEqual([childId]);
     await agent.post(`/api/players/${childId}/select`).expect(200);
     const rows = await app.db.select({ v: t.consents.policyVersion }).from(t.consents).where(eq(t.consents.parentId, me.parent.id));
-    expect(rows.map((r) => r.v).sort()).toEqual(['v3', app.content.consent.version].sort());
+    expect(rows.map((r) => r.v).sort()).toEqual(['v4', 'v5']);
+    // Asked once: the next visit plays on.
+    expect(((await agent.get('/api/auth/me').expect(200)).body as { consentAccepted: boolean }).consentAccepted).toBe(true);
   });
 
   it('renames within the list and updates language under parent gate', async () => {

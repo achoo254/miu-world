@@ -1,7 +1,8 @@
 // `pnpm dev`: starts the API (8787) and the web dev server (5173) together, so the game is playable at
-// http://localhost:5173 with one command. Parent sign-in is Google OAuth: the client comes from the owner's
-// token file in iCloud Drive (`access-tokens.json`, entry `accounts.google.com` used by miu-world) and goes
-// straight into the API's environment; nothing is printed or written to disk. Ctrl+C stops both.
+// http://localhost:5173 with one command. Parent sign-in goes through the shared account service (auth-next) with its
+// development client `miu-web-dev` (loopback redirect only): the client comes from the owner's token file in iCloud
+// Drive (`access-tokens.json`, entry `auth.hoandat.com` used by `miu-world dev`) and goes straight into the API's
+// environment; nothing is printed or written to disk. Ctrl+C stops both.
 import { spawn, spawnSync, type ChildProcess } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -10,13 +11,14 @@ import { z } from 'zod';
 import { REPO_ROOT } from '../assets/asset-lib';
 import { icloudRoot } from '../private/sync-private';
 
-/** Where Google sends the parent back in dev: the Vite proxy on 5173 forwards it to the API. */
-export const DEV_REDIRECT_PREFIX = 'http://localhost:5173/';
+/** Where the account service sends the parent back in dev: the Vite proxy on 5173 forwards it to the API. */
+export const DEV_REDIRECT_URI = 'http://localhost:5173/api/auth/callback';
+const DEV_CLIENT_USER = 'miu-world dev';
 
 // `used_by` is one project name or a list of them; entries of other services may carry any shape.
 const TokenEntry = z.object({ service: z.string(), used_by: z.union([z.string(), z.array(z.string())]).optional(), token: z.unknown() });
 const TokenFile = z.object({ tokens: z.array(z.unknown()) });
-const GoogleClient = z.object({ client_id: z.string().min(1), client_secret: z.string().min(1), redirect_uris: z.array(z.string()) });
+const DevClient = z.object({ client_id: z.string().min(1), client_secret: z.string().min(32) });
 
 /** The token file: `MIU_TOKEN_FILE` when set, else next to the private files in iCloud Drive. */
 export function tokenFilePath(env: NodeJS.ProcessEnv = process.env): string | null {
@@ -25,26 +27,24 @@ export function tokenFilePath(env: NodeJS.ProcessEnv = process.env): string | nu
   return root ? path.join(root, 'cong-viec/Cong viec/ENV production/access-tokens.json') : null;
 }
 
-/** The API's Google env from the token file's contents, or null when the dev client is not there. */
-export function googleEnv(tokenFileJson: unknown): Record<string, string> | null {
+/** The API's sign-in env from the token file's contents, or null when the dev client is not there. */
+export function signInEnv(tokenFileJson: unknown): Record<string, string> | null {
   const file = TokenFile.safeParse(tokenFileJson);
   const entry = (file.success ? file.data.tokens : [])
     .map((t) => TokenEntry.safeParse(t))
     .flatMap((t) => (t.success ? [t.data] : []))
-    .find((t) => t.service === 'accounts.google.com' && [t.used_by ?? []].flat().includes('miu-world'));
-  const client = GoogleClient.safeParse(entry?.token);
+    .find((t) => t.service === 'auth.hoandat.com' && [t.used_by ?? []].flat().includes(DEV_CLIENT_USER));
+  const client = DevClient.safeParse(entry?.token);
   if (!client.success) return null;
-  const redirect = client.data.redirect_uris.find((u) => u.startsWith(DEV_REDIRECT_PREFIX));
-  if (!redirect) return null;
-  return { GOOGLE_CLIENT_ID: client.data.client_id, GOOGLE_CLIENT_SECRET: client.data.client_secret, GOOGLE_REDIRECT_URI: redirect };
+  return { OIDC_WEB_CLIENT_ID: client.data.client_id, OIDC_WEB_CLIENT_SECRET: client.data.client_secret, OIDC_REDIRECT_URI: DEV_REDIRECT_URI };
 }
 
-function loadGoogleEnv(): Record<string, string> {
+function loadSignInEnv(): Record<string, string> {
   const file = tokenFilePath();
-  const google = file && existsSync(file) ? googleEnv(JSON.parse(readFileSync(file, 'utf8'))) : null;
-  if (google) return google;
+  const env = file && existsSync(file) ? signInEnv(JSON.parse(readFileSync(file, 'utf8'))) : null;
+  if (env) return env;
   console.warn(
-    `[dev] Không tìm thấy Google OAuth client cho dev (${file ?? 'không xác định được iCloud Drive'}): API vẫn chạy nhưng không đăng nhập phụ huynh được. ` +
+    `[dev] Không tìm thấy client đăng nhập miu-web-dev cho dev (${file ?? 'không xác định được iCloud Drive'}): API vẫn chạy nhưng không đăng nhập phụ huynh được. ` +
       'Đặt MIU_TOKEN_FILE hoặc MIU_ICLOUD_DIR rồi chạy lại.',
   );
   return {};
@@ -76,7 +76,7 @@ function main(): void {
   // The owner's class timetable (out of git, from `pnpm private:sync`) as every child's default, as in production.
   const timetable = path.join(REPO_ROOT, '.data/private/timetable-default.json');
   const timetableEnv = !process.env.TIMETABLE_DEFAULT_FILE && existsSync(timetable) ? { TIMETABLE_DEFAULT_FILE: timetable } : {};
-  const api = run('api', 'pnpm --filter @miu/server dev', { ...process.env, ...loadGoogleEnv(), ...timetableEnv });
+  const api = run('api', 'pnpm --filter @miu/server dev', { ...process.env, ...loadSignInEnv(), ...timetableEnv });
   const web = run('web', 'pnpm --filter @miu/web dev', process.env);
   const children = [api, web];
   let stopping = false;
