@@ -1,4 +1,6 @@
 - [Worktree review is a moving target](project-review-worktree-moving-target.md) — author edits/commits during review; check range-end..HEAD; new quest category → check server regionQuests
 - [Plan review heuristics](project-plan-review-heuristics.md) — deploy setup wipes env, OAuth drops deep links, HMAC ≠ hidden id, GA MP attribution
 - [Family-only defaults now public](project-family-only-defaults.md) — default timetable + HP001 font served to strangers since 12/10; check what a new account gets
+- [Google re-auth limits](project-google-reauth-limits.md) — Google ignores/rejects prompt=login; auth_time needs claims param + setting; fakes lie
 - [Content review heuristics](project-content-review-heuristics.md) — logic elements only render for pattern; dup grids/numbers; branch-dependent letters
+- [Online/voice switch enforcement gaps](project-online-switch-review.md) — WS-only enforcement; HTTP invites/TURN unchecked; no-PIN gate lets child flip
