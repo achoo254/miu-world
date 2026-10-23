@@ -6,6 +6,7 @@ import { PlayerDto, PlayerInput, PlayerLanguage } from '@miu/schema/account';
 import { serverEvents, type SignUpMethod } from '../analytics/server-events';
 import { hasCurrentConsent } from '../auth/consent-store';
 import { auth, requireParent, requireParentGate } from '../auth/auth-context';
+import { isReviewAccountEmail } from '../auth/idp-account-link';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { characters, childProfiles, consents, parents, sessions } from '../db/schema';
@@ -39,9 +40,16 @@ async function lockAccount(tx: Tx, parentId: string): Promise<void> {
   await tx.select({ id: parents.id }).from(parents).where(eq(parents.id, parentId)).for('update');
 }
 
-/** A new player always comes with its default character, so every player can play straight away. */
+/**
+ * A new player always comes with its default character, so every player can play straight away. A store reviewer's
+ * account (its own `.invalid` email) gets its players with online play and voice chat off: a reviewer meets no real
+ * player unless the switches are turned on in account management.
+ */
 async function insertPlayer(tx: Tx, values: { parentId: string; displayName: string; language: string; isPrimary: boolean; createdAt: Date }) {
-  const [row] = await tx.insert(childProfiles).values({ id: randomUUID(), ...values }).returning();
+  const [account] = await tx.select({ email: parents.email }).from(parents).where(eq(parents.id, values.parentId));
+  const review = account ? isReviewAccountEmail(account.email) : false;
+  const controls = review ? { onlineAllowed: false, voiceChatAllowed: false } : {};
+  const [row] = await tx.insert(childProfiles).values({ id: randomUUID(), ...values, ...controls }).returning();
   if (!row) throw new Error('player insert returned no row');
   const [character] = await tx.insert(characters).values({ childId: row.id, name: DEFAULT_CHARACTER_NAME }).returning({ species: characters.species });
   return { row, species: character?.species ?? DEFAULT_SPECIES };

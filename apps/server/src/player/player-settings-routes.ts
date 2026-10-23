@@ -31,7 +31,8 @@ const view = (row: Row): PlayerSettingsView =>
  * A player's switches. Her own companion bot switch (`GET`/`PUT /player-settings`, no PIN: it is hers), read together
  * with the account owner's switches and whether she saw the voice reminder. The account owner changes any switch of
  * any player of the account (`PATCH /players/:id/settings`, behind the optional PIN): voice chat and online play,
- * which only the owner can turn off and the server enforces (online tickets, the rooms, voice). The reminder shown
+ * which only the owner can turn off or on, only once the account has a PIN (409 `pin-required` otherwise), and the
+ * server enforces (online tickets, friends and invites, the rooms, voice). The reminder shown
  * before her first voice chat is confirmed once per player (`POST /player-settings/voice-safety`). A change takes
  * effect at once in the online rooms.
  */
@@ -83,6 +84,9 @@ export function playerSettingsRoutes({ db, content, clock, events }: PlayerSetti
     // Ownership first: another account's player is "not found" whatever the body says.
     const player = await ownedPlayer(db, parent.id, idParam(req.params.id));
     const patch = parseInput(PlayerOwnerSettingsPatch, req.body);
+    // The online and voice switches only on an account with a PIN: otherwise anyone at the device (the child too)
+    // could turn them back on. The companion bot switch is hers anyway.
+    if ((patch.onlineAllowed !== undefined || patch.voiceChatAllowed !== undefined) && parent.pinHash === null) throw new HttpError(409, 'pin-required');
     const row = await update(parent.id, player.id, patch);
     res.json(PlayerOwnerSettings.parse(row));
   });

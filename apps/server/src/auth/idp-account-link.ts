@@ -43,6 +43,9 @@ export const REVIEW_SIGN_IN = 'review';
 export const reviewAccountEmail = (issuer: string, sub: string): string =>
   `app-review-${createHash('sha256').update(`${issuer}\n${sub}`).digest('hex').slice(0, 32)}@review.invalid`;
 
+/** Whether a stored account email is a review account's (`reviewAccountEmail`): its players start with online and voice off. */
+export const isReviewAccountEmail = (email: string): boolean => /^app-review-[0-9a-f]{32}@review\.invalid$/.test(email);
+
 /** A review identity's own new account (its link is checked first by the caller). */
 async function createReviewAccount(db: Db, issuer: string, sub: string, now: Date): Promise<AccountLink> {
   try {

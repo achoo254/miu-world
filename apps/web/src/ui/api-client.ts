@@ -72,6 +72,9 @@ const MESSAGES: Readonly<Record<string, TextKey>> = {
   'invalid-species': 'errors.invalidSpecies',
   'friends-full': 'errors.friendsFull',
   'invite-limit': 'errors.inviteLimit',
+  'pin-required': 'errors.pinRequired',
+  'online-off': 'errors.onlineOff',
+  'voice-off': 'errors.voiceOff',
 };
 
 /** The message for a failed call, in the display mode chosen when it failed. */

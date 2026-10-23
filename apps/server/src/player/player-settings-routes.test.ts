@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { eq } from 'drizzle-orm';
 import { ORIGIN, TEST_PIN, createTestApp, parentWithChild, type TestApp } from '../../test/test-app';
+import { reviewAccountEmail } from '../auth/idp-account-link';
 import * as t from '../db/schema';
 import { PlayerEvents, type PlayerEvent } from './player-events';
 
@@ -124,5 +125,32 @@ describe('the reminder before her first voice chat', () => {
 
   it('needs a signed-in player', async () => {
     await app.request().post('/api/player-settings/voice-safety').set('Origin', ORIGIN).expect(401);
+  });
+});
+
+describe('the online and voice switches need a PIN', () => {
+  it('are refused on an account without a PIN (409 pin-required), while the bot switch still changes', async () => {
+    const { agent, childId } = await parentWithChild(app);
+    const me = (await agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
+    await app.db.update(t.parents).set({ pinHash: null }).where(eq(t.parents.id, me.parent.id));
+    const before = events.length;
+    await agent.patch(`/api/players/${childId}/settings`).send({ onlineAllowed: false }).expect(409, { error: 'pin-required' });
+    await agent.patch(`/api/players/${childId}/settings`).send({ voiceChatAllowed: true }).expect(409, { error: 'pin-required' });
+    await agent.patch(`/api/players/${childId}/settings`).send({ botsEnabled: false, voiceChatAllowed: false }).expect(409, { error: 'pin-required' });
+    expect(events.length).toBe(before);
+    await agent.patch(`/api/players/${childId}/settings`).send({ botsEnabled: false }).expect(200, { botsEnabled: false, voiceChatAllowed: true, onlineAllowed: true });
+  });
+});
+
+describe('a store reviewer’s account', () => {
+  it('gets its players with online play and voice chat off', async () => {
+    const { agent } = await parentWithChild(app, false);
+    const me = (await agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
+    await app.db.update(t.parents).set({ email: reviewAccountEmail('https://auth.example', `sub-${me.parent.id}`) }).where(eq(t.parents.id, me.parent.id));
+    const extra = ((await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201)).body as { id: string; onlineAllowed: boolean; voiceChatAllowed: boolean });
+    expect(extra).toMatchObject({ onlineAllowed: false, voiceChatAllowed: false });
+    // Any other account's new player has both on.
+    const other = await parentWithChild(app, false);
+    expect((await other.agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201)).body).toMatchObject({ onlineAllowed: true, voiceChatAllowed: true });
   });
 });

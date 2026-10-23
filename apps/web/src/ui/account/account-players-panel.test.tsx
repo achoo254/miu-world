@@ -18,6 +18,12 @@ const PROGRESS: PlayerProgressDto = {
 
 type Handler = (body: unknown) => { status: number; body?: unknown };
 
+/** The account as the server reads it: with a PIN unless `pinSet` says otherwise. */
+const me = (pinSet = true): Handler => () => ({
+  status: 200,
+  body: { parent: { id: '1b0e8e0c-6f1a-4b8e-9a53-1f1c2a3b4c5d', email: 'p@example.vn' }, consentAccepted: true, activePlayerId: null, players: [{ id: EXTRA.id, displayName: EXTRA.displayName, primary: false }], parentGateOpen: true, pinLocked: false, pinSet },
+});
+
 function stubApi(routes: Record<string, Handler>) {
   const calls: Array<{ key: string; body: unknown }> = [];
   vi.stubGlobal(
@@ -74,6 +80,7 @@ describe('the account owner’s card per player', () => {
 
   it('turns the player’s voice chat and online play off, each on its own, both on by default', async () => {
     const calls = stubApi({
+      'GET /api/auth/me': me(),
       [`GET /api/players/${EXTRA.id}/learning-progress`]: () => ({ status: 200, body: PROGRESS }),
       [`PATCH /api/players/${EXTRA.id}/settings`]: (body) => ({ status: 200, body: { botsEnabled: true, voiceChatAllowed: true, onlineAllowed: true, ...(body as object) } }),
     });
@@ -81,6 +88,7 @@ describe('the account owner’s card per player', () => {
     fireEvent.click(document.querySelector(`[data-id="player-care-toggle-${EXTRA.id}"]`) as HTMLElement);
     fireEvent.click(await screen.findByRole('tab', { name: 'Chơi online' }));
     const radio = (key: string, on: 'on' | 'off') => document.querySelector(`[data-id="player-care-${key}-${EXTRA.id}-${on}"]`) as HTMLElement;
+    await waitFor(() => expect((radio('voiceChatAllowed', 'off') as HTMLButtonElement).disabled).toBe(false));
     expect(radio('voiceChatAllowed', 'on').getAttribute('aria-checked')).toBe('true');
     expect(radio('onlineAllowed', 'on').getAttribute('aria-checked')).toBe('true');
     expect(screen.getByRole('radiogroup', { name: 'Nói chuyện bằng giọng' })).toBeTruthy();
@@ -89,5 +97,25 @@ describe('the account owner’s card per player', () => {
     fireEvent.click(radio('onlineAllowed', 'off'));
     await waitFor(() => expect(radio('onlineAllowed', 'off').getAttribute('aria-checked')).toBe('true'));
     expect(calls.filter((c) => c.key.startsWith('PATCH')).map((c) => c.body)).toEqual([{ voiceChatAllowed: false }, { onlineAllowed: false }]);
+  });
+
+  it('without a PIN, keeps the online and voice switches as they are and asks the owner to set a PIN first', async () => {
+    const calls = stubApi({
+      'GET /api/auth/me': me(false),
+      [`GET /api/players/${EXTRA.id}/learning-progress`]: () => ({ status: 200, body: PROGRESS }),
+    });
+    renderPanel();
+    fireEvent.click(document.querySelector(`[data-id="player-care-toggle-${EXTRA.id}"]`) as HTMLElement);
+    fireEvent.click(await screen.findByRole('tab', { name: 'Chơi online' }));
+    const link = await screen.findByRole('link', { name: 'Đặt mã PIN' });
+    expect(link.getAttribute('href')).toBe('/set-pin');
+    for (const key of ['onlineAllowed', 'voiceChatAllowed']) {
+      const off = document.querySelector(`[data-id="player-care-${key}-${EXTRA.id}-off"]`) as HTMLButtonElement;
+      expect(off.disabled).toBe(true);
+      fireEvent.click(off);
+    }
+    // The companion bot switch is the player's own: it still works without a PIN.
+    expect((document.querySelector(`[data-id="player-care-botsEnabled-${EXTRA.id}-off"]`) as HTMLButtonElement).disabled).toBe(false);
+    expect(calls.some((c) => c.key.startsWith('PATCH'))).toBe(false);
   });
 });
