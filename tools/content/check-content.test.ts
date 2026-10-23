@@ -86,9 +86,9 @@ describe('content:check', () => {
 
   it('flags a privacy page that does not match the consent accounts accept', () => {
     const consent = path.join(dir, 'legal/consent-vi.json');
-    writeFileSync(consent, readFileSync(consent, 'utf8').replace('"version": "v5"', '"version": "v6"'));
+    writeFileSync(consent, readFileSync(consent, 'utf8').replace('"version": "v6"', '"version": "v7"'));
     expect(checkContent(dir).issues).toEqual([
-      'content/legal/privacy-vi.json describes consent v5, but accounts are asked to accept v6: update the page with the consent',
+      'content/legal/privacy-vi.json describes consent v6, but accounts are asked to accept v7: update the page with the consent',
     ]);
     writeFileSync(path.join(dir, 'legal/privacy-vi.json'), JSON.stringify({ title: 'x', updatedOn: 'hôm nay', consentVersion: 'v6', contactEmail: null, sections: [] }));
     expect(checkContent(dir).issues.join('\n')).toMatch(/privacy-vi\.json: .*updatedOn/s);

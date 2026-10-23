@@ -11,7 +11,7 @@ Bốn vấn đề tìm thấy lúc soạn hồ sơ đã sửa trong code ngày 2
 | B1 | Tài khoản người duyệt store (auth-next ADR 0010: email chưa xác minh, `amr` có `review`) bị Miu từ chối | **Đã sửa**: Miu tạo cho nó một tài khoản riêng, khóa theo issuer + `sub`, không bao giờ nối theo email hay tài khoản Google (`apps/server/src/auth/idp-account-link.ts`). Không có công tắc phía Miu: bật/tắt ở auth-next là đủ. |
 | B2 | Tài khoản một người chơi không tới được Quản lý tài khoản (Xóa tài khoản, Đăng xuất) trong app | **Đã sửa**: Cài đặt luôn có nút "Quản lý tài khoản" (vẫn qua PIN nếu đã đặt). |
 | B3 | Google Analytics với app dành cho trẻ (Apple 5.1.4, Play Families) | **Đã sửa**: máy chủ không gửi gì tới GA4 cho request của app (nhận biết theo loại phiên, không theo thông tin app tự khai); web giữ nguyên. Chính sách quyền riêng tư đã ghi rõ. |
-| B4 | Play Families: lời nhắc an toàn trước khi trẻ trao đổi; người lớn quản lý tính năng xã hội | **Đã sửa**: lời nhắc "Nói chuyện an toàn" một lần mỗi người chơi trước lần trò chuyện bằng giọng đầu tiên (lưu ở máy chủ); công tắc "Chơi online" và "Nói chuyện bằng giọng" cho từng người chơi trong Quản lý tài khoản, máy chủ thi hành. |
+| B4 | Play Families: lời nhắc an toàn trước khi trẻ trao đổi; người lớn quản lý tính năng xã hội | **Đã sửa**: lời nhắc "Nói chuyện an toàn" một lần mỗi người chơi trước lần trò chuyện bằng giọng đầu tiên (lưu ở máy chủ); công tắc "Chơi online" và "Nói chuyện bằng giọng" cho từng người chơi trong Quản lý tài khoản, chỉ đổi được khi tài khoản có mã PIN; máy chủ thi hành ở mọi đường (vé online, kết bạn, link mời, giọng nói, máy chủ chuyển tiếp giọng nói). Lời đồng ý lên v6 nói rõ việc này; tài khoản đã đồng ý v5 được hỏi lại một lần. |
 | B5 | Điều kiện sẵn có của plan (pha 7): kiểm duyệt chạy trên production, pháp lý Việt Nam (game online, Nghị định 13/2023) đã xác nhận hoặc loại Việt Nam khỏi danh sách nước, đo máy thật đạt | **Còn chặn** gửi duyệt công khai (`plans/dattqh/261007-2038-mobile-app-ios-android/phase-07-store-internal-release.md`). Bản thử nội bộ (TestFlight, Play internal) không bị chặn bởi B5. |
 
 Việc của người sở hữu, không chặn kỹ thuật nhưng cần trước khi gửi: URL hỗ trợ riêng (xem mục URL); ảnh nổi bật Play 1024 × 500 (chưa có; các ảnh `assets/generated/channel-kit/` là cỡ YouTube/Facebook); trả lời "Export compliance" (chỉ dùng HTTPS chuẩn: exempt, có thể thêm `ITSAppUsesNonExemptEncryption = NO` vào `Info.plist` để khỏi hỏi mỗi bản); kiểm "Privacy Report" của bản archive (app không có `PrivacyInfo.xcprivacy` riêng; các gói Capacitor tự mang manifest của chúng); điền mật khẩu người duyệt từ tệp credential (mục `apple-app-review-demo`), không ghi vào repo.
@@ -141,7 +141,7 @@ Khuyến nghị khai **trung thực**: nhóm 6–8, 9–12 và 13 trở lên (đ
 
 ## Apple App Privacy (nhãn quyền riêng tư)
 
-Tracking: **Không** (không IDFA, không quảng cáo, không chia sẻ cho data broker). Analytics: **không có** trong app (máy chủ không gửi gì tới Google Analytics cho request của app; chỉ trang web gửi).
+Tracking: **Không** (không IDFA, không quảng cáo, không chia sẻ cho data broker). Analytics: **không có** trong app: máy chủ không gửi tới Google Analytics sự kiện nào do app gây ra; chỉ có con số tổng người chơi online cao nhất mỗi giờ, không kèm mã nào, có đếm cả người chơi trong app (không phải dữ liệu thu từ người dùng).
 
 | Loại dữ liệu | Mục đích | Liên kết với danh tính | Ghi chú |
 | --- | --- | --- | --- |
@@ -184,11 +184,11 @@ SIGN-IN
 • Demo account for review: on the auth.hoandat.com sign-in page, tap the small link "Tài khoản dành cho người duyệt ứng dụng" (Account for app reviewers) below the provider buttons, then enter the email and password given in the Sign-In Information fields of this submission. This reviewer-only password sign-in is switched on for the review period only.
 • On first sign-in, accept the privacy notice ("Tôi đồng ý") and pick a character; the game starts on the home island.
 
-• The reviewer sign-in creates its own empty Miu account (never linked to any other account).
+• The reviewer sign-in creates its own empty Miu account (never linked to any other account). Its players start with online play and voice chat switched off, so a reviewer meets no real player. To try the online features: Settings (gear) → "Quản lý tài khoản" → set a PIN ("Đặt mã PIN"), then open the player card → "Chơi online" tab → turn "Chơi online" and "Nói chuyện bằng giọng" on.
 
 ACCOUNT PIN (PARENT GATE) AND PARENTAL CONTROLS
 • No PIN is set on a new account, so account management opens directly. A 4-digit PIN can be set in account management ("Quản lý tài khoản"); once set, it is asked before account management, player management and account deletion.
-• In account management, each player card → "Chơi online" tab has the account owner's switches: online play and voice chat (both on by default, enforced by our server), and companion bots.
+• In account management, each player card → "Chơi online" tab has the account owner's switches: online play and voice chat (on by default, enforced by our server, changeable only once the account has a PIN so a child cannot turn them back on), and companion bots.
 
 ACCOUNT DELETION
 • In the app: Settings (gear) → "Quản lý tài khoản" (Account) → "Xóa tài khoản" (Delete account) → confirm. Deletion is immediate and removes every player, all progress and every session; backups expire within 14 days.
@@ -200,7 +200,7 @@ ONLINE FEATURES
 • Report or block: tap another player (or the Interact button) → "Báo cáo" (Report) or "Chặn" (Block). Reports go to a moderation queue reviewed by our moderators.
 
 ANALYTICS
-• The app contains no analytics or advertising SDK, and our server sends nothing about app usage to any analytics service.
+• The app contains no analytics or advertising SDK, and our server sends no event caused by the app to any analytics service (the only figure is an anonymous hourly total of players online, with no identifier).
 
 Contact: the support email on https://miu.hoandat.com/privacy
 ```
