@@ -1,57 +1,57 @@
 {
-  "capturedFrom": "b189e7eee9a2f6de2577d845ec5911e20ab1f2fc",
-  "capturedAt": "2026-10-20T17:36:06+07:00",
-  "reviewedAt": "2026-10-20T17:39:20+07:00",
-  "reviewer": "agent:claude (5 subagent duyệt 54 ảnh theo checklist, so với ảnh đã duyệt ở 601d07ea); quyết định duyệt giao cho Jev (jev-1.13.0) theo chỉ thị của phiên điều phối: pass, xác suất 1.0",
+  "capturedFrom": "0bc75eb3fb361f06361860f24574d53816418dbc",
+  "capturedAt": "2026-10-23T10:47:18+07:00",
+  "reviewedAt": "2026-10-23T10:50:22+07:00",
+  "reviewer": "agent:claude (5 subagent, mỗi lô 10–11 ảnh)",
   "verdict": "pass",
   "findings": [
+    {
+      "shot": "360x740/11-reward.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Panel thưởng đang cuộn nên hai thẻ \"Phép cộng +2\" và \"Phép trừ +1\" bị mép trên xén nửa tiêu đề (dòng sưu tập dài ba dòng đẩy lệch khoảng 27 px); vùng chạm không bị ảnh hưởng.",
+      "fixedIn": null
+    },
     {
       "shot": "360x740/13-olympiad-practice.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Màn đang cuộn xuống nên dòng đầu đề bài bị cắt nửa ở mép trên; nút quay lại (←) nổi đè góc phải bong bóng đề (không che chữ). Giống hệt ảnh đã duyệt.",
+      "text": "Dòng đầu câu hỏi \"Biết 1 quả táo thăng bằng…\" bị mép trên màn xén mất nửa chữ; ảnh duyệt trước cũng vậy.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/15-shop.png",
-      "kind": "other",
+      "shot": "360x740/13-olympiad-practice.png",
+      "kind": "overlap",
       "severity": "note",
-      "text": "Toast «+80 XP» còn sót, thò một mẩu ở mép trên phía sau bảng Cửa hàng; không che nút nào. Có từ ảnh đã duyệt.",
+      "text": "Nút quay lại đè lên góc phải bóng thoại câu hỏi nhưng không che chữ, vẫn chạm được; ảnh duyệt trước cũng vậy.",
       "fixedIn": null
     },
     {
       "shot": "360x740/22-friends-invite.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Nút «Quay lại game» đè lên viền góc dưới phải của bảng Bạn bè (không che chữ hay nút «Chia sẻ»/«Thu hồi»). Có từ ảnh đã duyệt.",
+      "text": "Nút \"Quay lại game\" đè nhẹ lên viền dưới panel Bạn bè nhưng không che chữ hay nút nào; ảnh duyệt trước cũng vậy.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/27-puzzle-clues.png",
+      "shot": "820x1180/14-boss.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Dải tiêu đề \"Đấu trí với Chó Bạc Canh Hào\" gần như bị ẩn (DOM đo 65×9 trên 430×43); tên boss vẫn hiện ở thanh máu và ảnh lần trước y như vậy, có thể là cố ý.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/24-weekly-share.png",
       "kind": "other",
       "severity": "note",
-      "text": "Khổ điện thoại chỉ thấy «Cốc đỏ», «Cốc xanh»; lựa chọn thứ ba phải cuộn mới thấy, bé có thể tưởng chỉ có hai. Có từ ảnh đã duyệt.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/04-home.png",
-      "kind": "off-screen",
-      "severity": "note",
-      "text": "Tên bài hôm nay dài hơn (xuống 2 dòng) đẩy dòng nhiệm vụ «Hoàn thành 0/11 · +100 XP» xuống, chỉ thấy nửa trên ở mép dưới; trang cuộn được. Do dữ liệu theo ngày, bố cục không đổi.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/08-play-prompt.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Nhân vật Mochi đứng chắn trước NPC Vẹt, chỉ thấy nhãn «Vẹt · Nói chuyện». Có từ ảnh đã duyệt.",
+      "text": "Chân thẻ tổng kết tuần hiện địa chỉ \"127.0.0.1:4173\" của môi trường chụp (lần trước cũng vậy); thẻ chia sẻ ra ngoài nên cần xác nhận production in đúng tên miền thật.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/18-party.png",
       "kind": "other",
       "severity": "note",
-      "text": "Thú cưng Mèo xám đứng ngay trước nhân vật Mochi trong cảnh 3D, che gần hết thân; giao diện không đổi, không chồng nhau.",
+      "text": "Thú cưng Mèo xám đứng ngay trước nhân vật, che gần hết thân dưới của nhân vật người chơi; HUD và bảng Đội không đổi.",
       "fixedIn": null
     }
   ]
