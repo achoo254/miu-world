@@ -1,57 +1,43 @@
 {
-  "capturedFrom": "0bc75eb3fb361f06361860f24574d53816418dbc",
-  "capturedAt": "2026-10-23T10:47:18+07:00",
-  "reviewedAt": "2026-10-23T10:50:22+07:00",
+  "capturedFrom": "874eab87c73822d9e8e3702dc114b83c63f82815",
+  "capturedAt": "2026-10-23T18:18:03+07:00",
+  "reviewedAt": "2026-10-23T18:20:30+07:00",
   "reviewer": "agent:claude (5 subagent, mỗi lô 10–11 ảnh)",
   "verdict": "pass",
   "findings": [
     {
-      "shot": "360x740/11-reward.png",
-      "kind": "clipped",
+      "shot": "820x1180/25-online-off.png",
+      "kind": "other",
       "severity": "note",
-      "text": "Panel thưởng đang cuộn nên hai thẻ \"Phép cộng +2\" và \"Phép trừ +1\" bị mép trên xén nửa tiêu đề (dòng sưu tập dài ba dòng đẩy lệch khoảng 27 px); vùng chạm không bị ảnh hưởng.",
+      "text": "Màn này giống hệt ảnh trước và chỉ có thông báo chung \"Chơi online đang tạm nghỉ một lát\", không thấy dòng nhắc bé hỏi bố mẹ khi online của bé bị tắt, nên cần kiểm tra xem trường hợp tắt theo từng người chơi đã được chụp ở đâu chưa.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/26-moderation.png",
+      "kind": "raw-text",
+      "severity": "note",
+      "text": "Dòng \"Bản đồ\" hiện mã nội bộ \"forest-ch1\" thay vì tên tiếng Việt của bản đồ; ảnh trước cũng vậy và đây là trang dành cho người kiểm duyệt.",
       "fixedIn": null
     },
     {
       "shot": "360x740/13-olympiad-practice.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Dòng đầu câu hỏi \"Biết 1 quả táo thăng bằng…\" bị mép trên màn xén mất nửa chữ; ảnh duyệt trước cũng vậy.",
+      "text": "Dòng đầu của câu hỏi \"Biết 1 quả táo thăng bằng…\" bị mép trên màn hình xén mất nửa trên, nút quay lại thì nằm đè lên góc phải khung câu hỏi nhưng không che chữ; ảnh lần trước cũng y như vậy.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/13-olympiad-practice.png",
-      "kind": "overlap",
+      "shot": "360x740/15-shop.png",
+      "kind": "off-screen",
       "severity": "note",
-      "text": "Nút quay lại đè lên góc phải bóng thoại câu hỏi nhưng không che chữ, vẫn chạm được; ảnh duyệt trước cũng vậy.",
+      "text": "Thông báo \"+80 XP\" ở mép trên bị panel Cửa hàng và mép màn hình che gần hết; đây không phải nút và ảnh lần trước cũng vậy.",
       "fixedIn": null
     },
     {
       "shot": "360x740/22-friends-invite.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Nút \"Quay lại game\" đè nhẹ lên viền dưới panel Bạn bè nhưng không che chữ hay nút nào; ảnh duyệt trước cũng vậy.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/14-boss.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Dải tiêu đề \"Đấu trí với Chó Bạc Canh Hào\" gần như bị ẩn (DOM đo 65×9 trên 430×43); tên boss vẫn hiện ở thanh máu và ảnh lần trước y như vậy, có thể là cố ý.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/24-weekly-share.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Chân thẻ tổng kết tuần hiện địa chỉ \"127.0.0.1:4173\" của môi trường chụp (lần trước cũng vậy); thẻ chia sẻ ra ngoài nên cần xác nhận production in đúng tên miền thật.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/18-party.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Thú cưng Mèo xám đứng ngay trước nhân vật, che gần hết thân dưới của nhân vật người chơi; HUD và bảng Đội không đổi.",
+      "text": "Nút \"Quay lại game\" đè lên góc dưới bên phải của khung panel Bạn bè nhưng không che chữ hay vùng chạm nào; ảnh lần trước cũng vậy.",
       "fixedIn": null
     }
   ]
