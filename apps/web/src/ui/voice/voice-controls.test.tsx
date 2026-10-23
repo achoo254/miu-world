@@ -4,7 +4,7 @@ import type { PartyView } from '@miu/schema/multiplayer';
 import type { VoiceChannel } from '@miu/schema/voice';
 import { createSocialStore, type SocialCommand, type VoiceOut } from '../../game-bridge/social-store';
 import { PartyFrame, SocialLayer, toastText } from '../online/social-layer';
-import { CallBar, FriendCallButton } from './voice-controls';
+import { CallBar, FriendCallButton, VoiceSafetyCard } from './voice-controls';
 import { VoiceManager } from './voice-manager';
 import { VoiceChatSettings } from './voice-chat-settings';
 import { readVoiceSettings } from './voice-settings';
@@ -29,7 +29,8 @@ const VOICE: VoiceChannel = {
   ],
 };
 
-function setup() {
+/** `safetySeen`: she confirmed the reminder before her first voice chat (true in most cases here). */
+function setup(safetySeen = true, saveSafetySeen: () => Promise<unknown> = async () => undefined) {
   const social = createSocialStore();
   social.update({ selfId: 'p-a', party: PARTY, mapId: 'trung-tam' });
   const sent: VoiceOut[] = [];
@@ -44,8 +45,10 @@ function setup() {
     createAudioContext: () => null,
     iceServers: async () => ({ iceServers: [{ urls: 'stun:stun.example:3478' }], ttlSeconds: 3600 }),
     speak: () => false,
+    saveSafetySeen,
   });
   voice.start();
+  voice.setPolicy({ allowed: true, safetySeen });
   return { social, voice, sent };
 }
 
@@ -159,5 +162,48 @@ describe('voice chat settings', () => {
     fireEvent.click(chat.querySelector('[data-id="s-chat-off"]') as Element);
     expect(readVoiceSettings().enabled).toBe(false);
     expect(screen.queryByRole('slider')).toBeNull();
+  });
+});
+
+describe('the reminder before her first voice chat', () => {
+  it('shows as a dialog when she first taps the microphone; confirming keeps it and joins', async () => {
+    const saveSafetySeen = vi.fn(async () => undefined);
+    const { social, voice, sent } = setup(false, saveSafetySeen);
+    render(
+      <>
+        <PartyFrame social={social} voice={voice} fill={(t) => t} />
+        <VoiceSafetyCard voice={voice} />
+      </>,
+    );
+    expect(screen.queryByRole('dialog')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: /Nói chuyện bằng giọng với đội/ }));
+    const dialog = await screen.findByRole('dialog', { name: 'Nói chuyện an toàn nhé!' });
+    expect(dialog.textContent).toContain('Đừng nói tên thật, tuổi, trường, địa chỉ hay số điện thoại.');
+    expect(sent).toEqual([]);
+    fireEvent.click(screen.getByRole('button', { name: 'Mình hiểu rồi' }));
+    await waitFor(() => expect(sent).toEqual([{ type: 'voice-join', mic: true }]));
+    expect(saveSafetySeen).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
+  it('closes with "Để sau" and nothing starts', async () => {
+    const { social, voice, sent } = setup(false);
+    render(
+      <>
+        <PartyFrame social={social} voice={voice} fill={(t) => t} />
+        <VoiceSafetyCard voice={voice} />
+      </>,
+    );
+    fireEvent.click(screen.getByRole('button', { name: /Nói chuyện bằng giọng với đội/ }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Để sau' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(sent).toEqual([]);
+  });
+
+  it('leaves no microphone button when the account owner turned her voice chat off', () => {
+    const { social, voice } = setup();
+    voice.setPolicy({ allowed: false, safetySeen: true });
+    render(<PartyFrame social={social} voice={voice} fill={(t) => t} />);
+    expect(screen.queryByRole('button', { name: /Nói chuyện bằng giọng với đội/ })).toBeNull();
   });
 });

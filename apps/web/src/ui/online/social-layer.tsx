@@ -16,7 +16,7 @@ import { REGIONS, findRegion } from '../region/regions';
 import { FriendAskCard } from '../friends/friend-ask-card';
 import { CannedLines, PlayerMenu } from './player-menu';
 import { useSocial } from './use-social';
-import { CallInviteCard, PartyVoiceControls, PersonVolume, VoiceMark, memberInVoice, useSpeaking, useVoice } from '../voice/voice-controls';
+import { CallInviteCard, PartyVoiceControls, VoiceSafetyCard, PersonVolume, VoiceMark, memberInVoice, useSpeaking, useVoice } from '../voice/voice-controls';
 import type { VoiceManager } from '../voice/voice-manager';
 import './online.css';
 
@@ -397,6 +397,7 @@ export function SocialLayer({ social, covered, fill, voice = null }: { social: S
           <TravelCard social={social} fill={fill} />
           <FriendAskCard social={social} />
           {voice ? <CallInviteCard voice={voice} /> : null}
+          {voice ? <VoiceSafetyCard voice={voice} /> : null}
         </div>
       )}
       {covered ? null : <OnlinePauseCard social={social} />}

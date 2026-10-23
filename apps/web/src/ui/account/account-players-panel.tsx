@@ -1,9 +1,10 @@
 // NEW SCREEN (Master Plan §6, account area): the account owner looks after every player of the account. One card
-// per player, opened to her learning progress, her companion bot switch, or her friends and blocks (view, remove,
-// unblock; she answers requests herself). Everything is read from the server for that player
+// per player, opened to her learning progress, her online switches (companion bots; voice chat and online play, which
+// only the owner turns off and the server enforces), or her friends and blocks (view, remove, unblock; she answers
+// requests herself). Everything is read from the server for that player
 // (`/api/players/:id/…`), behind the account area's optional PIN.
 import { useMemo, useRef, useState } from 'react';
-import { PlayerSettings, type PlayerDto, type PlayerSettingsPatch } from '@miu/schema/account';
+import { PlayerOwnerSettings, type PlayerDto, type PlayerOwnerSettingsPatch } from '@miu/schema/account';
 import { api } from '../api-client';
 import type { TextKey } from '../i18n/i18n';
 import { T, useT } from '../i18n/use-t';
@@ -21,21 +22,26 @@ import './account-players.css';
 type CareTab = 'progress' | 'online' | 'friends';
 
 /**
- * The account owner switches companion bots for a player (applied at once, even in a room). Online play itself
- * has no switch: the game is always online (owner, 05/10/2026).
+ * The account owner's switches for a player, applied at once even in a room: her companion bots (her own setting
+ * too), and voice chat and online play, on by default, which only the owner can turn off (the server refuses them).
  */
 function PlayerOnlineSwitches({ player }: { player: PlayerDto }) {
-  const [settings, setSettings] = useState<PlayerSettings>({ botsEnabled: player.botsEnabled });
+  const [settings, setSettings] = useState<PlayerOwnerSettings>({ botsEnabled: player.botsEnabled, voiceChatAllowed: player.voiceChatAllowed, onlineAllowed: player.onlineAllowed });
   /** The change being saved (the submit wrapper takes no arguments). */
-  const pending = useRef<PlayerSettingsPatch>({ botsEnabled: player.botsEnabled });
+  const pending = useRef<PlayerOwnerSettingsPatch>({});
   const save = useSubmit(async () => {
-    setSettings(await api('PATCH', `/players/${player.id}/settings`, PlayerSettings, pending.current));
+    setSettings(await api('PATCH', `/players/${player.id}/settings`, PlayerOwnerSettings, pending.current));
   });
-  const choice = (key: keyof PlayerSettings, title: TextKey) => (
+  const choice = (key: keyof PlayerOwnerSettings, title: TextKey, hint?: TextKey) => (
     <div className="setting-group" role="radiogroup" aria-labelledby={`player-care-${key}-${player.id}`} data-id={`player-care-${key}-${player.id}`}>
       <p className="setting-title" id={`player-care-${key}-${player.id}`}>
         <T k={title} />
       </p>
+      {hint ? (
+        <p className="hint setting-hint">
+          <T k={hint} />
+        </p>
+      ) : null}
       <div className="setting-choices">
         {[true, false].map((on) => (
           <button
@@ -62,6 +68,8 @@ function PlayerOnlineSwitches({ player }: { player: PlayerDto }) {
       <p className="hint">
         <T k="playerCare.settingsHint" />
       </p>
+      {choice('onlineAllowed', 'playerCare.online', 'playerCare.onlineHint')}
+      {choice('voiceChatAllowed', 'playerCare.voiceChat', 'playerCare.voiceChatHint')}
       {choice('botsEnabled', 'settings.bots')}
       {save.error ? (
         <p role="alert" className="error">

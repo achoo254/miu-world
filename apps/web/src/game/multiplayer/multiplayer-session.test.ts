@@ -310,6 +310,22 @@ describe('when online play is paused or locked', () => {
       vi.useRealTimers();
     }
   });
+
+  it('online play turned off by the account owner: a friendly line and no more tries on this page', async () => {
+    vi.useFakeTimers();
+    try {
+      const { ws, social, online } = await session();
+      ticketAnswer = { status: 403, body: { error: 'online-off' } };
+      ws.onclose?.({ code: 4404 });
+      expect(social.getSnapshot().onlinePause).toBe('owner');
+      vi.advanceTimersByTime(120_000);
+      await flush();
+      expect(FakeSocket.last).toBe(ws);
+      online.dispose();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
 });
 
 describe('reconnecting', () => {

@@ -2,7 +2,7 @@ import express, { type ErrorRequestHandler } from 'express';
 import helmet from 'helmet';
 import type { HealthResponse } from '@miu/schema/health';
 import type { Worksheet } from '@miu/schema/worksheet';
-import { AnalyticsSessions, rememberAnalyticsIds } from './analytics/analytics-session';
+import { AnalyticsSessions, markAppRequests, rememberAnalyticsIds } from './analytics/analytics-session';
 import { ANALYTICS_BODY_LIMIT, analyticsCatalog, analyticsRoutes } from './analytics/analytics-routes';
 import type { EventSink } from './analytics/ga4-forwarder';
 import { accountRoutes } from './auth/account-routes';
@@ -136,6 +136,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(appCors(config.appOrigins));
   api.use(requireAllowedOrigin([...config.allowedOrigins, ...config.appOrigins]));
   api.use(loadSession(db, config, clock));
+  api.use(markAppRequests(config.appOrigins));
   api.use(rememberAnalyticsIds(analytics.sessions));
   api.get('/health', (_req, res) => {
     const body: HealthResponse = { status: 'ok' };

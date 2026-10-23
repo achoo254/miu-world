@@ -2,7 +2,8 @@
 // sign-in (the landing and lesson pages are public) but behind the API's Origin check, a 4 KB body limit (mounted in
 // app.ts ahead of the general parser) and two rate limits: a wide one per IP (a school shares one address) and a
 // narrow one per GA client id (one browser). Only the two web events pass; every value is checked
-// and the page address rebuilt by `sanitizeWebEvent`, so nothing the browser makes up reaches Google.
+// and the page address rebuilt by `sanitizeWebEvent`, so nothing the browser makes up reaches Google. The app's
+// events (`inAppRequest`) are checked the same way and then dropped: the app sends nothing to Google Analytics.
 import path from 'node:path';
 import { Router, type Request } from 'express';
 import { GA_CLIENT_ID, WebEventBody, sanitizeWebEvent, type AnalyticsCatalog } from '@miu/schema/analytics';
@@ -14,6 +15,7 @@ import { HttpError } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
 import { readBookTocs } from '../worksheet/curriculum-books';
 import type { EventSink } from './ga4-forwarder';
+import { inAppRequest } from './analytics-session';
 import { questLabels } from './server-events';
 
 /** Largest body the analytics route reads (its own parser, ahead of the general 32 KB one). */
@@ -56,7 +58,9 @@ export function analyticsRoutes({ sink, catalog, limitPerMinute, clientLimitPerM
     const origin = req.headers.origin;
     if (!body.success || !origin) throw new HttpError(400, 'invalid-event');
     const result = sanitizeWebEvent(body.data, origin, catalog);
-    if (result.ok) sink.send(result.hit);
+    if (result.ok) {
+      if (!inAppRequest()) sink.send(result.hit);
+    }
     // A page outside the route table is dropped quietly: the app reports every screen and lets the server choose.
     else if (result.reason === 'invalid') throw new HttpError(400, 'invalid-event');
     res.status(204).end();

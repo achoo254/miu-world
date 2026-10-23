@@ -81,20 +81,44 @@ export const PlayerDto = z.object({
   primary: z.boolean(),
   /** Her companion bot switch (see `PlayerSettings`). */
   botsEnabled: z.boolean().default(true),
+  /** The account owner's switches (see `PlayerControls`). */
+  voiceChatAllowed: z.boolean().default(true),
+  onlineAllowed: z.boolean().default(true),
 });
 export type PlayerDto = z.infer<typeof PlayerDto>;
 
 /**
  * A player's own switch, on by default: `botsEnabled` (companion bots show up around her). She changes it in
- * Cài đặt; the account owner can change it for any player of the account. Online play itself has no switch: the
- * game is online from the start, always (owner, 05/10/2026).
+ * Cài đặt; the account owner can change it for any player of the account.
  */
 export const PlayerSettings = z.object({ botsEnabled: z.boolean() });
 export type PlayerSettings = z.infer<typeof PlayerSettings>;
 
-/** A change of the switch. */
+/** A change of her own switch. */
 export const PlayerSettingsPatch = z.strictObject({ botsEnabled: z.boolean() });
 export type PlayerSettingsPatch = z.infer<typeof PlayerSettingsPatch>;
+
+/**
+ * The account owner's switches for one player, on by default so play stays as it always was: `voiceChatAllowed` (she
+ * may talk by voice) and `onlineAllowed` (she plays online; off, she plays alone, learns and is paid as usual). Only
+ * the owner changes them, in account management behind the optional PIN; the server enforces both.
+ */
+export const PlayerControls = z.object({ voiceChatAllowed: z.boolean(), onlineAllowed: z.boolean() });
+export type PlayerControls = z.infer<typeof PlayerControls>;
+
+/** What the game reads about the player it plays as: her switch, the owner's, and whether she saw the voice reminder. */
+export const PlayerSettingsView = PlayerSettings.extend({ ...PlayerControls.shape, voiceSafetySeen: z.boolean() });
+export type PlayerSettingsView = z.infer<typeof PlayerSettingsView>;
+
+/** The account owner's change of any of a player's switches (at least one). */
+export const PlayerOwnerSettingsPatch = z
+  .strictObject({ botsEnabled: z.boolean().optional(), voiceChatAllowed: z.boolean().optional(), onlineAllowed: z.boolean().optional() })
+  .refine((patch) => Object.values(patch).some((value) => value !== undefined), { message: 'empty' });
+export type PlayerOwnerSettingsPatch = z.infer<typeof PlayerOwnerSettingsPatch>;
+
+/** A player's switches as the account owner sees them. */
+export const PlayerOwnerSettings = PlayerSettings.extend(PlayerControls.shape);
+export type PlayerOwnerSettings = z.infer<typeof PlayerOwnerSettings>;
 
 // NFC so a decomposed "Mèo" (some mobile keyboards) matches the list entry.
 export const PlayerInput = z.object({
@@ -178,7 +202,7 @@ export const AccountExport = z.object({
       /** What she left switched on in her home (a lamp, the television); null until she first switches one. */
       homeObjects: HomeObjectStates.nullable(),
       /** Her companion bot switch. */
-      settings: PlayerSettings,
+      settings: PlayerSettings.extend({ ...PlayerControls.partial().shape, voiceSafetySeenAt: Instant.nullable().optional() }),
       /** Seconds played per week (Monday, Vietnam time), for the progress views; `updatedAt`: the last report. */
       playTime: z.array(z.object({ weekStart: z.string(), seconds: z.number(), updatedAt: Instant })),
       /** In-game letters: which one, whether read and its gift claimed. */

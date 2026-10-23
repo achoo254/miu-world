@@ -10,7 +10,7 @@
 | MVP | Vertical slice: Home Base + Khu rừng bí mật chương 1, nhân vật (bốn loài từ 30/09/2026, Master Plan §15 #36), một quest trọn vòng, server tính thưởng, tài khoản đăng nhập Google |
 | V1 | Trường học, Thư viện, Lâu đài; Thỏ, Cáo, Gấu; skill check, boss; cửa hàng |
 | Live World | Sự kiện có thời hạn (cổng Olympic Toán) |
-| MP | Multiplayer theo 3 bậc; bậc 1 (thấy nhau) và bậc 2 (co-op) đã có, game luôn online, không có công tắc của phụ huynh; bậc 3 mới có sự kiện có thời hạn (Master Plan §8, §15 #44–#49, #53) |
+| MP | Multiplayer theo 3 bậc; bậc 1 (thấy nhau) và bậc 2 (co-op) đã có, online mặc định bật, chủ tài khoản tắt được online và giọng nói từng người chơi (23/10/2026); bậc 3 mới có sự kiện có thời hạn (Master Plan §8, §15 #44–#49, #53) |
 
 ## Trạng thái backlog P0
 

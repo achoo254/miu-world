@@ -2,15 +2,17 @@
 
 Bản nháp ngày 23/10/2026, dựng từ code và chính sách đang chạy (`content/legal/privacy-vi.json` v5, `apps/server`, `apps/mobile`). Người sở hữu duyệt trước khi nhập vào App Store Connect và Play Console. Ảnh và cách chụp lại: [`README.md`](README.md).
 
-## ⛔ Chặn phát hành (sửa hoặc quyết định trước khi gửi duyệt)
+## ⛔ Chặn phát hành
 
-| # | Vấn đề | Bằng chứng | Hệ quả | Đề xuất |
-| --- | --- | --- | --- | --- |
-| B1 | **Tài khoản người duyệt không vào được Miu.** Tài khoản duyệt của auth-next (ADR 0010) có `email_verified: false` và `amr: ["pwd", "review"]`; Miu từ chối mọi danh tính có email chưa xác minh. | `apps/server/src/auth/idp-account-link.ts:36` (`email-unverified`); `auth-next/docs/decisions/0010-review-only-password-sign-in.md` §4 | Apple 2.1 (phải có tài khoản demo dùng được), Play "App access": bị từ chối ngay. | Miu nhận danh tính có `amr` chứa `review` từ đúng issuer chính, tạo tài khoản mới, không bao giờ liên kết theo email. Thay đổi ở luồng đăng nhập, cần người sở hữu duyệt (`.claude/rules/server-and-child-safety.md`). |
-| B2 | **Tài khoản chỉ có một người chơi không tìm được nút Xóa tài khoản hay Đăng xuất trong app.** "Quản lý tài khoản" (`/parent`, nơi có Xóa tài khoản, Đăng xuất) chỉ mở từ màn chọn người chơi `/profiles`; nút "Đổi người chơi" trong Cài đặt chỉ hiện khi có từ 2 người chơi. Tài khoản mới chỉ có một người chơi. | `apps/web/src/ui/system/settings-dialog.tsx:13`; `account/profile-screens.tsx:142`; `account/account-data-panel.tsx` | Apple 5.1.1(v) (xóa tài khoản phải tìm được trong app); Play yêu cầu xóa tài khoản trong app. | Cài đặt luôn có nút "Quản lý tài khoản" tới `/parent` (vẫn qua PIN nếu đã đặt). Thay đổi nhỏ ở UI, chưa làm trong lượt này. |
-| B3 | **Google Analytics (GA4) trong một app mà người duyệt sẽ coi là dành cho trẻ.** Máy chủ chuyển sự kiện của app (mở trang, chia sẻ, xong nhiệm vụ…) tới GA4 qua Measurement Protocol, kèm mã ngẫu nhiên của bản cài; không email, mã tài khoản, IP. Nội dung là SGK lớp 2. | `apps/server/src/analytics/ga4-forwarder.ts`; `packages/schema/src/analytics.ts`; mục "Số liệu sử dụng ẩn danh" của chính sách | Apple 5.1.4: app chủ yếu cho trẻ không nên có analytics bên thứ ba (chỉ ngoại lệ hẹp của 1.3). Kids Category thì cấm hẳn. Play Families: phải khai báo, và nhà cung cấp phải chấp nhận dữ liệu từ trẻ. | Khuyến nghị: máy chủ không gửi GA4 cho phiên của app (phiên Bearer), web giữ nguyên. Cần người sở hữu chốt (đổi cách thu dữ liệu; sửa đoạn chính sách nói app cũng gửi). Nếu giữ: ghi trong Review Notes theo ngoại lệ 1.3 và chấp nhận rủi ro bị từ chối. |
-| B4 | **Chính sách Families của Play, nếu khai đối tượng gồm trẻ dưới 13 (đề xuất ở dưới).** Có nói chuyện bằng giọng với bạn bè/tổ đội và kết bạn, nhưng: chưa có lời nhắc "an toàn trên mạng" trước khi trẻ trao đổi; người lớn chưa khóa được nói chuyện bằng giọng hay chơi online cho người chơi phụ (người chơi tự bật lại được; online luôn bật). | `content/legal/privacy-vi.json` mục "Khi chơi online"; i18n `voice.*` không có lời nhắc | Play Families "Social features": app xã hội có trẻ trong đối tượng phải có lời nhắc an toàn và cách cho người lớn quản lý tính năng xã hội. | Thêm lời nhắc trước cuộc gọi/tổ đội đầu tiên và công tắc của chủ tài khoản cho từng người chơi phụ. Trái với nguyên tắc "không đặt tính năng sau phụ huynh" (`.claude/rules/product-audience.md`) chỉ khi bắt buộc, nên là quyết định của người sở hữu. |
-| B5 | Điều kiện sẵn có của plan (pha 7): kiểm duyệt chạy trên production, pháp lý Việt Nam (game online, Nghị định 13/2023) đã xác nhận hoặc loại Việt Nam khỏi danh sách nước, đo máy thật đạt. | `plans/dattqh/261007-2038-mobile-app-ios-android/phase-07-store-internal-release.md` | Không gửi duyệt công khai trước khi đủ. | Bản thử nội bộ (TestFlight, Play internal) không bị chặn bởi B3–B5; B1 chặn cả TestFlight external review. |
+Bốn vấn đề tìm thấy lúc soạn hồ sơ đã sửa trong code ngày 23/10/2026 (quyết định của Jev, người sở hữu ủy quyền); chỉ có hiệu lực sau khi **deploy production** (cần hỏi người sở hữu trước, có migration `0025_player-controls.sql`) và bản app mới. Còn lại:
+
+| # | Vấn đề | Trạng thái |
+| --- | --- | --- |
+| B1 | Tài khoản người duyệt store (auth-next ADR 0010: email chưa xác minh, `amr` có `review`) bị Miu từ chối | **Đã sửa**: Miu tạo cho nó một tài khoản riêng, khóa theo issuer + `sub`, không bao giờ nối theo email hay tài khoản Google (`apps/server/src/auth/idp-account-link.ts`). Không có công tắc phía Miu: bật/tắt ở auth-next là đủ. |
+| B2 | Tài khoản một người chơi không tới được Quản lý tài khoản (Xóa tài khoản, Đăng xuất) trong app | **Đã sửa**: Cài đặt luôn có nút "Quản lý tài khoản" (vẫn qua PIN nếu đã đặt). |
+| B3 | Google Analytics với app dành cho trẻ (Apple 5.1.4, Play Families) | **Đã sửa**: máy chủ không gửi gì tới GA4 cho request của app (nhận biết theo loại phiên, không theo thông tin app tự khai); web giữ nguyên. Chính sách quyền riêng tư đã ghi rõ. |
+| B4 | Play Families: lời nhắc an toàn trước khi trẻ trao đổi; người lớn quản lý tính năng xã hội | **Đã sửa**: lời nhắc "Nói chuyện an toàn" một lần mỗi người chơi trước lần trò chuyện bằng giọng đầu tiên (lưu ở máy chủ); công tắc "Chơi online" và "Nói chuyện bằng giọng" cho từng người chơi trong Quản lý tài khoản, máy chủ thi hành. |
+| B5 | Điều kiện sẵn có của plan (pha 7): kiểm duyệt chạy trên production, pháp lý Việt Nam (game online, Nghị định 13/2023) đã xác nhận hoặc loại Việt Nam khỏi danh sách nước, đo máy thật đạt | **Còn chặn** gửi duyệt công khai (`plans/dattqh/261007-2038-mobile-app-ios-android/phase-07-store-internal-release.md`). Bản thử nội bộ (TestFlight, Play internal) không bị chặn bởi B5. |
 
 Việc của người sở hữu, không chặn kỹ thuật nhưng cần trước khi gửi: URL hỗ trợ riêng (xem mục URL); ảnh nổi bật Play 1024 × 500 (chưa có; các ảnh `assets/generated/channel-kit/` là cỡ YouTube/Facebook); trả lời "Export compliance" (chỉ dùng HTTPS chuẩn: exempt, có thể thêm `ITSAppUsesNonExemptEncryption = NO` vào `Info.plist` để khỏi hỏi mỗi bản); kiểm "Privacy Report" của bản archive (app không có `PrivacyInfo.xcprivacy` riêng; các gói Capacitor tự mang manifest của chúng); điền mật khẩu người duyệt từ tệp credential (mục `apple-app-review-demo`), không ghi vào repo.
 
@@ -113,7 +115,7 @@ Privacy: https://miu.hoandat.com/privacy
 
 | Mục | Trả lời | Căn cứ |
 | --- | --- | --- |
-| Parental Controls | Có | PIN tài khoản tùy chọn bảo vệ "Quản lý tài khoản": người chơi phụ, bạn máy, bạn bè, chặn, xóa dữ liệu. |
+| Parental Controls | Có | PIN tài khoản tùy chọn bảo vệ "Quản lý tài khoản": người chơi phụ, công tắc chơi online và nói chuyện bằng giọng cho từng người chơi, bạn máy, bạn bè, chặn, xóa dữ liệu. |
 | Age Assurance | Không | Lời đồng ý v3 trở đi không hỏi tuổi (người sở hữu chốt). |
 | Unrestricted Web Access | Không | Không có trình duyệt trong app; chỉ mở trang đăng nhập auth.hoandat.com trong trình duyệt hệ thống. |
 | User-Generated Content | Có | Giọng nói giữa bạn bè/tổ đội; tên nhân vật và câu nói chọn từ danh sách; thời khóa biểu tự gõ chỉ chính người chơi xem. |
@@ -135,18 +137,17 @@ Dự kiến: **9+** (4+ nếu bạo lực hoạt hình chọn None). Kids Catego
 
 ### Google Play: Đối tượng mục tiêu
 
-Khuyến nghị khai **trung thực**: nhóm 6–8, 9–12 và 13 trở lên (đối tượng hỗn hợp). Nội dung SGK lớp 2 và hình ảnh khiến Google xếp app vào nhóm thu hút trẻ dù khai gì; khai chỉ 13+ dễ bị coi là khai sai. Khai có trẻ thì áp chính sách Families: xem B3, B4. Không đăng ký "Teacher Approved" lúc này.
+Khuyến nghị khai **trung thực**: nhóm 6–8, 9–12 và 13 trở lên (đối tượng hỗn hợp). Nội dung SGK lớp 2 và hình ảnh khiến Google xếp app vào nhóm thu hút trẻ dù khai gì; khai chỉ 13+ dễ bị coi là khai sai. Khai có trẻ thì áp chính sách Families: các yêu cầu liên quan đã đáp ứng (mục Play Families bên dưới). Không đăng ký "Teacher Approved" lúc này.
 
 ## Apple App Privacy (nhãn quyền riêng tư)
 
-Tracking: **Không** (không IDFA, không quảng cáo, không chia sẻ cho data broker; GA4 tắt Google Signals và chia sẻ quảng cáo).
+Tracking: **Không** (không IDFA, không quảng cáo, không chia sẻ cho data broker). Analytics: **không có** trong app (máy chủ không gửi gì tới Google Analytics cho request của app; chỉ trang web gửi).
 
 | Loại dữ liệu | Mục đích | Liên kết với danh tính | Ghi chú |
 | --- | --- | --- | --- |
 | Contact Info → Email Address | App Functionality | Có | Email đã xác minh từ auth.hoandat.com (với Apple "Ẩn email" là địa chỉ chuyển tiếp). |
 | Identifiers → User ID | App Functionality | Có | Mã tài khoản ở auth.hoandat.com (`parent_idp_links`), mã Google cũ của tài khoản trước 23/10/2026. |
-| Identifiers → Device ID | Analytics | Không | Mã ngẫu nhiên của bản cài, gửi kèm sự kiện GA4; không gắn tài khoản (bỏ nếu B3 chọn tắt GA4 cho app). |
-| Usage Data → Product Interaction | Analytics (không liên kết); App Functionality (liên kết) | Analytics: Không; tiến độ: Có | Sự kiện GA4 ẩn danh; thời gian chơi theo tuần, thư đã đọc, cài đặt. |
+| Usage Data → Product Interaction | App Functionality | Có | Thời gian chơi theo tuần, thư đã đọc, cài đặt (bạn máy; công tắc online và giọng nói của chủ tài khoản; lúc xác nhận lời nhắc an toàn). |
 | User Content → Gameplay Content | App Functionality | Có | Nhiệm vụ, sao, XP, đồ vật, nhân vật, trang trí nhà, chỗ đứng cuối trên map, bạn bè, chặn, báo cáo (lý do chọn sẵn). |
 | User Content → Other User Content | App Functionality | Có | Thời khóa biểu, lịch đồng phục tự gõ (tùy chọn, chỉ chính người chơi xem). |
 
@@ -154,25 +155,24 @@ Không thu: tên thật, tuổi, ảnh, vị trí, danh bạ, dữ liệu sức 
 
 ## Google Play Data safety
 
-- Thu thập: **Có**. Chia sẻ với bên thứ ba: **Không** (Google Analytics, Cloudflare là nhà cung cấp dịch vụ xử lý thay Miu, theo định nghĩa của Play không tính là chia sẻ). Mã hóa khi truyền: **Có** (HTTPS, WSS). Người dùng yêu cầu xóa được: **Có** (trong app: Quản lý tài khoản → Xóa tài khoản; trên web: URL ở mục URL).
+- Thu thập: **Có**. Chia sẻ với bên thứ ba: **Không** (Cloudflare là nhà cung cấp dịch vụ xử lý thay Miu, theo định nghĩa của Play không tính là chia sẻ; app không gửi gì tới Google Analytics). Mã hóa khi truyền: **Có** (HTTPS, WSS). Người dùng yêu cầu xóa được: **Có** (trong app: Quản lý tài khoản → Xóa tài khoản; trên web: URL ở mục URL).
 
 | Nhóm Play | Loại | Bắt buộc/tùy chọn | Mục đích |
 | --- | --- | --- | --- |
 | Personal info | Email address | Bắt buộc | Account management, App functionality |
 | Personal info | User IDs | Bắt buộc | Account management |
-| App activity | App interactions | Bắt buộc | App functionality, Analytics |
+| App activity | App interactions | Bắt buộc | App functionality |
 | App activity | Other user-generated content | Tùy chọn | App functionality (thời khóa biểu tự gõ) |
 | App activity | Other actions | Bắt buộc | App functionality (bạn bè, chặn, báo cáo) |
-| Device or other IDs | Device or other IDs | Bắt buộc | Analytics (mã ngẫu nhiên của bản cài; bỏ nếu B3 tắt GA4 cho app) |
 
 Không thu: vị trí, ảnh/video, âm thanh (lý do như phần Apple: ghi âm chỉ trên máy, giọng nói mã hóa đầu-cuối giữa người chơi), danh bạ, tài chính, sức khỏe, tin nhắn, file, lịch, thông tin web. Quyền Android: `INTERNET`, `RECORD_AUDIO` (luyện nói, nói chuyện bằng giọng, chỉ khi người chơi bấm), `MODIFY_AUDIO_SETTINGS`.
 
 ### Play Families: câu trả lời và khoảng trống
 
-- Quảng cáo, SDK quảng cáo: không. SDK bên thứ ba trong app: chỉ Capacitor và plugin đăng nhập/lưu trữ bảo mật; không SDK analytics (GA4 gửi từ máy chủ). AAID: không dùng. Quyền vị trí: không.
+- Quảng cáo, SDK quảng cáo: không. SDK bên thứ ba trong app: chỉ Capacitor và plugin đăng nhập/lưu trữ bảo mật; không SDK analytics, và máy chủ không gửi số liệu của app cho bên nào. AAID: không dùng. Quyền vị trí: không.
 - Đăng nhập: người lớn đăng nhập (Google, GitHub, Apple qua auth.hoandat.com); trẻ chơi bằng người chơi phụ trong tài khoản đó, không tự đăng nhập. Ghi rõ trong ô giải thích.
-- Tính năng xã hội: có (bạn bè, tổ đội, giọng nói). Thiếu lời nhắc an toàn và công tắc cho người lớn: **B4**.
-- Dữ liệu từ trẻ khai đầy đủ ở Data safety; GA4: **B3**.
+- Tính năng xã hội: có (bạn bè, tổ đội, giọng nói với bạn bè và tổ đội; không chat chữ tự gõ). Lời nhắc an toàn trên mạng: có, trước lần trò chuyện bằng giọng đầu tiên của mỗi người chơi. Người lớn quản lý: chủ tài khoản tắt được chơi online và nói chuyện bằng giọng cho từng người chơi, xem và xóa bạn, bỏ chặn (Quản lý tài khoản, sau PIN nếu đã đặt); máy chủ thi hành.
+- Dữ liệu từ trẻ khai đầy đủ ở Data safety; không có analytics trong app.
 
 ## Ghi chú cho người duyệt (App Review Notes, tiếng Anh)
 
@@ -184,8 +184,11 @@ SIGN-IN
 • Demo account for review: on the auth.hoandat.com sign-in page, tap the small link "Tài khoản dành cho người duyệt ứng dụng" (Account for app reviewers) below the provider buttons, then enter the email and password given in the Sign-In Information fields of this submission. This reviewer-only password sign-in is switched on for the review period only.
 • On first sign-in, accept the privacy notice ("Tôi đồng ý") and pick a character; the game starts on the home island.
 
-ACCOUNT PIN (PARENT GATE)
+• The reviewer sign-in creates its own empty Miu account (never linked to any other account).
+
+ACCOUNT PIN (PARENT GATE) AND PARENTAL CONTROLS
 • No PIN is set on a new account, so account management opens directly. A 4-digit PIN can be set in account management ("Quản lý tài khoản"); once set, it is asked before account management, player management and account deletion.
+• In account management, each player card → "Chơi online" tab has the account owner's switches: online play and voice chat (both on by default, enforced by our server), and companion bots.
 
 ACCOUNT DELETION
 • In the app: Settings (gear) → "Quản lý tài khoản" (Account) → "Xóa tài khoản" (Delete account) → confirm. Deletion is immediate and removes every player, all progress and every session; backups expire within 14 days.
@@ -193,10 +196,13 @@ ACCOUNT DELETION
 
 ONLINE FEATURES
 • Players in the same area see each other. There is no free-text chat: only ready-made phrases and waves.
-• Voice chat (microphone button) works only with friends or party members; nothing is recorded or stored. The microphone permission is also used for the optional speaking practice, whose recording never leaves the device.
+• Voice chat (microphone button) works only with friends or party members; nothing is recorded or stored. Before a player's first voice chat, a "stay safe online" reminder is shown once. The microphone permission is also used for the optional speaking practice, whose recording never leaves the device.
 • Report or block: tap another player (or the Interact button) → "Báo cáo" (Report) or "Chặn" (Block). Reports go to a moderation queue reviewed by our moderators.
+
+ANALYTICS
+• The app contains no analytics or advertising SDK, and our server sends nothing about app usage to any analytics service.
 
 Contact: the support email on https://miu.hoandat.com/privacy
 ```
 
-Trước khi gửi: B1 phải xong (nếu không, mục "Demo account" sai); B2 phải xong (nếu không, đường "Settings → Quản lý tài khoản" ở trên không tồn tại với tài khoản một người chơi). Sau khi được duyệt, tắt đăng nhập người duyệt ở auth-next theo `auth-next/docs/deployment-guide.md`.
+Trước khi gửi: bản production phải có các sửa B1–B4 (nếu không, mục "Demo account" và đường "Settings → Quản lý tài khoản" ở trên không đúng). Sau khi được duyệt, tắt đăng nhập người duyệt ở auth-next theo `auth-next/docs/deployment-guide.md`.

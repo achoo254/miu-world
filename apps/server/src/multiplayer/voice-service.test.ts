@@ -476,3 +476,59 @@ describe('calling a friend', () => {
     expect(b.last('voice-call-end')).toEqual({ type: 'voice-call-end', id: a.id, reason: 'ended' });
   });
 });
+
+describe('the account owner’s voice switch', () => {
+  async function friends(): Promise<[Client, Client]> {
+    const a = await h.joined('child-a');
+    const b = await h.joined('child-b', [1, 5, 1], 'cho-phien');
+    h.friends.befriend('child-a', 'child-b');
+    return [a, b];
+  }
+
+  it('refuses every voice of a player whose voice chat is off: no joining, no calls out, no calls to her', async () => {
+    h.db.controls.set('child-b', { voiceChatAllowed: false, onlineAllowed: true });
+    const a = await h.joined('child-a');
+    const b = await h.joined('child-b');
+    await party(a, b);
+    b.send({ type: 'voice-join', mic: true });
+    a.send({ type: 'voice-join', mic: true });
+    await settle();
+    expect(voiceOf(b)?.joined ?? false).toBe(false);
+    expect(voiceOf(a)?.members.map((m) => m.id)).toEqual([a.id]);
+    b.send({ type: 'voice-signal', to: a.id, signal: OFFER });
+    b.send({ type: 'voice-speaking', on: true });
+    await settle();
+    expect(a.all('voice-signal')).toEqual([]);
+    expect(a.all('voice-speaking')).toEqual([]);
+    h.friends.befriend('child-a', 'child-b');
+    b.send({ type: 'voice-call', to: a.id });
+    await settle();
+    expect(a.all('voice-call-invite')).toEqual([]);
+    expect(b.last('voice-call-end')).toEqual({ type: 'voice-call-end', id: a.id, reason: 'failed' });
+    h.clock.now += 5_000;
+    a.send({ type: 'voice-leave' });
+    a.send({ type: 'voice-call', to: b.id });
+    await settle();
+    expect(b.all('voice-call-invite')).toEqual([]);
+    expect(a.last('voice-call-end')).toEqual({ type: 'voice-call-end', id: b.id, reason: 'not-here' });
+  });
+
+  it('turned off during a call: the call ends at once, and she cannot accept the next one', async () => {
+    const [a, b] = await friends();
+    a.send({ type: 'voice-call', to: b.id });
+    await settle();
+    b.send({ type: 'voice-call-reply', from: a.id, accept: true });
+    await settle();
+    expect(voiceOf(b)?.kind).toBe('call');
+    h.hub.playerEvent({ type: 'controls', childId: 'child-b', controls: { voiceChatAllowed: false, onlineAllowed: true } });
+    await settle();
+    expect(a.last('voice-call-end')).toEqual({ type: 'voice-call-end', id: b.id, reason: 'ended' });
+    expect(voiceOf(b)).toBeNull();
+    // On again: voice works as before.
+    h.hub.playerEvent({ type: 'controls', childId: 'child-b', controls: { voiceChatAllowed: true, onlineAllowed: true } });
+    h.clock.now += 5_000;
+    a.send({ type: 'voice-call', to: b.id });
+    await settle();
+    expect(b.last('voice-call-invite')?.from.id).toBe(a.id);
+  });
+});

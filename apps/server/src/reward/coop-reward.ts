@@ -10,11 +10,12 @@ import { questProgress } from '../db/schema';
 import { finishQuest } from '../quest/quest-completion';
 import { commitQueue } from '../quest/quest-usage';
 import type { CoopRewards } from '../coop/coop-service';
+import { asAppRequest } from '../analytics/analytics-session';
 import { paidRuns } from './reward-ledger';
 
 export function dbCoopRewards(db: Db, content: ContentCatalog, clock: () => Date = () => new Date()): CoopRewards {
   return {
-    async pay(childId: string, quest: ActiveQuest): Promise<CoopResult> {
+    async pay(childId: string, quest: ActiveQuest, fromApp = false): Promise<CoopResult> {
       const now = clock();
       const row = and(eq(questProgress.childId, childId), eq(questProgress.questId, quest.id));
       const queue = commitQueue();
@@ -30,7 +31,8 @@ export function dbCoopRewards(db: Db, content: ContentCatalog, clock: () => Date
         const finished = await finishQuest(tx, content, childId, quest, now, run, queue);
         return { reward: finished.reward, completion: finished.completion, unpaid: finished.reward ? null : 'failed' };
       });
-      queue.run();
+      // Paid outside any HTTP request (a WebSocket message): the usage events take her app/web mark from the hub.
+      asAppRequest(fromApp, () => queue.run());
       return paid;
     },
   };

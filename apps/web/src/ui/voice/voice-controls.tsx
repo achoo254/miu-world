@@ -8,6 +8,7 @@ import type { SocialStore } from '../../game-bridge/social-store';
 import { same } from '../i18n/i18n';
 import { T, useT } from '../i18n/use-t';
 import { buttonClass } from '../kit/button';
+import { Modal } from '../kit/modal';
 import { useSocial } from '../online/use-social';
 import type { VoiceManager, VoiceSnapshot } from './voice-manager';
 import './voice.css';
@@ -106,7 +107,7 @@ function InVoiceButtons({ voice, leaveKey }: { voice: VoiceManager; leaveKey: 'v
  */
 export function PartyVoiceControls({ voice }: { voice: VoiceManager }) {
   const { t } = useT();
-  const enabled = useVoice(voice, (s) => s.settings.enabled);
+  const enabled = useVoice(voice, (s) => s.settings.enabled && s.allowed);
   const joined = useVoice(voice, (s) => s.joined);
   const inCall = useVoice(voice, (s) => s.channel?.kind === 'call');
   if (!enabled || inCall || !voice.supported) return null;
@@ -245,7 +246,7 @@ export function CallInviteCard({ voice }: { voice: VoiceManager }) {
 /** "Gọi" on an online friend in the friends list (players only: a bot speaks in the party's voice). */
 export function FriendCallButton({ voice, id, name, dataId, onCall }: { voice: VoiceManager; id: string; name: string; dataId: string; onCall?: () => void }) {
   const { t } = useT();
-  const enabled = useVoice(voice, (s) => s.settings.enabled);
+  const enabled = useVoice(voice, (s) => s.settings.enabled && s.allowed);
   const busy = useVoice(voice, (s) => s.outgoing !== null || s.channel?.kind === 'call');
   if (!enabled || !voice.supported) return null;
   return (
@@ -262,5 +263,40 @@ export function FriendCallButton({ voice, id, name, dataId, onCall }: { voice: V
     >
       📞 <T k="voice.call" />
     </button>
+  );
+}
+
+/** The tips of the "stay safe online" reminder, in order. */
+const SAFETY_TIPS = ['voice.safety.friendsOnly', 'voice.safety.private', 'voice.safety.blockReport', 'voice.safety.mic'] as const;
+
+/**
+ * NEW SCREEN, in the look of the game's dialogs: the "stay safe online" reminder shown once per player before her
+ * first voice chat (joining her party's voice, calling a friend, answering a call). Confirming it goes on with what she
+ * tapped; "Để sau" closes it (a call she was answering is declined).
+ */
+export function VoiceSafetyCard({ voice }: { voice: VoiceManager }) {
+  const ask = useVoice(voice, (s) => s.safetyAsk);
+  if (!ask) return null;
+  return (
+    <Modal title={<T k="voice.safety.title" />} onClose={() => voice.dismissSafety()} dataId="voice-safety">
+      <p>
+        <T k="voice.safety.intro" />
+      </p>
+      <ul className="voice-safety-tips" data-id="voice-safety-tips">
+        {SAFETY_TIPS.map((tip) => (
+          <li key={tip}>
+            <T k={tip} />
+          </li>
+        ))}
+      </ul>
+      <div className="modal-actions">
+        <button type="button" className={buttonClass('primary', { block: true })} data-id="voice-safety-ok" onClick={() => void voice.confirmSafety()}>
+          <T k="voice.safety.ok" />
+        </button>
+        <button type="button" className={buttonClass('ghost', { block: true })} data-id="voice-safety-later" onClick={() => voice.dismissSafety()}>
+          <T k="voice.safety.later" />
+        </button>
+      </div>
+    </Modal>
   );
 }

@@ -2,6 +2,7 @@
 // sign-in session so the events the server emits for that account or player (sign-up, quests) join the same GA user
 // and visit as its page views. Never written to the database, never logged; forgotten after half an hour without a
 // request (GA's own visit length), on restart, or when the table is full.
+import { AsyncLocalStorage } from 'node:async_hooks';
 import type { RequestHandler } from 'express';
 import { ANALYTICS_HEADER, parseAnalyticsHeader, type GaIds } from '@miu/schema/analytics';
 import { optionalAuth } from '../auth/auth-context';
@@ -69,11 +70,41 @@ export class AnalyticsSessions {
   }
 }
 
-/** Remembers the request's GA ids for its sign-in session (after `loadSession`); requests without either pass as they are. */
+/** Whether the request being handled comes from the iPhone/Android app (set by `markAppRequests`). */
+const appRequest = new AsyncLocalStorage<boolean>();
+
+/**
+ * True while handling a request of the iPhone/Android app: nothing it causes goes to Google Analytics (the app sends
+ * no usage events at all; the web is unchanged). Outside a request (the hourly online peak) it is false.
+ */
+export const inAppRequest = (): boolean => appRequest.getStore() === true;
+
+/** Runs `work` marked as the app's (or the web's) when it happens outside an HTTP request (a WebSocket message). */
+export const asAppRequest = <T>(fromApp: boolean, work: () => T): T => appRequest.run(fromApp, work);
+
+/**
+ * Marks each request (after `loadSession`) as the app's or the web's, from what the server knows rather than anything
+ * the client says about itself: the kind of its sign-in session (an app session is `native`, used as a Bearer token),
+ * or, before sign-in, the app's own page origin (`APP_ORIGINS`, set by the system web view, which a page cannot
+ * change; a client forging it only silences its own events). Everything the request goes on to do, including work
+ * deferred until its transaction commits, runs inside the mark.
+ */
+export function markAppRequests(appOrigins: readonly string[]): RequestHandler {
+  return (req, res, next) => {
+    const ctx = optionalAuth(res);
+    const fromApp = ctx ? ctx.session.kind === 'native' : appOrigins.includes(req.headers.origin ?? '');
+    appRequest.run(fromApp, next);
+  };
+}
+
+/**
+ * Remembers the request's GA ids for its sign-in session (after `loadSession`); requests without either, and the
+ * app's, pass as they are.
+ */
 export function rememberAnalyticsIds(sessions: AnalyticsSessions): RequestHandler {
   return (req, res, next) => {
     const ctx = optionalAuth(res);
-    const ids = ctx ? parseAnalyticsHeader(req.headers[ANALYTICS_HEADER]) : null;
+    const ids = ctx && ctx.session.kind !== 'native' ? parseAnalyticsHeader(req.headers[ANALYTICS_HEADER]) : null;
     if (ctx && ids) sessions.remember(ctx.session.id, ids, { parentId: ctx.parent.id, childId: ctx.session.activeChildId });
     next();
   };

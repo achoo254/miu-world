@@ -471,4 +471,17 @@ describe('players online, for the usage numbers', () => {
   it('is zero with nobody online', () => {
     expect(hub.takePeakPlayers()).toBe(0);
   });
+
+  it('knows whether a player plays in the app from her latest connection, so a co-op win sends no usage event for her', async () => {
+    const transport = { send: () => undefined, close: () => undefined };
+    for (const id of ['p-app', 'p-web']) db.characters.set(id, { displayName: `Bạn ${id}`, species: 'cat', outfit: [], pet: null });
+    const inApp = await hub.connect('p-app', transport, { fromApp: true });
+    const onWeb = await hub.connect('p-web', transport);
+    const host = hub.coopHost();
+    expect(host.fromApp?.(inApp?.publicId ?? '')).toBe(true);
+    expect(host.fromApp?.(onWeb?.publicId ?? '')).toBe(false);
+    // The same player opening the web takes over: she now counts as the web.
+    const again = await hub.connect('p-app', transport);
+    expect(host.fromApp?.(again?.publicId ?? '')).toBe(false);
+  });
 });

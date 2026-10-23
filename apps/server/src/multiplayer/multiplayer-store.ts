@@ -3,7 +3,7 @@
 // its tests run without a database.
 import { eq, or } from 'drizzle-orm';
 import type { IncomingMessage } from 'node:http';
-import type { PlayerSettings } from '@miu/schema/account';
+import type { PlayerControls, PlayerSettings } from '@miu/schema/account';
 import type { PlayerAppearanceInput, ReportReason } from '@miu/schema/multiplayer';
 import { findActivePlayer } from '../auth/auth-context';
 import { readSessionToken } from '../auth/session-cookie';
@@ -30,6 +30,8 @@ export interface MultiplayerStore {
   report(childId: string, reportedChildId: string, reason: ReportReason, mapId: string | null, incident?: IncidentInput): Promise<ReportFiled | void>;
   /** Her companion bot switch (on when the store does not keep it). */
   settings?(childId: string): Promise<PlayerSettings>;
+  /** The account owner's switches for her: voice chat, online play (both allowed when the store does not keep them). */
+  controls?(childId: string): Promise<PlayerControls>;
   /** Whether she is kept out of online play now (locked by a moderator, or hidden by the safeguard). */
   restricted?(childId: string): Promise<boolean>;
 }
@@ -37,6 +39,8 @@ export interface MultiplayerStore {
 /** Who opened a multiplayer connection, and the re-check of it the hub runs while it stays open. */
 export interface WsPlayer {
   childId: string;
+  /** Opened by the iPhone/Android app (an app session's ticket), not the web. */
+  fromApp: boolean;
   /** Whether her session still lives and still plays as her (signed out, consent changed, player switched). */
   stillPlays(): Promise<boolean>;
 }
@@ -74,6 +78,14 @@ export function dbMultiplayerStore(db: Db): MultiplayerStore {
         .where(eq(childProfiles.id, childId));
       return row ?? { botsEnabled: false };
     },
+    async controls(childId) {
+      const [row] = await db
+        .select({ voiceChatAllowed: childProfiles.voiceChatAllowed, onlineAllowed: childProfiles.onlineAllowed })
+        .from(childProfiles)
+        .where(eq(childProfiles.id, childId));
+      // No such player: nothing allowed (the connection is refused anyway).
+      return row ?? { voiceChatAllowed: false, onlineAllowed: false };
+    },
   };
 }
 
@@ -105,6 +117,6 @@ export function ticketAuthenticator(db: Db, tickets: WsTickets, config: ServerCo
     }
     const childId = await playerOfSession(db, ticket.sessionId, policyVersion, clock());
     if (childId === null || childId !== ticket.childId) return null;
-    return { childId, stillPlays: async () => (await playerOfSession(db, ticket.sessionId, policyVersion, clock())) === childId };
+    return { childId, fromApp: session.kind === 'native', stillPlays: async () => (await playerOfSession(db, ticket.sessionId, policyVersion, clock())) === childId };
   };
 }

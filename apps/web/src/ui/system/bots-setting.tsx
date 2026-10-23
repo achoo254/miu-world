@@ -1,7 +1,7 @@
 // The player's own companion bot switch (Master Plan §8; owner 05/10/2026: her own setting, on by default): "Bạn
 // máy" (companion bots around her). Kept on the server for this player, so it follows her to any device; a change
-// applies at once, even in a room. Online play itself has no switch: the game is always online (owner,
-// 05/10/2026).
+// applies at once, even in a room. Online play has no switch of hers: it is on unless the account owner turns it off
+// for her in account management.
 import { useEffect, useState } from 'react';
 import { PlayerSettings, type PlayerSettingsPatch } from '@miu/schema/account';
 import { playerSettings } from '../../game-bridge/player-settings';

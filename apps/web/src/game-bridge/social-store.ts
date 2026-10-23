@@ -77,9 +77,10 @@ export interface SocialSnapshot {
   voiceLine: { id: string; text: string; seq: number } | null;
   /**
    * Why online play is (partly) not there: the emergency switch turned it `off` or turned `interaction` off (she still
-   * sees the others), or her online play is `restricted`. Null: online as usual. Shown as a friendly line.
+   * sees the others), her online play is `restricted`, or the account owner turned it off (`owner`). Null: online as
+   * usual. Shown as a friendly line.
    */
-  onlinePause: 'off' | 'interaction' | 'restricted' | null;
+  onlinePause: 'off' | 'interaction' | 'restricted' | 'owner' | null;
 }
 
 /** Voice messages from the server, for the voice (it outlives a map's online session). */

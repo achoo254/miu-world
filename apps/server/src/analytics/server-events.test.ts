@@ -4,7 +4,9 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 import { ANALYTICS_HEADER, GA_CLIENT_ID, type Ga4Hit } from '@miu/schema/analytics';
 import { createTestApp, fakeParent, type Agent, type TestApp } from '../../test/test-app';
 import * as t from '../db/schema';
-import { AnalyticsSessions } from './analytics-session';
+import { APP_ORIGINS } from '../auth/app-cors';
+import { createSession } from '../auth/session-store';
+import { AnalyticsSessions, asAppRequest } from './analytics-session';
 import { ServerEvents, installServerEvents, questLabels, randomGaIds } from './server-events';
 
 const CLIENT = '1234567890.1760000000';
@@ -129,6 +131,42 @@ describe('quest events', () => {
       { lesson_id: 'tv2-t1-b01', subject: 'tieng-viet', session_id: expect.any(Number), engagement_time_msec: 1 },
       { session_id: expect.any(Number), engagement_time_msec: 1 },
     ]);
+  });
+});
+
+describe('the iPhone/Android app', () => {
+  it('sends no sign_up and no quest events for what an app session does, while the same account on the web still counts', async () => {
+    const appAgent = async (parentId: string): Promise<Agent> => {
+      // An app session plays as the account's primary player once there is one (it is made by the consent).
+      const { token } = await createSession(app.db, parentId, new Date(), { openParentGate: true, kind: 'native' });
+      return app.agent().set('Origin', APP_ORIGINS[0] ?? '').set('Authorization', `Bearer ${token}`).set(ANALYTICS_HEADER, HEADER);
+    };
+    const parentOf = async (agent: Agent): Promise<string> => ((await agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } }).parent.id;
+    // An account's first consent given in the app: no sign_up.
+    const fresh = await registered();
+    const res = await (await appAgent(await parentOf(fresh))).post('/api/consents').send({ policyVersion: app.content.consent.version });
+    expect(res.status, JSON.stringify(res.body)).toBe(201);
+    expect(names()).toEqual([]);
+    // Quests played in the app: nothing; the same account's web play still counts.
+    const web = await registered();
+    await consent(web);
+    sent.length = 0;
+    await finish(await appAgent(await parentOf(web)), 'quest-a');
+    expect(names()).toEqual([]);
+    await finish(web, 'quest-c');
+    // Her first quest was the app's, so the web run is only a level_end.
+    expect(names()).toEqual(['level_end']);
+  });
+
+  it('sends nothing for work marked as the app’s outside a request (a co-op win paid over the WebSocket)', () => {
+    const local: Ga4Hit[] = [];
+    const events = new ServerEvents({ sink: { send: (hit) => void local.push(hit) }, sessions: new AnalyticsSessions(), labels: { lessons: new Set(), subjectOfSkill: new Map() } });
+    const quest = { reward: { xp: 1, coin: 0, skillXp: {}, items: {} } };
+    asAppRequest(true, () => events.questFinished('child', quest, false));
+    expect(local).toEqual([]);
+    asAppRequest(false, () => events.questFinished('child', quest, false));
+    events.ccuPeak(2);
+    expect(local.map((hit) => hit.event.name)).toEqual(['level_end', 'ccu_peak']);
   });
 });
 

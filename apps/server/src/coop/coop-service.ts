@@ -19,6 +19,8 @@ export interface CoopHost {
   person(id: string): CoopPerson | null;
   /** The profile id of a player (kept while the server runs, so one who dropped out is still paid); null: a bot. */
   childIdOf(id: string): string | null;
+  /** Whether she plays in the iPhone/Android app (her latest connection); unknown counts as the web. */
+  fromApp?(id: string): boolean;
   /** Her companion bot switch. */
   botsOn(id: string): boolean;
   /** Connected now (in a room or between maps). */
@@ -48,7 +50,8 @@ export interface CoopBotMoves {
 
 /** Pays one player for a won challenge, in her own transaction. */
 export interface CoopRewards {
-  pay(childId: string, quest: ActiveQuest): Promise<CoopResult>;
+  /** `fromApp`: she plays in the iPhone/Android app, so no usage event goes out for this run. */
+  pay(childId: string, quest: ActiveQuest, fromApp?: boolean): Promise<CoopResult>;
 }
 
 export interface CoopServiceOptions {
@@ -452,7 +455,7 @@ export class CoopService {
         const child = this.host.childIdOf(id);
         if (paid.has(id) && child) {
           try {
-            result = await this.options.rewards.pay(child, run.quest);
+            result = await this.options.rewards.pay(child, run.quest, this.host.fromApp?.(id) ?? false);
           } catch (err) {
             console.error('co-op reward failed', err instanceof Error ? err.name : typeof err);
             result = { reward: null, completion: null, unpaid: 'failed' };

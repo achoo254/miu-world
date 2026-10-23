@@ -22,3 +22,6 @@
 .voice-face[data-speaking='true'], .online-party-portrait[data-speaking='true'], .online-party-face[data-speaking='true'] { box-shadow: 0 0 0 3px var(--color-grass), 0 0 12px 4px var(--color-grass); animation: voice-talking 0.9s ease-in-out infinite alternate; }
 @keyframes voice-talking { from { box-shadow: 0 0 0 3px var(--color-grass), 0 0 6px 2px var(--color-grass); } to { box-shadow: 0 0 0 3px var(--color-grass), 0 0 14px 6px var(--color-grass); } }
 @media (prefers-reduced-motion: reduce) { .voice-face[data-speaking='true'], .online-party-portrait[data-speaking='true'], .online-party-face[data-speaking='true'] { animation: none; } }
+
+/* The "stay safe online" reminder before her first voice chat: the tips as a plain list. */
+.voice-safety-tips { display: grid; gap: var(--space-sm); margin: 0; padding-inline-start: var(--space-lg); }

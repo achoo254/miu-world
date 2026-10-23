@@ -8,8 +8,12 @@
 //   server, for the rings and the bots' turns. Nothing is recorded, stored or turned into text.
 // - Companion bots in the party speak their lines with on-device synthesized voices of their own.
 // - The music steps back while someone talks.
+// - The account owner may turn her voice chat off (the server refuses it too): no voice controls, calls declined.
+// - Before her first voice chat (joining, calling or answering) a "stay safe online" reminder asks her to confirm, once
+//   per player (kept on the server).
 // - She connects straight only to a friend (the server says who is one). With anyone else the connection goes only
 //   through the relay, so a stranger never learns her address; without a relay server she does not connect to them.
+import { PlayerSettingsView } from '@miu/schema/account';
 import { VOICE_CALL_RING_MS, VoiceIceServers, type BotVoice, type VoiceBotLineKey, type VoiceChannel } from '@miu/schema/voice';
 import { appHidden, onAppVisibilityChange } from '../../platform/app-lifecycle';
 import type { SocialStore, VoiceIn, VoiceOut } from '../../game-bridge/social-store';
@@ -60,7 +64,15 @@ export interface VoiceSnapshot {
   incoming: CallInvite | null;
   /** Her call rings at a friend's. */
   outgoing: Omit<CallInvite, 'species'> | null;
+  /** The account owner lets her talk by voice (account management); true until the server says otherwise. */
+  allowed: boolean;
+  /** She confirmed the "stay safe online" reminder (once per player, kept on the server). */
+  safetySeen: boolean;
+  /** The reminder is on screen, holding back what she tapped: join her party's voice, call a friend, or answer. */
+  safetyAsk: SafetyAsk | null;
 }
+
+export type SafetyAsk = { kind: 'join' } | { kind: 'call'; id: string; name: string } | { kind: 'answer' };
 
 export interface VoiceDeps {
   getUserMedia?: (constraints: MediaStreamConstraints) => Promise<MediaStream>;
@@ -70,6 +82,8 @@ export interface VoiceDeps {
   speak?: typeof speakVoiceLine;
   /** Every connection through the relay, friends' too (a dev switch to try TURN). */
   relayOnly?: boolean;
+  /** Tells the server she confirmed the reminder (`POST /player-settings/voice-safety`). */
+  saveSafetySeen?: () => Promise<unknown>;
 }
 
 interface Output {
@@ -97,6 +111,7 @@ export class VoiceManager {
   private readonly fetchIce: () => Promise<VoiceIceServers>;
   private readonly speak: typeof speakVoiceLine;
   private readonly relayOnly: boolean;
+  private readonly saveSafetySeen: () => Promise<unknown>;
   private readonly mesh: PeerMesh | null;
   private readonly listeners = new Set<() => void>();
   private readonly offs: Array<() => void> = [];
@@ -137,6 +152,7 @@ export class VoiceManager {
     this.fetchIce = deps.iceServers ?? (() => api('GET', '/voice/ice-servers', VoiceIceServers));
     this.speak = deps.speak ?? speakVoiceLine;
     this.relayOnly = deps.relayOnly ?? false;
+    this.saveSafetySeen = deps.saveSafetySeen ?? (() => api('POST', '/player-settings/voice-safety', PlayerSettingsView));
     const createPeer = deps.createPeer ?? browserPeer();
     this.mesh = createPeer
       ? new PeerMesh(createPeer, {
@@ -150,7 +166,49 @@ export class VoiceManager {
           },
         })
       : null;
-    this.snapshot = { settings: readVoiceSettings(), channel: null, joined: false, mic: false, holding: false, micError: null, muted: {}, volumes: {}, peers: {}, incoming: null, outgoing: null };
+    this.snapshot = { settings: readVoiceSettings(), channel: null, joined: false, mic: false, holding: false, micError: null, muted: {}, volumes: {}, peers: {}, incoming: null, outgoing: null, allowed: true, safetySeen: false, safetyAsk: null };
+  }
+
+  /** Voice is on for her: on this device (Cài đặt) and allowed by the account owner. */
+  private get talkable(): boolean {
+    return this.snapshot.settings.enabled && this.snapshot.allowed;
+  }
+
+  /**
+   * What the server says about her (`GET /player-settings`): whether the account owner lets her talk by voice, and
+   * whether she confirmed the reminder. Not allowed: out of any voice now, and a friend calling is declined.
+   */
+  setPolicy(policy: { allowed: boolean; safetySeen: boolean }): void {
+    this.patch({ allowed: policy.allowed, safetySeen: policy.safetySeen, ...(policy.allowed ? {} : { safetyAsk: null }) });
+    if (!policy.allowed) {
+      this.leave();
+      if (this.snapshot.incoming) void this.answer(false);
+    }
+  }
+
+  /** She confirmed the reminder: kept on the server (once), then what she tapped goes on. */
+  async confirmSafety(): Promise<void> {
+    const ask = this.snapshot.safetyAsk;
+    this.patch({ safetyAsk: null, safetySeen: true });
+    // Not kept (offline a moment): she goes on now, and is asked again next time the game opens.
+    await this.saveSafetySeen().catch(() => console.warn('voice reminder not saved'));
+    if (ask?.kind === 'join') return this.join();
+    if (ask?.kind === 'call') return this.call(ask.id, ask.name);
+    if (ask?.kind === 'answer') return this.answer(true);
+  }
+
+  /** Not now: the reminder closes; a friend's call she was answering is declined. */
+  dismissSafety(): void {
+    const ask = this.snapshot.safetyAsk;
+    this.patch({ safetyAsk: null });
+    if (ask?.kind === 'answer') void this.answer(false);
+  }
+
+  /** The reminder comes first while she has not confirmed it (true: shown, and what she tapped waits). */
+  private askSafety(ask: SafetyAsk): boolean {
+    if (this.snapshot.safetySeen) return false;
+    this.patch({ safetyAsk: ask });
+    return true;
   }
 
   /** Listens to the server, the settings and the tab (again after `stop`). */
@@ -192,7 +250,8 @@ export class VoiceManager {
 
   /** Into her party's voice, with her microphone on (a tap: the browser may ask for the microphone). */
   async join(): Promise<void> {
-    if (!this.snapshot.settings.enabled || this.snapshot.joined || !this.supported || this.busy) return;
+    if (!this.talkable || this.snapshot.joined || !this.supported || this.busy) return;
+    if (this.askSafety({ kind: 'join' })) return;
     this.wakeAudio();
     const generation = this.generation;
     this.busy = true;
@@ -254,7 +313,8 @@ export class VoiceManager {
 
   /** Calls a friend who is online (by her id in the rooms); her microphone opens now, so the call starts at once. */
   async call(id: string, name: string): Promise<void> {
-    if (!this.snapshot.settings.enabled || !this.supported || this.snapshot.outgoing || this.busy) return;
+    if (!this.talkable || !this.supported || this.snapshot.outgoing || this.busy) return;
+    if (this.askSafety({ kind: 'call', id, name })) return;
     this.wakeAudio();
     const generation = this.generation;
     this.busy = true;
@@ -271,8 +331,10 @@ export class VoiceManager {
   async answer(accept: boolean): Promise<void> {
     const invite = this.snapshot.incoming;
     if (!invite) return;
+    // The reminder first: the call keeps ringing behind it (it lapses on its own).
+    if (accept && this.talkable && this.supported && this.askSafety({ kind: 'answer' })) return;
     this.clearIncoming();
-    if (!accept || !this.supported) {
+    if (!accept || !this.supported || !this.talkable) {
       this.send({ type: 'voice-call-reply', from: invite.id, accept: false });
       return;
     }
@@ -317,8 +379,8 @@ export class VoiceManager {
         else this.talking.delete(message.id);
         return this.talkingChanged();
       case 'voice-call-invite': {
-        // Voice switched off on this device: no ringing, the caller hears it was declined.
-        if (!this.snapshot.settings.enabled || !this.supported) {
+        // Voice switched off on this device or by the account owner: no ringing, the caller hears it was declined.
+        if (!this.talkable || !this.supported) {
           this.send({ type: 'voice-call-reply', from: message.from.id, accept: false });
           return;
         }
@@ -667,6 +729,8 @@ export class VoiceManager {
     if (this.incomingTimer) clearTimeout(this.incomingTimer);
     this.incomingTimer = null;
     if (this.snapshot.incoming) this.patch({ incoming: null });
+    // The call she was about to answer is gone: so is the reminder held in front of it.
+    if (this.snapshot.safetyAsk?.kind === 'answer') this.patch({ safetyAsk: null });
   }
 
   /** Out of the voice here: connections closed, microphone released, nobody talking. */

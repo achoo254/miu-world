@@ -49,6 +49,12 @@ export const childProfiles = pgTable(
     isPrimary: boolean('is_primary').notNull().default(false),
     /** Her own setting: companion bots show up around her. */
     botsEnabled: boolean('bots_enabled').notNull().default(true),
+    /** The account owner's switch: she may talk by voice (party, friends' calls). Refused by the server when off. */
+    voiceChatAllowed: boolean('voice_chat_allowed').notNull().default(true),
+    /** The account owner's switch: she plays online (sees others, friends, parties); off, she plays alone. */
+    onlineAllowed: boolean('online_allowed').notNull().default(true),
+    /** When she confirmed the "stay safe online" reminder shown before her first voice chat; null: not yet. */
+    voiceSafetySeenAt: timestamp('voice_safety_seen_at', { withTimezone: true }),
     createdAt: createdAt(),
   },
   (t) => [

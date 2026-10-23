@@ -31,6 +31,8 @@ export interface VoiceHost {
   sees(a: string, b: string): boolean;
   /** Her companion bot switch. */
   botsOn(id: string): boolean;
+  /** The account owner lets this player talk by voice (unknown: allowed). */
+  voiceAllowed?(id: string): boolean;
   /** Two players are friends (read from the database). */
   areFriends(a: string, b: string): Promise<boolean>;
   /** A companion bot shows an emote where it stands. */
@@ -114,6 +116,7 @@ export class VoiceService {
   /** A voice message from a player (already parsed by the schema). */
   async message(id: string, message: VoiceMessage): Promise<void> {
     if (!this.host.isPlayer(id)) return;
+    if (!this.allowed(id)) return this.refuse(id, message);
     switch (message.type) {
       case 'voice-join':
         return this.join(id, message.mic);
@@ -158,6 +161,39 @@ export class VoiceService {
         if (!this.host.online(id)) this.forget(id);
       }, this.graceMs),
     );
+  }
+
+  /** The account owner turned her voice off: out of every voice now (her call ends, her party's voice goes on without her). */
+  silence(id: string): void {
+    this.leave(id);
+    this.sent.delete(id);
+    this.push([id]);
+  }
+
+  private allowed(id: string): boolean {
+    return this.host.voiceAllowed?.(id) ?? true;
+  }
+
+  /**
+   * A voice message from a player whose voice is off: leaving still works; a call she starts ends at once, a call she
+   * answers is declined, joining shows her voice as it is (not in it); setup, microphone and talking are dropped.
+   */
+  private async refuse(id: string, message: VoiceMessage): Promise<void> {
+    switch (message.type) {
+      case 'voice-leave':
+        return this.leave(id);
+      case 'voice-hangup':
+        return this.hangUp(id);
+      case 'voice-call':
+        return this.callEnded(id, message.to, 'failed');
+      case 'voice-call-reply':
+        return await this.reply(id, message.from, false);
+      case 'voice-join':
+        this.sent.delete(id);
+        return this.push([id]);
+      default:
+        return;
+    }
   }
 
   /** Gone for good (out of the game): out of every voice. */
@@ -379,7 +415,8 @@ export class VoiceService {
   }
 
   private async call(id: string, to: string): Promise<void> {
-    if (to === id || !this.host.isPlayer(to) || !this.host.online(to) || !this.host.sees(id, to)) return this.callEnded(id, to, 'not-here');
+    // A friend whose voice the account owner turned off cannot be called: to the caller, she is not there for voice.
+    if (to === id || !this.host.isPlayer(to) || !this.host.online(to) || !this.host.sees(id, to) || !this.allowed(to)) return this.callEnded(id, to, 'not-here');
     if (!this.mayCall(id)) return this.callEnded(id, to, 'failed');
     let friends: boolean;
     try {

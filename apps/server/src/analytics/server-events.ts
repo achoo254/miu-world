@@ -9,7 +9,7 @@ import { randomInt } from 'node:crypto';
 import type { GaIds, Ga4Event, ServerEventName, SIGN_UP_METHODS } from '@miu/schema/analytics';
 import type { ActiveQuest } from '@miu/schema/content';
 import type { ContentCatalog } from '../content/content-catalog';
-import type { AnalyticsSessions } from './analytics-session';
+import { inAppRequest, type AnalyticsSessions } from './analytics-session';
 import type { EventSink } from './ga4-forwarder';
 
 export type SignUpMethod = (typeof SIGN_UP_METHODS)[number];
@@ -86,7 +86,9 @@ export class ServerEvents {
     this.emit(this.serverIds, 'ccu_peak', { ccu });
   }
 
+  /** Nothing is sent for what a request of the iPhone/Android app caused (`inAppRequest`). */
   private emit(ids: GaIds | null, name: ServerEventName, params: Ga4Event['params']): void {
+    if (inAppRequest()) return;
     const { clientId, sessionId } = ids ?? randomGaIds(this.now());
     this.sink.send({ clientId, event: { name, params: { ...params, session_id: sessionId, engagement_time_msec: 1 } } });
   }

@@ -82,7 +82,8 @@ const TURN = { iceServers: [{ urls: 'stun:stun.example:3478' }, { urls: ['turn:t
 const peerTo = (sent: VoiceOut[], to: string) => sent.some((m) => m.type === 'voice-signal' && m.to === to && m.signal.kind === 'offer');
 const party = (joined: boolean, ...members: VoiceMember[]): VoiceChannel => ({ kind: 'party', joined, members });
 
-function setup(deps: Partial<VoiceDeps> = {}) {
+/** `policy`: what the server says of her (the account owner's voice switch, the reminder); allowed and seen by default. */
+function setup(deps: Partial<VoiceDeps> = {}, policy: { allowed?: boolean; safetySeen?: boolean } = {}) {
   const social = createSocialStore();
   social.update({ selfId: 'p-b' });
   const sent: VoiceOut[] = [];
@@ -109,6 +110,7 @@ function setup(deps: Partial<VoiceDeps> = {}) {
     ...deps,
   });
   voice.start();
+  voice.setPolicy({ allowed: true, safetySeen: true, ...policy });
   const server = (message: Parameters<typeof social.voiceIn>[0]) => social.voiceIn(message);
   return { social, voice, sent, toasts, mic, getUserMedia, speak, server };
 }
@@ -423,5 +425,69 @@ describe('voice settings', () => {
     window.localStorage.setItem('miu.voiceChat', JSON.stringify({ enabled: 'yes', volume: 7 }));
     expect(readVoiceSettings()).toEqual({ enabled: true, pushToTalk: false, volume: 1 });
     expect(writeVoiceSettings({ volume: -1 }).volume).toBe(0);
+  });
+});
+
+describe('the account owner’s voice switch', () => {
+  it('off: no joining, no calling, and a friend calling is declined without ringing', async () => {
+    const { voice, sent, getUserMedia, server } = setup({}, { allowed: false });
+    await voice.join();
+    await voice.call('p-a', 'Bạn A');
+    expect(getUserMedia).not.toHaveBeenCalled();
+    expect(sent).toEqual([]);
+    server({ type: 'voice-call-invite', from: { id: 'p-a', displayName: 'Bạn A', species: 'cat' }, expiresInMs: 30_000 });
+    expect(voice.getSnapshot().incoming).toBeNull();
+    expect(sent).toEqual([{ type: 'voice-call-reply', from: 'p-a', accept: false }]);
+  });
+
+  it('turned off while she talks: out of the voice at once', async () => {
+    const { voice, sent } = setup();
+    await voice.join();
+    voice.setPolicy({ allowed: false, safetySeen: true });
+    expect(voice.getSnapshot()).toMatchObject({ joined: false, mic: false, allowed: false });
+    expect(sent.at(-1)).toEqual({ type: 'voice-leave' });
+  });
+});
+
+describe('the reminder before her first voice chat', () => {
+  it('comes before joining: confirmed, it is kept on the server and she joins', async () => {
+    const saveSafetySeen = vi.fn(async () => undefined);
+    const { voice, sent, getUserMedia } = setup({ saveSafetySeen }, { safetySeen: false });
+    await voice.join();
+    expect(voice.getSnapshot().safetyAsk).toEqual({ kind: 'join' });
+    expect(getUserMedia).not.toHaveBeenCalled();
+    expect(sent).toEqual([]);
+    await voice.confirmSafety();
+    expect(saveSafetySeen).toHaveBeenCalledTimes(1);
+    expect(voice.getSnapshot()).toMatchObject({ safetyAsk: null, safetySeen: true, joined: true });
+    expect(sent).toEqual([{ type: 'voice-join', mic: true }]);
+    // Once is enough.
+    voice.leave();
+    await voice.join();
+    expect(voice.getSnapshot().safetyAsk).toBeNull();
+    expect(saveSafetySeen).toHaveBeenCalledTimes(1);
+  });
+
+  it('comes before calling a friend, with the call waiting behind it', async () => {
+    const { voice, sent } = setup({ saveSafetySeen: async () => undefined }, { safetySeen: false });
+    await voice.call('p-a', 'Bạn A');
+    expect(voice.getSnapshot().safetyAsk).toEqual({ kind: 'call', id: 'p-a', name: 'Bạn A' });
+    expect(sent).toEqual([]);
+    await voice.confirmSafety();
+    expect(sent).toEqual([{ type: 'voice-call', to: 'p-a' }]);
+  });
+
+  it('comes before answering; "not now" declines the call and asks again next time', async () => {
+    const saveSafetySeen = vi.fn(async () => undefined);
+    const { voice, sent, server } = setup({ saveSafetySeen }, { safetySeen: false });
+    server({ type: 'voice-call-invite', from: { id: 'p-a', displayName: 'Bạn A', species: 'cat' }, expiresInMs: 30_000 });
+    await voice.answer(true);
+    expect(voice.getSnapshot().safetyAsk).toEqual({ kind: 'answer' });
+    expect(voice.getSnapshot().incoming?.id).toBe('p-a');
+    expect(sent).toEqual([]);
+    voice.dismissSafety();
+    await vi.waitFor(() => expect(sent).toEqual([{ type: 'voice-call-reply', from: 'p-a', accept: false }]));
+    expect(voice.getSnapshot()).toMatchObject({ safetyAsk: null, safetySeen: false, incoming: null });
+    expect(saveSafetySeen).not.toHaveBeenCalled();
   });
 });

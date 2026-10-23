@@ -30,7 +30,7 @@ import {
   type SafeEmote,
   type ServerWsMessage,
 } from '@miu/schema/multiplayer';
-import type { PlayerSettings } from '@miu/schema/account';
+import type { PlayerControls, PlayerSettings } from '@miu/schema/account';
 import type { FriendPerson } from '@miu/schema/friends';
 import type { PlayerEvent } from '../player/player-events';
 import type { CharacterDto } from '@miu/schema/game';
@@ -234,6 +234,8 @@ interface OnlinePlayer {
   room: MultiplayerRoom | null;
   /** Her companion bot switch: off, no bot shows up around her. */
   bots: boolean;
+  /** The account owner lets her talk by voice: off, every voice message of hers is refused, and calls to her too. */
+  voice: boolean;
   /** The companion bots she is friends with (they come by more often). */
   botFriends: Set<string>;
   /** Her joins so far: a home visit checked after a later join does not take her back. */
@@ -250,10 +252,11 @@ interface OnlinePlayer {
 }
 
 /**
- * Codes a WebSocket is closed with: the client does not reconnect after `replaced`, `noPlayer` or `restricted` (her
- * online play is locked), reconnects later after `paused` (the emergency switch) and soon after `flood`.
+ * Codes a WebSocket is closed with: the client does not reconnect after `replaced`, `noPlayer`, `restricted` (her
+ * online play is locked) or `ownerOff` (the account owner turned her online play off), reconnects later after
+ * `paused` (the emergency switch) and soon after `flood`.
  */
-export const WS_CLOSE = { replaced: 4001, restricted: 4403, noPlayer: 4401, flood: 4429, paused: 4503 } as const;
+export const WS_CLOSE = { replaced: 4001, restricted: 4403, ownerOff: 4404, noPlayer: 4401, flood: 4429, paused: 4503 } as const;
 
 const BUCKET_SIZE = 40;
 const BUCKET_REFILL_PER_S = 20;
@@ -304,6 +307,8 @@ export class MultiplayerHub {
   /** Profile id ↔ public id, stable while the server runs (a party knows her across maps and reconnects). */
   private readonly publicIds = new Map<string, string>();
   private readonly childIds = new Map<string, string>();
+  /** Players whose latest connection came from the iPhone/Android app. */
+  private readonly appChildren = new Set<string>();
   /** Her look, kept after she drops out so her party still lists her. */
   private readonly appearances = new Map<string, PlayerAppearance>();
   /**
@@ -411,6 +416,7 @@ export class MultiplayerHub {
         return look ? { id, displayName: look.displayName, species: look.species, isBot: this.isBot(id) } : null;
       },
       childIdOf: (id) => this.childIds.get(id) ?? null,
+      fromApp: (id) => this.appChildren.has(this.childIds.get(id) ?? ''),
       botsOn: (id) => this.players.get(id)?.bots ?? false,
       online: (id) => this.players.has(id),
       mapOf: (id) => this.locate(id)?.room.mapId ?? null,
@@ -432,6 +438,7 @@ export class MultiplayerHub {
       online: (id) => this.players.has(id),
       sees: (a, b) => this.sees(a, b),
       botsOn: (id) => this.players.get(id)?.bots ?? true,
+      voiceAllowed: (id) => this.players.get(id)?.voice ?? false,
       areFriends: async (a, b) => {
         const childA = this.childIds.get(a);
         const childB = this.childIds.get(b);
@@ -454,10 +461,11 @@ export class MultiplayerHub {
 
   /**
    * Opens a player's connection: her look, her bot switch and her blocks from the database. A second connection of
-   * the same player (another tab) takes over and the first is closed. Null when she has no character. Online play
-   * has no off switch (owner, 05/10/2026): every player with a character comes in.
+   * the same player (another tab) takes over and the first is closed. Null when she has no character. Every player
+   * with a character comes in, unless the account owner turned her online play off (account management), she is
+   * locked out by a moderator, or the emergency switch is off.
    */
-  async connect(childId: string, transport: Transport): Promise<Connection | null> {
+  async connect(childId: string, transport: Transport, options: { fromApp?: boolean } = {}): Promise<Connection | null> {
     if (!this.store) return null;
     if (this.paused()) {
       transport.close(WS_CLOSE.paused, 'paused');
@@ -465,16 +473,22 @@ export class MultiplayerHub {
     }
     const attempt = ++this.attemptSeq;
     this.attempts.set(childId, attempt);
-    const [stored, blocked, settings, botFriends, restricted] = await Promise.all([
+    const [stored, blocked, settings, botFriends, restricted, controls] = await Promise.all([
       this.store.appearance(childId),
       this.store.blockedWith(childId),
       this.store.settings?.(childId) ?? { botsEnabled: true },
       this.friends?.botFriends(childId) ?? new Set<string>(),
       this.store.restricted?.(childId) ?? false,
+      this.store.controls?.(childId) ?? { voiceChatAllowed: true, onlineAllowed: true },
     ]);
     const latest = this.attempts.get(childId) === attempt;
     if (latest) this.attempts.delete(childId);
     if (!stored) return null;
+    // The account owner turned her online play off: she plays alone (no ticket is given either; this is the backstop).
+    if (!controls.onlineAllowed) {
+      transport.close(WS_CLOSE.ownerOff, 'online-off');
+      return null;
+    }
     // Locked out of online play, or the switch went off meanwhile: she plays on alone.
     if (restricted || this.paused()) {
       transport.close(restricted ? WS_CLOSE.restricted : WS_CLOSE.paused, restricted ? 'restricted' : 'paused');
@@ -500,8 +514,11 @@ export class MultiplayerHub {
     const timer = this.partyTimers.get(publicId);
     if (timer) clearTimeout(timer);
     this.partyTimers.delete(publicId);
-    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, joins: 0, tokens: BUCKET_SIZE, refilledAt: this.now(), signalTokens: SIGNAL_BUCKET_SIZE, signalRefilledAt: this.now(), drops: 0, dropsSince: this.now() };
+    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, voice: controls.voiceChatAllowed, botFriends, joins: 0, tokens: BUCKET_SIZE, refilledAt: this.now(), signalTokens: SIGNAL_BUCKET_SIZE, signalRefilledAt: this.now(), drops: 0, dropsSince: this.now() };
     this.players.set(publicId, player);
+    // One connection per player at a time: the latest says whether she plays in the app (no usage events for her then).
+    if (options.fromApp) this.appChildren.add(childId);
+    else this.appChildren.delete(childId);
     this.peakPlayers = Math.max(this.peakPlayers, this.playersOnline());
     return {
       publicId,
@@ -544,6 +561,8 @@ export class MultiplayerHub {
     switch (event.type) {
       case 'settings':
         return this.settingsChanged(event.childId, event.settings);
+      case 'controls':
+        return this.controlsChanged(event.childId, event.controls);
       case 'friend-answered':
         return this.friendAnswered(event);
       case 'unfriended': {
@@ -651,6 +670,18 @@ export class MultiplayerHub {
     }
   }
 
+  /**
+   * The account owner changed her switches: online play off closes her connection for good (she plays on alone);
+   * voice off takes her out of every voice and refuses her voice from now on.
+   */
+  controlsChanged(childId: string, controls: PlayerControls): void {
+    const player = this.onlinePlayer(childId);
+    if (!player) return;
+    if (!controls.onlineAllowed) return this.shutOut(player, WS_CLOSE.ownerOff, 'online-off');
+    player.voice = controls.voiceChatAllowed;
+    if (!player.voice) this.voice.silence(player.publicId);
+  }
+
   /** Her bot switch changed: companion bots vanish or appear around her as it says. */
   settingsChanged(childId: string, settings: PlayerSettings): void {
     const publicId = this.publicIds.get(childId);
@@ -749,7 +780,7 @@ export class MultiplayerHub {
       stillValid: () => player.stillPlays(),
     };
     try {
-      connection = await this.connect(childId, transport);
+      connection = await this.connect(childId, transport, { fromApp: player.fromApp });
     } catch (err) {
       console.error('multiplayer connect failed', err instanceof Error ? err.name : typeof err);
     }

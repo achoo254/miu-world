@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { hubHarness } from '../../test/hub-harness';
+import { hubHarness, settle } from '../../test/hub-harness';
+import { WS_CLOSE } from './multiplayer-hub';
 
 let h: ReturnType<typeof hubHarness>;
 
@@ -13,8 +14,8 @@ afterEach(async () => {
   vi.useRealTimers();
 });
 
-describe('always online', () => {
-  it('lets every player with a character in (there is no switch to play offline)', async () => {
+describe('online by default', () => {
+  it('lets every player with a character in while the account owner keeps her online play on (the default)', async () => {
     h.db.characters.set('child-a', { displayName: 'Mèo Mây', species: 'cat', outfit: [], pet: null });
     const closed: number[] = [];
     const conn = await h.hub.connect('child-a', { send: () => {}, close: (code) => closed.push(code) });
@@ -30,6 +31,29 @@ describe('always online', () => {
     h.hub.playerEvent({ type: 'settings', childId: 'child-b', settings: { botsEnabled: false } });
     expect(b.closed).toBeNull();
     expect(a.last('party-state')?.party?.members).toHaveLength(2);
+  });
+});
+
+describe('the account owner’s online switch', () => {
+  it('keeps a player whose online play is off out of the rooms: she plays alone, and is not told to retry', async () => {
+    h.db.characters.set('child-a', { displayName: 'Mèo Mây', species: 'cat', outfit: [], pet: null });
+    h.db.controls.set('child-a', { voiceChatAllowed: true, onlineAllowed: false });
+    const closed: number[] = [];
+    const conn = await h.hub.connect('child-a', { send: () => {}, close: (code) => closed.push(code) });
+    expect(conn).toBeNull();
+    expect(closed).toEqual([WS_CLOSE.ownerOff]);
+  });
+
+  it('turned off while she plays: out of her party and her room at once, and the others no longer see her', async () => {
+    const a = await h.joined('child-a');
+    const b = await h.joined('child-b');
+    a.send({ type: 'party-invite', to: b.id });
+    b.send({ type: 'party-reply', from: a.id, accept: true });
+    await settle();
+    h.hub.playerEvent({ type: 'controls', childId: 'child-b', controls: { voiceChatAllowed: true, onlineAllowed: false } });
+    expect(b.closed).toBe(WS_CLOSE.ownerOff);
+    expect(a.last('despawn')).toEqual({ type: 'despawn', id: b.id });
+    expect(a.last('party-state')?.party ?? null).toBeNull();
   });
 });
 

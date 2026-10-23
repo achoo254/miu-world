@@ -9,12 +9,13 @@ import { apiUrl, wsUrl } from '../../platform/endpoints';
 import { authHeaders } from '../../platform/session-token';
 
 /**
- * Close codes after which reconnecting is pointless: another tab took over, there is no player to play as, or her
- * online play is locked. Online play has no off switch for players (owner, 05/10/2026): any other close is
- * followed by a reconnect.
+ * Close codes after which reconnecting is pointless: another tab took over, there is no player to play as, her
+ * online play is locked, or the account owner turned it off. Any other close is followed by a reconnect.
  */
-const FINAL_CLOSE_CODES = new Set([4001, 4401, 4403]);
+const FINAL_CLOSE_CODES = new Set([4001, 4401, 4403, 4404]);
 const CLOSE_RESTRICTED = 4403;
+/** The account owner turned her online play off (account management): she plays alone until it is on again. */
+const CLOSE_OWNER_OFF = 4404;
 /** The emergency switch closed online play: try again every so often, quietly, until it is back on. */
 const CLOSE_PAUSED = 4503;
 export const PAUSED_RETRY_MS = 15_000;
@@ -39,7 +40,7 @@ export interface MultiplayerStart {
 }
 
 /** Why online play is not there now, for a friendly line (null: it is, or a plain network hiccup). */
-export type OnlinePause = 'off' | 'restricted' | null;
+export type OnlinePause = 'off' | 'restricted' | 'owner' | null;
 
 export interface MultiplayerClientHandlers {
   onMessage(message: ServerWsMessage): void;
@@ -48,7 +49,7 @@ export interface MultiplayerClientHandlers {
 }
 
 /** What the ticket call says: a ticket, online play paused or locked for her, or a failure (retried later). */
-type TicketAnswer = { ticket: string } | { pause: 'off' | 'restricted' } | { failed: true };
+type TicketAnswer = { ticket: string } | { pause: 'off' | 'restricted' | 'owner' } | { failed: true };
 
 async function askTicket(): Promise<TicketAnswer> {
   let res: Response;
@@ -61,7 +62,9 @@ async function askTicket(): Promise<TicketAnswer> {
   if (res.status === 503) return { pause: 'off' };
   if (res.status === 403) {
     const body: unknown = await res.json().catch(() => null);
-    if (typeof body === 'object' && body !== null && 'error' in body && body.error === 'online-restricted') return { pause: 'restricted' };
+    const error = typeof body === 'object' && body !== null && 'error' in body ? body.error : null;
+    if (error === 'online-restricted') return { pause: 'restricted' };
+    if (error === 'online-off') return { pause: 'owner' };
     return { failed: true };
   }
   if (!res.ok) return { failed: true };
@@ -112,7 +115,7 @@ export class MultiplayerClient {
       if (this.disposed) return;
       if ('ticket' in answer) return this.open(answer.ticket);
       if ('pause' in answer) {
-        const final = answer.pause === 'restricted';
+        const final = answer.pause !== 'off';
         this.handlers.onStatus?.(false, final, answer.pause);
         if (!final) this.retry = window.setTimeout(() => this.connect(), PAUSED_RETRY_MS);
         return;
@@ -158,7 +161,7 @@ export class MultiplayerClient {
       if (this.ws === ws) this.ws = null;
       if (this.disposed) return;
       const final = FINAL_CLOSE_CODES.has(event.code);
-      const pause: OnlinePause = event.code === CLOSE_PAUSED ? 'off' : event.code === CLOSE_RESTRICTED ? 'restricted' : null;
+      const pause: OnlinePause = event.code === CLOSE_PAUSED ? 'off' : event.code === CLOSE_RESTRICTED ? 'restricted' : event.code === CLOSE_OWNER_OFF ? 'owner' : null;
       this.handlers.onStatus?.(false, final, pause);
       if (!opened) this.failures += 1;
       if (!final) this.retry = window.setTimeout(() => this.connect(), pause === 'off' ? PAUSED_RETRY_MS : reconnectDelay(this.failures));

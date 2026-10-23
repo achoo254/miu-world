@@ -1,7 +1,7 @@
 // A multiplayer hub over an in-memory database (characters, switches, blocks, friends), with players connected through fake transports and companion
 // bots joined straight into rooms, for the hub's tests. Timers are the test's (vi.useFakeTimers).
 import { vi } from 'vitest';
-import type { PlayerSettings } from '@miu/schema/account';
+import type { PlayerControls, PlayerSettings } from '@miu/schema/account';
 import type { PlayerAppearanceInput, PlayerPresence, ServerWsMessage } from '@miu/schema/multiplayer';
 import { MultiplayerHub, type Connection, type HubOptions, type MultiplayerRoom } from '../src/multiplayer/multiplayer-hub';
 import type { MultiplayerStore } from '../src/multiplayer/multiplayer-store';
@@ -13,6 +13,7 @@ import type { FriendStore } from '../src/friend/friend-store';
 export function memoryStore() {
   const characters = new Map<string, PlayerAppearanceInput>();
   const settings = new Map<string, PlayerSettings>();
+  const controls = new Map<string, PlayerControls>();
   const blocks: Array<[string, string]> = [];
   const reports: Array<{ from: string; about: string; reason: string; map: string | null }> = [];
   const store: MultiplayerStore = {
@@ -25,8 +26,9 @@ export function memoryStore() {
       reports.push({ from, about, reason, map });
     },
     settings: async (id) => settings.get(id) ?? { botsEnabled: true },
+    controls: async (id) => controls.get(id) ?? { voiceChatAllowed: true, onlineAllowed: true },
   };
-  return { store, characters, settings, blocks, reports };
+  return { store, characters, settings, controls, blocks, reports };
 }
 
 /** Friends as the hub sees them, in memory: pairs of players, players' bots, waiting requests. */
