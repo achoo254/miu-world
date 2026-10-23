@@ -23890,14 +23890,24 @@
       "bytes": 12188
     },
     {
+      "path": "generated/brand/miu-logo-1024.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-brand-logo.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters"
+      ],
+      "sha256": "b834e304391f9e5730b0c97ce4f9826d05a45f37ffeb680bb8f1a06f1c87d5f4",
+      "bytes": 43171
+    },
+    {
       "path": "generated/brand/miu-logo-120.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-brand-logo.ts",
       "derivedFrom": [
         "kenney-blocky-characters"
       ],
-      "sha256": "46beb514f52e9805422f0bc373a5646fb312df034266d2412c7700a1211e1a03",
-      "bytes": 4980
+      "sha256": "d9e93fda5025db57335a66277d1421a36acb775aee98c06b0d7bd38a3dd7dca7",
+      "bytes": 4408
     },
     {
       "path": "generated/brand/miu-logo-180.png",
@@ -23906,8 +23916,8 @@
       "derivedFrom": [
         "kenney-blocky-characters"
       ],
-      "sha256": "3c2fb34e8ee5b04904433f2ba222332ff872ae9bf78bb6d491866e01bf2cb2b5",
-      "bytes": 7765
+      "sha256": "f75b6f467d8bd17721bfe953d1f994ae99b2eb0fdab024324c8177bbf0c906a2",
+      "bytes": 6649
     },
     {
       "path": "generated/brand/miu-logo-192.png",
@@ -23916,8 +23926,8 @@
       "derivedFrom": [
         "kenney-blocky-characters"
       ],
-      "sha256": "7204711f3d4c03247cb0921b97ad7d601aefd53e5d3d09706954ca108a1ac425",
-      "bytes": 9578
+      "sha256": "4c83d9e8e8bdfa156899a4fe9c4234283b72f229d25933db38025bd521705b21",
+      "bytes": 7248
     },
     {
       "path": "generated/brand/miu-logo-32.png",
@@ -23926,8 +23936,8 @@
       "derivedFrom": [
         "kenney-blocky-characters"
       ],
-      "sha256": "5b2fb53703918f779bd2d07069aa4a2cd6a681ad95f0e83bc06e9dc57dbbf612",
-      "bytes": 1105
+      "sha256": "b9130aaece9286866f1a5077a22a8deebe7876118c7940381d83b92a71e2b3c7",
+      "bytes": 1037
     },
     {
       "path": "generated/brand/miu-logo-512.png",
@@ -23936,8 +23946,18 @@
       "derivedFrom": [
         "kenney-blocky-characters"
       ],
-      "sha256": "9525b994170703e2ff7f364ae2a4b838f6774d12a56c0ad7f0e662afbb7c9a9a",
-      "bytes": 22750
+      "sha256": "cdfc71ebb92e5e6a6e9444bf4cc02d7f7376ec566a3147df0d134e9eca697d81",
+      "bytes": 19960
+    },
+    {
+      "path": "generated/brand/miu-logo-adaptive-1024.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-brand-logo.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters"
+      ],
+      "sha256": "8c2ff1e083df777547f8d7a262abdc26aa3f509637f77a0ac8e6352c29f1c4f4",
+      "bytes": 29229
     },
     {
       "path": "generated/brand/miu-logo-maskable-512.png",
@@ -23946,8 +23966,18 @@
       "derivedFrom": [
         "kenney-blocky-characters"
       ],
-      "sha256": "465e54c1f08abfe3a5f044fada7850f883f9a7644b8977ffca560f1abfd7af03",
-      "bytes": 19183
+      "sha256": "9d73e6fda13492cd4d0855d57ae7949299fdfef5cc274b22e660e5d23c34d25a",
+      "bytes": 16774
+    },
+    {
+      "path": "generated/brand/miu-logo-monochrome-1024.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-brand-logo.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters"
+      ],
+      "sha256": "fffabc8c5b123186e73b198cc1d3d2d4d019a1eca587ad3b5dd1f94c918fa5a0",
+      "bytes": 10982
     },
     {
       "path": "generated/channel-kit/facebook-cover.png",

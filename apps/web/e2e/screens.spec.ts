@@ -8,7 +8,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Browser, type BrowserContext, type Page } from '@playwright/test';
 import { layoutFacts, type LayoutFacts } from './layout';
-import { freshChild, notebookPage, playAt, playUntil } from './quest-api';
+import { notebookPage, playAt, playUntil } from './quest-api';
+import { gameSettled, newPlayer, newScreen, type ScreenSize } from './screen-session';
 import { readStats, waitReady } from './stats';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -62,28 +63,8 @@ const uncommittedFiles = (): string[] => (EXPORTED_FROM ? [] : git('diff', '--na
 /** Now as an ISO time in Asia/Saigon (+07:00). */
 const saigonNow = (): string => `${new Date(Date.now() + 7 * 3_600_000).toISOString().slice(0, 19)}+07:00`;
 
-type Viewport = { width: number; height: number };
-
-/** A signed-out browser at this size, by touch. */
-async function newScreen(browser: Browser, baseURL: string, viewport: Viewport): Promise<{ context: BrowserContext; page: Page }> {
-  const context = await browser.newContext({ baseURL, viewport, deviceScaleFactor: 1, hasTouch: true, storageState: { cookies: [], origins: [] } });
-  // Every wait is bounded, so a screen that does not come up is noted as missing instead of stalling the run.
-  context.setDefaultTimeout(20_000);
-  context.setDefaultNavigationTimeout(30_000);
-  return { context, page: await context.newPage() };
-}
-
-async function newPlayer(browser: Browser, baseURL: string, viewport: Viewport, name = 'Mochi'): Promise<{ context: BrowserContext; page: Page }> {
-  const { context, page } = await newScreen(browser, baseURL, viewport);
-  await freshChild(page, baseURL, name);
-  // Companion bots stay out of the pictures (her own setting).
-  const headers = { Origin: new URL(baseURL).origin };
-  expect((await page.context().request.put('/api/player-settings', { headers, data: { botsEnabled: false } })).status()).toBe(200);
-  return { context, page };
-}
-
 /** The moderator signed in: signed up (and the policy accepted) on the first size, signed in again on the next. */
-async function newModerator(browser: Browser, baseURL: string, viewport: Viewport): Promise<{ context: BrowserContext; page: Page }> {
+async function newModerator(browser: Browser, baseURL: string, viewport: ScreenSize): Promise<{ context: BrowserContext; page: Page }> {
   const { context, page } = await newScreen(browser, baseURL, viewport);
   const headers = { Origin: new URL(baseURL).origin };
   const credentials = { email: MODERATOR, ['password']: 'test-password-e2e' };
@@ -101,13 +82,6 @@ async function newModerator(browser: Browser, baseURL: string, viewport: Viewpor
 
 /** The first line of an error, without the terminal's colour codes. */
 const firstLine = (err: unknown): string => ((err instanceof Error ? err.message : String(err)).split('\n')[0] ?? 'unknown').replace(TERMINAL_COLOUR, '');
-
-/** The game drawn and settled: ready, and a few frames drawn since. */
-async function gameSettled(page: Page): Promise<void> {
-  await waitReady(page);
-  const frames = (await readStats(page)).frames;
-  await expect.poll(async () => (await readStats(page)).frames, { timeout: 15_000 }).toBeGreaterThan(frames + 10);
-}
 
 const turnsOf = (quest: string): Array<{ id: string; answer: { choice: string } }> => {
   const def = JSON.parse(readFileSync(path.join(REPO_ROOT, 'content/quests', `${quest}.json`), 'utf8')) as { steps: Array<{ kind: string; turns?: Array<{ id: string; answer: { choice: string } }> }> };

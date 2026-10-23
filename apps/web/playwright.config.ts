@@ -82,5 +82,7 @@ export default defineConfig({
     { name: 'budget', testMatch: 'map-budget.spec.ts', dependencies: ['setup'], use: { storageState: PARENT_STATE } },
     // Pictures of the main screens before a release (docs/screen-review.md), run by hand: never on CI.
     { name: 'screens', testMatch: 'screens.spec.ts', dependencies: ['setup'] },
+    // The App Store and Google Play screenshots (docs/store/README.md), run by hand: never on CI.
+    { name: 'store', testMatch: 'store-screens.spec.ts' },
   ],
 });

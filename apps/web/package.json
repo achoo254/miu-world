@@ -13,7 +13,8 @@
     "e2e": "playwright test",
     "e2e:ci": "playwright test -c playwright.ci.config.ts",
     "e2e:smoke": "playwright test -c playwright.ci.config.ts",
-    "screens": "playwright test --project setup --project screens"
+    "screens": "playwright test --project setup --project screens",
+    "store:screens": "playwright test --project store"
   },
   "dependencies": {
     "@shared-next/brand": "github:achoo254/shared-next#v0.2.0&path:/packages/brand",

@@ -1,12 +1,13 @@
 /**
- * Draws the app icons and launch screens of the iOS and Android projects from the brand logo (brand.config.json
- * `icon` / `iconMaskable`, rendered by `pnpm assets:logo` into assets/generated/brand/) and the brand background
- * colour. Nothing new is drawn: every picture the Capacitor templates ship (their own logo) is replaced, at the size
- * the template gives it, by the logo scaled to fit. Run after `cap add` or a new logo, then commit the PNGs:
+ * Draws the app icons and launch screens of the iOS and Android projects from the brand logo (rendered by
+ * `pnpm assets:logo` into assets/generated/brand/, next to brand.config.json `icon`) and the brand background colour.
+ * Nothing new is drawn: every picture the Capacitor templates ship (their own logo) is replaced, at the size the
+ * template gives it, by the logo scaled down from its 1024 px master. Android's adaptive icon gets its own foreground
+ * (Miu inside the launcher's safe circle) and a monochrome layer for themed icons; the legacy round icon is cut round.
+ * Opaque pictures are written without an alpha channel (the App Store refuses an icon that has one). Run after
+ * `cap add` or a new logo, then commit the PNGs:
  *
  *   pnpm --filter @miu/mobile icons
- *
- * The logo master is 512 px; the iOS App Store icon (1024 px) is scaled up from it until the logo is rendered larger.
  */
 import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -20,19 +21,26 @@ const SPLASH_LOGO_SHARE = 0.32;
 
 type Rgba = [number, number, number, number];
 
+/** The 1024 px pictures tools/assets/render-brand-logo.ts writes beside the brand icon. */
+const LOGO_MASTER = 'miu-logo-1024.png';
+const ADAPTIVE_FOREGROUND = 'miu-logo-adaptive-1024.png';
+const MONOCHROME = 'miu-logo-monochrome-1024.png';
+/** Android's legacy launcher sizes (48 dp) per density; the adaptive layers are 108 dp. */
+const DENSITY_SCALE: Record<string, number> = { mdpi: 1, hdpi: 1.5, xhdpi: 2, xxhdpi: 3, xxxhdpi: 4 };
+const ADAPTIVE_DP = 108;
+
 interface BrandConfig {
   icon: string;
-  iconMaskable: string;
   colors: { background: string };
 }
 
 function readBrand(): BrandConfig {
   const raw: unknown = JSON.parse(readFileSync(path.join(REPO_ROOT, 'brand.config.json'), 'utf8'));
   const brand = raw as Partial<BrandConfig>;
-  if (typeof brand.icon !== 'string' || typeof brand.iconMaskable !== 'string' || typeof brand.colors?.background !== 'string') {
-    throw new Error('brand.config.json: icon, iconMaskable and colors.background are required');
+  if (typeof brand.icon !== 'string' || typeof brand.colors?.background !== 'string') {
+    throw new Error('brand.config.json: icon and colors.background are required');
   }
-  return { icon: brand.icon, iconMaskable: brand.iconMaskable, colors: { background: brand.colors.background } };
+  return { icon: brand.icon, colors: { background: brand.colors.background } };
 }
 
 function parseHex(hex: string): Rgba {
@@ -108,6 +116,21 @@ function compose(width: number, height: number, background: Rgba, logo: PNG, lef
 /** An icon of `size`: the logo full-bleed, flattened on the background (stores refuse transparent icons). */
 const icon = (logo: PNG, size: number, background: Rgba): PNG => compose(size, size, background, resize(logo, size), 0, 0);
 
+/** The picture cut to its inscribed circle: transparent outside, a one-pixel soft edge (the legacy round icon). */
+function round(png: PNG): PNG {
+  const out = new PNG({ width: png.width, height: png.height });
+  png.data.copy(out.data);
+  const r = png.width / 2;
+  for (let y = 0; y < png.height; y++) {
+    for (let x = 0; x < png.width; x++) {
+      const edge = Math.min(1, Math.max(0, r - Math.hypot(x + 0.5 - r, y + 0.5 - r)));
+      const i = (y * png.width + x) * 4 + 3;
+      out.data[i] = Math.round((out.data[i] ?? 0) * edge);
+    }
+  }
+  return out;
+}
+
 /** A launch screen of the file's own size: the background with the logo in the middle. */
 function splash(logo: PNG, width: number, height: number, background: Rgba): PNG {
   const size = Math.round(Math.min(width, height) * SPLASH_LOGO_SHARE);
@@ -125,39 +148,58 @@ function pngsUnder(dir: string, match: (file: string) => boolean): string[] {
 function main(): void {
   const brand = readBrand();
   const background = parseHex(brand.colors.background);
-  const logo = readPng(path.join(REPO_ROOT, 'assets', brand.icon));
-  const maskable = readPng(path.join(REPO_ROOT, 'assets', brand.iconMaskable));
+  const brandDir = path.join(REPO_ROOT, 'assets', path.dirname(brand.icon));
+  const logo = readPng(path.join(brandDir, LOGO_MASTER));
+  const foreground = readPng(path.join(brandDir, ADAPTIVE_FOREGROUND));
+  const monochrome = readPng(path.join(brandDir, MONOCHROME));
   const written: string[] = [];
-  const write = (file: string, png: PNG): void => {
-    writeFileSync(file, PNG.sync.write(png));
+  const write = (file: string, png: PNG, opaque: boolean): void => {
+    writeFileSync(file, PNG.sync.write(png, opaque ? { colorType: 2 } : {}));
     written.push(path.relative(MOBILE_DIR, file));
   };
 
   const ios = path.join(MOBILE_DIR, 'ios/App/App/Assets.xcassets');
   for (const file of pngsUnder(path.join(ios, 'AppIcon.appiconset'), () => true)) {
     const { width } = readPng(file);
-    write(file, icon(logo, width, background));
+    write(file, icon(logo, width, background), true);
   }
   for (const file of pngsUnder(path.join(ios, 'Splash.imageset'), () => true)) {
     const { width, height } = readPng(file);
-    write(file, splash(logo, width, height, background));
+    write(file, splash(logo, width, height, background), true);
   }
 
   const res = path.join(MOBILE_DIR, 'android/app/src/main/res');
-  for (const file of pngsUnder(res, (f) => /mipmap-[^/]+\/ic_launcher(_round|_foreground)?\.png$/.test(f.split(path.sep).join('/')))) {
-    const { width } = readPng(file);
-    // The adaptive icon's foreground layer: the maskable logo, whose figure stays inside the shapes launchers crop to.
-    write(file, icon(file.endsWith('_foreground.png') ? maskable : logo, width, background));
+  for (const [density, scale] of Object.entries(DENSITY_SCALE)) {
+    const dir = path.join(res, `mipmap-${density}`);
+    const legacy = Math.round(48 * scale);
+    const layer = Math.round(ADAPTIVE_DP * scale);
+    write(path.join(dir, 'ic_launcher.png'), icon(logo, legacy, background), true);
+    write(path.join(dir, 'ic_launcher_round.png'), round(icon(logo, legacy, background)), false);
+    // The adaptive icon's layers: Miu inside the circle every launcher shape keeps, and her silhouette for themed icons.
+    write(path.join(dir, 'ic_launcher_foreground.png'), icon(foreground, layer, background), true);
+    write(path.join(dir, 'ic_launcher_monochrome.png'), resize(monochrome, layer), false);
   }
   for (const file of pngsUnder(res, (f) => path.basename(f) === 'splash.png')) {
     const { width, height } = readPng(file);
-    write(file, splash(logo, width, height, background));
+    write(file, splash(logo, width, height, background), true);
   }
 
-  // The adaptive icon's background layer is the brand background colour too.
+  // The adaptive icon's background layer is the brand background colour; the monochrome layer feeds themed icons.
   const colourFile = path.join(res, 'values/ic_launcher_background.xml');
   writeFileSync(colourFile, `<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <color name="ic_launcher_background">${brand.colors.background.toUpperCase()}</color>\n</resources>\n`);
   written.push(path.relative(MOBILE_DIR, colourFile));
+  for (const name of ['ic_launcher.xml', 'ic_launcher_round.xml']) {
+    const file = path.join(res, 'mipmap-anydpi-v26', name);
+    writeFileSync(
+      file,
+      '<?xml version="1.0" encoding="utf-8"?>\n<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">\n' +
+        '    <background android:drawable="@color/ic_launcher_background"/>\n' +
+        '    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>\n' +
+        '    <monochrome android:drawable="@mipmap/ic_launcher_monochrome"/>\n' +
+        '</adaptive-icon>\n',
+    );
+    written.push(path.relative(MOBILE_DIR, file));
+  }
 
   if (written.length < 3) throw new Error('no icon or launch screen found: run `cap add ios` and `cap add android` first');
   console.log(`wrote ${written.length} files:\n  ${written.join('\n  ')}`);

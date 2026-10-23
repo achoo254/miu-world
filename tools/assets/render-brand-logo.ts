@@ -1,9 +1,13 @@
 // Renders the Miu World logo: Miu (the miu-cat player model in her own clothes, cheering) on the sky gradient of the
 // UI tokens (`--color-sky-top` → `--color-sky-bottom`), full-bleed square so app stores and Google's consent screen
-// can round or circle-crop it; she sits inside the inscribed circle. Output in assets/generated/brand/: miu-logo-<size>.png
-// for Google's OAuth consent screen (120), the favicon (32), the iPhone home screen (180) and the installed web app
-// (192, 512), plus miu-logo-maskable-512.png with Miu inside the maskable safe zone (a circle of 40% radius) for
-// Android's icon shapes. Re-run `pnpm assets:logo`; apps/web/vite-app-icons.ts links them into the pages.
+// can round or circle-crop it; she sits inside the inscribed circle. Rendered once at 1024 px (the App Store icon's
+// size) and scaled down from there. Output in assets/generated/brand/: miu-logo-<size>.png for the iPhone/Android apps'
+// store icon (1024), Google's OAuth consent screen (120), the favicon (32), the iPhone home screen (180) and the
+// installed web app (192, 512); miu-logo-maskable-512.png with Miu inside the maskable safe zone (a circle of 40%
+// radius) for the installed web app on Android; and for the Android app's adaptive icon, miu-logo-adaptive-1024.png
+// (Miu inside the 66 dp circle of a 108 dp layer that every launcher shape keeps) with miu-logo-monochrome-1024.png,
+// her white silhouette on transparent at the same place, for Android 13's themed icons. Re-run `pnpm assets:logo`;
+// apps/web/vite-app-icons.ts links them into the pages, apps/mobile/scripts/native-icons.ts into the apps.
 import os from 'node:os';
 import path from 'node:path';
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
@@ -15,7 +19,7 @@ import { readCharacterSpecs } from './kitbash-character';
 import { renderShots } from './render-preview';
 
 const OUT_DIR = path.join(ASSETS_DIR, 'generated/brand');
-const MASTER = 512;
+const MASTER = 1024;
 /** Same values as --color-sky-top and --color-sky-bottom in apps/web/src/ui/tokens.css. */
 const SKY_TOP: Rgb = [0x8f, 0xd0, 0xff];
 const SKY_BOTTOM: Rgb = [0xff, 0xe1, 0xef];
@@ -23,9 +27,17 @@ const SKY_BOTTOM: Rgb = [0xff, 0xe1, 0xef];
 const FIGURE_HEIGHT = 0.8;
 /** Smaller for the maskable icon: her box stays inside the 40%-radius safe zone Android may crop to. */
 const MASKABLE_FIGURE_HEIGHT = 0.66;
-const OUTPUTS: ReadonlyArray<{ file: string; size: number; figure: number }> = [
-  ...[512, 192, 180, 120, 32].map((size) => ({ file: `miu-logo-${size}.png`, size, figure: FIGURE_HEIGHT })),
-  { file: 'miu-logo-maskable-512.png', size: MASTER, figure: MASKABLE_FIGURE_HEIGHT },
+/**
+ * Smaller again for the Android app's adaptive icon: a launcher shows the middle 72 dp of the 108 dp layer and may cut
+ * it to a 66 dp circle, so her box (taller than wide) stays inside a circle of 61% of the side.
+ */
+const ADAPTIVE_FIGURE_HEIGHT = 0.5;
+type Look = 'logo' | 'silhouette';
+const OUTPUTS: ReadonlyArray<{ file: string; size: number; figure: number; look: Look }> = [
+  ...[1024, 512, 192, 180, 120, 32].map((size) => ({ file: `miu-logo-${size}.png`, size, figure: FIGURE_HEIGHT, look: 'logo' as const })),
+  { file: 'miu-logo-maskable-512.png', size: 512, figure: MASKABLE_FIGURE_HEIGHT, look: 'logo' },
+  { file: 'miu-logo-adaptive-1024.png', size: MASTER, figure: ADAPTIVE_FIGURE_HEIGHT, look: 'logo' },
+  { file: 'miu-logo-monochrome-1024.png', size: MASTER, figure: ADAPTIVE_FIGURE_HEIGHT, look: 'silhouette' },
 ];
 const PORTRAIT = 'miu-portrait.png';
 
@@ -113,18 +125,21 @@ function resample(src: PNG, box: { x: number; y: number; w: number; h: number },
   return out;
 }
 
-/** Miu centred on the sky gradient, a full-bleed opaque square; `figure` is her height as a share of the side. */
-function compose(portrait: PNG, figure: number): PNG {
+/**
+ * A `MASTER` square with Miu centred, `figure` her height as a share of the side: on the sky gradient, opaque (`logo`),
+ * or as a white silhouette on transparent (`silhouette`, her own edge alpha kept).
+ */
+function compose(portrait: PNG, figure: number, look: Look): PNG {
   const logo = new PNG({ width: MASTER, height: MASTER });
   for (let y = 0; y < MASTER; y++) {
     const k = y / (MASTER - 1);
-    const sky = SKY_TOP.map((top, c) => Math.round(top + ((SKY_BOTTOM[c] ?? top) - top) * k));
+    const sky = look === 'logo' ? SKY_TOP.map((top, c) => Math.round(top + ((SKY_BOTTOM[c] ?? top) - top) * k)) : [255, 255, 255];
     for (let x = 0; x < MASTER; x++) {
       const o = (y * MASTER + x) * 4;
       logo.data[o] = sky[0] ?? 0;
       logo.data[o + 1] = sky[1] ?? 0;
       logo.data[o + 2] = sky[2] ?? 0;
-      logo.data[o + 3] = 255;
+      logo.data[o + 3] = look === 'logo' ? 255 : 0;
     }
   }
   const box = opaqueBox(portrait);
@@ -139,6 +154,10 @@ function compose(portrait: PNG, figure: number): PNG {
       const alpha = (miu.data[f + 3] ?? 0) / 255;
       if (alpha === 0) continue;
       const o = ((top + y) * MASTER + left + x) * 4;
+      if (look === 'silhouette') {
+        logo.data[o + 3] = miu.data[f + 3] ?? 0;
+        continue;
+      }
       for (let c = 0; c < 3; c++) {
         logo.data[o + c] = Math.round((miu.data[f + c] ?? 0) * alpha + (logo.data[o + c] ?? 0) * (1 - alpha));
       }
@@ -153,10 +172,11 @@ async function main(): Promise<void> {
     const portrait = await renderPortrait(tmp);
     await rm(OUT_DIR, { recursive: true, force: true });
     await mkdir(OUT_DIR, { recursive: true });
-    for (const { file, size, figure } of OUTPUTS) {
-      const logo = compose(portrait, figure);
+    for (const { file, size, figure, look } of OUTPUTS) {
+      const logo = compose(portrait, figure, look);
       const png = size === MASTER ? logo : resample(logo, { x: 0, y: 0, w: MASTER, h: MASTER }, size, size);
-      await writeFile(path.join(OUT_DIR, file), PNG.sync.write(png));
+      // The opaque logos are written without an alpha channel: the App Store refuses an icon that has one.
+      await writeFile(path.join(OUT_DIR, file), PNG.sync.write(png, look === 'logo' ? { colorType: 2 } : {}));
     }
     console.log(`render-brand-logo: ${OUTPUTS.length} images in ${path.relative(process.cwd(), OUT_DIR)}`);
   } finally {
