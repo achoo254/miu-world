@@ -172,7 +172,7 @@ describe('the report', () => {
 
 describe('the command line', () => {
   it('is a dry run, private, on both channels, with filming, unless told otherwise', () => {
-    expect(parseArgs(['--'])).toEqual({ publish: false, privacy: 'private', channels: ['youtube', 'facebook'], render: true });
+    expect(parseArgs(['--'])).toEqual({ publish: false, privacy: 'public', channels: ['youtube', 'facebook'], render: true });
   });
 
   it('reads every option', () => {

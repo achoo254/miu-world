@@ -4,7 +4,7 @@
 /** `private` and `unlisted` are YouTube's; on Facebook only `public` publishes, the others leave the video unpublished (an admin-only draft). */
 export const PRIVACY = ['private', 'unlisted', 'public'] as const;
 export type Privacy = (typeof PRIVACY)[number];
-export const DEFAULT_PRIVACY: Privacy = 'private';
+export const DEFAULT_PRIVACY: Privacy = 'public';
 
 export interface PostRequest {
   /** The finished clip (`.mp4`). */

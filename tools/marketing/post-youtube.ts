@@ -1,7 +1,7 @@
 // Posts a clip to the YouTube channel through the YouTube Data API v3 with `fetch` alone (no Google SDK): the refresh token
 // of the owner's OAuth grant is traded for a short-lived access token, then the video goes up as one resumable upload. It
 // reaches only the channel the owner granted `youtube.upload` for. A dry run (the default) describes the post and touches
-// neither the secret nor the network. The first run is private (`DEFAULT_PRIVACY`); the owner makes later ones public.
+// neither the secret nor the network. Posts are public by default (`DEFAULT_PRIVACY`), the owner's choice of 24/10/2026.
 import { openAsBlob, statSync } from 'node:fs';
 import path from 'node:path';
 import { readChannelKit } from './channels';
