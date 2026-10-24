@@ -51,7 +51,7 @@ describe('content catalogue', () => {
     // ...and say where to go: every step here happens at the ancient tree.
     const places = Object.fromEntries(steps.flatMap((s) => (s.kind === 'search' ? [[s.id, 'cây cổ thụ']] : s.target ? [[s.target, 'cây cổ thụ']] : [])));
     const walked = steps.map((s) => ({ ...s, goTo: 'Đến cây cổ thụ' }));
-    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', lesson: 'tv2-t1-b01', steps: walked, places };
+    const draft = { ...sgk, id: 'tv2-t01-b01', status: 'draft', lesson: 'tv2-t1-b01', topic: 'doc-truyen', steps: walked, places };
     const loaded = loadQuests(questDir([{ ...base, id: 'a' }, draft]), new Set([...skills, 'phep-cong']));
     expect([...loaded.keys()]).toEqual(['a']);
     expect(() => loadQuests(questDir([{ ...draft, phases: {} }]), skills)).toThrow(/invalid content file/);

@@ -1,0 +1,47 @@
+{
+  "id": "chinh-ta",
+  "subject": "tieng-viet",
+  "title": "Viết đúng chính tả",
+  "summary": "Phân biệt c/k, g/gh, ng/ngh, ch/tr, s/x, l/n, r/d/gi và các vần dễ lẫn; nghe và viết lại đoạn ngắn.",
+  "order": 10,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Viết",
+    "requirements": [
+      "Viết đúng chính tả đoạn thơ, đoạn văn có độ dài khoảng 50 chữ theo hình thức nghe – viết.",
+      "Viết đúng các từ ngữ có âm đầu, vần dễ viết sai do phát âm."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "chinh-ta-am-dau",
+      "text": "Chọn đúng âm đầu dễ lẫn: c/k, g/gh, ng/ngh, ch/tr, s/x, l/n, r/d/gi.",
+      "skills": [
+        "chinh-ta"
+      ],
+      "practice": [
+        "dien-chu"
+      ]
+    },
+    {
+      "id": "chinh-ta-van",
+      "text": "Chọn đúng vần dễ lẫn.",
+      "skills": [
+        "chinh-ta"
+      ],
+      "practice": [
+        "dien-chu"
+      ]
+    },
+    {
+      "id": "chinh-ta-nghe-viet",
+      "text": "Nghe và viết lại một đoạn ngắn.",
+      "skills": [
+        "chinh-ta"
+      ],
+      "practice": [
+        "nghe-viet"
+      ]
+    }
+  ]
+}

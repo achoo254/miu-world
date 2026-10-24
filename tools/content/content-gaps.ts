@@ -1,6 +1,8 @@
+// `pnpm content:gaps --topics [--missing]`: which objectives of each topic (content/learning/topics) the quests
+// practise, and which exercise kinds are still missing; topics marked "gate" must be complete.
 // `pnpm content:gaps [--book toan2-t1|tv2-t1] [--unit <unit id>] [--missing] [--review]`: which textbook
-// exercises the quests cover, in the game or on a printed worksheet, per lesson, unit and book. `--review`
-// also writes the totals for the review page (assets/generated/review/sgk-coverage.json).
+// exercises the quests still waiting to be rewritten cover, in the game or on a printed worksheet, per lesson, unit
+// and book. `--review` also writes the totals for the review page (assets/generated/review/sgk-coverage.json).
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
@@ -9,6 +11,9 @@ import { CONTENT_DIR, readQuestDefinitions } from '../../apps/server/src/content
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { checkCurriculum } from './check-curriculum';
 import { checkCurriculumLinks, type LessonGaps } from './curriculum-links';
+import { checkLearningLinks, type ObjectiveCoverage } from './learning-links';
+import { readPendingQuests } from './no-textbook-copy';
+import { readTopicFiles } from '../../apps/server/src/content/learning-topics';
 
 export interface GapTotals {
   items: number;
@@ -84,8 +89,37 @@ export function coverageSummary(
   };
 }
 
+/** One line per objective: steps that practise it, kinds still missing, and whether the gate holds it. */
+export function objectiveTable(coverage: readonly ObjectiveCoverage[], showMissing: boolean): string[] {
+  const lines = [`${'topic / objective'.padEnd(48)} ${'steps'.padStart(5)} ${'phủ'.padStart(5)}  gate`];
+  for (const topic of [...new Set(coverage.map((c) => c.topic))]) {
+    const rows = coverage.filter((c) => c.topic === topic);
+    const done = rows.filter((c) => c.missing.length === 0).length;
+    lines.push(`${topic.padEnd(48)} ${''.padStart(5)} ${`${done}/${rows.length}`.padStart(5)}  ${rows[0]?.gated ? 'gate' : 'waiting'}`);
+    for (const row of rows) {
+      if (!showMissing && row.missing.length === 0) continue;
+      lines.push(`  ${row.objective.padEnd(46)} ${String(row.steps).padStart(5)} ${(row.missing.length === 0 ? 'ok' : 'thiếu').padStart(5)}${row.missing.length > 0 ? `  ${row.missing.join(', ')}` : ''}`);
+    }
+  }
+  return lines;
+}
+
 function main(): void {
-  const { values } = parseArgs({ options: { book: { type: 'string' }, unit: { type: 'string' }, missing: { type: 'boolean' }, review: { type: 'boolean' } } });
+  const { values } = parseArgs({ options: { book: { type: 'string' }, unit: { type: 'string' }, missing: { type: 'boolean' }, review: { type: 'boolean' }, topics: { type: 'boolean' } } });
+  if (values.topics) {
+    const quests = readQuestDefinitions(path.join(CONTENT_DIR, 'quests'));
+    const { topics, issues } = readTopicFiles(path.join(CONTENT_DIR, 'learning/topics'));
+    const report = checkLearningLinks(topics, quests, readPendingQuests());
+    for (const line of objectiveTable(report.coverage, values.missing ?? false)) console.log(line);
+    const problems = [...issues, ...report.issues];
+    if (problems.length > 0) {
+      console.error(`
+${problems.length} problem(s) to fix first:`);
+      for (const p of problems) console.error(`  - ${p}`);
+      process.exit(1);
+    }
+    return;
+  }
   const curriculum = checkCurriculum();
   const quests = readQuestDefinitions(path.join(CONTENT_DIR, 'quests'));
   const report = checkCurriculumLinks(curriculum.books, quests);

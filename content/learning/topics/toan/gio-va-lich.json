@@ -1,0 +1,48 @@
+{
+  "id": "gio-va-lich",
+  "subject": "toan",
+  "title": "Giờ, phút, ngày, tháng",
+  "summary": "Đọc giờ trên đồng hồ, biết một ngày có 24 giờ, một giờ có 60 phút; xem ngày và thứ trên tờ lịch.",
+  "order": 9,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Hình học và đo lường",
+    "requirements": [
+      "Nhận biết được một ngày có 24 giờ, một giờ có 60 phút.",
+      "Đọc được giờ trên đồng hồ khi kim phút chỉ số 3, số 6.",
+      "Nhận biết được số ngày trong tháng, ngày trong tháng; đọc được ngày trên tờ lịch."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "gio-va-lich-dong-ho",
+      "text": "Đọc và đặt giờ trên đồng hồ, kể cả giờ rưỡi và giờ có 15 phút.",
+      "skills": [
+        "xem-dong-ho"
+      ],
+      "practice": [
+        "xem-dong-ho"
+      ]
+    },
+    {
+      "id": "gio-va-lich-ngay-gio",
+      "text": "Biết giờ trong ngày (sáng, trưa, chiều, tối) và đổi giữa ngày, giờ, phút.",
+      "skills": [
+        "xem-dong-ho"
+      ],
+      "practice": [
+        "chon-dap-an"
+      ]
+    },
+    {
+      "id": "gio-va-lich-lich",
+      "text": "Xem ngày, thứ và số ngày trong tháng trên tờ lịch.",
+      "skills": [
+        "xem-lich"
+      ],
+      "practice": [
+        "xem-lich"
+      ]
+    }
+  ]
+}

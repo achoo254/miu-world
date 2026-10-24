@@ -79,10 +79,18 @@ export const IllustrationRef = z.discriminatedUnion('kind', [
 export type IllustrationRef = z.infer<typeof IllustrationRef>;
 
 /**
- * Textbook inventory items (content/curriculum) the step covers. Authoring only: the content gate
- * checks that the step carries the book's wording and answer unchanged.
+ * What a learning step teaches, authoring only (never sent to the client):
+ * - `objective`: the objective of content/learning/topics it practises (the coverage gate counts it);
+ * - `expression`: the calculation behind a numeric answer, so the gate recomputes the answer instead of trusting a
+ *   typed one (`evaluateExpression` in learning.ts); for a fill-blank, one per computed blank, by blank id (blanks
+ *   that take a sign or copy a number from the problem need none);
+ * - `curriculumRef`: textbook inventory items, kept only on quests still waiting to be rewritten in our own words.
  */
-const curriculumRef = { curriculumRef: z.array(ContentId).min(1).optional() };
+const curriculumRef = {
+  curriculumRef: z.array(ContentId).min(1).optional(),
+  objective: ContentId.optional(),
+  expression: z.union([Text, z.record(ContentId, Text)]).optional(),
+};
 
 // Each step kind is a shape. Learning steps have a public shape (safe to send before the child answers)
 // and an authoring shape that adds the answer and the support layers.
@@ -596,7 +604,7 @@ export function stepTargets(step: QuestStep | QuestStepPublic): string[] {
   return step.target ? [step.target] : [];
 }
 
-/** Textbook quests (Toán 2 `toan2-cd<topic>-b<lesson>`, Tiếng Việt 2 `tv2-t<week>-…`) follow stricter rules. */
+/** The first learning quests (ids `toan2-…`, `tv2-…`, kept so saved progress stays valid) follow the learning rules. */
 export const isTextbookQuest = (id: string) => id.startsWith('toan2-') || id.startsWith('tv2-');
 
 /** Challenges where the child manipulates something (Master Plan §16), as opposed to picking one answer. */
@@ -783,13 +791,30 @@ const StubQuest = z.strictObject({
   status: z.literal('stub'),
 });
 
-/** Long passage shared by several steps (a textbook reading); `section` names its inventory section. */
+/**
+ * Where a reading comes from. `folk`: a folk verse, riddle or tale (a tale is always retold in our own words);
+ * `public-domain`: a work whose author died long enough ago for its protection to have ended (50 years after the
+ * year of death, to 31 December); `original`: written for the game.
+ */
+export const TextSource = z.discriminatedUnion('kind', [
+  /** `title`: the traditional work ("Đồng dao Dung dăng dung dẻ", "Truyện cổ tích Tấm Cám"). */
+  z.strictObject({ kind: z.literal('folk'), title: Text, note: Text.optional() }),
+  z.strictObject({ kind: z.literal('public-domain'), title: Text.optional(), author: Text, died: z.number().int().min(1000) }),
+  z.strictObject({ kind: z.literal('original') }),
+]);
+export type TextSource = z.infer<typeof TextSource>;
+
+/**
+ * Long passage shared by several steps (a reading), with where it comes from (`source`). `author` and `section`
+ * belong to textbook passages still waiting to be rewritten; the content gate refuses them anywhere else.
+ */
 export const QuestText = z.strictObject({
   title: Text,
-  author: Text.optional(),
   body: Text,
-  /** The "Từ ngữ" box printed under a textbook passage. */
+  /** Words explained under the passage. */
   glossary: z.array(z.strictObject({ term: Text, meaning: Text })).optional(),
+  source: TextSource.optional(),
+  author: Text.optional(),
   section: ContentId.optional(),
 });
 export type QuestText = z.infer<typeof QuestText>;
@@ -869,10 +894,15 @@ const questFields = {
     next: ContentId,
   }),
   /**
-   * Textbook lesson the quest plays (`tv2-t1-b01`): the quest list shows its title and printed pages,
-   * since teachers set homework by page or lesson title. Required on textbook quests.
+   * Textbook lesson (`tv2-t1-b01`) of a quest still waiting to be rewritten in our own words; the content gate
+   * refuses it on any other quest.
    */
   lesson: ContentId.optional(),
+  /**
+   * Topic of content/learning/topics the quest teaches (a learning quest): the quest list and the public pages group
+   * lessons by it. Required on learning quests.
+   */
+  topic: ContentId.optional(),
   texts: z.record(ContentId, QuestText).default({}),
   /**
    * Where each target stands, and the area of each search step, as the tracker names it ("cổng rừng").
@@ -915,10 +945,10 @@ function wayfindingIssues(steps: readonly QuestStep[], places: Readonly<Record<s
  * A side quest is short and always the same shape: a dialogue at the character who offers it, its one
  * minigame, then the reward and the closing line, which run by themselves.
  */
-function sideQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[] }): string[] {
+function sideQuestIssues(q: { id: string; lesson?: string | undefined; topic?: string | undefined; steps: QuestStep[] }): string[] {
   const issues: string[] = [];
   if (!q.id.startsWith(SIDE_QUEST_PREFIX)) issues.push(`a side quest id starts with "${SIDE_QUEST_PREFIX}"`);
-  if (isTextbookQuest(q.id) || q.lesson) issues.push('a side quest plays no textbook lesson');
+  if (isTextbookQuest(q.id) || q.lesson || q.topic) issues.push('a side quest plays no textbook lesson');
   const [first] = q.steps;
   if (first?.kind !== 'dialogue' || first.trigger !== 'interact' || !first.target) issues.push('a side quest starts with a dialogue at the character who offers it');
   const games = q.steps.filter((s) => s.kind === 'challenge' && s.mechanic === 'minigame');
@@ -939,10 +969,10 @@ const STORY_MECHANICS = new Set(['quiz', 'sort', 'logic', 'multi-select', 'minig
  * A story chapter opens at its character (a dialogue there, the child talks to it to start), walks the child round
  * named places like a lesson, plays at least two mechanics and ships in both languages.
  */
-function storyQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[]; places: Record<string, string>; en?: QuestEn | undefined }): string[] {
+function storyQuestIssues(q: { id: string; lesson?: string | undefined; topic?: string | undefined; steps: QuestStep[]; places: Record<string, string>; en?: QuestEn | undefined }): string[] {
   const issues: string[] = [];
   if (!q.id.startsWith(STORY_QUEST_PREFIX)) issues.push(`a story chapter id starts with "${STORY_QUEST_PREFIX}"`);
-  if (isTextbookQuest(q.id) || q.lesson) issues.push('a story chapter plays no textbook lesson');
+  if (isTextbookQuest(q.id) || q.lesson || q.topic) issues.push('a story chapter plays no textbook lesson');
   const [first] = q.steps;
   if (first?.kind !== 'dialogue' || first.trigger !== 'interact' || !first.target) issues.push('a story chapter starts with a dialogue at its character, who tells it');
   for (const step of q.steps) {
@@ -959,10 +989,10 @@ function storyQuestIssues(q: { id: string; lesson?: string | undefined; steps: Q
  * A co-op challenge opens at its host (a dialogue there: the child talks to it to open the team's lobby), plays one
  * co-op step, then runs its closing beats by itself. It ships in both languages.
  */
-function coopQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[] }): string[] {
+function coopQuestIssues(q: { id: string; lesson?: string | undefined; topic?: string | undefined; steps: QuestStep[] }): string[] {
   const issues: string[] = [];
   if (!q.id.startsWith(COOP_QUEST_PREFIX)) issues.push(`a co-op challenge id starts with "${COOP_QUEST_PREFIX}"`);
-  if (isTextbookQuest(q.id) || q.lesson) issues.push('a co-op challenge plays no textbook lesson');
+  if (isTextbookQuest(q.id) || q.lesson || q.topic) issues.push('a co-op challenge plays no textbook lesson');
   const [first] = q.steps;
   if (first?.kind !== 'dialogue' || first.trigger !== 'interact' || !first.target) issues.push('a co-op challenge starts with a dialogue at its host, who opens the lobby');
   if (q.steps.filter((s) => s.kind === 'coop').length !== 1) issues.push('a co-op challenge holds exactly one co-op step');
@@ -979,10 +1009,10 @@ function coopQuestIssues(q: { id: string; lesson?: string | undefined; steps: Qu
  * its boss (4–5 questions, every one needed to win, a line after each blow and each miss), then runs its closing
  * beats by itself. It ships in both languages.
  */
-function guardianQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[] }): string[] {
+function guardianQuestIssues(q: { id: string; lesson?: string | undefined; topic?: string | undefined; steps: QuestStep[] }): string[] {
   const issues: string[] = [];
   if (!q.id.startsWith(GUARDIAN_QUEST_PREFIX)) issues.push(`a zone guardian id starts with "${GUARDIAN_QUEST_PREFIX}"`);
-  if (isTextbookQuest(q.id) || q.lesson) issues.push('a zone guardian plays no textbook lesson');
+  if (isTextbookQuest(q.id) || q.lesson || q.topic) issues.push('a zone guardian plays no textbook lesson');
   const [first] = q.steps;
   const guardian = first?.kind === 'dialogue' && first.trigger === 'interact' ? first.target : undefined;
   if (!guardian) issues.push('a zone guardian starts with a dialogue at the guardian, who opens the fight');
@@ -1012,10 +1042,10 @@ const EVENT_STEP_KINDS = new Set([...STORY_STEP_KINDS, 'boss']);
  * round named places like a lesson, plays at least two mechanics, ships in both languages, and its boss, when it has
  * one, answers every blow and every miss.
  */
-function eventQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[]; places: Record<string, string> }): string[] {
+function eventQuestIssues(q: { id: string; lesson?: string | undefined; topic?: string | undefined; steps: QuestStep[]; places: Record<string, string> }): string[] {
   const issues: string[] = [];
   if (!q.id.startsWith(EVENT_QUEST_PREFIX)) issues.push(`an event quest id starts with "${EVENT_QUEST_PREFIX}"`);
-  if (isTextbookQuest(q.id) || q.lesson) issues.push('an event quest plays no textbook lesson');
+  if (isTextbookQuest(q.id) || q.lesson || q.topic) issues.push('an event quest plays no textbook lesson');
   const [first] = q.steps;
   if (first?.kind !== 'dialogue' || first.trigger !== 'interact' || !first.target) issues.push("an event quest starts with a dialogue at the event's character, who opens it");
   for (const step of q.steps) {
@@ -1114,6 +1144,7 @@ function questIssues(q: {
   category: QuestCategoryId;
   en?: QuestEn | undefined;
   lesson?: string | undefined;
+  topic?: string | undefined;
   phases: Record<(typeof QUEST_PHASES)[number], string>;
   steps: QuestStep[];
   texts: Record<string, QuestText>;
@@ -1161,8 +1192,8 @@ function questIssues(q: {
   } else if (q.category === 'story') {
     issues.push(...storyQuestIssues(q));
     if (new Set(q.steps.map(mechanicOf).filter((m) => m !== null)).size < 2) issues.push('needs at least two mechanics other than multiple choice (search, riddle or an interactive challenge)');
-  } else if (isTextbookQuest(q.id)) {
-    if (!q.lesson) issues.push('a textbook quest names its lesson ("lesson"), shown with its pages in the quest list');
+  } else if (isTextbookQuest(q.id) || q.topic !== undefined) {
+    if (!q.topic) issues.push('a learning quest names its topic ("topic"), which the quest list and the public pages group it by');
     for (const step of q.steps) if ('support' in step && !step.feedback) issues.push(`step ${step.id}: a textbook quest step needs feedback lines`);
     issues.push(...wayfindingIssues(q.steps, q.places));
     const interactive = new Set(q.steps.map(mechanicOf).filter((m) => m !== null && INTERACTIVE_MECHANICS.has(m)));

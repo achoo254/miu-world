@@ -1,0 +1,38 @@
+{
+  "id": "cau",
+  "subject": "tieng-viet",
+  "title": "Câu giới thiệu và xếp từ thành câu",
+  "summary": "Đặt câu giới thiệu, ghép và sắp xếp từ ngữ thành câu đúng.",
+  "order": 8,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Kiến thức tiếng Việt",
+    "requirements": [
+      "Nhận biết được câu giới thiệu, câu nêu hoạt động, câu nêu đặc điểm."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "cau-gioi-thieu",
+      "text": "Đặt câu giới thiệu người, vật (Ai là gì?).",
+      "skills": [
+        "cau",
+        "ghep-cau"
+      ],
+      "practice": [
+        "dat-cau"
+      ]
+    },
+    {
+      "id": "cau-xep-tu",
+      "text": "Sắp xếp các từ ngữ thành câu.",
+      "skills": [
+        "cau",
+        "ghep-cau"
+      ],
+      "practice": [
+        "xep-tu"
+      ]
+    }
+  ]
+}

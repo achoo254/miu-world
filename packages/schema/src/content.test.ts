@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { ConsentDocument, NameList, PrivacyDocument, QuestDefinition, SkillCatalog, TermsDocument } from './content';
+import { ConsentDocument, NameList, PrivacyDocument, QuestDefinition, QuestStepPublic, SkillCatalog, TermsDocument } from './content';
 import { LOCK_DAYS } from './moderation';
 
 describe('content schema', () => {
@@ -47,7 +47,7 @@ function validQuest() {
 
 /** `validQuest` as a textbook draft, with a place for every target and a goTo line at each change. */
 function textbookQuest() {
-  const quest = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft', lesson: 'toan2-t1-b01', places: { parrot: 'cổng rừng', find: 'bãi cỏ', tree: 'gốc cây' } as Record<string, string> };
+  const quest = { ...validQuest(), id: 'toan2-cd1-b01', status: 'draft', lesson: 'toan2-t1-b01', topic: 'so-den-100', places: { parrot: 'cổng rừng', find: 'bãi cỏ', tree: 'gốc cây' } as Record<string, string> };
   const goTo: Record<string, string> = { hi: 'Ra cổng rừng gặp Vẹt', find: 'Tìm hộp trên bãi cỏ', riddle: 'Đến gốc cây giải đố' };
   quest.steps = quest.steps.map((step) => ({ ...step, goTo: goTo[String(step.id)] }));
   return quest;
@@ -294,9 +294,32 @@ describe('textbook mechanics', () => {
 describe('textbook lessons', () => {
   const noMechanicRule = (m: string) => !m.includes('feedback') && !m.includes('interactive challenges');
 
-  it('names the lesson, so the quest list can show its title and pages', () => {
-    const { lesson: _lesson, ...quest } = textbookQuest();
-    expect(issues(quest).filter(noMechanicRule)).toEqual(['a textbook quest names its lesson ("lesson"), shown with its pages in the quest list']);
+  it('names its topic, which the quest list and the public pages group it by; the textbook lesson is optional', () => {
+    const { topic: _topic, ...quest } = textbookQuest();
+    expect(issues(quest).filter(noMechanicRule)).toEqual(['a learning quest names its topic ("topic"), which the quest list and the public pages group it by']);
+    const { lesson: _lesson, ...rewritten } = textbookQuest();
+    expect(issues(rewritten).filter(noMechanicRule)).toEqual([]);
+  });
+
+  it('holds any quest naming a topic to the learning rules, whatever its id', () => {
+    const quest = { ...validQuest(), topic: 'nhan-chia' };
+    expect(issues(quest)).toContain('a textbook quest needs at least two different interactive challenges (classify, fill-blank, multi-select, clock, calendar, connect, sort, drag-drop)');
+    expect(issues({ ...validQuest(), category: 'side', topic: 'nhan-chia' })).toContain('a side quest plays no textbook lesson');
+  });
+
+  it('never sends what a step teaches or how its answer is computed to the client', () => {
+    const step = { id: 'r', title: 'Đố', kind: 'riddle', skill: 'phep-cong', question: '1 + 2 = ?', objective: 'cong-tru-cong', expression: '1 + 2', curriculumRef: ['a'] };
+    expect(Object.keys(QuestStepPublic.parse(step))).toEqual(['id', 'title', 'trigger', 'kind', 'question', 'skill']);
+  });
+
+  it('says where a passage comes from; a public-domain work names its author and year of death', () => {
+    const text = (source: unknown) => ({ ...validQuest(), texts: { 'bai-doc': { title: 'Bài đọc', body: 'Một đoạn văn.', source } } });
+    expect(issues(text({ kind: 'folk', title: 'Đồng dao Dung dăng dung dẻ' }))).toEqual([]);
+    expect(QuestDefinition.safeParse(text({ kind: 'folk' })).success).toBe(false);
+    expect(issues(text({ kind: 'original' }))).toEqual([]);
+    expect(issues(text({ kind: 'public-domain', author: 'Tú Xương', died: 1907 }))).toEqual([]);
+    expect(QuestDefinition.safeParse(text({ kind: 'public-domain', author: 'Tú Xương' })).success).toBe(false);
+    expect(QuestDefinition.safeParse(text({ kind: 'borrowed' })).success).toBe(false);
   });
 
   it('has no way to lock a quest behind another: every quest is open from the start', () => {

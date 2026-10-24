@@ -1,0 +1,60 @@
+{
+  "id": "cong-tru-co-nho",
+  "subject": "toan",
+  "title": "Cộng, trừ có nhớ đến 100",
+  "summary": "Đặt tính và tính cộng, trừ có nhớ các số có hai chữ số, tính có hai dấu phép tính.",
+  "order": 6,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Số và phép tính",
+    "requirements": [
+      "Thực hiện được phép cộng, phép trừ (không nhớ, có nhớ không quá một lượt) các số trong phạm vi 1000.",
+      "Thực hiện được việc tính toán trong trường hợp có hai dấu phép tính cộng, trừ (theo thứ tự từ trái sang phải)."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "cong-tru-co-nho-cong",
+      "text": "Cộng hai số khi hàng đơn vị vượt quá 9, nhớ 1 sang hàng chục.",
+      "skills": [
+        "phep-cong"
+      ],
+      "practice": [
+        "tinh"
+      ]
+    },
+    {
+      "id": "cong-tru-co-nho-tru",
+      "text": "Trừ khi chữ số hàng đơn vị bị trừ nhỏ hơn, lấy 1 chục ra để trừ.",
+      "skills": [
+        "phep-tru"
+      ],
+      "practice": [
+        "tinh"
+      ]
+    },
+    {
+      "id": "cong-tru-co-nho-hai-dau",
+      "text": "Tính từ trái sang phải khi có hai dấu cộng, trừ và so sánh kết quả.",
+      "skills": [
+        "phep-cong",
+        "phep-tru",
+        "so-sanh-so"
+      ],
+      "practice": [
+        "tinh",
+        "so-sanh"
+      ]
+    },
+    {
+      "id": "cong-tru-co-nho-bai-toan",
+      "text": "Giải bài toán có lời văn bằng phép cộng hoặc phép trừ có nhớ.",
+      "skills": [
+        "bai-toan-loi-van"
+      ],
+      "practice": [
+        "bai-toan-loi-van"
+      ]
+    }
+  ]
+}

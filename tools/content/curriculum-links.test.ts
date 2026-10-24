@@ -120,6 +120,7 @@ function quest(steps: Record<string, unknown>[], texts: Record<string, unknown> 
     title: 'Tôi là học sinh lớp 2',
     status: 'draft',
     lesson,
+    topic: 'doc-truyen',
     summary: 's',
     review: 'teacher-pending',
     sevenQuestions: { who: 'a', where: 'b', goal: 'c', play: 'd', learn: 'e', reward: 'f', next: 'g' },
@@ -164,33 +165,25 @@ describe('curriculum links', () => {
     expect(report.issues).toEqual(['quest tv2-t01-b01 step read points at unknown inventory item tv2-t1-b01-doc-9']);
   });
 
-  it('requires the book wording unchanged, with narration only around it', () => {
+  it('no longer asks for the book wording or passages: rewritten text passes', () => {
     const reworded = { ...read, question: 'Bạn nhỏ đã chào ai thế?' };
-    expect(checkCurriculumLinks(books(), [quest([reworded])]).issues).toEqual([
-      'quest tv2-t01-b01 step read does not show the book\'s wording of tv2-t1-b01-doc-1: "Bạn nhỏ chào ai?"',
-    ]);
-    const unaccented = { ...fill, prompt: 'Dien dau:' };
-    expect(checkCurriculumLinks(books(), [quest([unaccented])]).issues.join('\n')).toMatch(/does not show the book's wording of tv2-t1-b01-doc-2/);
-    expect(checkCurriculumLinks(books(), [quest([fill])]).issues).toEqual([]);
+    const changed = { 'bai-doc': { title: 'Buổi sáng đầu tiên', body: 'Một đoạn văn khác hẳn.', section: 'tv2-t1-b01-doc' } };
+    expect(checkCurriculumLinks(books(), [quest([reworded, fill], changed)]).issues).toEqual([]);
   });
 
-  it('requires reading passages copied exactly from their section', () => {
-    const changed = { 'bai-doc': { title: 'Tôi là học sinh lớp 2', author: 'Văn Giá', body: 'Ngày khai trường đã tới.\n\nTôi chào mẹ.', section: 'tv2-t1-b01-doc' } };
-    expect(checkCurriculumLinks(books(), [quest([read], changed)]).issues).toEqual([
-      'quest tv2-t01-b01 text bai-doc differs from the book in body (it must be copied exactly)',
-    ]);
-    const unlinked = { 'bai-doc': { title: 'Tôi là học sinh lớp 2', body: 'Ngày khai trường đã đến.' } };
-    expect(checkCurriculumLinks(books(), [quest([read], unlinked)]).issues).toEqual(['quest tv2-t01-b01 text bai-doc must name the inventory section it comes from']);
+  it('still holds a quest played from the book to the book answers, recomputed from the expression', () => {
+    const wrongSign = { ...fill, answer: { fills: { b1: 'be' } } };
+    expect(checkCurriculumLinks(books(), [quest([wrongSign])]).issues).toEqual([`quest tv2-t01-b01 step fill: blank b1 is "<", the book's answer is ">"`]);
+    const wrongChoice = { ...read, answer: { choice: 'bo' } };
+    expect(checkCurriculumLinks(books(), [quest([wrongChoice])]).issues).toEqual([`quest tv2-t01-b01 step read: answer "bố" differs from the book's "b. mẹ"`]);
+  });
+
+  it('still reports a passage naming a section the inventory does not have, and counts passages not shown', () => {
+    const unknown = { 'bai-doc': { title: 'Tôi là học sinh lớp 2', body: 'Ngày khai trường đã đến.', section: 'tv2-t1-b01-doc-9' } };
+    expect(checkCurriculumLinks(books(), [quest([read], unknown)]).issues).toEqual(['quest tv2-t01-b01 text bai-doc names unknown inventory section tv2-t1-b01-doc-9']);
     const { textRef: _unused, ...inline } = read;
     const report = checkCurriculumLinks(books(), [quest([{ ...inline, text: 'x' }], {})]);
     expect(report.lessons[0]?.missingTexts).toEqual(['tv2-t1-b01-doc']);
-  });
-
-  it('requires the book answers, recomputed from the expression', () => {
-    const wrongSign = { ...fill, answer: { fills: { b1: 'be' } } };
-    expect(checkCurriculumLinks(books(), [quest([wrongSign])]).issues).toEqual(['quest tv2-t01-b01 step fill: blank b1 is "<", the book\'s answer is ">"']);
-    const wrongChoice = { ...read, answer: { choice: 'bo' } };
-    expect(checkCurriculumLinks(books(), [quest([wrongChoice])]).issues).toEqual(['quest tv2-t01-b01 step read: answer "bố" differs from the book\'s "b. mẹ"']);
   });
 });
 
@@ -208,20 +201,6 @@ describe('printedPhrases', () => {
       'Lời cô',
     ]);
     expect(printedPhrases('1. TÔI LÀ HỌC SINH LỚP 2 a. Kể về niềm vui của bạn nhỏ.')).toEqual(['1. TÔI LÀ HỌC SINH LỚP 2', 'a. Kể về niềm vui của bạn nhỏ.']);
-  });
-
-  it('matches choices shown as buttons and hints shown under a speaking step', () => {
-    const lessonBooks = books();
-    const unit = lessonBooks[0]?.units[0];
-    const section = unit?.lessons[0]?.sections[0];
-    section?.items.push({ id: 'tv2-t1-b01-doc-lt1', page: 11, prompt: 'Từ nào nói về các em lớp 1? a. ngạc nhiên; b. háo hức; c. rụt rè', exerciseType: 'chon-dap-an', answer: { choice: 'c. rụt rè' }, readConfidence: 'high' });
-    const quiz = { ...read, id: 'lt1', textRef: undefined, question: undefined, kind: 'challenge', mechanic: 'quiz', prompt: 'Từ nào nói về các em lớp 1?', choices: [{ id: 'a', text: 'ngạc nhiên' }, { id: 'b', text: 'háo hức' }, { id: 'c', text: 'rụt rè' }], answer: { choice: 'c' }, curriculumRef: ['tv2-t1-b01-doc-lt1'], feedback: feedback('lt1') };
-    const { textRef: _t, question: _q, ...quizStep } = quiz;
-    expect(checkCurriculumLinks(lessonBooks, [quest([read, quizStep])]).issues).toEqual([]);
-    const missingChoice = { ...quizStep, choices: [{ id: 'a', text: 'ngạc nhiên' }, { id: 'c', text: 'rụt rè' }] };
-    expect(checkCurriculumLinks(lessonBooks, [quest([read, missingChoice])]).issues).toEqual([
-      'quest tv2-t01-b01 step lt1 does not show the book\'s wording of tv2-t1-b01-doc-lt1: "b. háo hức"',
-    ]);
   });
 });
 

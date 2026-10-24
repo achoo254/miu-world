@@ -1,0 +1,62 @@
+{
+  "id": "so-den-100",
+  "subject": "toan",
+  "title": "Số đến 100",
+  "summary": "Đếm, đọc, viết, tách chục và đơn vị, so sánh và xếp thứ tự các số đến 100; tìm số trên tia số.",
+  "order": 1,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Số và phép tính",
+    "requirements": [
+      "Đếm, đọc, viết được các số trong phạm vi 1000.",
+      "Nhận biết được số liền trước, số liền sau của một số.",
+      "Thực hiện được việc viết số thành tổng của trăm, chục, đơn vị.",
+      "Nhận biết được tia số và viết được số thích hợp trên tia số.",
+      "Nhận biết được cách so sánh hai số; xác định được số lớn nhất hoặc số bé nhất trong một nhóm số; sắp xếp được các số theo thứ tự."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "so-den-100-doc-viet-dem",
+      "text": "Đếm, đọc và viết các số đến 100.",
+      "skills": [
+        "so-den-100"
+      ],
+      "practice": [
+        "dien-so",
+        "dem"
+      ]
+    },
+    {
+      "id": "so-den-100-chuc-don-vi",
+      "text": "Tách một số có hai chữ số thành chục và đơn vị.",
+      "skills": [
+        "so-den-100"
+      ],
+      "practice": [
+        "dien-so"
+      ]
+    },
+    {
+      "id": "so-den-100-so-sanh",
+      "text": "So sánh hai số, tìm số lớn nhất, số bé nhất và xếp các số theo thứ tự.",
+      "skills": [
+        "so-sanh-so"
+      ],
+      "practice": [
+        "so-sanh",
+        "sap-xep"
+      ]
+    },
+    {
+      "id": "so-den-100-tia-so",
+      "text": "Tìm số trên tia số, số liền trước và số liền sau.",
+      "skills": [
+        "tia-so"
+      ],
+      "practice": [
+        "dien-so"
+      ]
+    }
+  ]
+}

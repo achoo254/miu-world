@@ -1,0 +1,43 @@
+{
+  "id": "bang-tin-cho",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Bảng tin trước cổng chợ",
+  "status": "active",
+  "topic": "doc-thong-bao",
+  "summary": "Bác Gấu dán thông báo hội chợ; bé đọc và chỉ cho mọi người.",
+  "review": "teacher-pending",
+  "sevenQuestions": { "who": "Bé", "where": "Cổng chợ", "goal": "Giúp bác Gấu", "play": "Đọc, xếp, chọn", "learn": "Đọc thông báo", "reward": "XP", "next": "Về nhà" },
+  "phases": { "hook": "gap-bac", "explore": "gap-bac", "learn": "doc-tin", "challenge": "xep-y", "decision": "chon-y", "finale": "chon-y", "reward": "chon-y", "next": "chon-y" },
+  "places": { "bac-gau": "cổng chợ" },
+  "texts": {
+    "thong-bao": { "title": "Hội chợ bánh", "body": "Sáng Chủ nhật, cổng chợ có hội chợ bánh. Ai muốn bán bánh thì báo bác Gấu trước thứ Sáu.", "source": { "kind": "original" } }
+  },
+  "steps": [
+    { "id": "gap-bac", "title": "Gặp bác Gấu", "goTo": "Tới cổng chợ gặp bác Gấu", "kind": "dialogue", "target": "bac-gau", "lines": [{ "speaker": "Bác Gấu", "text": "Bác vừa dán thông báo, cháu đọc giúp bà con nhé!" }] },
+    {
+      "id": "doc-tin", "title": "Đọc thông báo", "kind": "read", "target": "bac-gau", "textRef": "thong-bao", "question": "Hội chợ bánh diễn ra khi nào?", "skill": "doc-hieu",
+      "objective": "doc-thong-bao-tim-y",
+      "choices": [{ "id": "cn", "text": "Sáng Chủ nhật" }, { "id": "t6", "text": "Thứ Sáu" }, { "id": "t2", "text": "Thứ Hai" }], "answer": { "choice": "cn" },
+      "support": { "guide": ["Tìm chữ chỉ thời gian."], "hint": "Câu đầu tiên.", "answer": { "text": "Sáng Chủ nhật", "explanation": "Thông báo mở đầu bằng thời gian." } },
+      "feedback": { "right": ["Đúng ngày rồi!", "Bác Gấu gật gù.", "Chuẩn luôn!"], "wrong": ["Thứ Sáu là hạn báo tên.", "Đọc lại câu đầu.", "Gần đúng rồi."] }
+    },
+    {
+      "id": "xep-y", "title": "Xếp thông tin", "kind": "challenge", "mechanic": "classify", "target": "bac-gau", "prompt": "Mỗi mẩu thuộc loại thông tin nào?", "skill": "doc-hieu",
+      "objective": "doc-thong-bao-phan-loai",
+      "groups": [{ "id": "luc", "label": "Khi nào" }, { "id": "noi", "label": "Ở đâu" }],
+      "items": [{ "id": "a", "label": "Sáng Chủ nhật" }, { "id": "b", "label": "Cổng chợ" }],
+      "answer": { "assignment": { "a": "luc", "b": "noi" } },
+      "support": { "guide": ["Chữ chỉ ngày giờ là khi nào."], "hint": "Cổng chợ là một nơi.", "answer": { "text": "Sáng Chủ nhật: khi nào; cổng chợ: ở đâu", "explanation": "Thời gian và nơi chốn là hai loại tin." } },
+      "feedback": { "right": ["Xếp gọn gàng!", "Bà con đọc là hiểu.", "Tinh ý quá!"], "wrong": ["Cổng chợ là chỗ, không phải lúc.", "Thử đổi chỗ hai mẩu.", "Ngày giờ là khi nào."] }
+    },
+    {
+      "id": "chon-y", "title": "Ai cần báo tên", "kind": "challenge", "mechanic": "multi-select", "target": "bac-gau", "prompt": "Thông báo nhắc những gì?", "skill": "doc-hieu",
+      "objective": "doc-thong-bao-tim-y",
+      "choices": [{ "id": "a", "text": "Có hội chợ bánh" }, { "id": "b", "text": "Báo bác Gấu trước thứ Sáu" }, { "id": "c", "text": "Chợ đóng cửa" }], "answer": { "choices": ["a", "b"] },
+      "support": { "guide": ["Đọc từng câu."], "hint": "Có hai ý đúng.", "answer": { "text": "Có hội chợ bánh; báo bác Gấu trước thứ Sáu", "explanation": "Chợ vẫn mở để có hội chợ." } },
+      "feedback": { "right": ["Đủ cả hai ý!", "Bác Gấu vỗ tay.", "Không sót ý nào!"], "wrong": ["Chợ đâu có đóng cửa.", "Còn thiếu một ý.", "Đọc kĩ câu thứ hai."] }
+    }
+  ],
+  "reward": { "xp": 10 }
+}

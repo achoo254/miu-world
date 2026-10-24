@@ -1,0 +1,48 @@
+{
+  "id": "bang-chu-cai",
+  "subject": "tieng-viet",
+  "title": "Bảng chữ cái và tên riêng",
+  "summary": "Thuộc tên và thứ tự chữ cái, viết hoa tên riêng, xếp tên theo thứ tự bảng chữ cái.",
+  "order": 4,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Kiến thức tiếng Việt",
+    "requirements": [
+      "Thuộc bảng chữ cái tiếng Việt; phân biệt được tên chữ cái và âm.",
+      "Biết quy tắc viết hoa tên riêng của người."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "bang-chu-cai-chu-cai",
+      "text": "Thuộc tên và thứ tự các chữ cái.",
+      "skills": [
+        "bang-chu-cai"
+      ],
+      "practice": [
+        "dien-chu",
+        "sap-xep"
+      ]
+    },
+    {
+      "id": "bang-chu-cai-ten-rieng",
+      "text": "Viết hoa đúng tên riêng của người.",
+      "skills": [
+        "chinh-ta"
+      ],
+      "practice": [
+        "chon-dap-an"
+      ]
+    },
+    {
+      "id": "bang-chu-cai-xep-ten",
+      "text": "Xếp các tên theo thứ tự bảng chữ cái.",
+      "skills": [
+        "bang-chu-cai"
+      ],
+      "practice": [
+        "sap-xep"
+      ]
+    }
+  ]
+}

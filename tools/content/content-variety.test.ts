@@ -97,6 +97,7 @@ describe('varietyIssues', () => {
       return quest(id, tag, {
         status: 'draft',
         lesson: 'toan2-t1-b01',
+        topic: 'so-den-100',
         steps,
         phases: { hook: first?.id, explore: first?.id, learn: first?.id, challenge: second?.id, decision: second?.id, finale: second?.id, reward: second?.id, next: second?.id },
       });

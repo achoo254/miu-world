@@ -448,7 +448,7 @@ describe('textbook mechanics over the API', () => {
     const { agent } = await playingChild();
     const res = await agent.get('/api/quests/quest-sgk').expect(200);
     expect(res.body.quest.texts).toEqual({ 'bai-doc': { title: 'Bài đọc thử', author: 'Tác giả thử', body: 'Ngày khai trường đã đến.\n\nTôi chào mẹ.' } });
-    expect(res.text).not.toMatch(/"(answer|support|assignment|fills|edges|curriculumRef|feedback)"/);
+    expect(res.text).not.toMatch(/"(answer|support|assignment|fills|edges|curriculumRef|objective|expression|feedback)"/);
   });
 
   it('names the textbook lesson and its printed pages, for homework set by page or title', async () => {

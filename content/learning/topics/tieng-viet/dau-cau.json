@@ -1,0 +1,36 @@
+{
+  "id": "dau-cau",
+  "subject": "tieng-viet",
+  "title": "Dấu chấm, dấu chấm hỏi, dấu chấm than, dấu phẩy",
+  "summary": "Chọn dấu cuối câu hợp với câu kể, câu hỏi, câu cảm; đặt dấu phẩy ngăn các từ cùng loại.",
+  "order": 9,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Kiến thức tiếng Việt",
+    "requirements": [
+      "Biết sử dụng dấu chấm, dấu chấm hỏi, dấu chấm than; dấu phẩy để tách các bộ phận cùng loại trong câu."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "dau-cau-cuoi-cau",
+      "text": "Kết thúc câu kể, câu hỏi, câu cảm bằng đúng dấu.",
+      "skills": [
+        "dau-cau"
+      ],
+      "practice": [
+        "dau-cau"
+      ]
+    },
+    {
+      "id": "dau-cau-dau-phay",
+      "text": "Đặt dấu phẩy ngăn cách các từ cùng loại.",
+      "skills": [
+        "dau-cau"
+      ],
+      "practice": [
+        "dau-cau"
+      ]
+    }
+  ]
+}

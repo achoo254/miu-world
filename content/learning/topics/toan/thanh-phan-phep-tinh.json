@@ -1,0 +1,40 @@
+{
+  "id": "thanh-phan-phep-tinh",
+  "subject": "toan",
+  "title": "Tên gọi trong phép cộng, phép trừ",
+  "summary": "Gọi đúng số hạng, tổng, số bị trừ, số trừ, hiệu và dùng chúng để tính.",
+  "order": 2,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Số và phép tính",
+    "requirements": [
+      "Nhận biết được các thành phần của phép cộng, phép trừ."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "thanh-phan-phep-tinh-phep-cong",
+      "text": "Gọi tên số hạng và tổng, tính tổng khi biết hai số hạng.",
+      "skills": [
+        "thanh-phan-phep-tinh",
+        "phep-cong"
+      ],
+      "practice": [
+        "chon-dap-an",
+        "dien-so"
+      ]
+    },
+    {
+      "id": "thanh-phan-phep-tinh-phep-tru",
+      "text": "Gọi tên số bị trừ, số trừ và hiệu, tính hiệu khi biết hai số.",
+      "skills": [
+        "thanh-phan-phep-tinh",
+        "phep-tru"
+      ],
+      "practice": [
+        "chon-dap-an",
+        "dien-so"
+      ]
+    }
+  ]
+}

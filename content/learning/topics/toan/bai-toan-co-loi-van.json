@@ -1,0 +1,47 @@
+{
+  "id": "bai-toan-co-loi-van",
+  "subject": "toan",
+  "title": "Bài toán thêm, bớt, nhiều hơn, ít hơn",
+  "summary": "Hiểu tình huống, chọn phép tính đúng và trả lời bài toán có lời văn; tìm hai số hơn, kém nhau bao nhiêu.",
+  "order": 5,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Số và phép tính",
+    "requirements": [
+      "Nhận biết ý nghĩa thực tiễn của phép tính thông qua tranh ảnh, hình vẽ hoặc tình huống thực tiễn.",
+      "Nhận biết và viết được phép tính phù hợp với câu trả lời của bài toán có lời văn và tính được kết quả đúng."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "bai-toan-co-loi-van-them-bot",
+      "text": "Đọc tình huống có thêm vào hoặc bớt đi, chọn phép tính đúng rồi trả lời.",
+      "skills": [
+        "bai-toan-loi-van"
+      ],
+      "practice": [
+        "bai-toan-loi-van"
+      ]
+    },
+    {
+      "id": "bai-toan-co-loi-van-nhieu-hon-it-hon",
+      "text": "Biết số của một nhóm và nhóm kia hơn hay kém mấy, tìm số của nhóm kia.",
+      "skills": [
+        "bai-toan-loi-van"
+      ],
+      "practice": [
+        "bai-toan-loi-van"
+      ]
+    },
+    {
+      "id": "bai-toan-co-loi-van-hon-kem",
+      "text": "Tìm xem hai số hơn, kém nhau bao nhiêu đơn vị.",
+      "skills": [
+        "hon-kem"
+      ],
+      "practice": [
+        "dien-so"
+      ]
+    }
+  ]
+}

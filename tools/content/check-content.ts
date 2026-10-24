@@ -34,6 +34,10 @@ import { percentCovered, sumGaps } from './content-gaps';
 import { varietyIssues } from './content-variety';
 import { checkLogicSteps } from './logic-steps';
 import { checkCurriculumLinks } from './curriculum-links';
+import { checkLearningLinks } from './learning-links';
+import { checkRepoTextbookCopy, readPendingQuests } from './no-textbook-copy';
+import { indexTopics, learningQuestIssues, readTopicFiles } from '../../apps/server/src/content/learning-topics';
+import { topicIssues } from '../../packages/schema/src/learning';
 import { checkLocales } from './check-locales';
 import { modelSwatches } from './pet-swatches';
 import { questSpread } from './quest-spread';
@@ -240,6 +244,8 @@ const readByCatalogue = (rel: string) =>
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
 const readByLegalCheck = (rel: string) => rel === TERMS_FILE;
+/** Topic files (content/learning/topics/<subject>/<topic>.json) and the textbook fingerprints of the copy check. */
+const readByLearningCheck = (rel: string) => (rel.startsWith('learning/topics/') && rel.endsWith('.json')) || rel === 'learning/textbook-fingerprints.bin';
 const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === MODELS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === BOX_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
 
 /**
@@ -597,7 +603,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   const issues: string[] = [];
   const files = listFiles(dir);
   for (const rel of files) {
-    if (!readByCatalogue(rel) && !readByAssetTools(rel) && !readByWeb(rel) && !readByLegalCheck(rel) && !readByCurriculum(rel)) {
+    if (!readByCatalogue(rel) && !readByAssetTools(rel) && !readByWeb(rel) && !readByLegalCheck(rel) && !readByCurriculum(rel) && !readByLearningCheck(rel)) {
       issues.push(`content/${rel} has no validator: add it to the server catalogue or an asset tool`);
     }
   }
@@ -708,16 +714,27 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   }
   const curriculum = checkCurriculum(path.join(dir, 'curriculum'));
   issues.push(...curriculum.issues);
-  // Textbook quests must carry the book's wording and answers unchanged, and no quest may repeat another's
-  // lines; gaps only warn until the books are switched on.
+  // No quest copies the textbooks; quests waiting to be rewritten keep their inventory links and their inventory
+  // coverage; rewritten ones name objectives, and finished topics are fully practised. No quest may repeat another's
+  // lines.
   try {
     const quests = readQuestDefinitions(path.join(dir, 'quests'));
+    const pending = readPendingQuests();
+    const skills = JSON.parse(readFileSync(path.join(dir, 'learning/skills.json'), 'utf8')) as { subjects: Array<{ id: string; skills: Array<{ id: string }> }> };
+    const topicFiles = readTopicFiles(path.join(dir, 'learning/topics'));
+    issues.push(...topicFiles.issues, ...topicIssues(topicFiles.topics, skills.subjects), ...learningQuestIssues(quests, indexTopics(topicFiles.topics)));
+    const copy = checkRepoTextbookCopy(quests, topicFiles.topics);
+    issues.push(...copy.issues);
+    warnings.push(...copy.warnings);
+    issues.push(...checkLearningLinks(topicFiles.topics, quests, pending).issues);
     const links = checkCurriculumLinks(curriculum.books, quests);
     issues.push(...links.issues);
     issues.push(...varietyIssues(quests, curriculum.books));
     issues.push(...checkLogicSteps(quests));
+    const waitingLessons = new Set(quests.flatMap((q) => (q.status !== 'stub' && pending.has(q.id) && q.lesson ? [q.lesson] : [])));
     for (const book of curriculum.books) {
-      const totals = sumGaps(links.lessons.filter((l) => l.book === book.book.id));
+      // Only lessons still played from the book count: a rewritten quest is held to its topic's objectives instead.
+      const totals = sumGaps(links.lessons.filter((l) => l.book === book.book.id && waitingLessons.has(l.lesson)));
       // Every exercise of a finished inventory must be in the game or on a worksheet (the textbook goal).
       if (totals.missing + totals.missingTexts > 0) {
         const line = `${book.book.id}: ${percentCovered(totals)}% of ${totals.items} textbook items covered by quests (pnpm content:gaps --missing)`;

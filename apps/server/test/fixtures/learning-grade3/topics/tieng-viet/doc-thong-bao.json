@@ -1,0 +1,16 @@
+{
+  "id": "doc-thong-bao",
+  "subject": "tieng-viet",
+  "title": "Đọc thông báo và tin ngắn",
+  "summary": "Tìm thông tin chính trong một thông báo: việc gì, ở đâu, khi nào, ai cần làm gì.",
+  "order": 1,
+  "gdpt": {
+    "grade": 3,
+    "strand": "Đọc",
+    "requirements": ["Nhận biết được thông tin chính của văn bản thông tin ngắn (tóm tắt)."]
+  },
+  "objectives": [
+    { "id": "doc-thong-bao-tim-y", "text": "Tìm việc gì, ở đâu, khi nào trong một thông báo.", "skills": ["doc-hieu"], "practice": ["doc-hieu"] },
+    { "id": "doc-thong-bao-phan-loai", "text": "Xếp các câu của thông báo vào đúng loại thông tin.", "skills": ["doc-hieu"], "practice": ["tim-tu"] }
+  ]
+}

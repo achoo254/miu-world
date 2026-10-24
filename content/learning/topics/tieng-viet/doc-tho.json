@@ -1,0 +1,49 @@
+{
+  "id": "doc-tho",
+  "subject": "tieng-viet",
+  "title": "Đọc thơ, đồng dao và ca dao",
+  "summary": "Đọc thơ và đồng dao có vần, hiểu hình ảnh đẹp trong bài, tìm tiếng vần với nhau.",
+  "order": 2,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Đọc",
+    "requirements": [
+      "Đọc đúng, rõ ràng bài thơ; biết ngắt nhịp thơ.",
+      "Nhận biết được những hình ảnh, từ ngữ hay trong bài thơ.",
+      "Hiểu điều tác giả muốn nói qua văn bản đơn giản dựa vào gợi ý."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "doc-tho-doc-to",
+      "text": "Đọc to bài thơ, ngắt đúng nhịp từng dòng.",
+      "skills": [
+        "doc-hieu"
+      ],
+      "practice": [
+        "doc-thanh-tieng"
+      ]
+    },
+    {
+      "id": "doc-tho-doc-hieu",
+      "text": "Hiểu bài thơ nói về ai, về điều gì.",
+      "skills": [
+        "doc-hieu"
+      ],
+      "practice": [
+        "doc-hieu"
+      ]
+    },
+    {
+      "id": "doc-tho-hinh-anh",
+      "text": "Tìm hình ảnh, từ ngữ hay và những tiếng vần với nhau trong bài thơ.",
+      "skills": [
+        "doc-hieu",
+        "tu-ngu"
+      ],
+      "practice": [
+        "tim-tu"
+      ]
+    }
+  ]
+}

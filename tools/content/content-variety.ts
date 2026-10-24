@@ -13,7 +13,7 @@ const MIN_LINE_LENGTH = 16;
  * line or a boss's name (a character's name: a character who gives several games says its name in each, and keeps it
  * in English).
  */
-const NOT_TEXT = new Set(['speaker', 'bossName', 'id', 'kind', 'mechanic', 'trigger', 'target', 'targets', 'skill', 'status', 'region', 'review', 'textRef', 'lessonId', 'curriculumRef', 'phases', 'type', 'mode', 'display', 'sevenQuestions', 'category', 'game', 'params']);
+const NOT_TEXT = new Set(['speaker', 'bossName', 'id', 'kind', 'mechanic', 'trigger', 'target', 'targets', 'skill', 'status', 'region', 'review', 'textRef', 'lessonId', 'curriculumRef', 'lesson', 'topic', 'objective', 'expression', 'source', 'phases', 'type', 'mode', 'display', 'sevenQuestions', 'category', 'game', 'params']);
 
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 const labelsOf = (choices: unknown): string[] =>
@@ -38,7 +38,8 @@ function withoutChoiceAnswers(turn: Record<string, unknown>): Record<string, unk
   return { ...turn, support: { ...support, answer, en: english } };
 }
 
-function playerLines(quest: QuestDefinition): Array<{ where: string; text: string }> {
+/** Every line of a quest a player reads or hears, with where it is; the passages (`texts`) are left out. */
+export function playerLines(quest: QuestDefinition): Array<{ where: string; text: string }> {
   const lines: Array<{ where: string; text: string }> = [];
   const visit = (value: unknown, where: string): void => {
     if (typeof value === 'string') lines.push({ where, text: value });

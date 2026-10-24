@@ -3,4 +3,5 @@
 - [Family-only defaults now public](project-family-only-defaults.md) — default timetable + HP001 font served to strangers since 12/10; check what a new account gets
 - [Google re-auth limits](project-google-reauth-limits.md) — Google ignores/rejects prompt=login; auth_time needs claims param + setting; fakes lie
 - [Content review heuristics](project-content-review-heuristics.md) — logic elements only render for pattern; dup grids/numbers; branch-dependent letters
+- [Copy-guard review](project-copy-guard-review.md) — shingle hash file reconstructable; folk label bypass; split strings; pending list growth
 - [Online/voice switch enforcement gaps](project-online-switch-review.md) — WS-only enforcement; HTTP invites/TURN unchecked; no-PIN gate lets child flip

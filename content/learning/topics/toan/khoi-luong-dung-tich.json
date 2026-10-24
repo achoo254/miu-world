@@ -1,0 +1,72 @@
+{
+  "id": "khoi-luong-dung-tich",
+  "subject": "toan",
+  "title": "Ki-lô-gam và lít",
+  "summary": "So sánh nặng nhẹ, đọc và viết số đo bằng ki-lô-gam, lít; tính với số đo và đo thử đồ vật thật.",
+  "order": 7,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Hình học và đo lường",
+    "requirements": [
+      "Nhận biết được về \"nặng hơn\", \"nhẹ hơn\".",
+      "Nhận biết được đơn vị đo khối lượng kg (ki-lô-gam); đọc và viết được số đo khối lượng.",
+      "Nhận biết được đơn vị đo dung tích l (lít); đọc và viết được số đo dung tích.",
+      "Thực hiện được việc tính toán với các số đo đã học; giải quyết được một số vấn đề thực tiễn liên quan đến đo lường."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "khoi-luong-dung-tich-nang-nhe",
+      "text": "Nhận ra vật nào nặng hơn, nhẹ hơn khi nhìn cân.",
+      "skills": [
+        "khoi-luong"
+      ],
+      "practice": [
+        "chon-dap-an"
+      ]
+    },
+    {
+      "id": "khoi-luong-dung-tich-ki-lo-gam",
+      "text": "Đọc và viết số đo khối lượng bằng ki-lô-gam.",
+      "skills": [
+        "khoi-luong"
+      ],
+      "practice": [
+        "dien-so"
+      ]
+    },
+    {
+      "id": "khoi-luong-dung-tich-lit",
+      "text": "Đọc và viết số đo dung tích bằng lít.",
+      "skills": [
+        "dung-tich"
+      ],
+      "practice": [
+        "dien-so"
+      ]
+    },
+    {
+      "id": "khoi-luong-dung-tich-tinh",
+      "text": "Cộng, trừ với số đo ki-lô-gam, lít và giải bài toán có số đo.",
+      "skills": [
+        "khoi-luong",
+        "dung-tich",
+        "bai-toan-loi-van"
+      ],
+      "practice": [
+        "bai-toan-loi-van"
+      ]
+    },
+    {
+      "id": "khoi-luong-dung-tich-thuc-hanh",
+      "text": "Cân, đong thử đồ vật thật ở nhà.",
+      "skills": [
+        "khoi-luong",
+        "dung-tich"
+      ],
+      "practice": [
+        "do-luong-thuc-hanh"
+      ]
+    }
+  ]
+}

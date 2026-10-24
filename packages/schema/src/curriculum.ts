@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { ContentId } from './content';
+import { ExerciseType, evaluateExpression } from './learning';
 
 // Textbook inventory: every lesson, section and exercise of a printed textbook, with its page and its
 // wording as printed. Quests, worksheets and the content-gap report all point at these ids, so an id
@@ -60,40 +61,8 @@ export const VIETNAMESE_SECTION_KINDS = [
 export const SectionKind = z.union([z.enum(MATH_SECTION_KINDS), z.enum(VIETNAMESE_SECTION_KINDS)]);
 export type SectionKind = z.infer<typeof SectionKind>;
 
-export const EXERCISE_TYPES = [
-  // Shared
-  'chon-dap-an',
-  'noi',
-  'sap-xep',
-  'tro-choi',
-  // Math
-  'tinh',
-  'dien-so',
-  'so-sanh',
-  'dem',
-  'bai-toan-loi-van',
-  'do-luong-thuc-hanh',
-  've-hinh',
-  'nhan-dien-hinh',
-  'xem-dong-ho',
-  'xem-lich',
-  // Vietnamese
-  'khoi-dong',
-  'doc-thanh-tieng',
-  'doc-hieu',
-  'tim-tu',
-  'dien-chu',
-  'xep-tu',
-  'dat-cau',
-  'dau-cau',
-  'ke-chuyen-tranh',
-  'noi-ve-ban-than',
-  'viet-chu',
-  'nghe-viet',
-  'viet-doan',
-] as const;
-export const ExerciseType = z.enum(EXERCISE_TYPES);
-export type ExerciseType = z.infer<typeof ExerciseType>;
+// Exercise kinds and expressions live with the learning framework; the inventory reuses them.
+export { EXERCISE_TYPES, ExerciseType, evaluateExpression } from './learning';
 
 /** The book's own answer, typed so quests and worksheets can reuse it; `open` for free answers (tell a story). */
 export const ItemAnswer = z.union([
@@ -228,52 +197,4 @@ function expressionIssues(item: CurriculumItem): string[] {
   if (answer && 'number' in answer && answer.number !== value) return [`answer ${answer.number} does not match ${item.expression} = ${value}`];
   if (answer && 'text' in answer && typeof value === 'string' && answer.text !== value) return [`answer ${answer.text} does not match ${item.expression} → ${value}`];
   return [];
-}
-
-// Expressions are what a grade 2 book asks: whole numbers joined by + and −, left to right.
-//   "62 - 6"          → 56
-//   "47 ? 38 + 5"     → ">" (compare both sides; the answer is <, > or =)
-//   "? + 5 = 12"      → 7  (one unknown in an equation, whole numbers 0–1000)
-
-function sum(side: string): number | null {
-  const tokens = side.replace(/\s+/g, '').replace(/−/g, '-').match(/[+-]|\d+/g);
-  if (!tokens || tokens.join('') !== side.replace(/\s+/g, '').replace(/−/g, '-')) return null;
-  let total = 0;
-  let sign = 1;
-  let expectNumber = true;
-  for (const token of tokens) {
-    if (expectNumber) {
-      if (!/^\d+$/.test(token)) return null;
-      total += sign * Number(token);
-    } else {
-      sign = token === '+' ? 1 : -1;
-    }
-    expectNumber = !expectNumber;
-  }
-  return expectNumber ? null : total;
-}
-
-/** Value of an inventory expression: a number, a comparison sign, or null when it is not one of the three forms. */
-export function evaluateExpression(expression: string): number | '<' | '>' | '=' | null {
-  const unknowns = expression.split('?').length - 1;
-  if (expression.includes('=')) {
-    const [left, right, ...rest] = expression.split('=');
-    if (rest.length > 0 || left === undefined || right === undefined || unknowns !== 1) return null;
-    const solutions = [];
-    for (let n = 0; n <= 1000; n += 1) {
-      const l = sum(left.replace('?', String(n)));
-      const r = sum(right.replace('?', String(n)));
-      if (l === null || r === null) return null;
-      if (l === r) solutions.push(n);
-    }
-    return solutions.length === 1 ? (solutions[0] ?? null) : null;
-  }
-  if (unknowns === 1) {
-    const [left = '', right = ''] = expression.split('?');
-    const l = sum(left);
-    const r = sum(right);
-    if (l === null || r === null) return null;
-    return l < r ? '<' : l > r ? '>' : '=';
-  }
-  return unknowns === 0 ? sum(expression) : null;
 }

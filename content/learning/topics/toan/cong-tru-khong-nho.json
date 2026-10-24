@@ -1,0 +1,49 @@
+{
+  "id": "cong-tru-khong-nho",
+  "subject": "toan",
+  "title": "Cộng, trừ không nhớ đến 100",
+  "summary": "Đặt tính và tính cộng, trừ không nhớ các số đến 100; nhẩm với số tròn chục.",
+  "order": 3,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Số và phép tính",
+    "requirements": [
+      "Thực hiện được phép cộng, phép trừ (không nhớ, có nhớ không quá một lượt) các số trong phạm vi 1000.",
+      "Thực hiện được việc cộng, trừ nhẩm trong những trường hợp đơn giản."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "cong-tru-khong-nho-dat-tinh",
+      "text": "Đặt tính rồi tính cộng, trừ không nhớ các số đến 100.",
+      "skills": [
+        "phep-cong",
+        "phep-tru"
+      ],
+      "practice": [
+        "tinh"
+      ]
+    },
+    {
+      "id": "cong-tru-khong-nho-tinh-nham",
+      "text": "Cộng, trừ nhẩm các số tròn chục.",
+      "skills": [
+        "phep-cong",
+        "phep-tru"
+      ],
+      "practice": [
+        "tinh"
+      ]
+    },
+    {
+      "id": "cong-tru-khong-nho-bai-toan",
+      "text": "Giải bài toán một bước bằng phép cộng hoặc phép trừ không nhớ.",
+      "skills": [
+        "bai-toan-loi-van"
+      ],
+      "practice": [
+        "bai-toan-loi-van"
+      ]
+    }
+  ]
+}

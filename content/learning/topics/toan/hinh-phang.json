@@ -1,0 +1,59 @@
+{
+  "id": "hinh-phang",
+  "subject": "toan",
+  "title": "Điểm, đoạn thẳng và hình phẳng",
+  "summary": "Nhận ra điểm, đoạn thẳng, đường thẳng, đường cong, đường gấp khúc, hình tứ giác; tính độ dài đường gấp khúc; vẽ và xếp hình.",
+  "order": 8,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Hình học và đo lường",
+    "requirements": [
+      "Nhận biết được điểm, đoạn thẳng, đường cong, đường thẳng, đường gấp khúc, ba điểm thẳng hàng thông qua hình ảnh trực quan.",
+      "Nhận dạng được hình tứ giác thông qua việc sử dụng bộ đồ dùng học tập cá nhân hoặc vật thật.",
+      "Vẽ được đoạn thẳng có độ dài cho trước; thực hiện được việc gấp, cắt, ghép, xếp và tạo hình."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "hinh-phang-nhan-dien",
+      "text": "Nhận ra điểm, đoạn thẳng, đường thẳng, đường cong và ba điểm thẳng hàng.",
+      "skills": [
+        "hinh-phang"
+      ],
+      "practice": [
+        "nhan-dien-hinh"
+      ]
+    },
+    {
+      "id": "hinh-phang-gap-khuc",
+      "text": "Nhận ra đường gấp khúc và tính độ dài của nó.",
+      "skills": [
+        "hinh-phang"
+      ],
+      "practice": [
+        "tinh"
+      ]
+    },
+    {
+      "id": "hinh-phang-tu-giac",
+      "text": "Nhận ra và đếm hình tứ giác.",
+      "skills": [
+        "hinh-phang"
+      ],
+      "practice": [
+        "nhan-dien-hinh",
+        "dem"
+      ]
+    },
+    {
+      "id": "hinh-phang-ve-xep",
+      "text": "Vẽ đoạn thẳng, gấp, ghép và xếp hình.",
+      "skills": [
+        "hinh-phang"
+      ],
+      "practice": [
+        "ve-hinh"
+      ]
+    }
+  ]
+}

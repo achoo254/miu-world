@@ -1,0 +1,37 @@
+{
+  "id": "viet",
+  "subject": "tieng-viet",
+  "title": "Viết chữ hoa và viết đoạn văn",
+  "summary": "Tập viết chữ hoa, câu ứng dụng và viết vài câu kể việc, tả đồ vật, nói tình cảm.",
+  "order": 11,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Viết",
+    "requirements": [
+      "Viết đúng chữ viết hoa; viết được câu ứng dụng.",
+      "Viết được 4 – 5 câu kể một sự việc, giới thiệu, tả đồ vật hoặc nói về tình cảm với người thân dựa vào gợi ý."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "viet-chu-hoa",
+      "text": "Viết chữ hoa và câu ứng dụng.",
+      "skills": [
+        "chinh-ta"
+      ],
+      "practice": [
+        "viet-chu"
+      ]
+    },
+    {
+      "id": "viet-doan-van",
+      "text": "Viết vài câu theo gợi ý.",
+      "skills": [
+        "cau"
+      ],
+      "practice": [
+        "viet-doan"
+      ]
+    }
+  ]
+}

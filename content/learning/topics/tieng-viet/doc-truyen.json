@@ -1,0 +1,79 @@
+{
+  "id": "doc-truyen",
+  "subject": "tieng-viet",
+  "title": "Đọc truyện và kể chuyện",
+  "summary": "Đọc hiểu truyện ngắn, nhận ra nhân vật và việc làm của nhân vật, kể lại câu chuyện theo tranh.",
+  "order": 1,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Đọc; Nói và nghe",
+    "requirements": [
+      "Đọc đúng, rõ ràng câu chuyện, đoạn văn ngắn; biết ngắt hơi ở chỗ có dấu câu.",
+      "Nhận biết được một số chi tiết và nội dung chính của văn bản; nhận biết được hình dáng, hành động, lời nói của nhân vật.",
+      "Kể lại được từng đoạn của câu chuyện đã đọc, đã nghe dựa vào tranh minh hoạ và lời gợi ý."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "doc-truyen-doc-to",
+      "text": "Đọc to một đoạn truyện rõ ràng, ngắt hơi ở dấu câu.",
+      "skills": [
+        "doc-hieu"
+      ],
+      "practice": [
+        "doc-thanh-tieng"
+      ]
+    },
+    {
+      "id": "doc-truyen-doc-hieu",
+      "text": "Hiểu chuyện gì xảy ra và vì sao, trả lời câu hỏi về bài đọc.",
+      "skills": [
+        "doc-hieu"
+      ],
+      "practice": [
+        "doc-hieu"
+      ]
+    },
+    {
+      "id": "doc-truyen-nhan-vat",
+      "text": "Nhận ra nhân vật, việc làm và lời nói của nhân vật.",
+      "skills": [
+        "doc-hieu"
+      ],
+      "practice": [
+        "doc-hieu"
+      ]
+    },
+    {
+      "id": "doc-truyen-thu-tu",
+      "text": "Xếp các sự việc của câu chuyện theo đúng thứ tự.",
+      "skills": [
+        "doc-hieu",
+        "ke-chuyen"
+      ],
+      "practice": [
+        "sap-xep"
+      ]
+    },
+    {
+      "id": "doc-truyen-ke-lai",
+      "text": "Kể lại câu chuyện theo tranh bằng lời của mình.",
+      "skills": [
+        "ke-chuyen"
+      ],
+      "practice": [
+        "ke-chuyen-tranh"
+      ]
+    },
+    {
+      "id": "doc-truyen-tu-ngu",
+      "text": "Hiểu nghĩa từ khó trong bài và dùng đúng chỗ.",
+      "skills": [
+        "tu-ngu"
+      ],
+      "practice": [
+        "dien-chu"
+      ]
+    }
+  ]
+}

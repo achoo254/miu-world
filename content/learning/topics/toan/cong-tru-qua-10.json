@@ -1,0 +1,58 @@
+{
+  "id": "cong-tru-qua-10",
+  "subject": "toan",
+  "title": "Cộng, trừ qua 10 trong phạm vi 20",
+  "summary": "Tách số để cộng, trừ qua 10, thuộc bảng cộng và bảng trừ qua 10.",
+  "order": 4,
+  "gdpt": {
+    "grade": 2,
+    "strand": "Số và phép tính",
+    "requirements": [
+      "Thực hiện được việc cộng, trừ nhẩm trong những trường hợp đơn giản.",
+      "Thực hiện được việc tính toán trong trường hợp có hai dấu phép tính cộng, trừ (theo thứ tự từ trái sang phải)."
+    ]
+  },
+  "objectives": [
+    {
+      "id": "cong-tru-qua-10-cong",
+      "text": "Cộng qua 10 trong phạm vi 20 bằng cách tách cho đủ chục.",
+      "skills": [
+        "phep-cong"
+      ],
+      "practice": [
+        "tinh"
+      ]
+    },
+    {
+      "id": "cong-tru-qua-10-tru",
+      "text": "Trừ qua 10 trong phạm vi 20 bằng cách tách số trừ.",
+      "skills": [
+        "phep-tru"
+      ],
+      "practice": [
+        "tinh"
+      ]
+    },
+    {
+      "id": "cong-tru-qua-10-bang",
+      "text": "Nhớ bảng cộng, bảng trừ qua 10 và tìm số còn thiếu.",
+      "skills": [
+        "phep-cong",
+        "phep-tru"
+      ],
+      "practice": [
+        "dien-so"
+      ]
+    },
+    {
+      "id": "cong-tru-qua-10-so-sanh",
+      "text": "So sánh kết quả của các phép tính trong phạm vi 20.",
+      "skills": [
+        "so-sanh-so"
+      ],
+      "practice": [
+        "so-sanh"
+      ]
+    }
+  ]
+}

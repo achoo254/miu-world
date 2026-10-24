@@ -1,53 +1,19 @@
-// Links between textbook quests and the textbook inventory (content/curriculum):
-//  - which quest steps may stand for which kind of exercise (a clock exercise needs a clock challenge),
-//  - the book's wording and answers reach the game unchanged (the game is the child's real homework),
+// Links between the learning quests still waiting to be rewritten and the textbook inventory (content/curriculum):
+//  - their `lesson`, `curriculumRef` and passage `section` ids exist and belong to the quest's lesson,
+//  - their answers are still the book's answers (recomputed from the inventory's expressions),
 //  - which inventory items no quest covers yet (`pnpm content:gaps`).
-import { templateBlanks, type QuestDefinition, type QuestStep, type QuestText } from '../../packages/schema/src/content';
-import { evaluateExpression, type CurriculumItem, type CurriculumSection, type ExerciseType } from '../../packages/schema/src/curriculum';
+// The game no longer carries the book's wording: tools/content/no-textbook-copy.ts refuses copied text instead.
+import { templateBlanks, type QuestDefinition, type QuestStep } from '../../packages/schema/src/content';
+import { evaluateExpression, type CurriculumItem, type CurriculumSection } from '../../packages/schema/src/curriculum';
 import type { LoadedBook } from './check-curriculum';
+import { MECHANIC_RULES } from './mechanic-rules';
 
 /** How a step is played: the challenge mechanic, or the step kind for other steps. */
 export function stepMechanic(step: QuestStep): string {
   return step.kind === 'challenge' ? step.mechanic : step.kind;
 }
 
-const INTERACTIVE = ['drag-drop', 'sort', 'classify', 'fill-blank', 'multi-select', 'clock', 'calendar', 'connect'].map((m) => [m]);
-
-/**
- * Ways a quest may cover each exercise type. An item is covered when, among the steps pointing at it,
- * every mechanic of at least one option is present. A new exercise type fails to compile until it has a rule.
- */
-export const MECHANIC_RULES: Record<ExerciseType, readonly (readonly string[])[]> = {
-  'chon-dap-an': [['quiz'], ['multi-select']],
-  noi: [['classify'], ['connect'], ['fill-blank']],
-  'sap-xep': [['sort']],
-  'tro-choi': INTERACTIVE,
-  tinh: [['riddle'], ['fill-blank']],
-  // Also "lập các số…": pick every number the cards can make.
-  'dien-so': [['riddle'], ['fill-blank'], ['drag-drop'], ['multi-select']],
-  // Signs between numbers, or "find the flowers greater than 60" (pick or sort into groups).
-  'so-sanh': [['fill-blank'], ['multi-select'], ['classify']],
-  dem: [['riddle'], ['fill-blank'], ['drag-drop']],
-  'bai-toan-loi-van': [['riddle'], ['fill-blank']],
-  'do-luong-thuc-hanh': [['worksheet']],
-  've-hinh': [['connect'], ['worksheet']],
-  'nhan-dien-hinh': [['multi-select'], ['quiz'], ['classify']],
-  'xem-dong-ho': [['clock']],
-  'xem-lich': [['calendar']],
-  'khoi-dong': [['speak']],
-  'doc-thanh-tieng': [['read']],
-  'doc-hieu': [['read'], ['quiz'], ['multi-select'], ['classify']],
-  'tim-tu': [['classify'], ['multi-select'], ['fill-blank']],
-  'dien-chu': [['fill-blank']],
-  'xep-tu': [['sort'], ['classify']],
-  'dat-cau': [['sort'], ['classify']],
-  'dau-cau': [['fill-blank']],
-  'ke-chuyen-tranh': [['sort', 'speak']],
-  'noi-ve-ban-than': [['speak']],
-  'viet-chu': [['worksheet']],
-  'nghe-viet': [['worksheet']],
-  'viet-doan': [['worksheet']],
-};
+export { MECHANIC_RULES } from './mechanic-rules';
 
 /** Handwriting sections are done on paper whatever the exercise type says. */
 const WRITING_SECTIONS = new Set(['viet-chu-hoa', 'viet-ung-dung', 'nghe-viet', 'viet-doan']);
@@ -92,23 +58,6 @@ export function normaliseWording(text: string): string {
   return text.normalize('NFC').replace(BLANK, '?').replace(/\s+/g, ' ').trim();
 }
 
-/** Everything of the step the child reads: its wording, and the labels of what it shows to pick or move. */
-function visibleWording(step: QuestStep): string[] {
-  const parts: string[] = [];
-  if ('prompt' in step) parts.push(step.prompt);
-  if ('question' in step) parts.push(step.question);
-  // The instruction and the sentence with blanks read as one line on screen.
-  if (step.kind === 'challenge' && step.mechanic === 'fill-blank') parts.push([...parts, step.template].join(' '));
-  if ('choices' in step) for (const c of step.choices) if ('id' in c) parts.push(c.text);
-  if (step.kind === 'speak') parts.push(...step.hints);
-  if (step.kind === 'challenge') {
-    if (step.mechanic === 'fill-blank') parts.push(step.template, ...step.blanks.flatMap((b) => b.options.map((o) => o.text)));
-    if (step.mechanic === 'sort' || step.mechanic === 'classify') parts.push(...step.items.map((i) => i.label));
-    if (step.mechanic === 'classify') parts.push(...step.groups.map((g) => g.label));
-  }
-  return parts.map(normaliseWording);
-}
-
 /**
  * The printed phrases of an inventory prompt. Readers flatten a page's layout into one line (choices
  * printed in columns joined by "; ", a/b/c requirements, table cells split by " | ", A/B columns, "G:"
@@ -124,15 +73,9 @@ export function printedPhrases(prompt: string): string[] {
     .filter((p) => p.length > 0);
 }
 
+// The answers of quests still played from the book are checked against the book's answers until they are rewritten:
+// a mistyped answer there would otherwise pass.
 const stripChoiceLetter = (label: string) => label.replace(/^[a-zđ]\.\s*/i, '');
-
-/** A phrase is shown when some visible text contains it; a choice "b. mẹ" may be shown as its button "mẹ". */
-function missingPhrases(step: QuestStep, prompt: string): string[] {
-  const visible = visibleWording(step);
-  const shown = (phrase: string) =>
-    visible.some((v) => v.includes(phrase)) || (/^[a-zđ]\.\s/.test(phrase) && visible.some((v) => v === stripChoiceLetter(phrase)));
-  return printedPhrases(prompt).filter((p) => !shown(p));
-}
 
 const sameChoice = (quest: string, book: string) =>
   normaliseWording(quest) === normaliseWording(book) || normaliseWording(quest) === normaliseWording(stripChoiceLetter(book));
@@ -214,17 +157,6 @@ function answerIssues(step: QuestStep, items: readonly CurriculumItem[]): string
   }
 }
 
-function textIssues(id: string, text: QuestText, sections: ReadonlyMap<string, CurriculumSection>): string[] {
-  if (text.section === undefined) return [`text ${id} must name the inventory section it comes from`];
-  const printed = sections.get(text.section)?.text;
-  if (!printed) return [`text ${id} names ${text.section}, which has no printed text in the inventory`];
-  const diff: string[] = (['title', 'author', 'body'] as const).filter((k) => (text[k] ?? '').normalize('NFC') !== (printed[k] ?? '').normalize('NFC'));
-  if (JSON.stringify(text.glossary ?? []).normalize('NFC') !== JSON.stringify(printed.glossary ?? []).normalize('NFC')) diff.push('glossary');
-  return diff.length > 0 ? [`text ${id} differs from the book in ${diff.join(', ')} (it must be copied exactly)`] : [];
-}
-
-const isTextbookQuest = (id: string) => id.startsWith('toan2-') || id.startsWith('tv2-');
-
 export interface LessonGaps {
   book: string;
   unit: string;
@@ -243,8 +175,8 @@ export interface LinkReport {
 }
 
 /**
- * Checks every textbook quest (drafts included) against the inventory and measures which items are
- * covered. Wording, passage and answer differences are errors at any stage; gaps are only counted.
+ * Checks every quest (drafts included) that still points at the inventory, and measures which items are covered.
+ * Unknown or foreign ids are errors; gaps are only counted.
  */
 export function checkCurriculumLinks(books: readonly LoadedBook[], quests: readonly QuestDefinition[]): LinkReport {
   const issues: string[] = [];
@@ -264,8 +196,8 @@ export function checkCurriculumLinks(books: readonly LoadedBook[], quests: reado
     for (const [id, text] of Object.entries(quest.texts)) {
       if (text.section !== undefined) shownSections.add(text.section);
       const textLesson = text.section === undefined ? undefined : sectionLessons.get(text.section);
+      if (text.section !== undefined && !sections.has(text.section)) issues.push(`quest ${quest.id} text ${id} names unknown inventory section ${text.section}`);
       if (textLesson && foreign(textLesson)) issues.push(`quest ${quest.id} text ${id} is ${text.section} from lesson ${textLesson}, not the quest's lesson ${quest.lesson}`);
-      if (isTextbookQuest(quest.id)) issues.push(...textIssues(id, text, sections).map((m) => `quest ${quest.id} ${m}`));
     }
     for (const step of quest.steps) {
       const refs = 'curriculumRef' in step ? (step.curriculumRef ?? []) : [];
@@ -281,11 +213,9 @@ export function checkCurriculumLinks(books: readonly LoadedBook[], quests: reado
         const set = mechanicsFor.get(ref) ?? new Set<string>();
         set.add(stepMechanic(step));
         mechanicsFor.set(ref, set);
-        const missing = step.kind === 'worksheet' ? [] : missingPhrases(step, entry.item.prompt);
-        if (missing.length > 0) issues.push(`${where(step.id)} does not show the book's wording of ${ref}: "${missing.join('", "')}"`);
       }
-      if (step.kind === 'worksheet' && foreign(step.lessonId)) issues.push(`${where(step.id)} hands out the sheet of ${step.lessonId}, not of the quest's lesson ${quest.lesson}`);
       issues.push(...answerIssues(step, linked).map((m) => `${where(step.id)}: ${m}`));
+      if (step.kind === 'worksheet' && foreign(step.lessonId)) issues.push(`${where(step.id)} hands out the sheet of ${step.lessonId}, not of the quest's lesson ${quest.lesson}`);
     }
   }
 

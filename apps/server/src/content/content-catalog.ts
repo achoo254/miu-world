@@ -20,6 +20,7 @@ import { readCurriculum } from '../worksheet/curriculum-books';
 import { EMPTY_NPC_CATALOG, buildNpcCatalog, npcCatalogIssues, readNpcFiles, type NpcCatalog } from '../npc/npc-catalog';
 import { EMPTY_EVENT_CATALOG, loadEvents, type EventCatalog } from '../event/event-catalog';
 import { CONTENT_DIR } from './content-dir';
+import { loadLearningTopics, type LearningTopics } from './learning-topics';
 
 /** Repo `content/` directory; validated once at startup so bad content fails the boot, not a request. */
 export { CONTENT_DIR };
@@ -48,6 +49,8 @@ export interface ContentCatalog {
   quests: ReadonlyMap<string, PlayableQuest>;
   /** Minigames quests may play (`content/minigames`), by id. */
   minigames: ReadonlyMap<string, MinigameSpec>;
+  /** Subject → Topic → Objective framework (content/learning/topics); quests name a topic, steps an objective. */
+  learning: LearningTopics;
   /** Quest id → the textbook lesson it plays, with its printed pages (quests naming a `lesson`). */
   textbooks: ReadonlyMap<string, QuestTextbook>;
   /** Maps a child can play in: the open regions' maps (content/world/regions.json). */
@@ -142,6 +145,8 @@ export interface ContentOptions {
   eventsDir?: string | null;
   /** UI icon keys of the web app: `pnpm content:check` checks an event's icon against them. */
   icons?: ReadonlySet<string>;
+  /** The topics' folder; defaults to `<dir>/learning/topics`. */
+  topicsDir?: string;
 }
 
 export function readContentJson<S extends z.ZodType>(schema: S, file: string): z.infer<S> {
@@ -206,7 +211,7 @@ export function questTextbooks(quests: Iterable<PlayableQuest>, curriculumDir: s
   );
 }
 
-export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir, requireEveryMap = false, npcsDir, eventsDir, icons }: ContentOptions = {}): ContentCatalog {
+export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir, requireEveryMap = false, npcsDir, eventsDir, icons, topicsDir }: ContentOptions = {}): ContentCatalog {
   const catalog = readContentJson(SkillCatalog, path.join(dir, 'learning/skills.json'));
   const skillIds = new Set(catalog.subjects.flatMap((s) => s.skills.map((k) => k.id)));
   const minigames = readMinigames(path.join(dir, 'minigames'));
@@ -246,6 +251,7 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir,
     skillIds,
     quests,
     minigames,
+    learning: loadLearningTopics(topicsDir ?? path.join(dir, 'learning/topics'), catalog.subjects, quests.values()),
     textbooks: questTextbooks(quests.values(), path.join(dir, 'curriculum')),
     maps: new Set(playableMaps(regions)),
     collectibles: loadCollectibles(dir, regions),

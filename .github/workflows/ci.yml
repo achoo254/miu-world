@@ -28,9 +28,15 @@ jobs:
         run: pnpm assets:check
       - name: Content gate
         run: pnpm content:check
+        env:
+          # Key of the textbook fingerprints (tools/learning/textbook-fingerprints.ts): without it the copy check fails.
+          MIU_FINGERPRINT_KEY: ${{ secrets.MIU_FINGERPRINT_KEY }}
       - name: Unit tests
         # Every project but `maps`, which has its own job below.
         run: pnpm vitest run --project node --project web
+        env:
+          # The content gate's test runs the textbook copy check too.
+          MIU_FINGERPRINT_KEY: ${{ secrets.MIU_FINGERPRINT_KEY }}
       - name: Typecheck
         run: pnpm typecheck
       - name: Lint
