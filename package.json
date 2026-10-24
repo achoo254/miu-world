@@ -60,11 +60,7 @@
     "world:quest-targets": "tsx tools/world/quest-target-audit.ts",
     "world:walk": "tsx tools/world/walk-export.ts",
     "bots:learning": "tsx tools/bots/learning-report.ts",
-    "loadtest": "tsx tools/loadtest/run-loadtest.ts",
-    "marketing:schedule": "tsx tools/marketing/clip-schedule.ts",
-    "marketing:clip": "tsx tools/marketing/render-lesson-clip.ts",
-    "marketing:weekly": "tsx tools/marketing/weekly-clip.ts",
-    "assets:channel-kit": "tsx tools/assets/render-channel-kit.ts"
+    "loadtest": "tsx tools/loadtest/run-loadtest.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

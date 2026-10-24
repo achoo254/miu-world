@@ -38,7 +38,6 @@ import { checkLocales } from './check-locales';
 import { modelSwatches } from './pet-swatches';
 import { questSpread } from './quest-spread';
 import { auditQuestTargets, formatFinding } from '../world/quest-target-audit';
-import { marketingIssues } from '../marketing/check-marketing-content';
 
 /** Content files the server catalogue reads (a trailing slash means the `.json` files directly in that folder). */
 const CATALOGUE_FILES = [
@@ -99,8 +98,6 @@ const PRIVACY_FILE = 'legal/privacy-vi.json';
 /** Draft terms of use, held out of the web app until approved; content:check keeps it valid meanwhile. */
 const TERMS_FILE = 'legal/terms-vi.json';
 const ITEMS_FOLDER = 'items/';
-/** The weekly clip kit: channels, schedule and posted ledger (tools/marketing). */
-const MARKETING_FOLDER = 'marketing/';
 const COLLECTIBLES_FILE = 'collectibles.json';
 
 /**
@@ -243,7 +240,7 @@ const readByCatalogue = (rel: string) =>
 const readByAssetTools = (rel: string) => ASSET_TOOL_FILES.some((o) => (o.endsWith('/') ? inFolder(rel, o) : rel === o));
 const readByCurriculum = (rel: string) => CURRICULUM_FOLDERS.some((o) => inFolder(rel, o) && rel.endsWith('.json'));
 const readByLegalCheck = (rel: string) => rel === TERMS_FILE;
-const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === MODELS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === BOX_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json')) || (inFolder(rel, MARKETING_FOLDER) && rel.endsWith('.json'));
+const readByWeb = (rel: string) => rel === REGIONS_FILE || rel === MODELS_FILE || rel === LOOKS_FILE || rel === EMOJI_PROPS_FILE || rel === BOX_PROPS_FILE || rel === TARGETS_FILE || rel === PRIVACY_FILE || (inFolder(rel, ITEMS_FOLDER) && rel.endsWith('.json'));
 
 /**
  * Items parse, use a shipped UI icon, file name = id, and every item a quest rewards exists. The collectible
@@ -705,7 +702,6 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
       const parsedMail = MailCatalog.safeParse(read('mail/templates.json'));
       if (!parsedMail.success) issues.push(`content/mail/templates.json: ${parsedMail.error.message}`);
     }
-    if (existsSync(path.join(dir, MARKETING_FOLDER))) issues.push(...marketingIssues(dir));
     notes.push(...targets.notes);
   } catch (error) {
     issues.push(error instanceof Error ? error.message : String(error));

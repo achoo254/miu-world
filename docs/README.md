@@ -14,7 +14,6 @@ Bản đồ tài liệu. Nguồn quyết định sản phẩm là [Master Plan v
 | [deployment-guide.md](deployment-guide.md) | Production chạy trên máy nào, secret ứng dụng, DNS, deploy và rollback (staging đã gỡ 12/10/2026) |
 | [screen-review.md](screen-review.md) | Chụp các màn chính trước deploy, cách agent xem ảnh, checklist và định dạng `review.json` |
 | [terms-of-use.md](terms-of-use.md) | Điều khoản sử dụng (bản nháp, chưa phát hành, chờ người duyệt): từng điều lấy từ đâu, vì sao không nâng phiên bản lời đồng ý, cách phát hành khi được duyệt |
-| [marketing-channels.md](marketing-channels.md) | Kênh YouTube và Fanpage Facebook: bộ ảnh, lịch clip hằng tuần theo bài, việc người sở hữu làm một lần (tạo kênh, OAuth, token), chạy khô, đăng thử, bật timer |
 | [store/README.md](store/README.md), [store/listing.md](store/listing.md) | Hồ sơ App Store và Google Play: ảnh chụp và cách chụp lại, icon, nội dung trang store (vi, en), xếp hạng tuổi, nhãn quyền riêng tư, ghi chú cho người duyệt, việc còn chặn phát hành |
 
 Quy tắc hành vi cho agent: [`CLAUDE.md`](../CLAUDE.md) và [`.claude/rules/`](../.claude/rules/).
