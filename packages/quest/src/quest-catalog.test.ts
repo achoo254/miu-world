@@ -31,7 +31,7 @@ const TEXTBOOK_STEPS = [
 /** Where the textbook steps happen: both on the same patch of grass. */
 const TEXTBOOK_PLACES = { box: 'bãi cỏ', tree: 'bãi cỏ' };
 const draft = (id: string, extra: Record<string, unknown> = {}) =>
-  quest(id, { status: 'draft', lesson: 'toan2-t1-b01', steps: TEXTBOOK_STEPS, places: TEXTBOOK_PLACES, ...extra });
+  quest(id, { status: 'draft', lesson: 'toan2-t1-b01', topic: 'so-den-100', steps: TEXTBOOK_STEPS, places: TEXTBOOK_PLACES, ...extra });
 const stub = (id: string) => QuestDefinition.parse({ id, region: 'r', chapter: 2, title: id, status: 'stub' });
 const skills = new Set(['phep-cong']);
 

@@ -105,8 +105,11 @@ describe('checkCurriculum', () => {
   });
 });
 
-/** Each case copies the ~2,000 content files and runs the whole check: about 5-10 s on Windows file systems, far more under a parallel full run. Other platforms keep the default limit. */
-const SLOW_FS_TIMEOUT = process.platform === 'win32' ? 90_000 : undefined;
+/**
+ * The case copies the ~2,000 content files and runs the whole check twice (with the textbook copy check): about
+ * 15 s alone, near a minute on CI under the parallel full run, so it gets its own limit on every platform.
+ */
+const SLOW_FS_TIMEOUT = 90_000;
 
 describe('content:check with the inventory', { timeout: SLOW_FS_TIMEOUT }, () => {
   it('validates the nested curriculum folders instead of flagging them', () => {
