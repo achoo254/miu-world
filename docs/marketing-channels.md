@@ -2,7 +2,7 @@
 
 Mỗi tuần học của học kì I, một clip dọc 20 giây cho một bài Toán 2 và một bài Tiếng Việt 2 được dựng bằng code, đăng lên kênh YouTube (Shorts) và Fanpage "Miu World", dẫn về trang bài ở `https://miu.hoandat.com/bai/<bài>/` kèm UTM để đọc nguồn đến trong GA4. Nguồn quyết định: plan `plans/dattqh/261012-1116-auto-marketing/` (phase 5).
 
-**Trạng thái:** mã và bộ ảnh đã xong; kênh và Fanpage **chưa tồn tại**, nên chưa có gì được đăng và chưa có gì đọc credential. Không có token thì chế độ mặc định (chạy khô) vẫn chạy được hết, trừ bước đăng. Bước đăng chỉ chạy khi có cờ `--publish`.
+**Trạng thái (24/10/2026):** kênh YouTube Miu World (`@miuworldgame`, `UCWCbLCst7No705XaUcw3acg`) và Fanpage đã có. Sáu clip tuần 6–8 đã lên YouTube, đăng tay qua Studio, ghi trong `content/marketing/posted.json`. Quyền YouTube Data API đã cấp: mục `youtube.googleapis.com` / `miu-world marketing` có trong `access-tokens.json`, cấp bằng `pnpm grant` của gói `shared-next/packages/app-shorts` (OAuth client Desktop của project `miu-world`, xem README của gói đó). Facebook chưa có Page access token. Không có token thì chế độ mặc định (chạy khô) vẫn chạy được hết, trừ bước đăng. Bước đăng chỉ chạy khi có cờ `--publish`.
 
 ## Ràng buộc của người sở hữu về Facebook (12/10/2026), mã tự giữ
 

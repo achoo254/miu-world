@@ -4,7 +4,7 @@ title: "Agent đăng clip theo lịch lên YouTube và Facebook"
 status: blocked
 tier: L
 dependsOn: [4]
-blockedBy: "Người sở hữu tạo kênh YouTube và Fanpage Facebook, cấp quyền API một lần"
+blockedBy: "Page access token của Fanpage Miu World (YouTube đã cấp quyền API 24/10/2026)"
 ---
 
 # Phase 5 — Đăng clip theo lịch
